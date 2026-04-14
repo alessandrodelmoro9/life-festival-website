@@ -17,9 +17,19 @@ const FooterSection = () => {
             <div>
               <p className="font-body text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Social</p>
               <div className="flex flex-col gap-2">
-                {['Instagram', 'Facebook', 'LinkedIn'].map((s) => (
-                  <a key={s} href="#" className="font-body text-sm text-foreground hover:text-primary transition-colors duration-300">
-                    {s}
+                {[
+                  { name: 'Instagram', url: 'https://www.instagram.com/life.designfestival/' },
+                  { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61574592376779' },
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/company/life-design-festival/' }
+                ].map((s) => (
+                  <a 
+                    key={s.name} 
+                    href={s.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="font-body text-sm text-foreground hover:text-primary transition-colors duration-300"
+                  >
+                    {s.name}
                   </a>
                 ))}
               </div>
