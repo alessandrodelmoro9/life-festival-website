@@ -148,17 +148,6 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Tags */}
-          <div className="hero-info mt-10 md:mt-14 flex flex-wrap gap-3">
-            {['Talk', 'Workshop', 'Network', 'Exposition', 'Performance', 'Party'].map((tag) => (
-              <span
-                key={tag}
-                className="font-body text-xs uppercase tracking-[0.2em] text-foreground border border-foreground px-4 py-2 hover:bg-foreground hover:text-background transition-all duration-300 cursor-default"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>
