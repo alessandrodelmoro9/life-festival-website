@@ -46,7 +46,7 @@ const SpeakerCard = ({ speaker, className }: SpeakerCardProps) => {
 
       {/* Arrow Indicator */}
       <div className="absolute bottom-3 md:bottom-10 right-3 md:right-10 w-7 h-7 md:w-12 md:h-12 bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 md:translate-y-0 shadow-lg">
-        <svg width="12" height="12" md:width="18" md:height="18" viewBox="0 0 24 24" fill="none">
+        <svg viewBox="0 0 24 24" fill="none" className="w-3 h-3 md:w-5 md:h-5">
           <path 
             d="M7 7L17 17M17 17V7M17 17H7" 
             stroke="white" 
