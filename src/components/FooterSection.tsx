@@ -1,15 +1,12 @@
+import logo from '@/assets/logo.svg';
+
 const FooterSection = () => {
   return (
     <footer className="relative py-20 md:py-32 border-t border-foreground/10">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-12">
           <div>
-            <span
-              className="font-display font-black text-foreground leading-none"
-              style={{ fontSize: 'clamp(2rem, 5vw, 5rem)' }}
-            >
-              life
-            </span>
+            <img src={logo} alt="Life Design Festival" className="h-12 md:h-16 w-auto" />
             <p className="font-body text-sm text-muted-foreground mt-4 max-w-sm">
               Life Design Festival — Seconda Edizione<br />
               5–6 Giugno 2026 • Potenza, Terminal Gallitello
