@@ -59,7 +59,7 @@ const AboutSection = () => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-4xl">
           <h2
-            className="about-heading font-display font-black text-foreground leading-[0.95]"
+            className="about-heading font-display text-foreground leading-[0.95] font-medium"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 7rem)' }}
           >
             Progetta<br />la tua vita
