@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logo from '@/assets/logo.svg';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,8 +31,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <button onClick={() => scrollTo('hero')} className="font-display text-xl font-bold tracking-tight text-foreground">
-          life
+        <button onClick={() => scrollTo('hero')} className="z-50">
+          <img src={logo} alt="Life Design Festival" className="h-8 w-auto" />
         </button>
 
         {/* Desktop */}
