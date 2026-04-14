@@ -75,7 +75,7 @@ const ProgramSection = () => {
     <section id="program" ref={sectionRef} className="relative py-32 md:py-48 bg-foreground overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <h2
-          className="program-heading font-display font-black text-background leading-[0.95] mb-16 md:mb-24"
+          className="program-heading font-display text-background leading-[0.95] mb-16 md:mb-24 font-medium"
           style={{ fontSize: 'clamp(2.5rem, 7vw, 7rem)' }}
         >
           Programma
