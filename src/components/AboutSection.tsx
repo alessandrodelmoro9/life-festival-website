@@ -55,12 +55,6 @@ const AboutSection = () => {
 
   return (
     <section id="about" ref={sectionRef} className="relative py-32 md:py-48 overflow-hidden">
-      {/* Organic blob */}
-      <div className="about-blob absolute -right-32 top-0 w-[500px] h-[600px] md:w-[700px] md:h-[800px] opacity-60">
-        <svg viewBox="0 0 500 600" fill="hsl(var(--life-pink))">
-          <path d="M 400 0 Q 500 100 450 200 Q 400 300 500 400 Q 450 500 350 500 Q 250 550 200 450 Q 150 350 50 400 Q 0 350 50 250 Q 100 150 200 100 Q 300 50 400 0 Z" />
-        </svg>
-      </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-4xl">
