@@ -14,6 +14,10 @@ const programItems = [
   { time: '10:00', title: 'Talk — EGO55', day: '6 GIU', type: 'Talk' },
   { time: '12:00', title: 'Workshop — Visual Identity', day: '6 GIU', type: 'Workshop' },
   { time: '15:00', title: 'Network & Closing', day: '6 GIU', type: 'Network' },
+  { time: '16:30', title: 'Talk — Design Sostenibile', day: '6 GIU', type: 'Talk' },
+  { time: '17:30', title: 'Workshop — Branding Creativo', day: '6 GIU', type: 'Workshop' },
+  { time: '19:00', title: 'Exposition Finale', day: '6 GIU', type: 'Exposition' },
+  { time: '20:30', title: 'Closing Party', day: '6 GIU', type: 'Party' },
 ];
 
 const typeColors: Record<string, string> = {
