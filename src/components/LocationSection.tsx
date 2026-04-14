@@ -50,7 +50,7 @@ const LocationSection = () => {
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div>
             <h2
-              className="location-heading font-display font-black text-foreground leading-[0.95]"
+              className="location-heading font-display text-foreground leading-[0.95] font-medium"
               style={{ fontSize: 'clamp(2.5rem, 7vw, 7rem)' }}
             >
               Potenza<br />(PZ)

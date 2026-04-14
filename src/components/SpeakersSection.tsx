@@ -90,7 +90,7 @@ const SpeakersSection = () => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 md:mb-24">
           <h2
-            className="speakers-heading font-display font-black text-foreground leading-[0.95]"
+            className="speakers-heading font-display text-foreground leading-[0.95] font-medium"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 7rem)' }}
           >
             Speaker
