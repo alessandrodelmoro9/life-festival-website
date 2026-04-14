@@ -5,31 +5,59 @@ import { ColoredSquare } from './SVGLines';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const SplitText = ({ text, className = '', delay = 0 }: { text: string; className?: string; delay?: number }) => {
+  const containerRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const chars = containerRef.current.querySelectorAll('.split-char');
+
+    gsap.set(chars, { yPercent: 120, opacity: 0, rotateX: -80 });
+
+    gsap.to(chars, {
+      yPercent: 0,
+      opacity: 1,
+      rotateX: 0,
+      duration: 0.9,
+      ease: 'power4.out',
+      stagger: 0.035,
+      delay,
+    });
+  }, [delay]);
+
+  return (
+    <span ref={containerRef} className={`inline-block ${className}`}>
+      {text.split('').map((char, i) => (
+        <span
+          key={i}
+          className="split-char inline-block"
+          style={{ perspective: '600px', transformStyle: 'preserve-3d' }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
+    </span>
+  );
+};
+
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const lineRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Title reveal
-      gsap.fromTo(titleRef.current,
-        { opacity: 0, y: 80 },
-        { opacity: 1, y: 0, duration: 1.4, ease: 'power4.out', delay: 0.3 }
-      );
-
       // Info items stagger
       gsap.fromTo('.hero-info',
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, delay: 0.8 }
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, delay: 1.4 }
       );
 
       // Decorative elements float in
       gsap.fromTo('.hero-deco',
         { opacity: 0, scale: 0 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)', stagger: 0.15, delay: 1.2 }
+        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)', stagger: 0.15, delay: 1.8 }
       );
 
       // SVG line draw
@@ -38,9 +66,9 @@ const HeroSection = () => {
         gsap.set(lineRef.current, { strokeDasharray: length, strokeDashoffset: length });
         gsap.to(lineRef.current, {
           strokeDashoffset: 0,
-          duration: 2,
+          duration: 2.5,
           ease: 'power2.inOut',
-          delay: 0.5,
+          delay: 0.8,
         });
       }
 
@@ -82,12 +110,15 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="hero-title-wrap">
           <h1
-            ref={titleRef}
-            className="text-foreground leading-[0.9] tracking-tight font-display font-medium"
+            className="text-foreground leading-[0.9] tracking-tight font-display font-medium overflow-hidden"
             style={{ fontSize: 'clamp(3.5rem, 12vw, 12rem)' }}
           >
-            Life design<br />
-            festival
+            <span className="block overflow-hidden py-2">
+              <SplitText text="Life design" delay={0.3} />
+            </span>
+            <span className="block overflow-hidden py-2">
+              <SplitText text="festival" delay={0.7} />
+            </span>
           </h1>
 
           <div className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-16">
