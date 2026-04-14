@@ -48,19 +48,21 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <button
-              onClick={() => scrollTo('location')}
-              className="font-body text-sm uppercase tracking-widest bg-primary text-primary-foreground px-5 py-2 hover:opacity-90 transition-opacity duration-300"
+            <a
+              href="https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-sm uppercase tracking-widest bg-primary text-primary-foreground px-5 py-2 hover:opacity-90 transition-opacity duration-300 inline-block"
             >
               Tickets
-            </button>
+            </a>
           </li>
         </ul>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-1.5 z-50"
+          className="md:hidden flex flex-col gap-1.5 z-[110] relative"
           aria-label="Menu"
         >
           <span className={`block w-6 h-0.5 bg-foreground transition-transform duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -70,7 +72,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden fixed inset-0 bg-background z-40 flex flex-col items-center justify-center gap-8 transition-all duration-500 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`md:hidden fixed inset-0 bg-background z-[100] flex flex-col items-center justify-center gap-8 transition-all duration-500 h-screen w-screen overflow-hidden ${menuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-10'}`}>
         {navItems.map((item) => (
           <button
             key={item.id}
@@ -80,12 +82,14 @@ const Navbar = () => {
             {item.label}
           </button>
         ))}
-        <button
-          onClick={() => scrollTo('location')}
+        <a
+          href="https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213"
+          target="_blank"
+          rel="noopener noreferrer"
           className="font-body text-lg uppercase tracking-widest bg-primary text-primary-foreground px-8 py-3 mt-4"
         >
           Tickets
-        </button>
+        </a>
       </div>
     </nav>
   );

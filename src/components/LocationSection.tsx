@@ -71,9 +71,14 @@ const LocationSection = () => {
               </div>
             </div>
 
-            <button className="location-detail mt-10 font-body text-sm uppercase tracking-[0.2em] bg-primary text-primary-foreground px-8 py-4 hover:opacity-90 transition-opacity duration-300">
+            <a
+              href="https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="location-detail mt-10 font-body text-sm uppercase tracking-[0.2em] bg-primary text-primary-foreground px-8 py-4 hover:opacity-90 transition-opacity duration-300 inline-block text-center"
+            >
               Acquista Ticket
-            </button>
+            </a>
           </div>
 
           {/* Map placeholder */}
