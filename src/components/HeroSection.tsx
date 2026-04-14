@@ -116,7 +116,7 @@ const HeroSection = () => {
             <span className="block overflow-hidden py-2">
               <SplitText text="Life design" delay={0.3} />
             </span>
-            <span className="block overflow-hidden py-2">
+            <span className="block overflow-hidden py-4">
               <SplitText text="festival" delay={0.7} />
             </span>
           </h1>
