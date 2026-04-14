@@ -30,7 +30,7 @@ const SplitText = ({ text, className = '', delay = 0 }: { text: string; classNam
       {text.split('').map((char, i) => (
         <span
           key={i}
-          className="split-char inline-block"
+          className="split-char inline-block my-0 py-[7px]"
           style={{ perspective: '600px', transformStyle: 'preserve-3d' }}
         >
           {char === ' ' ? '\u00A0' : char}
@@ -113,11 +113,11 @@ const HeroSection = () => {
             className="text-foreground leading-[0.9] tracking-tight font-display font-medium overflow-hidden"
             style={{ fontSize: 'clamp(3.5rem, 12vw, 12rem)' }}
           >
-            <span className="block overflow-hidden py-2">
-              <SplitText text="Life design" delay={0.3} />
+            <span className="block overflow-hidden py-2 px-0 my-0">
+              <SplitText text="Life Design" delay={0.3} />
             </span>
             <span className="block overflow-hidden py-4">
-              <SplitText text="festival" delay={0.7} />
+              <SplitText text="Festival" delay={0.7} />
             </span>
           </h1>
 
