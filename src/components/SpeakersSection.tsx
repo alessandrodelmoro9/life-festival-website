@@ -1,41 +1,22 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { speakersData } from '@/data/speakersData';
+import SpeakerCard from './ui/SpeakerCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const speakers = [
-  {
-    name: 'Mauro Bubbico',
-    role: 'Graphic Designer',
-    description: 'Maestro della comunicazione visiva nel Sud Italia',
-  },
-  {
-    name: 'EGO55',
-    role: 'Creative Studio',
-    description: 'Duo creativo tra design e sperimentazione',
-  },
-  {
-    name: 'Speaker 3',
-    role: 'Coming Soon',
-    description: 'Annuncio in arrivo...',
-  },
-  {
-    name: 'Speaker 4',
-    role: 'Coming Soon',
-    description: 'Annuncio in arrivo...',
-  },
-];
-
 const SpeakersSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const marqueeRef1 = useRef<HTMLDivElement>(null);
+  const marqueeRef2 = useRef<HTMLDivElement>(null);
   const lineRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Section heading
+      // Heading animation
       gsap.fromTo('.speakers-heading',
         { opacity: 0, y: 60 },
         {
@@ -44,17 +25,7 @@ const SpeakersSection = () => {
         }
       );
 
-      // Speaker cards stagger
-      gsap.fromTo('.speaker-card',
-        { opacity: 0, y: 80, rotation: -3 },
-        {
-          opacity: 1, y: 0, rotation: 0, duration: 1, ease: 'power3.out',
-          stagger: 0.15,
-          scrollTrigger: { trigger: '.speaker-card', start: 'top 85%' },
-        }
-      );
-
-      // Line draw
+      // Line draw (Restore the original SVG animation)
       if (lineRef.current) {
         const length = lineRef.current.getTotalLength();
         gsap.set(lineRef.current, { strokeDasharray: length, strokeDashoffset: length });
@@ -69,26 +40,62 @@ const SpeakersSection = () => {
           },
         });
       }
+
+      // Horizontal Marquee Logic (Infinite Loop)
+      const setupMarquee = (ref: React.RefObject<HTMLDivElement>, direction: number, speed: number) => {
+        if (!ref.current) return;
+        const totalWidth = ref.current.scrollWidth / 2;
+        
+        // Ensure initial position is filled
+        gsap.set(ref.current, { x: direction > 0 ? 0 : -totalWidth });
+
+        const tl = gsap.to(ref.current, {
+          x: direction > 0 ? -totalWidth : 0,
+          duration: speed,
+          ease: "none",
+          repeat: -1,
+        });
+
+        // Interactive slowdown
+        const container = ref.current.parentElement;
+        if (container) {
+          container.addEventListener("mouseenter", () => gsap.to(tl, { timeScale: 0.1, duration: 0.5 }));
+          container.addEventListener("mouseleave", () => gsap.to(tl, { timeScale: 1, duration: 0.5 }));
+        }
+        
+        return tl;
+      };
+
+      const isMobile = window.innerWidth < 768;
+      const baseSpeed = isMobile ? 60 : 55; // Slightly slower on desktop for the wider cards
+
+      setupMarquee(marqueeRef1, 1, baseSpeed);
+      setupMarquee(marqueeRef2, -1, baseSpeed + 10); // Variety in speeds for a more organic feel
+
     }, sectionRef.current);
 
     return () => ctx.revert();
   }, []);
 
+  const row1 = speakersData.slice(0, 8);
+  const row2 = speakersData.slice(8, 16);
+
   return (
-    <section id="speakers" ref={sectionRef} className="relative py-32 md:py-48 overflow-hidden">
-      {/* Background line */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
+    <section id="speakers" ref={sectionRef} className="relative py-24 md:py-48 overflow-hidden">
+      {/* Background line (RESTORED) */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <path
           ref={lineRef}
-          d="M 0 100 Q 300 0 500 200 Q 700 400 1000 300 Q 1300 200 1500 400"
+          d="M 0 150 Q 300 50 500 250 Q 700 450 1000 350 Q 1300 250 1500 450"
           stroke="hsl(var(--foreground))"
           strokeWidth="1.2"
           fill="none"
+          className="opacity-20 md:opacity-100"
         />
       </svg>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 md:mb-24">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 mb-12 md:mb-24">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between text-center md:text-left">
           <h2
             className="speakers-heading font-display text-foreground leading-[0.95] font-medium"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 7rem)' }}
@@ -99,39 +106,25 @@ const SpeakersSection = () => {
             Seconda Edizione — 2026
           </p>
         </div>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {speakers.map((speaker, i) => (
-            <div
-              key={speaker.name}
-              className="speaker-card group relative bg-background border border-foreground/10 p-8 md:p-12 cursor-pointer hover:border-primary transition-colors duration-500"
-            >
-              {/* Index */}
-              <span className="font-display font-bold text-6xl md:text-8xl text-foreground/5 absolute top-4 right-6">
-                {String(i + 1).padStart(2, '0')}
-              </span>
+      <div className="relative z-10">
+        {/* Row 1 */}
+        <div className="flex overflow-hidden py-2 md:py-4 select-none cursor-grab active:cursor-grabbing">
+          <div ref={marqueeRef1} className="flex whitespace-nowrap">
+            {[...row1, ...row1].map((speaker, i) => (
+              <SpeakerCard key={`${speaker.id}-row1-${i}`} speaker={speaker} />
+            ))}
+          </div>
+        </div>
 
-              {/* Colored square indicator */}
-              <div className={`w-4 h-4 mb-6 ${i % 3 === 0 ? 'bg-primary' : i % 3 === 1 ? 'bg-secondary' : 'bg-accent'}`} />
-
-              <h3 className="font-display font-bold text-2xl md:text-4xl text-foreground group-hover:text-primary transition-colors duration-300">
-                {speaker.name}
-              </h3>
-              <p className="font-body text-sm uppercase tracking-[0.2em] text-muted-foreground mt-2">
-                {speaker.role}
-              </p>
-              <p className="font-body text-base text-foreground/70 mt-4 leading-relaxed">
-                {speaker.description}
-              </p>
-
-              {/* Arrow */}
-              <div className="absolute bottom-8 right-8 w-10 h-10 bg-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M7 7L17 17M17 17V7M17 17H7" stroke="hsl(var(--primary-foreground))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-            </div>
-          ))}
+        {/* Row 2 */}
+        <div className="flex overflow-hidden py-2 md:py-4 select-none mt-2 md:mt-8 cursor-grab active:cursor-grabbing">
+          <div ref={marqueeRef2} className="flex whitespace-nowrap">
+            {[...row2, ...row2].map((speaker, i) => (
+              <SpeakerCard key={`${speaker.id}-row2-${i}`} speaker={speaker} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

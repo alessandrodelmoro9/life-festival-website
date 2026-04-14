@@ -40,37 +40,37 @@ C:\Users\Utente\Desktop\life website\life-design-scroll\
 │   └── fonts/               # Font locali: Aquawax (Display) e Automat (Body).
 │
 └── src/                     # Codice sorgente dell'applicazione
-    ├── App.tsx              # Router, Provider di Query e Toaster (notifiche).
-    ├── index.css            # Variabili CSS dei colori e reset globale.
-    ├── main.tsx             # Avvio di React.
-    │
-    ├── assets/              # Icone e immagini processate (es. logo.svg).
-    │
+    ├── data/                # [NUOVO] Gestione centralizzata dei contenuti
+    │   └── speakersData.ts  # Database degli ospiti (nomi, ruoli, social, immagini).
     ├── components/          # Componenti React (Sezioni Modulari)
     │   ├── Navbar.tsx       # Menu con fix per il glitch mobile e link Eventbrite.
     │   ├── HeroSection.tsx  # Apertura con animazioni GSAP SplitText.
-    │   ├── AboutSection.tsx # Descrizione del festival.
-    │   ├── SpeakersSection.tsx # Sezione ospiti (Target per Marquee).
-    │   ├── ProgramSection.tsx  # Palinsesto del festival.
-    │   ├── LocationSection.tsx # Mappa interattiva e link Eventbrite.
-    │   ├── FooterSection.tsx   # Chiusura con social link ufficiali.
-    │   ├── SVGLines.tsx        # Elementi vettoriali animati.
-    │   └── ui/              # Libreria di 53 componenti atomici Shadcn.
-    │
-    ├── hooks/               # Custom Hooks
-    │   ├── useLenis.ts      # Attiva lo Smooth Scroll fluido.
-    │   ├── use-mobile.tsx   # Rilevamento dispositivi mobile.
-    │   └── useScrollAnimation.ts # Trigger animazioni GSAP su scroll.
-    │
-    ├── lib/                 # Utility di sistema
-    │   └── utils.ts         # Gestione classi Tailwind (funzione 'cn').
-    │
-    ├── pages/               # Pagine dell'applicazione
-    │   ├── Index.tsx        # Main Landing Page (Single Page).
-    │   └── NotFound.tsx     # Pagina di errore 404.
-    │
-    └── test/                # Setup per test automatici (Vitest).
+    │   ├── SpeakersSection.tsx # [UPDATED] Marquee infinito GSAP a due righe.
+    │   ├── ui/              
+    │   │   └── SpeakerCard.tsx # [NUOVO] Componente card stile "Business Card".
+    │   └── ...              # Altre sezioni (About, Programma, Location, Footer)
+    ├── hooks/               # Custom Hooks (useLenis, useMobile, etc.)
+    ├── lib/                 # Utility di sistema (cn function)
+    ├── pages/               # Pagine dell'applicazione (Index, NotFound)
+    └── App.tsx              # Router e Provider globali.
 ```
+
+---
+
+## 🏛️ Refactoring: Architettura Professionale dei Contenuti
+Il progetto è stato evoluto da una struttura statica ("hardcoded") a un'architettura **Data-Driven** professionale:
+- **Eliminazione del Codice Hardcoded**: I nomi e i dettagli degli ospiti non sono più "annegati" nel codice dei componenti, una pratica dilettantistica che rende difficile la manutenzione.
+- **Database Centralizzato (`src/data/speakersData.ts`)**: Tutti i contenuti degli speaker risiedono in un unico file TypeScript tipizzato. Questo permette di aggiornare l'intera sezione Speaker in pochi secondi senza mai toccare la logica delle animazioni.
+- **Scalabilità**: Questa struttura è già predisposta per essere collegata in futuro a un CMS o a un'API esterna senza dover riscrivere la UI.
+
+---
+
+## ✨ Feature Spotlight: Marquee Speakers
+Abbiamo trasformato la sezione Speaker in una "Galleria Infinità" ad alto impatto:
+- **Design Business Card**: Gli speaker sono presentati come eleganti biglietti da visita orizzontali (`600x340px` su desktop).
+- **Infinite Loop GSAP**: Un motore fluido a due righe contrapposte che garantisce movimento costante.
+- **Interattività Premium**: Le righe rallentano dell'80% al passaggio del mouse (Hover) per facilitare la lettura dei contenuti.
+- **Smart Mobile**: Su smartphone, le card mantengono la forma rettangolare slanciata (`320x170px`) ottimizzando gli spazi.
 
 ---
 
@@ -78,9 +78,9 @@ C:\Users\Utente\Desktop\life website\life-design-scroll\
 
 ### 🌈 Colori (Variabili CSS)
 I colori sono definiti in `src/index.css` e mappati in `tailwind.config.ts`:
-- **`primary`**: `--primary` (Blu elettrico) - Action color.
-- **`secondary`**: `--secondary` (Fucsia/Rosa) - Accent color.
-- **`accent`**: `--accent` (Arancio/Rosso) - Highlight color.
+- **`primary`**: `--primary` (Blu elettrico).
+- **`secondary`**: `--secondary` (Fucsia/Rosa).
+- **`accent`**: `--accent` (Arancio/Rosso).
 
 ### 🖋️ Tipografia
 - **`font-display` (Aquawax)**: Per titoli e scritte d'impatto.
@@ -88,17 +88,25 @@ I colori sono definiti in `src/index.css` e mappati in `tailwind.config.ts`:
 
 ---
 
-## 🛠️ Note Tecniche & Ottimizzazione
+## 🛠️ Note per l'Aggiornamento Contenuti
 
-### 1. Gestione dei Dati (Futuro)
-Attualmente i dati (Speaker, Programma) sono **hardcoded** nei componenti. 
-- **Piano**: Estrarre questi dati in file JSON esterni per facilitare la manutenzione.
+### Aggiungere/Modificare uno Speaker
+Non è necessario toccare il codice delle animazioni. Modifica semplicemente il file:
+`src/data/speakersData.ts`
+```typescript
+{
+  id: 1,
+  name: "Nuovo Nome",
+  role: "Ruolo",
+  description: "Descrizione breve...",
+  color: 'primary', // Scegli tra 'primary', 'secondary', 'accent'
+  socials: { instagram: "link", linkedin: "link" }
+}
+```
 
-### 2. Performance (GSAP & Lenis)
-Tutte le animazioni utilizzano `gsap.context()` all'interno di `useEffect` per garantire la pulizia dei trigger ed evitare perdite di memoria (memory leaks).
-
-### 3. SEO & Social
-Il file `index.html` è stato configurato con metadati Open Graph per garantire un'anteprima corretta su WhatsApp, LinkedIn e Facebook utilizzando il nuovo logo SVG.
+### Inserire Immagini (Prossimamente)
+1. Carica le foto in `public/speakers/`.
+2. Aggiungi il campo `image: "/speakers/nome-file.jpg"` nell'oggetto speaker desiderato.
 
 ---
 
@@ -116,7 +124,6 @@ npm run build
 
 ---
 
-## 📝 Road Map Prossime Feature
-1. **Marquee Speakers**: Implementazione scorrimento infinito GSAP per 15+ ospiti.
-2. **Chatbot RAG**: Integrazione widget fluttuante collegato ad API FastAPI.
-3. **Ottimizzazione UI**: Rimozione dei componenti Shadcn inutilizzati in `/ui/`.
+## 📝 Road Map
+1. **Chatbot RAG**: Integrazione widget fluttuante collegato ad API FastAPI. [IN PIANIFICAZIONE]
+2. **Ottimizzazione UI**: Rimozione dei componenti Shadcn inutilizzati.
