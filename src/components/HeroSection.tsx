@@ -83,7 +83,7 @@ const HeroSection = () => {
         <div className="hero-title-wrap">
           <h1
             ref={titleRef}
-            className="font-display font-black text-foreground leading-[0.9] tracking-tight"
+            className="text-foreground leading-[0.9] tracking-tight font-display font-medium"
             style={{ fontSize: 'clamp(3.5rem, 12vw, 12rem)' }}
           >
             Life design<br />
