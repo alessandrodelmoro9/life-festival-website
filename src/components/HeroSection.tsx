@@ -61,7 +61,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero" ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <section id="hero" ref={sectionRef} className="relative min-h-screen items-center overflow-hidden pt-20 text-9xl font-normal flex flex-row">
       {/* Decorative SVG line */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none">
         <path
