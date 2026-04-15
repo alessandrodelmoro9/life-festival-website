@@ -74,9 +74,9 @@ const SponsorSection = () => {
 
   return (
     <section id="sponsors" ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden bg-background">
-      {/* Decorative SVG Line - Optimized for mobile height */}
-      <svg 
-        className="absolute top-0 left-0 w-full h-[120px] md:h-[200px] pointer-events-none z-0"
+      {/* Decorative SVG line - Optimized for mobile height */}
+      <svg
+        className="absolute top-0 left-0 w-full h-[120px] md:h-[200px] pointer-events-none z-0 opacity-20"
         viewBox="0 0 1500 200"
         preserveAspectRatio="none"
       >
@@ -86,7 +86,6 @@ const SponsorSection = () => {
           stroke="hsl(var(--foreground))"
           strokeWidth="1.2"
           fill="none"
-          className="opacity-20"
         />
       </svg>
 
