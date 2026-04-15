@@ -22,6 +22,7 @@ const Navbar = () => {
     { label: 'Speaker', id: 'speakers' },
     { label: 'Programma', id: 'program' },
     { label: 'Location', id: 'location' },
+    { label: 'Partner', id: 'sponsors' },
   ];
 
   return (

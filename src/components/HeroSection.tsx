@@ -91,7 +91,12 @@ const HeroSection = () => {
   return (
     <section id="hero" ref={sectionRef} className="relative min-h-screen items-center overflow-hidden pt-20 text-9xl font-normal flex flex-row">
       {/* Decorative SVG line */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none">
+      <svg 
+        className="absolute inset-0 w-full h-full pointer-events-none" 
+        viewBox="0 0 1500 800"
+        width="100%"
+        preserveAspectRatio="none"
+      >
         <path
           ref={lineRef}
           d="M -50 100 Q 200 50 300 300 Q 400 550 600 400 Q 900 200 1100 500 Q 1300 800 1500 600"

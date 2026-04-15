@@ -67,7 +67,7 @@ const SpeakersSection = () => {
       };
 
       const isMobile = window.innerWidth < 768;
-      const baseSpeed = isMobile ? 60 : 55; // Slightly slower on desktop for the wider cards
+      const baseSpeed = isMobile ? 40 : 35; // Faster speed for a more dynamic feel
 
       setupMarquee(marqueeRef1, 1, baseSpeed);
       setupMarquee(marqueeRef2, -1, baseSpeed + 10); // Variety in speeds for a more organic feel
@@ -83,14 +83,19 @@ const SpeakersSection = () => {
   return (
     <section id="speakers" ref={sectionRef} className="relative py-24 md:py-48 overflow-hidden">
       {/* Background line (RESTORED) */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
+      <svg 
+        className="absolute top-0 left-0 w-full h-[250px] md:h-[400px] pointer-events-none z-0"
+        viewBox="0 0 1500 500"
+        width="100%"
+        preserveAspectRatio="none"
+      >
         <path
           ref={lineRef}
           d="M 0 150 Q 300 50 500 250 Q 700 450 1000 350 Q 1300 250 1500 450"
           stroke="hsl(var(--foreground))"
           strokeWidth="1.2"
           fill="none"
-          className="opacity-20 md:opacity-100"
+          className="opacity-100"
         />
       </svg>
 
