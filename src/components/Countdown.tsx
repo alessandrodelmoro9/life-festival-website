@@ -168,7 +168,7 @@ const Countdown = () => {
       <ColoredSquare color="red" className="top-[60%] right-[10%]" size={10} />
 
       <div className="container mx-auto px-4 md:px-12 relative z-10">
-        <div className="flex flex-row flex-nowrap justify-center items-center gap-4 md:gap-16 lg:gap-24 max-w-6xl mx-auto overflow-hidden">
+        <div className="flex flex-row flex-nowrap justify-center items-center gap-4 md:gap-16 lg:gap-24 max-w-6xl mx-auto">
           {items.map((item) => (
             <div 
               key={item.label} 
@@ -176,7 +176,7 @@ const Countdown = () => {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              <div className="relative h-[1.1em] flex items-center justify-center">
+              <div className="relative h-[1.2em] flex items-center justify-center overflow-visible">
                 <span className="current-value font-display text-4xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-none text-foreground transition-all duration-300">
                   {formatNumber(item.value)}
                 </span>
