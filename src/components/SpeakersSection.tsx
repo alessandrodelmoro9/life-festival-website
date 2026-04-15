@@ -54,6 +54,7 @@ const SpeakersSection = () => {
           duration: speed,
           ease: "none",
           repeat: -1,
+          force3D: true, // Forze GPU acceleration
         });
 
         // Interactive slowdown
@@ -115,7 +116,7 @@ const SpeakersSection = () => {
       <div className="relative z-10">
         {/* Row 1 */}
         <div className="flex overflow-hidden py-2 md:py-4 select-none cursor-grab active:cursor-grabbing">
-          <div ref={marqueeRef1} className="flex whitespace-nowrap">
+          <div ref={marqueeRef1} className="flex whitespace-nowrap will-change-transform" style={{ willChange: 'transform' }}>
             {[...row1, ...row1].map((speaker, i) => (
               <SpeakerCard key={`${speaker.id}-row1-${i}`} speaker={speaker} />
             ))}
@@ -124,7 +125,7 @@ const SpeakersSection = () => {
 
         {/* Row 2 */}
         <div className="flex overflow-hidden py-2 md:py-4 select-none mt-2 md:mt-8 cursor-grab active:cursor-grabbing">
-          <div ref={marqueeRef2} className="flex whitespace-nowrap">
+          <div ref={marqueeRef2} className="flex whitespace-nowrap will-change-transform" style={{ willChange: 'transform' }}>
             {[...row2, ...row2].map((speaker, i) => (
               <SpeakerCard key={`${speaker.id}-row2-${i}`} speaker={speaker} />
             ))}
