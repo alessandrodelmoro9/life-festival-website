@@ -167,21 +167,21 @@ const Countdown = () => {
       <ColoredSquare color="pink" className="bottom-[20%] right-[30%]" size={14} />
       <ColoredSquare color="red" className="top-[60%] right-[10%]" size={10} />
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-center gap-8 md:gap-16 lg:gap-24 max-w-6xl mx-auto">
+      <div className="container mx-auto px-4 md:px-12 relative z-10">
+        <div className="flex flex-row flex-nowrap justify-center items-center gap-4 md:gap-16 lg:gap-24 max-w-6xl mx-auto overflow-hidden">
           {items.map((item) => (
             <div 
               key={item.label} 
-              className="flex flex-col items-center text-center cursor-default group py-4"
+              className="flex flex-col items-center text-center cursor-default group py-2"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
               <div className="relative h-[1.1em] flex items-center justify-center">
-                <span className="current-value font-display text-5xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-none text-foreground transition-all duration-300">
+                <span className="current-value font-display text-4xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-none text-foreground transition-all duration-300">
                   {formatNumber(item.value)}
                 </span>
               </div>
-              <span className="countdown-label font-body text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-muted-foreground mt-4 md:mt-10 opacity-0">
+              <span className="countdown-label font-body text-[7px] md:text-[9px] uppercase tracking-[0.3em] md:tracking-[0.4em] text-muted-foreground mt-2 md:mt-10 opacity-0">
                 {item.label}
               </span>
             </div>
