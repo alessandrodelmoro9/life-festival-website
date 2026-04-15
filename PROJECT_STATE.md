@@ -5,7 +5,12 @@ Questo documento serve come **memoria permanente** per lo stato dello sviluppo. 
 ---
 
 ## 📅 Stato Attuale (15 Aprile 2026)
-- **Branch Attivo:** `feature/interactive-about`
+- **Branch Attivo:** `feature/interactive-about` (locale e remoto)
+- **Git Branch Mapping:**
+    - `main`: Branch di produzione (allineato a `origin/main`), deploy su Vercel.
+    - `feature/interactive-about`: Branch di sviluppo attuale per About e Paint System.
+    - `feature/marquee-speakers`: Branch legacy/stabile per le card degli speaker.
+- **Remote:** `origin` punta a `github.com:alessandrodelmoro9/life-festival-website.git`
 - **Obiettivo:** Creare un sito web premium, editoriale e interattivo basato sul concetto di "tracce" e "nodi".
 - **Design:** Minimalista, ampi spazi bianchi, animazioni GSAP fluide, tipografia Aquawax (Display) e Automat (Body).
 
