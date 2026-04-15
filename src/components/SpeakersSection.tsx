@@ -83,10 +83,9 @@ const SpeakersSection = () => {
   return (
     <section id="speakers" ref={sectionRef} className="relative py-24 md:py-48 overflow-hidden">
       {/* Background line (RESTORED) */}
-      <svg 
-        className="absolute top-0 left-0 w-full h-[250px] md:h-[400px] pointer-events-none z-0"
+      <svg
+        className="absolute top-0 left-0 w-full h-[250px] md:h-[400px] pointer-events-none z-0 opacity-20"
         viewBox="0 0 1500 500"
-        width="100%"
         preserveAspectRatio="none"
       >
         <path

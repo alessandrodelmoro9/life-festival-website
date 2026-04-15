@@ -2,6 +2,7 @@ import { useLenis } from '@/hooks/useLenis';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
+import Countdown from '@/components/Countdown';
 import SpeakersSection from '@/components/SpeakersSection';
 import ProgramSection from '@/components/ProgramSection';
 import LocationSection from '@/components/LocationSection';
@@ -16,6 +17,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <Countdown />
       <SpeakersSection />
       <ProgramSection />
       <LocationSection />
