@@ -14,130 +14,150 @@ export interface Speaker {
 export const speakersData: Speaker[] = [
   {
     id: 1,
-    name: "Mario Moroni",
-    role: "Podcaster",
-    description: "Gestisce il podcast 'Il caffettino', punto di riferimento per l'innovazione digitale in Italia.",
+    name: "Adoratorio studio",
+    role: "Digital Design Studio",
+    description: "Esperienze digitali tra arte e tecnologia d'avanguardia.",
     color: 'primary',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/adoratorio studio.jpg"
   },
   {
     id: 2,
-    name: "Caffè Design",
-    role: "Creator / Collettivo",
-    description: "Esplorano il mondo del progetto con quiz, intrattenimento e una visione dissacrante del design.",
+    name: "Auge",
+    role: "Independent Agency",
+    description: "Brand identity e comunicazione strategica ad alto impatto.",
     color: 'secondary',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/Auge.png"
   },
   {
     id: 3,
-    name: "Monogrid",
-    role: "Digital Production Company",
-    description: "Valentina Trevisanello e Marco Trevisani portano l'innovazione tecnologica nel mindset creativo.",
+    name: "BeFamily",
+    role: "Communication Studio",
+    description: "Progettazione di connessioni e narrazioni visive contemporanee.",
     color: 'accent',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/Be Family.png"
   },
   {
     id: 4,
-    name: "Alessandra Marin",
-    role: "Designer @ Illo",
-    description: "Esplora l'imprevisto creativo e l'animazione d'avanguardia all'interno dello studio Illo.",
-    color: 'primary',
-    socials: { instagram: "", linkedin: "" }
+    name: "Brutto Studio",
+    role: "Design Collective",
+    description: "Sperimentazione visiva e approccio grafico non convenzionale.",
+    color: 'primary'
   },
   {
     id: 5,
-    name: "Cosimo Lorenzo Pacini",
-    role: "Type Designer @ Zetafonts",
-    description: "Gestisce una delle fonderie tipografiche italiane più influenti a livello internazionale.",
-    color: 'secondary',
-    socials: { instagram: "", linkedin: "" }
+    name: "Dude Agency",
+    role: "Creative Agency",
+    description: "Hub creativo tra pubblicità e intrattenimento internazionale.",
+    color: 'secondary'
   },
   {
     id: 6,
-    name: "Matteo Roversi",
-    role: "Relatore @ Cosmico",
-    description: "Si occupa di nuove visioni lavorative e della connessione tra talenti e aziende nel mondo tech.",
+    name: "dVerso Studio",
+    role: "Visual Communication",
+    description: "Motion design e innovazione dei linguaggi digitali.",
     color: 'accent',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/Dverso studio.jpg"
   },
   {
     id: 7,
-    name: "Dario Volpe",
-    role: "Designer @ Lettera7",
-    description: "Analizza criticamente i loghi e l'identità visiva con un approccio analitico e colto.",
+    name: "Ego55",
+    role: "Creative Factory",
+    description: "Trasformazione dei brand attraverso strategie creative audaci.",
     color: 'primary',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/ego55.jpg"
   },
   {
     id: 8,
-    name: "Pietro Spagnolo",
-    role: "Business Designer @ SUBSENSE",
-    description: "Gestisce e progetta il business creativo, unendo strategia e design thinking.",
-    color: 'secondary',
-    socials: { instagram: "", linkedin: "" }
+    name: "ET STUDIO",
+    role: "Design & Identity",
+    description: "Identità visive forti e sistemi di design integrati.",
+    color: 'secondary'
   },
   {
     id: 9,
-    name: "Lorenzo Grosso",
-    role: "Designer @ The Rabbix",
-    description: "Focalizzato sulla manualità e sull'importanza del 'fare con le mani' nel processo creativo.",
+    name: "Italo Sannino",
+    role: "UX Expert & Figma Master",
+    description: "Pioniere della UX e formatore specializzato in interfacce.",
     color: 'accent',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/italo_sannino.png"
   },
   {
     id: 10,
-    name: "Giuseppe Giurlando",
-    role: "Creative Director @ Sangria",
-    description: "Valorizza le radici creative mediterranee portandole in una dimensione contemporanea.",
+    name: "Jekyll & Hyde",
+    role: "Strategic Design Studio",
+    description: "Rigore strategico e follia creativa applicata al progetto.",
     color: 'primary',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/Jekyll & Hyde.png"
   },
   {
     id: 11,
-    name: "Silvio Giordano",
-    role: "Artista & Designer",
-    description: "Sperimenta costantemente tra tecniche analogiche, videoarte e intelligenza artificiale.",
+    name: "Mauro Bubbico",
+    role: "Graphic Designer",
+    description: "Fonde tradizione popolare e ricerca visiva contemporanea.",
     color: 'secondary',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/Mauro Bubbico.png"
   },
   {
     id: 12,
-    name: "Valerio Calabrese",
-    role: "AI Consultant",
-    description: "Analizza l'evoluzione dell'IA e il suo impatto sociale e professionale nel mondo del design.",
+    name: "Mauro Mazzei",
+    role: "Creative Director",
+    description: "Comunicazione pubblicitaria e direzione creativa di alto livello.",
     color: 'accent',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/Mauro-Mazzei.jpg"
   },
   {
     id: 13,
-    name: "Mauro Mazzei",
-    role: "ADV Specialist",
-    description: "Analizza l'industria pubblicitaria moderna tra dati, creatività e nuovi media.",
-    color: 'primary',
-    socials: { instagram: "", linkedin: "" }
+    name: "Enrica D’Aguanno",
+    role: "Professoressa & Academic",
+    description: "Docente e ricercatrice sull'evoluzione dei linguaggi visivi.",
+    color: 'secondary',
+    image: "/img_ospiti/img ospiti/enricadaguanno.jpeg"
   },
   {
     id: 14,
-    name: "Matteo Marchesano",
-    role: "Experience Designer",
-    description: "Crea progetti memorabili focalizzati sull'utente e sull'emozione dell'esperienza.",
-    color: 'secondary',
-    socials: { instagram: "", linkedin: "" }
+    name: "PUG!",
+    role: "Creative Network",
+    description: "Illustrazione, design e cultura visuale pop contemporanea.",
+    color: 'accent',
+    image: "/img_ospiti/img ospiti/pug design fest.jpg"
   },
   {
     id: 15,
-    name: "District",
-    role: "Designer Network",
-    description: "Gestisce una rete capillare per designer, facilitando connessioni e opportunità professionali.",
-    color: 'accent',
-    socials: { instagram: "", linkedin: "" }
+    name: "Rocket Panda",
+    role: "Motion Design Studio",
+    description: "Animazione e storytelling dinamico per idee in movimento.",
+    color: 'primary',
+    image: "/img_ospiti/img ospiti/Riccardo Albertini (Rocketpanda).jpg"
   },
   {
     id: 16,
-    name: "17studio",
-    role: "Audiovisual Performers",
-    description: "WeLikeTheFish & Bob Vito curano la parte sonora e visuale con performance immersive.",
+    name: "Silvia Sguotti",
+    role: "Visual Artist",
+    description: "Indagine sul rapporto tra materia, segno e spazio visivo.",
+    color: 'secondary',
+    image: "/img_ospiti/img ospiti/silvia sguotti.jpg"
+  },
+  {
+    id: 17,
+    name: "Simone Checchia",
+    role: "Creative Director",
+    description: "Design di prodotto tra estetica funzionale e innovazione.",
+    color: 'accent'
+  },
+  {
+    id: 18,
+    name: "The Wave",
+    role: "Creative Production",
+    description: "Contenuti visivi d'avanguardia tra tecnologia e visione.",
     color: 'primary',
-    socials: { instagram: "", linkedin: "" }
+    image: "/img_ospiti/img ospiti/The wave.png"
+  },
+  {
+    id: 19,
+    name: "Zetafonts",
+    role: "Type Foundry",
+    description: "Fonderia tipografica tra le più influenti a livello mondiale.",
+    color: 'secondary',
+    image: "/img_ospiti/img ospiti/zeta fonts.jpg"
   }
 ];
