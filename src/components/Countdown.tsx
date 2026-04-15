@@ -168,11 +168,11 @@ const Countdown = () => {
       <ColoredSquare color="red" className="top-[60%] right-[10%]" size={10} />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 lg:gap-24 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center items-center gap-8 md:gap-16 lg:gap-24 max-w-6xl mx-auto">
           {items.map((item) => (
             <div 
               key={item.label} 
-              className="flex flex-col items-center text-center cursor-default group"
+              className="flex flex-col items-center text-center cursor-default group py-4"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
