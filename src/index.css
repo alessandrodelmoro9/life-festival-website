@@ -163,6 +163,11 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    cursor: none;
+  }
+
+  a, button, [role="button"], input, select, textarea {
+    cursor: none;
   }
 
   h1, h2, h3, h4, h5, h6 {

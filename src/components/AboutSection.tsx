@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { usePaint } from '@/context/PaintContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const { setIsActive, setMode } = usePaint();
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -58,6 +60,11 @@ const AboutSection = () => {
     return () => ctx.revert();
   }, []);
 
+  const handleActivatePaint = () => {
+    setIsActive(true);
+    setMode('draw');
+  };
+
   return (
     <section id="about" ref={sectionRef} className="relative py-24 md:py-48 overflow-hidden bg-background">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -66,40 +73,29 @@ const AboutSection = () => {
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12">
             <h2
               className="about-heading font-display text-foreground leading-[0.95] font-medium tracking-tighter"
-              style={{ fontSize: 'clamp(2.5rem, 8vw, 7.5rem)' }}
+              style={{ fontSize: 'clamp(3.5rem, 8vw, 7.5rem)' }}
             >
-              Progetta il tuo futuro.<br />
-              Lascia tracce indelebili.
+              Ogni gesto<br />
+              lascia una<br />
+              traccia.
             </h2>
 
             {/* Interactive Trigger (Desktop: Right of Title, Mobile: Below Title) */}
-            <div className="about-text flex flex-col items-center md:items-end md:pt-12">
+            <div className="about-text flex flex-col items-center md:items-end md:pt-16">
               <button 
-                className="group flex flex-col items-center cursor-pointer relative"
-                onClick={() => console.log('Activate Paint System')}
+                className="group flex flex-col items-center md:items-end cursor-pointer gap-4 text-center md:text-right"
+                onClick={handleActivatePaint}
               >
-                <span className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap mb-2">
-                  Lasciaci un segno
+                <span className="font-body text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted-foreground group-hover:text-foreground transition-colors leading-relaxed">
+                  Lascia il<br />tuo segno
                 </span>
                 
-                <div className="relative flex flex-col items-center">
-                  {/* Long Curved Diagonal Arrow - Mirrored (Leaning Right) */}
-                  <svg className="trace-curved-arrow w-16 h-24 text-muted-foreground group-hover:text-[#0070f3] transition-colors" viewBox="0 0 64 96" fill="none">
-                    <path 
-                      d="M 10 0 Q 34 40 24 85 M 15 77 L 24 85 L 33 77" 
-                      stroke="currentColor" 
-                      strokeWidth="1.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      fill="none"
-                    />
-                  </svg>
-
-                  {/* Pulsing Node - Centered on Arrow Tip (x=24 in 64 viewBox) and Lowered */}
-                  <div 
-                    className="trace-trigger-square w-5 h-5 bg-[#0070f3] shadow-[0_0_20px_rgba(0,112,243,0.4)] rounded-sm absolute" 
-                    style={{ bottom: '-18px', left: '37.5%' }} // 24/64 = 37.5%
-                  />
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-primary flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-[0_0_25px_rgba(244,114,182,0.3)]">
+                  <span className="flex items-center justify-center font-display font-bold text-black text-3xl md:text-4xl">
+                    <span className="leading-none">[</span>
+                    <span className="inline-block translate-y-[12px] md:translate-y-[22px] mx-[2px] text-4xl md:text-6xl font-medium">~</span>
+                    <span className="leading-none">]</span>
+                  </span>
                 </div>
               </button>
             </div>

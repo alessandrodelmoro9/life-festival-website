@@ -1,76 +1,52 @@
-# 🚀 LIFE DESIGN FESTIVAL 2026 - Project State & Roadmap
+# Project State - LIFE Design Festival 2026
 
-Questo documento serve come **memoria permanente** per lo stato dello sviluppo. Leggere attentamente prima di procedere.
+## Overall Goal
+Implement a high-end, editorial-style interactive website for LIFE Design Festival 2026, featuring a "Paint" drawing system, smooth scrolling (Lenis), and a dynamic Speakers section.
 
----
+## Current Branch
+`feature/editorial-expand-list` (Stable & Optimized)
 
-## 📅 Stato Attuale (15 Aprile 2026)
-- **Branch Attivo:** `feature/interactive-about` (locale e remoto)
-- **Git Branch Mapping:**
-    - `main`: Branch di produzione (allineato a `origin/main`), deploy su Vercel.
-    - `feature/interactive-about`: Branch di sviluppo attuale per About e Paint System.
-    - `feature/marquee-speakers`: Branch legacy/stabile per le card degli speaker.
-- **Remote:** `origin` punta a `github.com:alessandrodelmoro9/life-festival-website.git`
-- **Obiettivo:** Creare un sito web premium, editoriale e interattivo basato sul concetto di "tracce" e "nodi".
-- **Design:** Minimalista, ampi spazi bianchi, animazioni GSAP fluide, tipografia Aquawax (Display) e Automat (Body).
+## Technical Architecture
+- **Framework:** React + TypeScript + Vite
+- **Styling:** Tailwind CSS + Vanilla CSS (for custom cursors/effects)
+- **Animations:** GSAP (ScrollTrigger) + Framer Motion
+- **Smooth Scroll:** Lenis
+- **UI Components:** Shadcn/UI (Radix Primitives)
+- **Paint Context:** Global state management for strokes and context (modal vs site).
 
----
+## Key Achievements & Current Status
 
-## 🏗️ Codebase Status (Meticoloso)
+### 1. Speakers Section (Editorial Style)
+- **Grid Layout:** 2-column layout with initial 4 speakers visible.
+- **Isolate Hover:** Non-hovered items fade to `0.15` opacity.
+- **Pink Hover State:** Background turns `#F472B6` on hover.
+- **Expandable:** Staggered entrance for the remaining lineup.
+- **Modal:** Immersive full-screen dialog with `#F472B6` background, optimized for mobile.
 
-### 1. Hero & Navigation
-- **Navbar:** Sticky, ottimizzata per mobile, con link Eventbrite e navigazione interna (#sponsors).
-- **HeroSection:** Animazione SplitText per il titolo, traccia SVG dinamica (opacità 20%).
+### 2. Paint System (Optimized)
+- **Context Filtering:** Drawings are separated between the main site and individual speaker modals.
+- **Mobile Fluidity:** Added `touch-action: none` and `touch-none` class to prevent scroll interference while drawing.
+- **Z-Index Layering:** Canvas stays visible over modals (`z-10000`) but allows navigation when not in 'draw' mode.
+- **Persistence:** Strokes are saved in a global context array, filtered by `activeSpeakerId`.
 
-### 2. Countdown Section (`src/components/Countdown.tsx`)
-- **Logica:** Count-up veloce (2.5s) all'ingresso, poi timer reale.
-- **Interattività:** Effetto magnetico 3D con ombra profonda on hover.
-- **Mobile:** Forzato su una singola riga (`flex-nowrap`) con font size ridotto per compatibilità Oppo/schermi stretti.
-- **Visual:** Linea SVG "respirante" e quadratini colorati fluttuanti.
+### 3. Countdown & Layout
+- **Visuals:** 4-block palette-based countdown (Brown, Pink, Orange, Blue).
+- **Animations:** GSAP-powered count-up and scroll entrance.
+- **Header:** Hero section with `SplitText` for "Life Design Festival".
 
-### 3. About Section (`src/components/AboutSection.tsx`) - **IN SVILUPPO**
-- **Restyling Testuale:** Titolo "Progetta il tuo futuro. Lascia tracce indelebili." + paragrafi evocativi.
-- **Trigger Interattivo:** 
-    - Posizionato alla destra del titolo (Desktop).
-    - Composto da label "Lasciaci un segno" + Freccia SVG curva diagonale (alto-sinistra -> basso-destra) + Quadratino Azzurro (`#0070f3`) pulsante.
-    - La freccia è un unico path per un'intersezione perfetta. Il quadratino è distanziato per non toccare la punta durante il "bounce".
-- **Desktop:** Linea SVG orizzontale rimossa per pulizia editoriale.
-- **Mobile:** Layout verticale con linea di separazione minima.
+## Current Codebase Functions
+- **Navigation:** Smooth anchor scrolling via Lenis.
+- **Interaction:** Custom cursor that changes based on hover/paint mode.
+- **Content:** Dynamic data loading for speakers and sponsors.
+- **Paint:** Draw, undo last stroke, and clear all functionality.
 
-### 4. Speakers Section (`src/components/SpeakersSection.tsx`)
-- **Marquee:** Doppia riga infinita GSAP.
-- **Performance:** Ottimizzata con `force3D: true` e `will-change: transform` per eliminare il lag su mobile (testato su Oppo).
-- **Interattività:** Rallentamento (timeScale 0.1) on hover.
+## Next Steps (Planned)
+1. **Modal Scroll Sync:** Synchronize the paint canvas with the internal scroll of the speaker modals.
+2. **Performance Audit:** Implement stroke simplification for very long drawings.
+3. **Deployment:** Merge current stable feature branch into `main` and push to remote.
 
-### 5. Sponsor Section (`src/components/SponsorSection.tsx`)
-- **Layout:** Binari editoriali con bordi sottili.
-- **Loghi:** Grayscale (70% opacity) che tornano a colori on hover.
-- **Data-Driven:** Contenuti centralizzati in `src/data/sponsorsData.ts`.
-
----
-
-## 🛠️ Roadmap & Prossimi Passi (Priorità Alta)
-
-### 1. Sistema "Paint" (Disegno Interattivo)
-- **Attivazione:** Deve essere triggerato dal tasto in `AboutSection`.
-- **Funzionalità:**
-    - **Canvas Globale:** Un layer sopra tutto il sito dove l'utente può disegnare.
-    - **Cursor Trail:** Scia fluida che segue il mouse/tocco.
-    - **Disegno:** Tasto destro (Desktop) o Tocco prolungato/trascinamento (Mobile).
-    - **Colori:** Tratti che usano la palette del festival (Blue, Pink, Red).
-
-### 2. Archive 2025
-- Creazione di una sezione "esperienziale" per le foto dell'edizione passata.
-- Layout a griglia irregolare (stile collage editoriale).
-
-### 3. Cleanup & Polishing
-- Rimozione componenti `shadcn/ui` inutilizzati.
-- Ottimizzazione finale delle curve SVG per evitare clipping su ogni risoluzione.
-
----
-
-## 📝 Note per il prossimo Agente
-- **Analisi Iniziale:** Esegui un `grep` su `AboutSection.tsx` per vedere la struttura del trigger.
-- **GSAP:** Tutte le animazioni sono gestite tramite `gsap.context()` per una corretta pulizia in React.
-- **Mobile:** L'utente usa un Oppo; la fluidità e il layout single-row sono fondamentali.
-- **Branching:** Lavora sempre su branch feature e mergia in `main` solo a task concluso e verificato.
+## File System (Summary)
+- `src/components/paint/`: Core drawing logic.
+- `src/components/SpeakersSection.tsx`: Editorial lineup and modals.
+- `src/context/PaintContext.tsx`: Drawing state.
+- `src/pages/Index.tsx`: Main entry point assembling all sections.
