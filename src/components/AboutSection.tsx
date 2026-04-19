@@ -66,7 +66,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" ref={sectionRef} className="relative py-24 md:py-48 overflow-hidden bg-background">
+    <section id="about" ref={sectionRef} className="relative py-24 md:py-48 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header Row: Title + Trigger */}

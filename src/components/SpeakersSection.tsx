@@ -44,7 +44,7 @@ const SpeakersSection: React.FC = () => {
     <section 
       id="speakers" 
       ref={sectionRef} 
-      className="relative py-24 md:py-48 border-t border-foreground/5 overflow-hidden bg-background"
+      className="relative py-24 md:py-48 overflow-hidden bg-background"
     >
       <div className="container mx-auto px-6 md:px-12">
         
@@ -71,7 +71,7 @@ const SpeakersSection: React.FC = () => {
 
         {/* INITIAL GRID (Top 4) WITH FADE OVERLAY */}
         <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-24 border-t border-foreground/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-24">
             {initialSpeakers.map((speaker, index) => (
               <SpeakerItem 
                 key={speaker.id}

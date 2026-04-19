@@ -42,39 +42,20 @@ const SplitText = ({ text, className = '', delay = 0 }: { text: string; classNam
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const lineRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
       // Info items stagger
-      gsap.fromTo('.hero-info',
+      gsap.fromTo('.hero-animate',
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, delay: 1.4 }
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, delay: 0.5 }
       );
-
-      // Decorative elements float in
-      gsap.fromTo('.hero-deco',
-        { opacity: 0, scale: 0 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)', stagger: 0.15, delay: 1.8 }
-      );
-
-      // SVG line draw
-      if (lineRef.current) {
-        const length = lineRef.current.getTotalLength();
-        gsap.set(lineRef.current, { strokeDasharray: length, strokeDashoffset: length });
-        gsap.to(lineRef.current, {
-          strokeDashoffset: 0,
-          duration: 2.5,
-          ease: 'power2.inOut',
-          delay: 0.8,
-        });
-      }
 
       // Parallax on scroll
       gsap.to('.hero-title-wrap', {
-        yPercent: -30,
+        yPercent: -20,
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -89,70 +70,92 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero" ref={sectionRef} className="relative min-h-screen items-center overflow-hidden pt-20 text-9xl font-normal flex flex-row">
-      {/* Decorative SVG line */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-20"
-        viewBox="0 0 1500 800"
-        preserveAspectRatio="none"
-      >
-        <path
-          ref={lineRef}
-          d="M -50 100 Q 200 50 300 300 Q 400 550 600 400 Q 900 200 1100 500 Q 1300 800 1500 600"
-          stroke="hsl(var(--foreground))"
-          strokeWidth="1.2"
-          fill="none"
-        />
-      </svg>
-
-      {/* Colored squares */}
-      <ColoredSquare color="blue" className="hero-deco absolute top-[15%] left-[8%]" size={20} />
-      <ColoredSquare color="pink" className="hero-deco absolute top-[25%] right-[12%]" size={16} />
-      <ColoredSquare color="red" className="hero-deco absolute bottom-[30%] right-[20%]" size={22} />
-      <ColoredSquare color="blue" className="hero-deco absolute bottom-[15%] left-[15%]" size={18} />
-
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="hero-title-wrap">
-          <h1
-            className="text-foreground leading-[0.9] tracking-tight font-display font-medium overflow-hidden"
-            style={{ fontSize: 'clamp(3.5rem, 12vw, 12rem)' }}
-          >
-            <span className="block overflow-hidden py-2 px-0 my-0">
-              <SplitText text="Life Design" delay={0.3} />
-            </span>
-            <span className="block overflow-hidden py-4">
-              <SplitText text="Festival" delay={0.7} />
-            </span>
-          </h1>
-
-          <div className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-16">
-            {/* Date block */}
-            <div className="flex items-center gap-4 md:gap-6">
-              <div className="hero-info flex items-center justify-center w-20 h-20 md:w-28 md:h-28 rounded-full border-[2.5px] border-foreground">
-                <span className="font-display font-black text-3xl md:text-5xl text-foreground">5</span>
-              </div>
-              <div className="hero-info bg-primary w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-foreground">
-                  <path d="M7 7L17 17M17 17V7M17 17H7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <div className="hero-info flex items-center justify-center w-20 h-20 md:w-28 md:h-28 rounded-full border-[2.5px] border-foreground">
-                <span className="font-display font-black text-3xl md:text-5xl text-foreground">6</span>
-              </div>
-              <div className="hero-info">
-                <span className="font-display font-bold text-2xl md:text-4xl text-foreground">giugno</span>
-              </div>
-            </div>
-
-            {/* Info block */}
-            <div className="hero-info flex flex-col gap-1 text-right">
-              <span className="font-body text-xs uppercase tracking-[0.25em] text-foreground">Gallitello, Terminal delle FAL</span>
-              <span className="font-display font-bold text-2xl md:text-3xl text-foreground">(PZ)</span>
-              <span className="font-body text-xs uppercase tracking-[0.25em] text-muted-foreground mt-2">Seconda Edizione</span>
-            </div>
+    <section id="hero" ref={sectionRef} className="relative min-h-screen w-full flex flex-col justify-between pt-32 pb-12 md:pt-40 md:pb-20 overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 h-full flex flex-col justify-between relative z-10">
+        
+        {/* TOP ROW: TITLE & KEYWORDS */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12">
+          {/* 1. TITOLO PRINCIPALE (Top-Left) */}
+          <div className="hero-title-wrap max-w-4xl">
+            <h1
+              className="hero-animate text-foreground leading-[0.85] tracking-tight font-display font-medium"
+              style={{ fontSize: 'clamp(5.5rem, 18vw, 11rem)' }}
+            >
+              Life design<br />festival
+            </h1>
           </div>
 
+          {/* 5. NUOVO BLOCCO PAROLE CHIAVE (Mid/Top-Right) */}
+          <div className="hero-animate hidden md:flex flex-col text-right font-body text-base leading-none tracking-tighter font-medium space-y-1 mt-4">
+            <span>TALK</span>
+            <span>WORKSHOP</span>
+            <span>NETWORK</span>
+            <span>EXPOSITION</span>
+            <span>PERFORMANCE</span>
+            <span>PARTY</span>
+          </div>
         </div>
+
+        {/* MIDDLE ROW: DATE BLOCK (Mid-Right) */}
+        <div className="flex justify-end w-full md:pr-12 my-12 md:my-0">
+          <div className="hero-animate flex flex-col items-center md:items-start gap-4">
+            <div className="flex items-center gap-4 md:gap-6">
+              {/* Cerchi con bordo spesso */}
+              <div className="flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full border-[5px] border-foreground">
+                <span className="font-display font-black text-4xl md:text-6xl text-foreground">5</span>
+              </div>
+              
+              {/* Quadratino rosa cliccabile con freccia */}
+              <button 
+                onClick={() => {
+                  const el = document.getElementById('about');
+                  el?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-primary w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95 group"
+                aria-label="Vai alla sezione About"
+              >
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1">
+                  <path d="M7 7L17 17M17 17V7M17 17H7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <div className="flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full border-[5px] border-foreground">
+                <span className="font-display font-black text-4xl md:text-6xl text-foreground">6</span>
+              </div>
+            </div>
+            
+            {/* Scritta giugno sotto i cerchi */}
+            <div className="w-full text-center md:text-left">
+              <span className="font-display font-bold text-5xl md:text-8xl text-foreground leading-none lowercase">
+                giugno
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* BOTTOM ROW: LOCATION & EDITION */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end w-full gap-8">
+          {/* 3. BLOCCO LUOGO (Bottom-Left) */}
+          <div className="hero-animate flex flex-col items-start gap-1">
+            <span className="font-body text-[10px] md:text-xs uppercase tracking-[0.25em] text-foreground">
+              Gallitello, Terminal delle FAL
+            </span>
+            <span className="font-display font-bold text-7xl md:text-[9rem] leading-none text-foreground">
+              (PZ)
+            </span>
+          </div>
+
+          {/* 4. BLOCCO EDIZIONE (Spostato a Bottom-Center su desktop, Bottom-Left su mobile) */}
+          <div className="hero-animate w-full md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-0 text-left md:text-center pb-2">
+            <span className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground font-medium">
+              Seconda Edizione
+            </span>
+          </div>
+          
+          {/* Empty spacer for desktop right-alignment consistency if needed */}
+          <div className="hidden md:block w-40"></div>
+        </div>
+
       </div>
     </section>
   );

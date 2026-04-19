@@ -90,7 +90,7 @@ const Countdown = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="relative py-12 md:py-24 bg-background overflow-hidden">
+    <section ref={sectionRef} className="relative py-12 md:py-24 overflow-hidden">
       <div className="container mx-auto px-4 md:px-12 relative z-10">
         <div className="flex flex-row justify-center items-stretch max-w-4xl mx-auto">
           {items.map((item) => (
