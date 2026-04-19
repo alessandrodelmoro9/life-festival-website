@@ -53,9 +53,12 @@ const Navbar = () => {
               href="https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-sm uppercase tracking-widest bg-primary text-primary-foreground px-5 py-2 hover:opacity-90 transition-opacity duration-300 inline-block"
+              className="group font-body text-sm uppercase tracking-widest bg-primary text-primary-foreground px-5 py-2 hover:opacity-90 transition-opacity duration-300 flex items-center gap-2"
             >
-              Tickets
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5">
+                <path d="M7 7L17 17M17 17V7M17 17H7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span>Ticket</span>
             </a>
           </li>
         </ul>
