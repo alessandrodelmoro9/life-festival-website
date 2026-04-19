@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ColoredSquare } from './SVGLines';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,11 +28,11 @@ const LocationSection = () => {
         }
       );
 
-      gsap.fromTo('.location-map',
-        { opacity: 0, scale: 0.95 },
+      gsap.fromTo('.location-collage',
+        { opacity: 0, scale: 0.9, rotate: -5 },
         {
-          opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out',
-          scrollTrigger: { trigger: '.location-map', start: 'top 85%' },
+          opacity: 1, scale: 1, rotate: 0, duration: 1.5, ease: 'power3.out',
+          scrollTrigger: { trigger: '.location-collage', start: 'top 80%' },
         }
       );
     }, sectionRef.current);
@@ -42,60 +41,117 @@ const LocationSection = () => {
   }, []);
 
   return (
-    <section id="location" ref={sectionRef} className="relative py-32 md:py-48 overflow-hidden">
-      <ColoredSquare color="pink" className="absolute top-[10%] right-[5%]" size={28} />
-      <ColoredSquare color="blue" className="absolute bottom-[20%] left-[3%]" size={20} />
-
+    <section id="location" ref={sectionRef} className="relative py-32 md:py-48 bg-background overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div>
-            <h2
-              className="location-heading font-display text-foreground leading-[0.95] font-medium"
-              style={{ fontSize: 'clamp(2.5rem, 7vw, 7rem)' }}
-            >
-              Potenza<br />(PZ)
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          
+          {/* COLONNA SINISTRA (Testo) */}
+          <div className="flex flex-col justify-center">
+            <h2 className="location-heading font-display text-5xl md:text-8xl leading-none font-medium text-foreground">
+              Una traccia <br /> indelebile sul <br /> territorio
             </h2>
+            
+            <p className="location-detail font-body text-base md:text-lg text-foreground/80 mt-8 max-w-xl leading-relaxed">
+              L'anno scorso abbiamo fatto proliferare le connessioni, quest'anno ne tracciamo la rotta. 
+              Il Terminal Gallitello si conferma la nostra casa: un luogo naturalmente simbolo del passaggio temporaneo 
+              che viene trasformato nell'epicentro di un'impronta indelebile. Qui il design non è di passaggio, lascia il segno.
+            </p>
 
-            <div className="mt-12 space-y-6">
+            <div className="mt-12 md:mt-16 space-y-8">
               <div className="location-detail">
-                <p className="font-body text-xs uppercase tracking-[0.25em] text-muted-foreground">Venue</p>
-                <p className="font-display font-bold text-xl md:text-2xl text-foreground mt-1">Terminal Gallitello</p>
+                <p className="font-body text-xs uppercase tracking-widest text-muted-foreground">VENUE</p>
+                <p className="font-body font-bold text-xl text-foreground mt-1 uppercase">TERMINAL FAL GALLITELLO</p>
               </div>
+              
               <div className="location-detail">
-                <p className="font-body text-xs uppercase tracking-[0.25em] text-muted-foreground">Indirizzo</p>
-                <p className="font-body text-lg text-foreground mt-1">Gallitello, Potenza (PZ)</p>
-              </div>
-              <div className="location-detail">
-                <p className="font-body text-xs uppercase tracking-[0.25em] text-muted-foreground">Date</p>
-                <p className="font-body text-lg text-foreground mt-1">5 — 6 Giugno 2026</p>
+                <p className="font-body text-xs uppercase tracking-widest text-muted-foreground">INDIRIZZO</p>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=TERMINAL+FAL+GALLITELLO+POTENZA" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="font-body font-bold text-lg text-foreground mt-1 uppercase hover:text-primary transition-colors duration-300"
+                >
+                  VIA DEL GALLITELLO, 85100 POTENZA PZ
+                </a>
               </div>
             </div>
-
-            <a
-              href="https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="location-detail mt-10 font-body text-sm uppercase tracking-[0.2em] bg-primary text-primary-foreground px-8 py-4 hover:opacity-90 transition-opacity duration-300 inline-block text-center"
-            >
-              Acquista Ticket
-            </a>
           </div>
 
-          {/* Map placeholder */}
-          <div className="location-map aspect-square bg-foreground/5 border border-foreground/10 relative overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3050.0!2d15.8!3d40.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDM4JzAuMCJOIDE1wrA0OCcwLjAiRQ!5e0!3m2!1sit!2sit!4v1"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: 'grayscale(1) contrast(1.1)' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Terminal Gallitello, Potenza"
-            />
+          {/* COLONNA DESTRA (Collage "A Ventaglio") */}
+          <div className="location-collage relative w-full h-[450px] md:h-[650px] flex items-center justify-center mt-12 md:mt-0">
+            
+            {/* FOTO 1 (Sinistra) */}
+            <div 
+              className="collage-item collage-left absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom z-10 overflow-hidden"
+              style={{ transform: 'translateX(calc(-50% - 40px)) rotate(-12deg)' }}
+            >
+              <img 
+                src="/location/060520.jpg" 
+                alt="Location 1" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* FOTO 3 (Destra) */}
+            <div 
+              className="collage-item collage-right absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom z-10 overflow-hidden"
+              style={{ transform: 'translateX(calc(-50% + 40px)) rotate(12deg)' }}
+            >
+              <img 
+                src="/location/0705104.jpg" 
+                alt="Location 3" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* FOTO 2 (Centrale) */}
+            <div 
+              className="collage-item collage-center absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom z-20 rotate-0 overflow-hidden"
+              style={{ transform: 'translateX(-50%) rotate(0deg)' }}
+            >
+              <img 
+                src="/location/060522.jpg" 
+                alt="Location 2" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* LA "PUNTINA" ARANCIONE */}
+            <div className="absolute bottom-[60px] md:bottom-[80px] left-1/2 -translate-x-1/2 w-6 h-6 md:w-8 md:h-8 bg-[#E85D36] z-50 pointer-events-none shadow-lg"></div>
+            
           </div>
         </div>
       </div>
+
+      <style>{`
+        .collage-item {
+          transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @media (min-width: 768px) {
+          .collage-left {
+            transform: translateX(calc(-50% - 100px)) rotate(-12deg) !important;
+          }
+          .collage-right {
+            transform: translateX(calc(-50% + 100px)) rotate(12deg) !important;
+          }
+        }
+        
+        .collage-center:hover {
+          transform: translateX(-50%) rotate(0deg) scale(1.1) !important;
+          z-index: 45 !important;
+        }
+
+        .collage-left:hover {
+          transform: translateX(calc(-50% - 40px)) rotate(0deg) scale(1.1) !important;
+          z-index: 45 !important;
+        }
+
+        .collage-right:hover {
+          transform: translateX(calc(-50% + 40px)) rotate(0deg) scale(1.1) !important;
+          z-index: 45 !important;
+        }
+      `}</style>
     </section>
   );
 };
