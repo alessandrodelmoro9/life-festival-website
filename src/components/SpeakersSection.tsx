@@ -138,7 +138,7 @@ const SpeakersSection: React.FC = () => {
           >
             <button 
               onClick={() => setIsExpanded(true)}
-              className="group flex items-center gap-2 text-sm uppercase tracking-[0.2em] font-bold border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all duration-300"
+              className="group flex items-center gap-2 text-sm uppercase tracking-normal font-bold border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all duration-300"
             >
               <span>Scopri gli ospiti</span>
               <svg 
@@ -236,20 +236,11 @@ const SpeakerItem = ({
       onClick={onClick}
       animate={{ 
         opacity: hoveredId === null || isHovered ? 1 : 0.15,
-        backgroundColor: isHovered ? "#F472B6" : "transparent",
+        backgroundColor: isHovered ? "#FF76BF" : "transparent",
       }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       className="group cursor-pointer border-b border-foreground/10 pt-8 pb-12 md:pb-24 px-6 transition-all duration-300 relative"
     >
-      <div className="flex justify-between items-start mb-12">
-        <span className={cn(
-          "font-body text-[10px] md:text-xs tabular-nums uppercase tracking-widest transition-colors duration-300",
-          isHovered ? "text-foreground/50" : "text-muted-foreground/40"
-        )}>
-          Ref.{String(speaker.id).padStart(2, '0')}
-        </span>
-      </div>
-      
       <div className="space-y-4">
         <h3 className="font-display font-medium text-4xl md:text-[5vw] leading-[0.9] tracking-tighter text-foreground">
           {formatSpeakerName(speaker.name)}

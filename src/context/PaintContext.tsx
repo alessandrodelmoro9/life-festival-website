@@ -34,8 +34,8 @@ const PaintContext = createContext<PaintContextType | undefined>(undefined);
 
 export const PaintProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
-  const [mode, setMode] = useState<PaintMode>('nav');
-  const [color, setColor] = useState('#0070f3');
+  const [mode, setMode] = useState<PaintMode>('draw');
+  const [color, setColor] = useState('#7678F6');
   const [strokes, setStrokes] = useState<Stroke[]>([]);
   const [activeSpeakerId, setActiveSpeakerId] = useState<number | null>(null);
 

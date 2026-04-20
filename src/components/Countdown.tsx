@@ -83,10 +83,10 @@ const Countdown = () => {
   const formatNumber = (num: number) => num.toString().padStart(2, '0');
   
   const items = [
-    { value: displayTime.days, label: 'Giorni', color: '#B78F75' }, // Marroncino
-    { value: displayTime.hours, label: 'Ore', color: '#FF76BF' },   // Rosa
+    { value: displayTime.days, label: 'Giorni', color: '#FF76BF' },   // Rosa
+    { value: displayTime.hours, label: 'Ore', color: '#7678F6' },     // Blu
     { value: displayTime.minutes, label: 'Minuti', color: '#E25938' }, // Arancione
-    { value: displayTime.seconds, label: 'Secondi', color: '#7678F6' }, // Blu
+    { value: displayTime.seconds, label: 'Secondi', color: '#B78F75' }, // Marroncino
   ];
 
   return (
@@ -99,11 +99,11 @@ const Countdown = () => {
               className="countdown-square relative flex-1 aspect-square md:aspect-auto md:h-[220px] flex flex-col items-center justify-center p-2 md:p-6 transition-all duration-500 hover:z-20 md:hover:scale-105"
               style={{ backgroundColor: item.color }}
             >
-              <div className="flex flex-col items-center justify-center text-foreground">
-                <span className="font-display text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-none mb-1">
+              <div className="flex flex-col items-center justify-center text-black">
+                <span className="font-display text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-none mb-1">
                   {formatNumber(item.value)}
                 </span>
-                <span className="font-body text-[6px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] opacity-80">
+                <span className="font-body text-[8px] md:text-xs uppercase tracking-normal font-bold">
                   {item.label}
                 </span>
               </div>

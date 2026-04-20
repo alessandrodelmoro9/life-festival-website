@@ -59,12 +59,12 @@ const LocationSection = () => {
 
             <div className="mt-12 md:mt-16 space-y-8">
               <div className="location-detail">
-                <p className="font-body text-xs uppercase tracking-widest text-muted-foreground">VENUE</p>
+                <p className="font-body text-xs uppercase tracking-normal text-black font-bold">VENUE</p>
                 <p className="font-body font-bold text-xl text-foreground mt-1 uppercase">TERMINAL FAL GALLITELLO</p>
               </div>
               
               <div className="location-detail">
-                <p className="font-body text-xs uppercase tracking-widest text-muted-foreground">INDIRIZZO</p>
+                <p className="font-body text-xs uppercase tracking-normal text-black font-bold">INDIRIZZO</p>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=TERMINAL+FAL+GALLITELLO+POTENZA" 
                   target="_blank" 
@@ -117,7 +117,7 @@ const LocationSection = () => {
             </div>
 
             {/* LA "PUNTINA" ARANCIONE */}
-            <div className="absolute bottom-[60px] md:bottom-[80px] left-1/2 -translate-x-1/2 w-6 h-6 md:w-8 md:h-8 bg-[#E85D36] z-50 pointer-events-none shadow-lg"></div>
+            <div className="absolute bottom-[60px] md:bottom-[80px] left-1/2 -translate-x-1/2 w-6 h-6 md:w-8 md:h-8 bg-[#E25938] z-50 pointer-events-none shadow-lg"></div>
             
           </div>
         </div>
