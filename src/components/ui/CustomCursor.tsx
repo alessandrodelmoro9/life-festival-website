@@ -8,12 +8,14 @@ const CustomCursor: React.FC = () => {
   const follower2Ref = useRef<HTMLDivElement>(null);
   const follower3Ref = useRef<HTMLDivElement>(null);
   const { mode, isActive } = usePaint();
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash
   const [isOverToolbar, setIsOverToolbar] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
+      const touchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const smallScreen = window.innerWidth < 1024;
+      setIsMobile(smallScreen || touchCapable);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);

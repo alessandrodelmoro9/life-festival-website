@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { usePaint, Point, Stroke } from '@/context/PaintContext';
 import { cn } from '@/lib/utils';
 
@@ -8,105 +8,138 @@ const PaintCanvas: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { isActive, mode, color, strokes, setStrokes, activeSpeakerId } = usePaint();
-  const [isDrawing, setIsDrawing] = useState(false);
+  const [isDrawingState, setIsDrawingState] = useState(false);
+  const isDrawingRef = useRef(false);
   const currentStroke = useRef<Point[]>([]);
+  const requestRef = useRef<number>();
+  const [scrollPos, setScrollPos] = useState({ x: 0, y: 0 });
+
+  // Monitoriamo lo scroll per ridisegnare i tratti nella posizione corretta
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPos({ x: window.scrollX, y: window.scrollY });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const getCanvasPoint = useCallback((e: React.PointerEvent | PointerEvent): Point => {
-    const canvas = canvasRef.current;
-    if (!canvas) return { x: 0, y: 0 };
-    const rect = canvas.getBoundingClientRect();
+    // Memorizziamo il punto in coordinate ASSOLUTE (documento)
     return {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
+      x: e.clientX + window.scrollX,
+      y: e.clientY + window.scrollY
     };
   }, []);
 
-  // Rendering dello storico FILTRATO per contesto
+  const drawSmoothedLine = (ctx: CanvasRenderingContext2D, points: Point[], color: string, width: number, scrollY: number) => {
+    if (points.length < 2) return;
+
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+
+    // Trasliamo i punti in base allo scroll attuale per il disegno su canvas FIXED
+    const firstPoint = { x: points[0].x, y: points[0].y - scrollY };
+    ctx.moveTo(firstPoint.x, firstPoint.y);
+
+    if (points.length === 2) {
+      ctx.lineTo(points[1].x, points[1].y - scrollY);
+    } else {
+      for (let i = 1; i < points.length - 1; i++) {
+        const xc = (points[i].x + points[i + 1].x) / 2;
+        const yc = (points[i].y + points[i + 1].y) / 2 - scrollY;
+        ctx.quadraticCurveTo(points[i].x, points[i].y - scrollY, xc, yc);
+      }
+      ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y - scrollY);
+    }
+    ctx.stroke();
+  };
+
   const renderStatic = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     const dpr = window.devicePixelRatio || 1;
     ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
 
-    // FILTRO: Mostra solo i tratti del contesto attuale
-    // Se activeSpeakerId è null -> mostra solo tratti senza speakerId (sito)
-    // Se activeSpeakerId è X -> mostra solo tratti con speakerId === X
     const filteredStrokes = strokes.filter(s => 
       activeSpeakerId === null ? !s.speakerId : s.speakerId === activeSpeakerId
     );
 
-    filteredStrokes.forEach(stroke => {
-      if (stroke.points.length < 2) return;
-      ctx.beginPath();
-      ctx.strokeStyle = stroke.color;
-      ctx.lineWidth = stroke.width;
-      ctx.moveTo(stroke.points[0].x, stroke.points[0].y);
-      for (let i = 1; i < stroke.points.length; i++) {
-        ctx.lineTo(stroke.points[i].x, stroke.points[i].y);
-      }
-      ctx.stroke();
-    });
-  }, [strokes, activeSpeakerId]);
+    const viewHeight = window.innerHeight;
+    const currentScrollY = window.scrollY;
 
-  const renderCurrent = useCallback(() => {
+    filteredStrokes.forEach(stroke => {
+      // Ottimizzazione: Disegna solo se almeno un punto è nel viewport (o vicino)
+      const isVisible = stroke.points.some(p => 
+        p.y > currentScrollY - 200 && p.y < currentScrollY + viewHeight + 200
+      );
+      if (isVisible) {
+        drawSmoothedLine(ctx, stroke.points, stroke.color, stroke.width, currentScrollY);
+      }
+    });
+  }, [strokes, activeSpeakerId, scrollPos]);
+
+  const draw = useCallback(() => {
+    if (!isDrawingRef.current) return;
+
     const canvas = tempCanvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     const dpr = window.devicePixelRatio || 1;
     ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
     
-    if (isDrawing && currentStroke.current.length > 1) {
-      ctx.lineJoin = 'round';
-      ctx.lineCap = 'round';
-      ctx.beginPath();
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 3;
-      ctx.moveTo(currentStroke.current[0].x, currentStroke.current[0].y);
-      for (let i = 1; i < currentStroke.current.length; i++) {
-        ctx.lineTo(currentStroke.current[i].x, currentStroke.current[i].y);
-      }
-      ctx.stroke();
+    if (currentStroke.current.length >= 2) {
+      drawSmoothedLine(ctx, currentStroke.current, color, 3, window.scrollY);
     }
-  }, [isDrawing, color]);
+    
+    requestRef.current = requestAnimationFrame(draw);
+  }, [color]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    if (!isActive || mode !== 'draw') return;
-    setIsDrawing(true);
+    if (!isActive || mode !== 'draw' || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    
+    isDrawingRef.current = true;
+    setIsDrawingState(true);
+    
     const point = getCanvasPoint(e);
     currentStroke.current = [point];
+    
+    if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    requestRef.current = requestAnimationFrame(draw);
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDrawing) return;
+    if (!isDrawingRef.current) return;
     const point = getCanvasPoint(e);
-    const lastPoint = currentStroke.current[currentStroke.current.length - 1];
-    const dist = Math.hypot(point.x - lastPoint.x, point.y - lastPoint.y);
-    if (dist > 2) {
-      currentStroke.current.push(point);
-      renderCurrent();
-    }
+    currentStroke.current.push(point);
   };
 
   const handlePointerUp = () => {
-    if (!isDrawing) return;
+    if (!isDrawingRef.current) return;
+    
+    isDrawingRef.current = false;
+    setIsDrawingState(false);
+    
+    if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    
     if (currentStroke.current.length > 1) {
       const newStroke: Stroke = {
-        points: currentStroke.current,
+        points: [...currentStroke.current],
         color,
         width: 3,
         timestamp: Date.now(),
-        speakerId: activeSpeakerId || undefined // Tagga il tratto con l'ID attuale
+        speakerId: activeSpeakerId || undefined
       };
       setStrokes([...strokes, newStroke]);
     }
-    setIsDrawing(false);
+    
     currentStroke.current = [];
     const tempCanvas = tempCanvasRef.current;
     if (tempCanvas) {
@@ -126,7 +159,7 @@ const PaintCanvas: React.FC = () => {
         if (canvas) {
           const dpr = window.devicePixelRatio || 1;
           const width = window.innerWidth;
-          const height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+          const height = window.innerHeight; // Solo l'altezza del viewport!
           canvas.width = width * dpr;
           canvas.height = height * dpr;
           canvas.style.width = `${width}px`;
@@ -141,12 +174,11 @@ const PaintCanvas: React.FC = () => {
       renderStatic();
     };
 
-    const observer = new ResizeObserver(updateCanvasSize);
-    observer.observe(document.body);
+    updateCanvasSize();
     window.addEventListener('resize', updateCanvasSize);
     return () => {
-      observer.disconnect();
       window.removeEventListener('resize', updateCanvasSize);
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
   }, [renderStatic]);
 
@@ -154,21 +186,18 @@ const PaintCanvas: React.FC = () => {
     <div 
       ref={containerRef} 
       className={cn(
-        "absolute top-0 left-0 w-full pointer-events-none",
-        // Se c'è uno speaker attivo (modale aperto), il canvas deve stare sopra lo z-9999 del modale
+        "fixed top-0 left-0 w-full h-screen pointer-events-none", // Fixed e h-screen!
         activeSpeakerId ? "z-[10000]" : "z-[9998]",
-        // Se siamo in modalità disegno, abilitiamo i pointer events e il cursore
         isActive && mode === 'draw' && "pointer-events-auto cursor-crosshair z-[10001] touch-none"
       )}
       style={{ 
-        height: '100%',
         touchAction: isActive && mode === 'draw' ? 'none' : 'auto'
       }}
     >
-      <canvas ref={canvasRef} className="absolute top-0 left-0 w-full" />
+      <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
       <canvas
         ref={tempCanvasRef}
-        className="absolute top-0 left-0 w-full"
+        className="absolute top-0 left-0 w-full h-full"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
