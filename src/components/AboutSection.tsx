@@ -87,7 +87,7 @@ const AboutSection = () => {
                 className="group flex flex-col items-center md:items-end cursor-pointer gap-4 text-center md:text-right"
                 onClick={handleActivatePaint}
               >
-                <span className="font-body text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted-foreground group-hover:text-foreground transition-colors leading-relaxed">
+                <span className="font-body text-[9px] md:text-[10px] uppercase tracking-normal text-black font-bold group-hover:text-primary transition-colors leading-relaxed">
                   Lascia il<br />tuo segno
                 </span>
                 

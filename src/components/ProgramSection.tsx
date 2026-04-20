@@ -7,14 +7,14 @@ import { cn } from '@/lib/utils';
 gsap.registerPlugin(ScrollTrigger);
 
 const typeColors: Record<string, string> = {
-  Talk: "bg-primary",
-  Workshop: "bg-life-blue",
-  Network: "bg-life-red",
-  Exposition: "bg-[#FFB800]",
-  Party: "bg-[#E85D36]",
-  Event: "bg-white/40",
-  Break: "bg-transparent border-2 border-white/20",
-  Attività: "bg-[#E85D36]"
+  Talk: "bg-[#FF76BF]",           // Pink
+  Workshop: "bg-[#7678F6]",       // Blue
+  "Portfolio Review": "bg-[#B78F75]", // Brown
+  Exposition: "bg-[#E25938]",      // Orange
+  Party: "bg-[#E25938]",           // Orange
+  Intro: "bg-[#E25938]",           // Orange
+  Break: "bg-[#F4EEE4]",           // Cream
+  Activity: "bg-[#B78F75]"         // Brown
 };
 
 const ProgramSection = () => {
@@ -53,47 +53,58 @@ const ProgramSection = () => {
   const dayTwoItems = programData.filter(item => item.day === '6 GIU');
 
   const DayHeader = ({ number, month, label }: { number: string, month: string, label: string }) => (
-    <div className="program-day-header relative flex items-center justify-between w-full mt-16 md:mt-24 mb-10 ml-12 md:ml-16">
-      <div className="flex items-center gap-4 md:gap-6 relative z-10">
-        <div className="flex items-center justify-center w-14 h-14 md:w-20 md:h-20 rounded-full border-[4px] border-[#F3F2EB] font-display text-3xl md:text-5xl pt-1 bg-[#1a1a1a]">
+    <div className="program-day-header relative flex flex-col items-start w-full mt-16 md:mt-24 mb-12 pl-10 md:pl-14">
+      <div className="flex items-center gap-3 md:gap-4 relative z-10 mb-2">
+        <div className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full border-[3px] border-[#F4EEE4] font-display text-2xl md:text-4xl pt-1 bg-[#262626]">
           {number}
         </div>
-        <span className="font-display text-4xl md:text-6xl lowercase leading-none">{month}</span>
+        <span className="font-display text-3xl md:text-5xl lowercase leading-none">{month}</span>
       </div>
-      <span className="font-display text-4xl md:text-6xl lowercase leading-none text-[#F3F2EB]/40 hidden sm:block pr-4">{label}</span>
+      <span className="font-display text-2xl md:text-3xl lowercase leading-none text-[#F4EEE4] opacity-50 ml-1">
+        {label}
+      </span>
     </div>
   );
 
   return (
-    <section id="program" ref={sectionRef} className="relative py-24 md:py-40 bg-[#1a1a1a] text-[#F3F2EB] overflow-hidden">
+    <section id="program" ref={sectionRef} className="relative py-24 md:py-40 bg-[#262626] text-[#F4EEE4] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="mb-16 md:mb-24">
-          <h2 className="program-heading font-display leading-[0.95] font-medium tracking-tighter" style={{ fontSize: 'clamp(3rem, 8vw, 8rem)' }}>Programma</h2>
-          <p className="program-heading font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-[#F3F2EB]/60 mt-4 font-bold">IL PROGRAMMA DETTAGLIATO DEL FESTIVAL</p>
-        </div>
-
-        <div className="max-w-6xl mx-auto program-total-container relative">
-          <DayHeader number="5" month="giugno" label="giorno uno" />
-          <div className="grid gap-0 relative">
-            {dayOneItems.map((item, index) => (
-              <ProgramItemComponent 
-                key={item.id} 
-                item={item} 
-                prevColorClass={index > 0 ? typeColors[dayOneItems[index-1].type] : null}
-              />
-            ))}
+        <div className="max-w-[1400px] mx-auto">
+          {/* HEADER SECTION */}
+          <div className="mb-16 md:mb-24 ml-10 md:ml-14">
+            <h2 className="program-heading font-display leading-[0.95] font-medium tracking-tighter text-[#F4EEE4]" style={{ fontSize: 'clamp(3rem, 8vw, 8rem)' }}>Programma</h2>
+            <p className="program-heading font-body text-[10px] md:text-xs uppercase tracking-normal text-[#F4EEE4] mt-4 font-bold">IL PROGRAMMA DETTAGLIATO DEL FESTIVAL</p>
           </div>
 
-          <div className="mt-32">
-            <DayHeader number="6" month="giugno" label="giorno due" />
-            <div className="grid gap-0 relative">
-              {dayTwoItems.map((item, index) => (
-                <ProgramItemComponent 
-                  key={item.id} 
-                  item={item} 
-                  prevColorClass={index > 0 ? typeColors[dayTwoItems[index-1].type] : (dayOneItems.length > 0 ? typeColors[dayOneItems[dayOneItems.length-1].type] : null)}
-                />
-              ))}
+          {/* DUAL TIMELINE GRID */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 relative">
+            
+            {/* COLUMN: DAY 1 */}
+            <div className="program-column relative">
+              <DayHeader number="5" month="giugno" label="giorno uno" />
+              <div className="grid gap-0 relative">
+                {dayOneItems.map((item, index) => (
+                  <ProgramItemComponent 
+                    key={item.id} 
+                    item={item} 
+                    prevColorClass={index > 0 ? typeColors[dayOneItems[index-1].type] : null}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* COLUMN: DAY 2 */}
+            <div className="program-column relative">
+              <DayHeader number="6" month="giugno" label="giorno due" />
+              <div className="grid gap-0 relative">
+                {dayTwoItems.map((item, index) => (
+                  <ProgramItemComponent 
+                    key={item.id} 
+                    item={item} 
+                    prevColorClass={index > 0 ? typeColors[dayTwoItems[index-1].type] : null}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -104,11 +115,13 @@ const ProgramSection = () => {
 
 const ProgramItemComponent = ({ item, prevColorClass }: { item: ProgramItem, prevColorClass: string | null }) => {
   const currentColorClass = typeColors[item.type] || "bg-white/20";
-  const isBreak = item.type === 'Break';
 
   return (
-    <div id={`event-${item.id}`} className="program-item group relative flex items-center justify-between py-10 border-b border-white/10 pl-10 md:pl-16 transition-all duration-500 cursor-default">
+    <div id={`event-${item.id}`} className="program-item group relative flex items-center justify-between py-8 pl-10 md:pl-14 pr-4 transition-all duration-500 cursor-default">
       
+      {/* SEPARATOR LINE */}
+      <div className="absolute bottom-0 left-10 md:left-14 right-4 h-[1px] bg-white/10" />
+
       {/* TIMELINE CONTAINER */}
       <div className="absolute left-[7px] top-0 bottom-0 w-[2px] z-0">
         
@@ -120,7 +133,7 @@ const ProgramItemComponent = ({ item, prevColorClass }: { item: ProgramItem, pre
           </div>
         )}
 
-        {/* BOTTOM HALF: Takes color from CURRENT item and goes to next */}
+        {/* BOTTOM HALF: Takes color from CURRENT item */}
         <div className="absolute top-[38px] bottom-0 w-full overflow-hidden">
           <div className={cn("segment-grow w-full h-full origin-top", currentColorClass.includes('bg-') ? currentColorClass : "")}
                style={!currentColorClass.includes('bg-') ? { backgroundColor: currentColorClass } : {}}></div>
@@ -135,13 +148,13 @@ const ProgramItemComponent = ({ item, prevColorClass }: { item: ProgramItem, pre
         )}
       ></div>
       
-      <div className="flex flex-col gap-1 relative z-10">
-        <h3 className="font-display font-medium text-2xl md:text-4xl leading-tight tracking-tight group-hover:text-white transition-colors duration-300">{item.title}</h3>
-        <span className="font-body text-sm md:text-base text-[#F3F2EB]/60 mt-1 uppercase tracking-wider">{item.time}</span>
+      <div className="flex flex-col gap-1 relative z-10 pr-4">
+        <h3 className="font-display font-medium text-xl md:text-3xl leading-tight tracking-tight group-hover:text-white transition-colors duration-300">{item.title}</h3>
+        <span className="font-body text-xs md:text-sm text-[#F4EEE4]/60 mt-1 uppercase tracking-wider">{item.time}</span>
       </div>
 
-      <div className="text-right shrink-0 ml-4 relative z-10">
-        <span className="font-body text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#F3F2EB]/40 font-bold">{item.type}</span>
+      <div className="text-right shrink-0 relative z-10">
+        <span className="font-body text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-[#F4EEE4]/40 font-bold">{item.type}</span>
       </div>
     </div>
   );

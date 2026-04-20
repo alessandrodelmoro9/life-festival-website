@@ -14,15 +14,15 @@ const HeroSection = () => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Info items stagger
+      // Stagger entrance for all elements with .hero-animate
       gsap.fromTo('.hero-animate',
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1, delay: 0.5 }
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.1, delay: 0.5 }
       );
 
-      // Parallax on scroll
-      gsap.to('.hero-title-wrap', {
-        yPercent: -20,
+      // Parallax effect on mobile title and icons
+      gsap.to('.hero-parallax', {
+        yPercent: -15,
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -37,86 +37,144 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero" ref={sectionRef} className="relative min-h-screen w-full flex flex-col justify-between pt-32 pb-12 md:pt-40 md:pb-20 overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 h-full flex flex-col justify-between relative z-10">
+    <section id="hero" ref={sectionRef} className="relative min-h-screen w-full flex flex-col overflow-hidden bg-transparent">
+      
+      {/* ============================================================
+          MOBILE VERSION (Editorial Grid)
+          ============================================================ */}
+      <div className="md:hidden relative w-full h-screen px-6 pt-24 pb-10 flex flex-col z-10">
         
-        {/* TOP ROW: TITLE & KEYWORDS */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12">
-          {/* 1. TITOLO PRINCIPALE (Top-Left) */}
-          <div className="hero-title-wrap max-w-4xl">
-            <h1
-              className="hero-animate text-foreground leading-[0.85] tracking-tight font-display font-medium"
-              style={{ fontSize: 'clamp(5.5rem, 18vw, 11rem)' }}
-            >
+        {/* UPPER RIGHT BLOCK: Tags */}
+        <div className="hero-animate absolute right-6 top-32 text-right font-body text-[13px] leading-[1.4] tracking-normal font-normal text-[#262626] uppercase">
+          <span>TALK</span><br />
+          <span>WORKSHOP</span><br />
+          <span>NETWORK</span><br />
+          <span>EXPOSITION</span><br />
+          <span>PARTY</span>
+        </div>
+
+        {/* MAIN TITLE (Left) */}
+        <div className="hero-parallax hero-animate mt-12 max-w-[300px]">
+          <h1 className="text-[#262626] leading-[0.8] tracking-tight font-display font-medium text-[5.5rem] lowercase">
+            life<br />design<br />festival
+          </h1>
+        </div>
+
+        {/* CENTER CLUSTER: Date Axis */}
+        <div className="hero-parallax hero-animate flex items-center justify-center gap-10 my-auto w-full">
+          <img src={Icon5} alt="5" className="w-24 h-24 object-contain" />
+          <button
+            onClick={() => {
+              const el = document.getElementById('about');
+              el?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="w-20 h-20 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95"
+          >
+            <img src={Group46} alt="Go to About" className="w-full h-full object-contain" />
+          </button>
+          <img src={Icon6} alt="6" className="w-24 h-24 object-contain" />
+        </div>
+
+        {/* INFORMATION MID-LAYER */}
+        <div className="relative w-full flex justify-between items-end mb-32">
+          {/* Month (Left) */}
+          <div className="hero-animate">
+            <span className="font-display font-medium text-7xl text-[#262626] leading-none lowercase">
+              giugno
+            </span>
+          </div>
+
+          {/* Location (Right) */}
+          <div className="hero-animate text-right font-body text-sm leading-tight tracking-normal font-normal text-[#262626] uppercase">
+            TERMINAL FAL<br />GALLITELLO
+          </div>
+        </div>
+
+        {/* FOOTER ELEMENTS */}
+        <div className="absolute bottom-10 left-6 right-6 flex justify-between items-end">
+          {/* Bottom-Left: Edition */}
+          <div className="hero-animate mb-2">
+            <span className="font-body text-[13px] uppercase tracking-[0.2em] text-[#262626] font-normal">
+              SECONDA EDIZIONE
+            </span>
+          </div>
+
+          {/* Bottom-Right: PZ */}
+          <div className="hero-animate">
+            <span className="font-display font-medium text-8xl text-[#262626] leading-[0.7]">
+              (PZ)
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* ============================================================
+          DESKTOP VERSION (Unchanged)
+          ============================================================ */}
+      <div className="hidden md:flex container mx-auto px-12 flex-1 flex-col justify-between py-20 relative z-10">
+        
+        {/* RIGA SUPERIORE: TOP */}
+        <div className="flex justify-between items-start w-full">
+          <div className="relative z-40 max-w-4xl">
+            <h1 className="hero-animate text-[#262626] leading-[0.82] tracking-tight font-display font-medium text-left text-[clamp(5.5rem,12vw,9rem)]">
               Life design<br />festival
             </h1>
           </div>
 
-          {/* 5. NUOVO BLOCCO PAROLE CHIAVE (Mid/Top-Right) */}
-          <div className="hero-animate hidden md:flex flex-col text-right font-body text-base leading-none tracking-tighter font-medium space-y-1 mt-4">
-            <span>TALK</span>
-            <span>WORKSHOP</span>
-            <span>NETWORK</span>
-            <span>EXPOSITION</span>
-            <span>PERFORMANCE</span>
+          <div className="hero-animate text-right font-body text-[23px] leading-tight tracking-normal font-normal text-[#262626] z-40 uppercase">
+            <span>TALK</span><br />
+            <span>WORKSHOP</span><br />
+            <span>NETWORK</span><br />
+            <span>EXPOSITION</span><br />
+            <span>PERFORMANCE</span><br />
             <span>PARTY</span>
           </div>
         </div>
 
-        {/* MIDDLE ROW: DATE BLOCK (Mid-Right) */}
-        <div className="flex justify-end w-full md:pr-12 my-12 md:my-0">
-          <div className="hero-animate flex flex-col items-center md:items-start gap-4">
-            <div className="flex items-center gap-4 md:gap-6">
-              {/* Official Icons 5 and 6 with Button in between */}
-              <img src={Icon5} alt="5" className="w-24 h-24 md:w-32 md:h-32 object-contain" />
-              
-              <button 
-                onClick={() => {
-                  const el = document.getElementById('about');
-                  el?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95 group"
-                aria-label="Vai alla sezione About"
-              >
-                <img src={Group46} alt="Go to About" className="w-full h-full object-contain" />
-              </button>
+        {/* RIGA CENTRALE: CENTER */}
+        <div className="flex justify-between items-center w-full relative z-40">
+          <div className="hero-animate font-body text-[23px] uppercase tracking-normal font-normal text-[#262626] leading-tight text-left">
+            TERMINAL FAL<br />
+            GALLITELLO
+          </div>
 
-              <img src={Icon6} alt="6" className="w-24 h-24 md:w-32 md:h-32 object-contain" />
-            </div>
-            
-            {/* Scritta giugno sotto i cerchi */}
-            <div className="w-full text-center md:text-left">
-              <span className="font-display font-bold text-5xl md:text-8xl text-foreground leading-none lowercase">
-                giugno
-              </span>
-            </div>
+          <div className="hero-animate flex items-center gap-6">
+            <img src={Icon5} alt="5" className="w-40 h-40 object-contain" />
+            <button 
+              onClick={() => {
+                const el = document.getElementById('about');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-24 h-24 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95 group"
+            >
+              <img src={Group46} alt="Go to About" className="w-full h-full object-contain" />
+            </button>
+            <img src={Icon6} alt="6" className="w-40 h-40 object-contain" />
           </div>
         </div>
 
-        {/* BOTTOM ROW: LOCATION & EDITION */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end w-full gap-8">
-          {/* 3. BLOCCO LUOGO (Bottom-Left) */}
-          <div className="hero-animate flex flex-col items-start gap-1">
-            <span className="font-body text-[10px] md:text-xs uppercase tracking-[0.25em] text-foreground">
-              Gallitello, Terminal delle FAL
-            </span>
-            <span className="font-display font-bold text-7xl md:text-[9rem] leading-none text-foreground">
+        {/* RIGA INFERIORE: BOTTOM */}
+        <div className="flex justify-between items-end w-full relative z-40">
+          <div className="hero-animate">
+            <span className="font-display font-medium text-[clamp(5rem,12vw,10rem)] leading-[0.8] text-[#262626]">
               (PZ)
             </span>
           </div>
 
-          {/* 4. BLOCCO EDIZIONE (Spostato a Bottom-Center su desktop, Bottom-Left su mobile) */}
-          <div className="hero-animate w-full md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-0 text-left md:text-center pb-2">
-            <span className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground font-medium">
-              Seconda Edizione
+          <div className="hero-animate absolute left-1/2 -translate-x-1/2 bottom-2 text-center">
+            <div className="font-body text-[23px] uppercase tracking-normal text-[#262626] font-normal leading-tight">
+              SECONDA<br />EDIZIONE
+            </div>
+          </div>
+
+          <div className="hero-animate">
+            <span className="font-display font-medium text-9xl text-[#262626] leading-none lowercase">
+              giugno
             </span>
           </div>
-          
-          {/* Empty spacer for desktop right-alignment consistency if needed */}
-          <div className="hidden md:block w-40"></div>
         </div>
-
       </div>
+
     </section>
   );
 };

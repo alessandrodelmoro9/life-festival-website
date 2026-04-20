@@ -4,11 +4,11 @@ import { cn } from '@/lib/utils';
 import { MousePointer2, Pencil, Trash2, X, Undo2 } from 'lucide-react';
 
 const COLORS = [
-  { name: 'Blue', value: '#0070f3' },
-  { name: 'Pink', value: '#F472B6' },
-  { name: 'Orange', value: '#E25938' }, // Sincronizzato con brand orange
-  { name: 'Black', value: '#1A1A1A' },
-  { name: 'Cream', value: '#F5F0E8' },
+  { name: 'Blue', value: '#7678F6' },
+  { name: 'Pink', value: '#FF76BF' },
+  { name: 'Orange', value: '#E25938' },
+  { name: 'Black', value: '#262626' },
+  { name: 'Cream', value: '#F4EEE4' },
 ];
 
 const PaintToolbar: React.FC = () => {

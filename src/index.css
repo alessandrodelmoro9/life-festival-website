@@ -107,43 +107,40 @@
 @layer base {
   :root {
     /* Brand palette */
-    --background: 40 33% 94%;        /* #F5F0E8 warm cream */
-    --foreground: 0 0% 10%;           /* #1A1A1A near-black */
+    --background: 38 38% 93%;        /* #F4EEE4 cream */
+    --foreground: 0 0% 15%;          /* #262626 black */
 
-    --card: 40 33% 94%;
-    --card-foreground: 0 0% 10%;
+    --card: 38 38% 93%;
+    --card-foreground: 0 0% 15%;
 
-    --popover: 40 33% 94%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 38 38% 93%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 330 80% 65%;           /* #F472B6 hot pink */
-    --primary-foreground: 0 0% 10%;
+    --primary: 328 100% 73%;         /* #FF76BF pink */
+    --primary-foreground: 0 0% 15%;
 
-    --secondary: 230 60% 60%;         /* Blue/periwinkle accent */
+    --secondary: 239 88% 71%;        /* #7678F6 blue */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 20% 88%;
+    --muted: 38 20% 88%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 10 60% 55%;             /* Red/coral accent */
+    --accent: 11 73% 55%;            /* #E25938 orange */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 40 15% 80%;
-    --input: 40 15% 80%;
-    --ring: 330 80% 65%;
+    --border: 38 15% 80%;
+    --input: 38 15% 80%;
+    --ring: 328 100% 73%;
 
     --radius: 0rem;
 
     /* Custom brand tokens */
-    --life-cream: 40 33% 94%;
-    --life-pink: 330 80% 65%;
-    --life-black: 0 0% 10%;
-    --life-blue: 230 60% 60%;
-    --life-red: 10 60% 55%;
-    --life-brown: 25 30% 55%;
+    --life-cream: 38 38% 93%;
+    --life-pink: 328 100% 73%;
+    --life-black: 0 0% 15%;
+    --life-blue: 239 88% 71%;
+    --life-red: 11 73% 55%;
+    --life-brown: 24 32% 59%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
