@@ -1,44 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ColoredSquare } from './SVGLines';
+import Icon5 from '@/assets/5.svg';
+import Icon6 from '@/assets/6.svg';
+import Group46 from '@/assets/Group 46.svg';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const SplitText = ({ text, className = '', delay = 0 }: { text: string; className?: string; delay?: number }) => {
-  const containerRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const chars = containerRef.current.querySelectorAll('.split-char');
-
-    gsap.set(chars, { yPercent: 120, opacity: 0, rotateX: -80 });
-
-    gsap.to(chars, {
-      yPercent: 0,
-      opacity: 1,
-      rotateX: 0,
-      duration: 0.9,
-      ease: 'power4.out',
-      stagger: 0.035,
-      delay,
-    });
-  }, [delay]);
-
-  return (
-    <span ref={containerRef} className={`inline-block ${className}`}>
-      {text.split('').map((char, i) => (
-        <span
-          key={i}
-          className="split-char inline-block my-0 py-[7px]"
-          style={{ perspective: '600px', transformStyle: 'preserve-3d' }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </span>
-      ))}
-    </span>
-  );
-};
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -100,28 +67,21 @@ const HeroSection = () => {
         <div className="flex justify-end w-full md:pr-12 my-12 md:my-0">
           <div className="hero-animate flex flex-col items-center md:items-start gap-4">
             <div className="flex items-center gap-4 md:gap-6">
-              {/* Cerchi con bordo spesso */}
-              <div className="flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full border-[5px] border-foreground">
-                <span className="font-display font-black text-4xl md:text-6xl text-foreground">5</span>
-              </div>
+              {/* Official Icons 5 and 6 with Button in between */}
+              <img src={Icon5} alt="5" className="w-24 h-24 md:w-32 md:h-32 object-contain" />
               
-              {/* Quadratino rosa cliccabile con freccia */}
               <button 
                 onClick={() => {
                   const el = document.getElementById('about');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-primary w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95 group"
+                className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95 group"
                 aria-label="Vai alla sezione About"
               >
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1">
-                  <path d="M7 7L17 17M17 17V7M17 17H7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <img src={Group46} alt="Go to About" className="w-full h-full object-contain" />
               </button>
 
-              <div className="flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full border-[5px] border-foreground">
-                <span className="font-display font-black text-4xl md:text-6xl text-foreground">6</span>
-              </div>
+              <img src={Icon6} alt="6" className="w-24 h-24 md:w-32 md:h-32 object-contain" />
             </div>
             
             {/* Scritta giugno sotto i cerchi */}

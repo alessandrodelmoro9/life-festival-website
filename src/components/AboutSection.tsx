@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { usePaint } from '@/context/PaintContext';
+import BottoneIcon from '@/assets/bottone.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -90,12 +91,8 @@ const AboutSection = () => {
                   Lascia il<br />tuo segno
                 </span>
                 
-                <div className="w-14 h-14 md:w-16 md:h-16 bg-primary flex items-center justify-center transition-transform duration-500 group-hover:scale-110 shadow-[0_0_25px_rgba(244,114,182,0.3)]">
-                  <span className="flex items-center justify-center font-display font-bold text-black text-3xl md:text-4xl">
-                    <span className="leading-none">[</span>
-                    <span className="inline-block translate-y-[12px] md:translate-y-[22px] mx-[2px] text-4xl md:text-6xl font-medium">~</span>
-                    <span className="leading-none">]</span>
-                  </span>
+                <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                  <img src={BottoneIcon} alt="Paint Mode" className="w-full h-full object-contain" />
                 </div>
               </button>
             </div>

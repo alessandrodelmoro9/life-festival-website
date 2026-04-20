@@ -86,7 +86,7 @@ const LocationSection = () => {
               style={{ transform: 'translateX(calc(-50% - 40px)) rotate(-12deg)' }}
             >
               <img 
-                src="/location/060520.jpg" 
+                src="/location/060520 1.png" 
                 alt="Location 1" 
                 className="w-full h-full object-cover"
               />
@@ -98,7 +98,7 @@ const LocationSection = () => {
               style={{ transform: 'translateX(calc(-50% + 40px)) rotate(12deg)' }}
             >
               <img 
-                src="/location/0705104.jpg" 
+                src="/location/070535 1.png" 
                 alt="Location 3" 
                 className="w-full h-full object-cover"
               />
@@ -110,7 +110,7 @@ const LocationSection = () => {
               style={{ transform: 'translateX(-50%) rotate(0deg)' }}
             >
               <img 
-                src="/location/060522.jpg" 
+                src="/location/060520 2.png" 
                 alt="Location 2" 
                 className="w-full h-full object-cover"
               />
