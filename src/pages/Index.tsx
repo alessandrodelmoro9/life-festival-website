@@ -6,6 +6,7 @@ import Countdown from '@/components/Countdown';
 import SpeakersSection from '@/components/SpeakersSection';
 import ProgramSection from '@/components/ProgramSection';
 import LocationSection from '@/components/LocationSection';
+import TicketsSection from '@/components/TicketsSection';
 import SponsorSection from '@/components/SponsorSection';
 import FooterSection from '@/components/FooterSection';
 import { PaintProvider } from '@/context/PaintContext';
@@ -46,6 +47,7 @@ const Index = () => {
         <SpeakersSection />
         <ProgramSection />
         <LocationSection />
+        <TicketsSection />
         <SponsorSection />
         <FooterSection />
         <PaintCanvas />
