@@ -2,66 +2,78 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { sponsorsData, Sponsor } from '@/data/sponsorsData';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SponsorItem = ({ sponsor }: { sponsor: Sponsor }) => {
+const SponsorItem = ({ sponsor, size = 'medium' }: { sponsor: Sponsor, size?: 'large' | 'medium' | 'small' }) => {
+  const sizeClasses = {
+    large: 'h-16 md:h-20 w-auto',
+    medium: 'h-12 md:h-14 w-auto',
+    small: 'h-10 md:h-11 w-auto'
+  };
+
   return (
-    <div className="flex items-center justify-center px-6 md:px-12 py-6 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out cursor-default">
+    <div className="flex items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-in-out cursor-default">
       {sponsor.logo ? (
         <img
           src={sponsor.logo}
           alt={sponsor.name}
-          className={sponsor.category === 'main' ? 'h-10 md:h-14 w-auto object-contain' : 'h-8 md:h-11 w-auto object-contain'}
+          className={`${sizeClasses[size]} object-contain`}
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+            const fallback = e.currentTarget.parentElement?.querySelector('.fallback-text');
+            if (fallback) fallback.classList.remove('hidden');
+          }}
         />
-      ) : (
-        <span className="font-display font-bold text-xs md:text-sm uppercase tracking-[0.2em] text-foreground/40 text-center">
-          {sponsor.name}
-        </span>
-      )}
+      ) : null}
+      <span className={cn(
+        "fallback-text font-body font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] text-[#262626] opacity-40",
+        sponsor.logo ? "hidden" : ""
+      )}>
+        {sponsor.name}
+      </span>
+    </div>
+  );
+};
+
+const SponsorBlock = ({ label, sponsors, size = 'medium', gridCols = 'grid-cols-2 md:grid-cols-3' }: { label: string, sponsors: Sponsor[], size?: 'large' | 'medium' | 'small', gridCols?: string }) => {
+  if (sponsors.length === 0) return null;
+  
+  return (
+    <div className="sponsor-block border-t border-[#262626] pt-8 pb-16 md:pb-32">
+      <p className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-[#262626] font-bold mb-10 md:mb-16">
+        {label}
+      </p>
+      <div className={`grid ${gridCols} gap-x-8 gap-y-12 md:gap-20 items-center justify-items-start`}>
+        {sponsors.map((sponsor) => (
+          <SponsorItem key={sponsor.id} sponsor={sponsor} size={size} />
+        ))}
+      </div>
     </div>
   );
 };
 
 const SponsorSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const lineRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Heading animation
-      gsap.fromTo('.sponsor-heading',
+      gsap.fromTo('.sponsor-animate',
         { opacity: 0, y: 30 },
         {
           opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: '.sponsor-heading', start: 'top 90%' },
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
         }
       );
 
-      // SVG line draw
-      if (lineRef.current) {
-        const length = lineRef.current.getTotalLength();
-        gsap.set(lineRef.current, { strokeDasharray: length, strokeDashoffset: length });
-        gsap.to(lineRef.current, {
-          strokeDashoffset: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 95%',
-            end: 'top 20%',
-            scrub: 1,
-          },
-        });
-      }
-
-      // Stagger logos
-      gsap.fromTo('.sponsor-row',
+      gsap.fromTo('.sponsor-block',
         { opacity: 0, y: 20 },
         {
-          opacity: 1, y: 0, duration: 1, ease: 'power2.out', stagger: 0.1,
-          scrollTrigger: { trigger: '.sponsor-row', start: 'top 85%' },
+          opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.2,
+          scrollTrigger: { trigger: '.sponsor-block', start: 'top 85%' },
         }
       );
     }, sectionRef.current);
@@ -69,62 +81,59 @@ const SponsorSection = () => {
     return () => ctx.revert();
   }, []);
 
-  const mainSponsors = sponsorsData.filter(s => s.category === 'main');
-  const others = sponsorsData.filter(s => s.category !== 'main');
+  const experienceSponsors = sponsorsData.filter(s => s.category === 'experience');
+  const activeSponsors = sponsorsData.filter(s => s.category === 'active');
+  const partnerSponsors = sponsorsData.filter(s => s.category === 'partner');
+  const patronSponsors = sponsorsData.filter(s => s.category === 'patron');
 
   return (
-    <section id="sponsors" ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden bg-background">
-      {/* Decorative SVG line - Optimized for mobile height */}
-      <svg
-        className="absolute top-0 left-0 w-full h-[120px] md:h-[200px] pointer-events-none z-0 opacity-20"
-        viewBox="0 0 1500 200"
-        preserveAspectRatio="none"
-      >
-        <path
-          ref={lineRef}
-          d="M -50 40 Q 200 -20 450 40 Q 750 110 1000 40 Q 1300 -20 1600 60"
-          stroke="hsl(var(--foreground))"
-          strokeWidth="1.2"
-          fill="none"
-        />
-      </svg>
-
+    <section id="sponsors" ref={sectionRef} className="relative pt-32 md:pt-56 pb-24 md:pb-40 bg-[#F4EEE4] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="mb-16 text-center md:text-left">
+        
+        {/* EDITORIAL HEADER */}
+        <div className="sponsor-animate mb-24 md:mb-40">
           <h2
-            className="sponsor-heading font-display text-foreground leading-[0.95] font-medium mb-4"
-            style={{ fontSize: 'clamp(2rem, 4vw, 4rem)' }}
+            className="font-display text-[#262626] leading-[0.95] font-medium tracking-tighter mb-4"
+            style={{ fontSize: 'clamp(3rem, 6vw, 6rem)' }}
           >
-            Partner & Support
+            Partner &<br />Support
           </h2>
-          <p className="sponsor-heading font-body text-[10px] md:text-xs uppercase tracking-[0.3em] text-muted-foreground">
+          <p className="font-body text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#262626] opacity-60">
             L'ecosistema che rende possibile LIFE 2026
           </p>
         </div>
 
-        {/* MAIN SPONSORS ROW */}
-        <div className="sponsor-row border-t border-b border-foreground/20 py-10 md:py-14">
-          <p className="font-body text-[8px] md:text-[10px] uppercase tracking-[0.4em] text-muted-foreground/50 mb-10 text-center md:text-left">
-            Sponsor Ufficiali
-          </p>
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-10 -ml-6 md:-ml-12">
-            {mainSponsors.map((sponsor) => (
-              <SponsorItem key={sponsor.id} sponsor={sponsor} />
-            ))}
-          </div>
+        {/* BLOCKS WITH DIVIDERS */}
+        <div className="max-w-[1400px]">
+          <SponsorBlock 
+            label="EXPERIENCE SPONSOR" 
+            sponsors={experienceSponsors} 
+            size="large" 
+            gridCols="grid-cols-2 md:grid-cols-3" 
+          />
+          
+          <SponsorBlock 
+            label="ACTIVE SPONSOR" 
+            sponsors={activeSponsors} 
+            size="medium" 
+            gridCols="grid-cols-1" 
+          />
+          
+          <SponsorBlock 
+            label="PARTNER" 
+            sponsors={partnerSponsors} 
+            size="small" 
+            gridCols="grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" 
+          />
+          
+          <SponsorBlock 
+            label="PATROCINI ISTITUZIONALI E STRATEGICI" 
+            sponsors={patronSponsors} 
+            size="medium" 
+            gridCols="grid-cols-2" 
+          />
         </div>
 
-        {/* OTHERS ROW (Partners & Patrons combined for elegance) */}
-        <div className="sponsor-row py-10 md:py-14">
-          <p className="font-body text-[8px] md:text-[10px] uppercase tracking-[0.4em] text-muted-foreground/50 mb-8 md:mb-12 text-center md:text-left">
-            Patrocini Istituzionali & Partner Strategici
-          </p>
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-12 -ml-6 md:-ml-12">
-            {others.map((sponsor) => (
-              <SponsorItem key={sponsor.id} sponsor={sponsor} />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

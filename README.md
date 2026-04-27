@@ -39,32 +39,23 @@ LIFE Design Festival 2026 non è solo un sito web, ma un'estensione dell'identit
 ## 📂 Struttura della Codebase
 
 ```text
-LIFE-FESTIVAL-WEBSITE/
+LIFE-DESIGN-SCROLL/
 ├── public/                 # Asset statici, font e immagini
+│   ├── fonts/              # Aquawax Fx & Automat Grotesk
+│   ├── img_ospiti/         # Fotografie degli speaker
+│   └── loghi_sponsor/      # Identità visiva dei partner
 ├── src/
 │   ├── assets/             # Grafiche vettoriali (SVG) e icone
 │   ├── components/         # Moduli UI principali
-│   │   ├── paint/          # Core del sistema di disegno
-│   │   │   ├── PaintCanvas.tsx
-│   │   │   └── PaintToolbar.tsx
+│   │   ├── paint/          # Core del sistema di disegno (Canvas, Toolbar)
 │   │   ├── ui/             # Design System (Shadcn/UI components)
-│   │   ├── AboutSection.tsx
-│   │   ├── Countdown.tsx
-│   │   ├── FooterSection.tsx
-│   │   ├── HeroSection.tsx
-│   │   ├── LocationSection.tsx
-│   │   ├── Navbar.tsx
-│   │   ├── NavLink.tsx
-│   │   ├── ProgramSection.tsx
-│   │   ├── SpeakersSection.tsx
-│   │   ├── SponsorSection.tsx
-│   │   └── SVGLines.tsx
-│   ├── context/            # Global State (PaintContext)
-│   ├── data/               # Single Source of Truth per i contenuti
+│   │   └── ...             # Hero, Speakers, Program, etc.
+│   ├── context/            # Global State (PaintContext per tratti e modalità)
+│   ├── data/               # Single Source of Truth per i contenuti del festival
 │   ├── hooks/              # Logiche riutilizzabili (Lenis, Scroll Animations)
-│   ├── lib/                # Utility e configurazioni
+│   ├── lib/                # Utility e configurazioni (Tailwind Merge)
 │   └── pages/              # Entry point (Index, NotFound)
-├── tailwind.config.ts      # Configurazione Design Tokens
+├── tailwind.config.ts      # Configurazione Design Tokens (Colori Life, Keyframes)
 └── vite.config.ts          # Pipeline di build ottimizzata
 ```
 
@@ -72,7 +63,7 @@ LIFE-FESTIVAL-WEBSITE/
 
 ## 🎨 Design Tokens (Brand Identity)
 
-Il progetto implementa un sistema di colori codificato per tipologia di evento:
+Il progetto implementa un sistema di colori codificato per tipologia di evento, facilitando la scansione visiva del programma:
 
 | Categoria | Colore | Esadecimale | Utilizzo |
 | :--- | :--- | :--- | :--- |
@@ -88,7 +79,7 @@ Il progetto implementa un sistema di colori codificato per tipologia di evento:
 Il repository è attualmente in fase di espansione per integrare un **Chatbot AI basato su RAG (Retrieval-Augmented Generation)**:
 - **Widget Draggable:** Un'interfaccia di chat flottante e spostabile.
 - **Backend FastAPI:** Supporto per LLM locali sfruttando hardware di fascia alta (**NVIDIA RTX 5090**).
-- **Knowledge Base:** Il bot avrà accesso completo ai dati del festival per rispondere a domande su orari e speaker.
+- **Knowledge Base:** Il bot avrà accesso completo a `src/data/` per rispondere a domande su orari, biografie degli speaker e dettagli sulla location.
 
 ---
 
@@ -96,14 +87,17 @@ Il repository è attualmente in fase di espansione per integrare un **Chatbot AI
 
 ```bash
 # Clona il repository
-git clone git@github.com:alessandrodelmoro9/life-festival-website.git
+git clone https://github.com/tuo-username/life-design-scroll.git
 
 # Installa le dipendenze
 npm install
 
 # Avvia in modalità sviluppo
 npm run dev
+
+# Build per produzione
+npm run build
 ```
 
 ---
-*Progetto realizzato da Alessandro Del Moro per LIFE Design Festival - Potenza 2026.*
+*Progetto realizzato con passione per la comunità creativa. LIFE Design Festival - Potenza 2026.*

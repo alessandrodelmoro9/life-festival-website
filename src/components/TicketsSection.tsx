@@ -39,7 +39,7 @@ const TicketsSection = () => {
           
           {/* LEFT CONTENT (EDITORIAL) */}
           <div className="flex flex-col gap-6 md:gap-8 order-1">
-            <h2 className="ticket-animate font-display leading-[0.8] font-medium tracking-tighter lowercase text-[#262626]" style={{ fontSize: 'clamp(4.5rem, 12vw, 9.5rem)' }}>
+            <h2 className="ticket-animate font-display leading-[0.8] font-medium tracking-tighter lowercase text-[#262626]" style={{ fontSize: 'clamp(4rem, 10vw, 8rem)' }}>
               <span className="capitalize">Accedi</span> al<br />festival
             </h2>
             <p className="ticket-animate font-body text-xl md:text-2xl leading-tight max-w-sm text-[#262626]">
