@@ -70,7 +70,7 @@ const SponsorSection = () => {
       );
 
       gsap.fromTo('.sponsor-block',
-        { opacity: 0, y: 20 },
+        { opacity: 0.1, y: 20 },
         {
           opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.2,
           scrollTrigger: { trigger: '.sponsor-block', start: 'top 85%' },
