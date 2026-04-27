@@ -68,7 +68,7 @@ const HeroSection = () => {
               const el = document.getElementById('about');
               el?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="w-20 h-20 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95"
+            className="w-32 h-32 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95"
           >
             <img src={Group46} alt="Go to About" className="w-full h-full object-contain" />
           </button>
