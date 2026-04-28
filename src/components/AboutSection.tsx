@@ -82,12 +82,12 @@ const AboutSection = () => {
             </h2>
 
             {/* Interactive Trigger (Desktop: Right of Title, Mobile: Below Title) */}
-            <div className="about-text flex flex-col items-center md:items-end md:pt-16">
+            <div className="about-text flex flex-col items-start md:pt-16">
               <button 
-                className="group flex flex-col items-center md:items-end cursor-pointer gap-4 text-center md:text-right"
+                className="group flex flex-col items-start cursor-pointer gap-2"
                 onClick={handleActivatePaint}
               >
-                <span className="font-body text-[9px] md:text-[10px] uppercase tracking-normal text-black font-bold group-hover:text-primary transition-colors leading-relaxed">
+                <span className="font-body text-[11px] md:text-[12px] uppercase tracking-normal text-black font-bold group-hover:text-primary transition-colors leading-[1.1] text-left">
                   Lascia il<br />tuo segno
                 </span>
                 
