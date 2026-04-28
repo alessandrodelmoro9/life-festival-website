@@ -50,18 +50,18 @@ const FooterSection = () => {
         </div>
 
         <div className="mt-16 pt-8 border-t border-foreground/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <p className="font-body text-sm text-foreground/70">
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <p className="font-body text-xs md:text-sm text-foreground/70">
               © 2026 Life Design Festival. Tutti i diritti riservati.
             </p>
             <a 
               href="https://github.com/alessandrodelmoro9" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group font-body text-sm text-foreground/70 flex items-center gap-2"
+              className="group font-body text-[10px] md:text-xs text-foreground/70 flex items-center gap-1 whitespace-nowrap"
             >
               <span>made with love & an ai agent swarm by</span>
-              <span className="font-bold border-b border-current transition-colors duration-300 group-hover:text-primary">alessandro del moro</span>
+              <span className="font-bold border-b border-transparent transition-all duration-300 group-hover:border-primary group-hover:text-primary">alessandro del moro</span>
             </a>
           </div>
           

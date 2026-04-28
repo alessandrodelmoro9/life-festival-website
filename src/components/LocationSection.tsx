@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -6,6 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const LocationSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [topIndex, setTopIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -82,37 +83,40 @@ const LocationSection = () => {
             
             {/* FOTO 1 (Sinistra) */}
             <div 
-              className="collage-item collage-left absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom z-10 overflow-hidden"
+              onClick={() => setTopIndex(0)}
+              className={`collage-item collage-left absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 0 ? 'is-active z-40' : 'z-10'}`}
               style={{ transform: 'translateX(calc(-50% - 40px)) rotate(-12deg)' }}
             >
               <img 
                 src="/assets/location/060520 1.png" 
                 alt="Location 1" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover pointer-events-none"
               />
             </div>
 
             {/* FOTO 3 (Destra) */}
             <div 
-              className="collage-item collage-right absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom z-10 overflow-hidden"
+              onClick={() => setTopIndex(2)}
+              className={`collage-item collage-right absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 2 ? 'is-active z-40' : 'z-10'}`}
               style={{ transform: 'translateX(calc(-50% + 40px)) rotate(12deg)' }}
             >
               <img 
                 src="/assets/location/060520 2.png" 
                 alt="Location 3" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover pointer-events-none"
               />
             </div>
 
             {/* FOTO 2 (Centrale) */}
             <div 
-              className="collage-item collage-center absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom z-20 rotate-0 overflow-hidden"
+              onClick={() => setTopIndex(1)}
+              className={`collage-item collage-center absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 1 ? 'is-active z-40' : (topIndex === null ? 'z-20' : 'z-10')}`}
               style={{ transform: 'translateX(-50%) rotate(0deg)' }}
             >
               <img 
                 src="/assets/location/070535 1.png" 
                 alt="Location 2" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover pointer-events-none"
               />
             </div>
 
@@ -137,19 +141,33 @@ const LocationSection = () => {
           }
         }
         
-        .collage-center:hover {
+        /* Active states for jumping to front (Original Animation on Click) */
+        .collage-center.is-active {
           transform: translateX(-50%) rotate(0deg) scale(1.1) !important;
-          z-index: 45 !important;
         }
 
-        .collage-left:hover {
+        .collage-left.is-active {
           transform: translateX(calc(-50% - 40px)) rotate(0deg) scale(1.1) !important;
-          z-index: 45 !important;
         }
 
-        .collage-right:hover {
+        .collage-right.is-active {
           transform: translateX(calc(-50% + 40px)) rotate(0deg) scale(1.1) !important;
-          z-index: 45 !important;
+        }
+
+        /* Hover effect (just a slight bump) */
+        .collage-item:hover:not(.is-active) {
+          transform: scale(1.05) !important;
+        }
+        @media (min-width: 768px) {
+          .collage-left:hover:not(.is-active) {
+            transform: translateX(calc(-50% - 100px)) rotate(-12deg) scale(1.05) !important;
+          }
+          .collage-right:hover:not(.is-active) {
+            transform: translateX(calc(-50% + 100px)) rotate(12deg) scale(1.05) !important;
+          }
+          .collage-center:hover:not(.is-active) {
+            transform: translateX(-50%) rotate(0deg) scale(1.05) !important;
+          }
         }
       `}</style>
     </section>

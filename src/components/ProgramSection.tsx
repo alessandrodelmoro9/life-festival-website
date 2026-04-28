@@ -1,8 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { programData, ProgramItem } from '@/data/programData';
 import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +21,10 @@ const typeColors: Record<string, string> = {
 
 const ProgramSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [openDays, setOpenDays] = useState<Record<string, boolean>>({
+    '5': false,
+    '6': false
+  });
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -47,24 +53,58 @@ const ProgramSection = () => {
     }, sectionRef.current);
 
     return () => ctx.revert();
-  }, []);
+  }, [openDays]); // Re-run GSAP when accordions toggle to re-register triggers
 
   const dayOneItems = programData.filter(item => item.day === '5 GIU');
   const dayTwoItems = programData.filter(item => item.day === '6 GIU');
 
-  const DayHeader = ({ number, month, label }: { number: string, month: string, label: string }) => (
-    <div className="program-day-header relative flex flex-col items-start w-full mt-16 md:mt-24 mb-12 pl-10 md:pl-14">
-      <div className="flex items-center gap-3 md:gap-4 relative z-10 mb-2">
-        <div className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full border-[3px] border-[#F4EEE4] font-display text-2xl md:text-4xl pt-1 bg-[#262626]">
-          {number}
+  const toggleDay = (day: string) => {
+    if (window.innerWidth < 1024) {
+      setOpenDays(prev => ({
+        ...prev,
+        [day]: !prev[day]
+      }));
+      
+      // If closing, we might want to ensure the user doesn't lose context
+      // but usually ScrollTrigger.refresh() is enough if the height changes.
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 400);
+    }
+  };
+
+  const DayHeader = ({ number, month, label }: { number: string, month: string, label: string }) => {
+    const isOpen = openDays[number];
+    return (
+      <div 
+        onClick={() => toggleDay(number)}
+        className={cn(
+          "program-day-header relative flex flex-col items-start w-full mt-16 md:mt-24 mb-12 pl-10 md:pl-14 transition-all duration-300",
+          "lg:cursor-default cursor-pointer group"
+        )}
+      >
+        <div className="flex items-center gap-3 md:gap-4 relative z-10 mb-2 w-full">
+          <div className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full border-[3px] border-[#F4EEE4] font-display text-2xl md:text-4xl pt-1 bg-[#262626]">
+            {number}
+          </div>
+          <span className="font-display text-3xl md:text-5xl lowercase leading-none">{month}</span>
+          
+          {/* Mobile indicator */}
+          <div className="lg:hidden ml-auto pr-4">
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ChevronDown className="text-[#F4EEE4] opacity-50" size={24} />
+            </motion.div>
+          </div>
         </div>
-        <span className="font-display text-3xl md:text-5xl lowercase leading-none">{month}</span>
+        <span className="font-display text-2xl md:text-3xl lowercase leading-none text-[#F4EEE4] opacity-50 ml-1">
+          {label}
+        </span>
       </div>
-      <span className="font-display text-2xl md:text-3xl lowercase leading-none text-[#F4EEE4] opacity-50 ml-1">
-        {label}
-      </span>
-    </div>
-  );
+    );
+  };
 
   return (
     <section id="program" ref={sectionRef} className="relative py-24 md:py-40 bg-[#262626] text-[#F4EEE4] overflow-hidden">
@@ -82,29 +122,49 @@ const ProgramSection = () => {
             {/* COLUMN: DAY 1 */}
             <div className="program-column relative">
               <DayHeader number="5" month="giugno" label="giorno uno" />
-              <div className="grid gap-0 relative">
-                {dayOneItems.map((item, index) => (
-                  <ProgramItemComponent 
-                    key={item.id} 
-                    item={item} 
-                    prevColorClass={index > 0 ? typeColors[dayOneItems[index-1].type] : null}
-                  />
-                ))}
-              </div>
+              <AnimatePresence initial={false}>
+                {(openDays['5'] || window.innerWidth >= 1024) && (
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="grid gap-0 relative overflow-hidden"
+                  >
+                    {dayOneItems.map((item, index) => (
+                      <ProgramItemComponent 
+                        key={item.id} 
+                        item={item} 
+                        prevColorClass={index > 0 ? typeColors[dayOneItems[index-1].type] : null}
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* COLUMN: DAY 2 */}
             <div className="program-column relative">
               <DayHeader number="6" month="giugno" label="giorno due" />
-              <div className="grid gap-0 relative">
-                {dayTwoItems.map((item, index) => (
-                  <ProgramItemComponent 
-                    key={item.id} 
-                    item={item} 
-                    prevColorClass={index > 0 ? typeColors[dayTwoItems[index-1].type] : null}
-                  />
-                ))}
-              </div>
+              <AnimatePresence initial={false}>
+                {(openDays['6'] || window.innerWidth >= 1024) && (
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="grid gap-0 relative overflow-hidden"
+                  >
+                    {dayTwoItems.map((item, index) => (
+                      <ProgramItemComponent 
+                        key={item.id} 
+                        item={item} 
+                        prevColorClass={index > 0 ? typeColors[dayTwoItems[index-1].type] : null}
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
