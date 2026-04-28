@@ -186,12 +186,26 @@ const SpeakersSection: React.FC = () => {
                     {selectedSpeaker.description}
                   </p>
                   <div className="flex gap-6 md:gap-10">
-                    <a href="#" className="text-foreground/40 hover:text-foreground uppercase tracking-widest text-[10px] md:text-xs font-display font-medium border-b border-foreground/20 pb-1 transition-all">
-                      Instagram ↗
-                    </a>
-                    <a href="#" className="text-foreground/40 hover:text-foreground uppercase tracking-widest text-[10px] md:text-xs font-display font-medium border-b border-foreground/20 pb-1 transition-all">
-                      Linkedin ↗
-                    </a>
+                    {selectedSpeaker.socials?.instagram && (
+                      <a 
+                        href={selectedSpeaker.socials.instagram} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-foreground/40 hover:text-foreground uppercase tracking-widest text-[10px] md:text-xs font-display font-medium border-b border-foreground/20 pb-1 transition-all"
+                      >
+                        Instagram ↗
+                      </a>
+                    )}
+                    {selectedSpeaker.socials?.linkedin && (
+                      <a 
+                        href={selectedSpeaker.socials.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-foreground/40 hover:text-foreground uppercase tracking-widest text-[10px] md:text-xs font-display font-medium border-b border-foreground/20 pb-1 transition-all"
+                      >
+                        Linkedin ↗
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

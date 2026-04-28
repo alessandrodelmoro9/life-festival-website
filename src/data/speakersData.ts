@@ -18,7 +18,7 @@ export const speakersData: Speaker[] = [
     role: "Digital Design Studio",
     description: "Esperienze digitali tra arte e tecnologia d'avanguardia.",
     color: 'primary',
-    image: "/img_ospiti/img ospiti/adoratorio studio.jpg"
+    image: "/assets/speakers/adoratorio studio.jpg"
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ export const speakersData: Speaker[] = [
     role: "Independent Agency",
     description: "Brand identity e comunicazione strategica ad alto impatto.",
     color: 'secondary',
-    image: "/img_ospiti/img ospiti/Auge.png"
+    image: "/assets/speakers/Auge.png"
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const speakersData: Speaker[] = [
     role: "Communication Studio",
     description: "Progettazione di connessioni e narrazioni visive contemporanee.",
     color: 'accent',
-    image: "/img_ospiti/img ospiti/Be Family.png"
+    image: "/assets/speakers/Be Family.png"
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ export const speakersData: Speaker[] = [
     role: "Visual Communication",
     description: "Motion design e innovazione dei linguaggi digitali.",
     color: 'accent',
-    image: "/img_ospiti/img ospiti/Dverso studio.jpg"
+    image: "/assets/speakers/Dverso studio.jpg"
   },
   {
     id: 7,
@@ -64,7 +64,7 @@ export const speakersData: Speaker[] = [
     role: "Creative Factory",
     description: "Trasformazione dei brand attraverso strategie creative audaci.",
     color: 'primary',
-    image: "/img_ospiti/img ospiti/ego55.jpg"
+    image: "/assets/speakers/ego55.jpg"
   },
   {
     id: 8,
@@ -79,7 +79,7 @@ export const speakersData: Speaker[] = [
     role: "UX Expert & Figma Master",
     description: "Pioniere della UX e formatore specializzato in interfacce.",
     color: 'accent',
-    image: "/img_ospiti/img ospiti/italo_sannino.png"
+    image: "/assets/speakers/italo_sannino.png"
   },
   {
     id: 10,
@@ -87,7 +87,7 @@ export const speakersData: Speaker[] = [
     role: "Strategic Design Studio",
     description: "Rigore strategico e follia creativa applicata al progetto.",
     color: 'primary',
-    image: "/img_ospiti/img ospiti/Jekyll & Hyde.png"
+    image: "/assets/speakers/Jekyll & Hyde.png"
   },
   {
     id: 11,
@@ -95,7 +95,7 @@ export const speakersData: Speaker[] = [
     role: "Graphic Designer",
     description: "Fonde tradizione popolare e ricerca visiva contemporanea.",
     color: 'secondary',
-    image: "/img_ospiti/img ospiti/Mauro Bubbico.png"
+    image: "/assets/speakers/Mauro Bubbico.png"
   },
   {
     id: 12,
@@ -103,7 +103,7 @@ export const speakersData: Speaker[] = [
     role: "Creative Director",
     description: "Comunicazione pubblicitaria e direzione creativa di alto livello.",
     color: 'accent',
-    image: "/img_ospiti/img ospiti/Mauro-Mazzei.jpg"
+    image: "/assets/speakers/Mauro-Mazzei.jpg"
   },
   {
     id: 13,
@@ -111,7 +111,7 @@ export const speakersData: Speaker[] = [
     role: "Professoressa & Academic",
     description: "Docente e ricercatrice sull'evoluzione dei linguaggi visivi.",
     color: 'secondary',
-    image: "/img_ospiti/img ospiti/enricadaguanno.jpeg"
+    image: "/assets/speakers/enricadaguanno.jpeg"
   },
   {
     id: 14,
@@ -119,7 +119,7 @@ export const speakersData: Speaker[] = [
     role: "Creative Network",
     description: "Illustrazione, design e cultura visuale pop contemporanea.",
     color: 'accent',
-    image: "/img_ospiti/img ospiti/pug design fest.jpg"
+    image: "/assets/speakers/pug design fest.jpg"
   },
   {
     id: 15,
@@ -127,7 +127,7 @@ export const speakersData: Speaker[] = [
     role: "Motion Design Studio",
     description: "Animazione e storytelling dinamico per idee in movimento.",
     color: 'primary',
-    image: "/img_ospiti/img ospiti/Riccardo Albertini (Rocketpanda).jpg"
+    image: "/assets/speakers/Riccardo Albertini (Rocketpanda).jpg"
   },
   {
     id: 16,
@@ -135,7 +135,7 @@ export const speakersData: Speaker[] = [
     role: "Visual Artist",
     description: "Indagine sul rapporto tra materia, segno e spazio visivo.",
     color: 'secondary',
-    image: "/img_ospiti/img ospiti/silvia sguotti.jpg"
+    image: "/assets/speakers/silvia sguotti.jpg"
   },
   {
     id: 17,
@@ -150,7 +150,7 @@ export const speakersData: Speaker[] = [
     role: "Creative Production",
     description: "Contenuti visivi d'avanguardia tra tecnologia e visione.",
     color: 'primary',
-    image: "/img_ospiti/img ospiti/The wave.png"
+    image: "/assets/speakers/The wave.png"
   },
   {
     id: 19,
@@ -158,6 +158,6 @@ export const speakersData: Speaker[] = [
     role: "Type Foundry",
     description: "Fonderia tipografica tra le più influenti a livello mondiale.",
     color: 'secondary',
-    image: "/img_ospiti/img ospiti/zeta fonts.jpg"
+    image: "/assets/speakers/zeta fonts.jpg"
   }
 ];
