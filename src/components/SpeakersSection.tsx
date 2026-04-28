@@ -40,6 +40,27 @@ const SpeakersSection: React.FC = () => {
     setActiveSpeakerId(isDialogOpen && selectedSpeaker ? selectedSpeaker.id : null);
   }, [isDialogOpen, selectedSpeaker, setActiveSpeakerId]);
 
+  const toggleExpand = () => {
+    if (isExpanded) {
+      // Scroll to section top before collapsing to prevent losing context
+      const offset = 100; // Offset to keep the header visible
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = sectionRef.current?.getBoundingClientRect().top ?? 0;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Small delay to allow scroll to start before height changes
+      setTimeout(() => setIsExpanded(false), 300);
+    } else {
+      setIsExpanded(true);
+    }
+  };
+
   return (
     <section 
       id="speakers" 
@@ -129,34 +150,35 @@ const SpeakersSection: React.FC = () => {
           )}
         </AnimatePresence>
 
-        {/* NEW EXPAND TRIGGER (Minimalist Link) */}
-        {!isExpanded && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="mt-8 flex justify-center relative z-20"
+        {/* NEW EXPAND/COLLAPSE TRIGGER (Minimalist Link) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mt-12 md:mt-16 flex justify-center relative z-20"
+        >
+          <button 
+            onClick={toggleExpand}
+            className="group flex items-center gap-2 text-sm uppercase tracking-normal font-bold border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all duration-300"
           >
-            <button 
-              onClick={() => setIsExpanded(true)}
-              className="group flex items-center gap-2 text-sm uppercase tracking-normal font-bold border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all duration-300"
+            <span>{isExpanded ? 'Riduci lista' : 'Scopri gli ospiti'}</span>
+            <svg 
+              width="14" 
+              height="14" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              className={cn(
+                "transform transition-transform duration-300",
+                isExpanded ? "rotate-180" : "group-hover:translate-y-1"
+              )}
             >
-              <span>Scopri gli ospiti</span>
-              <svg 
-                width="14" 
-                height="14" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2.5" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className="transform group-hover:translate-y-1 transition-transform duration-300"
-              >
-                <path d="M7 13l5 5 5-5M12 18V6" />
-              </svg>
-            </button>
-          </motion.div>
-        )}
+              <path d="M7 13l5 5 5-5M12 18V6" />
+            </svg>
+          </button>
+        </motion.div>
       </div>
 
       {/* MODALE IMMERSIVA (PINK) */}
@@ -253,7 +275,7 @@ const SpeakerItem = ({
         backgroundColor: isHovered ? "#FF76BF" : "transparent",
       }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group cursor-pointer border-b border-foreground/10 pt-8 pb-12 md:pb-24 px-6 transition-all duration-300 relative"
+      className="group cursor-pointer border-b border-foreground/10 pt-8 pb-8 md:pb-16 px-6 transition-all duration-300 relative"
     >
       <div className="space-y-4">
         <h3 className="font-display font-medium text-4xl md:text-[5vw] leading-[0.9] tracking-tighter text-foreground">

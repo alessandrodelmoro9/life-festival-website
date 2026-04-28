@@ -8,13 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const SponsorItem = ({ sponsor, size = 'medium' }: { sponsor: Sponsor, size?: 'large' | 'medium' | 'small' }) => {
   const sizeClasses = {
-    large: 'h-16 md:h-20 w-auto',
-    medium: 'h-12 md:h-14 w-auto',
-    small: 'h-10 md:h-11 w-auto'
+    large: 'h-12 md:h-16 w-auto',
+    medium: 'h-12 md:h-16 w-auto',
+    small: 'h-12 md:h-16 w-auto'
   };
 
   return (
-    <div className="flex items-center justify-center grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-in-out cursor-default">
+    <div className="flex items-center justify-center transition-all duration-500 ease-in-out cursor-default">
       {sponsor.logo ? (
         <img
           src={sponsor.logo}
@@ -37,7 +37,7 @@ const SponsorItem = ({ sponsor, size = 'medium' }: { sponsor: Sponsor, size?: 'l
   );
 };
 
-const SponsorBlock = ({ label, sponsors, size = 'medium', gridCols = 'grid-cols-2 md:grid-cols-3' }: { label: string, sponsors: Sponsor[], size?: 'large' | 'medium' | 'small', gridCols?: string }) => {
+const SponsorBlock = ({ label, sponsors, size = 'medium', gridCols = 'grid-cols-2 md:grid-cols-3', isPatron = false }: { label: string, sponsors: Sponsor[], size?: 'large' | 'medium' | 'small', gridCols?: string, isPatron?: boolean }) => {
   if (sponsors.length === 0) return null;
   
   return (
@@ -45,7 +45,9 @@ const SponsorBlock = ({ label, sponsors, size = 'medium', gridCols = 'grid-cols-
       <p className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-[#262626] font-bold mb-10 md:mb-16">
         {label}
       </p>
-      <div className={`grid ${gridCols} gap-x-8 gap-y-12 md:gap-20 items-center justify-items-start`}>
+      <div className={cn(
+        isPatron ? "flex flex-wrap gap-x-12 gap-y-8 items-center justify-start" : `grid ${gridCols} gap-x-8 gap-y-12 md:gap-20 items-center justify-items-start`
+      )}>
         {sponsors.map((sponsor) => (
           <SponsorItem key={sponsor.id} sponsor={sponsor} size={size} />
         ))}
@@ -128,7 +130,7 @@ const SponsorSection = () => {
             label="PATROCINI ISTITUZIONALI E STRATEGICI" 
             sponsors={patronSponsors} 
             size="medium" 
-            gridCols="grid-cols-2" 
+            isPatron={true}
           />
         </div>
 
