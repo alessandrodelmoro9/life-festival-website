@@ -87,10 +87,9 @@ const SponsorSection = () => {
   const patronSponsors = sponsorsData.filter(s => s.category === 'patron');
 
   return (
-    <section id="sponsors" ref={sectionRef} className="relative pt-32 md:pt-56 pb-24 md:pb-40 bg-[#F4EEE4] overflow-hidden">
+    <section id="sponsors" ref={sectionRef} className="relative pt-32 md:pt-56 pb-0 bg-[#F4EEE4] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         
-        {/* EDITORIAL HEADER */}
         <div className="sponsor-animate mb-24 md:mb-40">
           <h2
             className="font-display text-[#262626] leading-[0.95] font-medium tracking-tighter mb-4"
@@ -103,7 +102,6 @@ const SponsorSection = () => {
           </p>
         </div>
 
-        {/* BLOCKS WITH DIVIDERS */}
         <div className="max-w-[1400px]">
           <SponsorBlock 
             label="EXPERIENCE SPONSOR" 

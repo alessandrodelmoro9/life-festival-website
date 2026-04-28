@@ -74,7 +74,7 @@ const AboutSection = () => {
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12">
             <h2
               className="about-heading font-display text-foreground leading-[0.95] font-medium tracking-tighter"
-              style={{ fontSize: 'clamp(3.5rem, 8vw, 7.5rem)' }}
+              style={{ fontSize: 'clamp(4rem, 10vw, 7.5rem)' }}
             >
               Ogni gesto<br />
               lascia una<br />
@@ -82,12 +82,12 @@ const AboutSection = () => {
             </h2>
 
             {/* Interactive Trigger (Desktop: Right of Title, Mobile: Below Title) */}
-            <div className="about-text flex flex-col items-start md:pt-16">
+            <div className="about-text flex flex-col items-center md:items-start md:pt-16">
               <button 
-                className="group flex flex-col items-start cursor-pointer gap-2"
+                className="group flex flex-col items-center md:items-start cursor-pointer gap-2"
                 onClick={handleActivatePaint}
               >
-                <span className="font-body text-[11px] md:text-[12px] uppercase tracking-normal text-black font-bold group-hover:text-primary transition-colors leading-[1.1] text-left">
+                <span className="font-body text-[11px] md:text-[12px] uppercase tracking-normal text-black font-bold group-hover:text-primary transition-colors leading-[1.1] text-center md:text-left">
                   Lascia il<br />tuo segno
                 </span>
                 
