@@ -110,23 +110,6 @@ const CustomCursor: React.FC = () => {
         }
       `}</style>
       
-      {/* Elongated Tail Components */}
-      <div
-        ref={follower3Ref}
-        className="fixed top-0 left-0 w-6 h-6 -ml-3 -mt-3 rounded-full bg-black/10 pointer-events-none z-[10000] blur-xl"
-        style={{ WILL_CHANGE: 'transform' }}
-      />
-      <div
-        ref={follower2Ref}
-        className="fixed top-0 left-0 w-7 h-7 -ml-3.5 -mt-3.5 rounded-full bg-black/20 pointer-events-none z-[10001] blur-lg"
-        style={{ WILL_CHANGE: 'transform' }}
-      />
-      <div
-        ref={follower1Ref}
-        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 rounded-full bg-black/40 pointer-events-none z-[10002] blur-md mix-blend-multiply"
-        style={{ WILL_CHANGE: 'transform' }}
-      />
-      
       {/* Main Cursor (SVG) - The tip is at top-left of the div */}
       <div
         ref={cursorRef}
@@ -134,7 +117,7 @@ const CustomCursor: React.FC = () => {
       >
         <svg 
           viewBox="0 0 602 772" 
-          className="w-full h-full drop-shadow-md"
+          className="w-full h-full"
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
         >

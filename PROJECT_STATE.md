@@ -29,7 +29,13 @@ Implement a high-end, editorial-style interactive website for LIFE Design Festiv
 - **Z-Index Layering:** Canvas stays visible over modals (`z-10000`) but allows navigation when not in 'draw' mode.
 - **Persistence:** Strokes are saved in a global context array, filtered by `activeSpeakerId`.
 
-### 3. Countdown & Layout
+### 3. Life25 Section (Interactive Image Trail)
+- **Visuals:** Monumental "life 25" outline typography in Aquawax font (25vw).
+- **Interactive Effect:** "Image Trail" system that generates image sequences from the `life25` archive on mouse/touch movement.
+- **Animations:** GSAP-powered scale-in and fade-out/collapse logic (800ms lifespan).
+- **Optimization:** High-performance DOM node management and speed-dependent intensity calculation.
+
+### 4. Countdown & Layout
 - **Visuals:** 4-block palette-based countdown (Brown, Pink, Orange, Blue).
 - **Animations:** GSAP-powered count-up and scroll entrance.
 - **Header:** Hero section with `SplitText` for "Life Design Festival".
