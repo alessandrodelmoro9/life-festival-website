@@ -67,9 +67,6 @@ const CustomCursor: React.FC = () => {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest('button, a, .interactive, .cursor-pointer')) {
-        gsap.to(cursorRef.current, { scale: 1.3, duration: 0.3 });
-      }
       if (target.closest('.paint-toolbar-container')) {
         setIsOverToolbar(true);
       }
@@ -77,9 +74,6 @@ const CustomCursor: React.FC = () => {
 
     const handleMouseOut = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest('button, a, .interactive, .cursor-pointer')) {
-        gsap.to(cursorRef.current, { scale: 1, duration: 0.3 });
-      }
       if (target.closest('.paint-toolbar-container')) {
         setIsOverToolbar(false);
       }
@@ -115,15 +109,11 @@ const CustomCursor: React.FC = () => {
         ref={cursorRef}
         className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[10003] will-change-transform"
       >
-        <svg 
-          viewBox="0 0 602 772" 
-          className="w-full h-full"
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M22.9881 22.9678V743.637L267.681 539.247L570.952 487.137L22.9881 22.9678Z" fill="black"/>
-          <path d="M275.952 554.137L34.6748 757.376C31.1639 761.543 25.4187 763.075 20.2996 761.224C15.1805 759.374 11.7555 754.521 11.7555 749.067L10 22.9923C9.98776 17.9431 12.9095 13.3474 17.5007 11.215C22.0796 9.08256 27.4811 9.79337 31.3603 13.0533L587.39 481.106C591.551 484.611 593.086 490.346 591.208 495.457C589.342 500.567 584.468 503.974 579.017 503.974L275.952 554.137ZM261.221 526.195L543.478 478.091L36.0374 50.9097L37.6333 713.564L261.221 526.195Z" fill="white"/>
-        </svg>
+        <img 
+          src="/Pointer.svg" 
+          alt="Cursor"
+          className="w-full h-full object-contain"
+        />
       </div>
     </>
   );

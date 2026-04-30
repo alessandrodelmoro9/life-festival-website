@@ -21,6 +21,7 @@ const Navbar = () => {
     { label: 'About', id: 'about' },
     { label: 'Speaker', id: 'speakers' },
     { label: 'Programma', id: 'program' },
+    { label: 'LIFE 25', id: 'life25' },
     { label: 'Location', id: 'location' },
     { label: 'Partner', id: 'sponsors' },
   ];
@@ -37,12 +38,12 @@ const Navbar = () => {
         </button>
 
         {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <li key={item.id}>
               <button
                 onClick={() => scrollTo(item.id)}
-                className="font-body text-sm uppercase tracking-widest text-foreground hover:text-primary transition-colors duration-300"
+                className="font-body text-[13px] uppercase tracking-widest text-foreground px-4 py-2 border border-transparent hover:border-foreground transition-all duration-300"
               >
                 {item.label}
               </button>
@@ -53,7 +54,7 @@ const Navbar = () => {
               href="https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213"
               target="_blank"
               rel="noopener noreferrer"
-              className="group font-body text-sm uppercase tracking-widest bg-primary text-primary-foreground px-5 py-2 hover:opacity-90 transition-opacity duration-300 flex items-center gap-2"
+              className="group font-body text-[13px] uppercase tracking-widest bg-life-blue text-white px-5 py-2 hover:bg-life-pink hover:text-foreground transition-all duration-300 flex items-center gap-2"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5">
                 <path d="M7 7L17 17M17 17V7M17 17H7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />

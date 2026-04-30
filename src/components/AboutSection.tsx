@@ -84,11 +84,13 @@ const AboutSection = () => {
             {/* Interactive Trigger (Desktop: Right of Title, Mobile: Below Title) */}
             <div className="about-text flex flex-col items-center md:items-start md:pt-16">
               <button 
-                className="group flex flex-col items-center md:items-start cursor-pointer gap-2"
+                className="group flex flex-row items-center cursor-pointer gap-6"
                 onClick={handleActivatePaint}
               >
-                <span className="font-body text-[11px] md:text-[12px] uppercase tracking-normal text-black font-bold group-hover:text-primary transition-colors leading-[1.1] text-center md:text-left">
-                  Lascia il<br />tuo segno
+                <span className="font-body text-[13px] md:text-[15px] uppercase tracking-wider text-black font-medium group-hover:text-primary transition-colors leading-[1.2] text-center md:text-left">
+                  DISEGNA<br />
+                  LA TUA<br />
+                  TRACCIA
                 </span>
                 
                 <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
