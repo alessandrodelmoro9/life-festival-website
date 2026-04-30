@@ -73,7 +73,7 @@ const ProgramSection = () => {
     }
   };
 
-  const DayHeader = ({ number, month, label }: { number: string, month: string, label: string }) => {
+  const DayHeader = ({ number, month }: { number: string, month: string }) => {
     const isOpen = openDays[number];
     return (
       <div 
@@ -99,9 +99,6 @@ const ProgramSection = () => {
             </motion.div>
           </div>
         </div>
-        <span className="font-display text-2xl md:text-3xl lowercase leading-none text-[#F4EEE4] opacity-50 ml-1">
-          {label}
-        </span>
       </div>
     );
   };
@@ -121,7 +118,7 @@ const ProgramSection = () => {
             
             {/* COLUMN: DAY 1 */}
             <div className="program-column relative">
-              <DayHeader number="5" month="giugno" label="giorno uno" />
+              <DayHeader number="5" month="giugno" />
               <AnimatePresence initial={false}>
                 {(openDays['5'] || window.innerWidth >= 1024) && (
                   <motion.div 
@@ -145,7 +142,7 @@ const ProgramSection = () => {
 
             {/* COLUMN: DAY 2 */}
             <div className="program-column relative">
-              <DayHeader number="6" month="giugno" label="giorno due" />
+              <DayHeader number="6" month="giugno" />
               <AnimatePresence initial={false}>
                 {(openDays['6'] || window.innerWidth >= 1024) && (
                   <motion.div 
