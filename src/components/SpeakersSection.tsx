@@ -31,9 +31,10 @@ const SpeakersSection: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const { setActiveSpeakerId } = usePaint();
 
-  // Initial display: first 4 speakers
-  const initialSpeakers = speakersData.slice(0, 4);
-  const remainingSpeakers = speakersData.slice(4);
+  // Initial display: first 5 speakers (Host + next 4)
+  const host = speakersData[0];
+  const initialOthers = speakersData.slice(1, 5);
+  const remainingSpeakers = speakersData.slice(5);
 
   useEffect(() => {
     document.body.style.overflow = isDialogOpen ? 'hidden' : 'auto';
@@ -42,20 +43,11 @@ const SpeakersSection: React.FC = () => {
 
   const toggleExpand = () => {
     if (isExpanded) {
-      // Scroll to section top before collapsing to prevent losing context
-      const offset = 100; // Offset to keep the header visible
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = sectionRef.current?.getBoundingClientRect().top ?? 0;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      // Use scrollIntoView for more reliable scrolling to the top of the section
+      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       
-      // Small delay to allow scroll to start before height changes
-      setTimeout(() => setIsExpanded(false), 300);
+      // Delay collapsing until the scroll is mostly complete to avoid jumping
+      setTimeout(() => setIsExpanded(false), 600);
     } else {
       setIsExpanded(true);
     }
@@ -65,11 +57,10 @@ const SpeakersSection: React.FC = () => {
     <section 
       id="speakers" 
       ref={sectionRef} 
-      className="relative py-24 md:py-48 overflow-hidden bg-background"
+      className="relative py-24 md:py-48 overflow-hidden bg-background scroll-mt-24"
     >
       <div className="container mx-auto px-6 md:px-12">
         
-        {/* EDITORIAL HEADER */}
         <div className="mb-24 md:mb-40 text-left">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -90,14 +81,25 @@ const SpeakersSection: React.FC = () => {
           </motion.p>
         </div>
 
-        {/* INITIAL GRID (Top 4) WITH FADE OVERLAY */}
         <div className="relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-24">
-            {initialSpeakers.map((speaker, index) => (
+            <SpeakerItem 
+              key={host.id}
+              speaker={host}
+              index={0}
+              isHost={true}
+              hoveredId={hoveredId}
+              setHoveredId={setHoveredId}
+              onClick={() => {
+                setSelectedSpeaker(host);
+                setIsDialogOpen(true);
+              }}
+            />
+            {initialOthers.map((speaker, index) => (
               <SpeakerItem 
                 key={speaker.id}
                 speaker={speaker}
-                index={index}
+                index={index + 1}
                 hoveredId={hoveredId}
                 setHoveredId={setHoveredId}
                 onClick={() => {
@@ -108,7 +110,6 @@ const SpeakersSection: React.FC = () => {
             ))}
           </div>
 
-          {/* FADE-OUT OVERLAY (Visible only when not expanded) */}
           <AnimatePresence>
             {!isExpanded && (
               <motion.div 
@@ -121,7 +122,6 @@ const SpeakersSection: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        {/* EXPANDABLE SECTION */}
         <AnimatePresence>
           {isExpanded && (
             <motion.div
@@ -136,7 +136,7 @@ const SpeakersSection: React.FC = () => {
                   <SpeakerItem 
                     key={speaker.id}
                     speaker={speaker}
-                    index={index + 4}
+                    index={index + 5}
                     hoveredId={hoveredId}
                     setHoveredId={setHoveredId}
                     onClick={() => {
@@ -150,7 +150,6 @@ const SpeakersSection: React.FC = () => {
           )}
         </AnimatePresence>
 
-        {/* NEW EXPAND/COLLAPSE TRIGGER (Minimalist Link) */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +180,6 @@ const SpeakersSection: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* MODALE IMMERSIVA (PINK) */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent 
           onInteractOutside={(e) => e.preventDefault()}
@@ -249,16 +247,17 @@ const SpeakersSection: React.FC = () => {
   );
 };
 
-// SUB-COMPONENT: SPEAKER ITEM WITH FADE LOGIC
 const SpeakerItem = ({ 
   speaker, 
   index, 
+  isHost = false,
   hoveredId, 
   setHoveredId, 
   onClick 
 }: { 
   speaker: Speaker, 
   index: number, 
+  isHost?: boolean,
   hoveredId: number | null, 
   setHoveredId: (id: number | null) => void,
   onClick: () => void 
@@ -275,14 +274,20 @@ const SpeakerItem = ({
         backgroundColor: isHovered ? "#FF76BF" : "transparent",
       }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group cursor-pointer border-b border-foreground/10 pt-8 pb-8 md:pb-16 px-6 transition-all duration-300 relative"
+      className={cn(
+        "group cursor-pointer border-b border-foreground/10 px-6 transition-all duration-300 relative flex flex-col justify-center items-start text-left",
+        isHost ? "md:col-span-2 h-[190px]" : "h-[150px]"
+      )}
     >
-      <div className="space-y-4">
-        <h3 className="font-display font-medium text-4xl md:text-[5vw] leading-[0.9] tracking-tighter text-foreground">
+      <div className="space-y-2 text-left">
+        <h3 className={cn(
+          "font-display font-medium leading-[0.9] tracking-tighter text-foreground whitespace-nowrap text-left",
+          isHost ? "text-[5.5vw] md:text-[4.5vw]" : "text-[5vw] md:text-[3.2vw]"
+        )}>
           {formatSpeakerName(speaker.name)}
         </h3>
         <p className={cn(
-          "font-body text-[10px] md:text-xs uppercase tracking-[0.2em] transition-colors duration-300",
+          "font-body text-[10px] md:text-xs uppercase tracking-[0.2em] transition-colors duration-300 text-left",
           isHovered ? "text-foreground/70" : "text-muted-foreground"
         )}>
           {speaker.role}

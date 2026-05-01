@@ -159,7 +159,7 @@
   }
 
   body {
-    @apply text-foreground font-body antialiased;
+    @apply text-foreground font-body antialiased tracking-normal;
     cursor: none;
   }
 
