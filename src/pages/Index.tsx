@@ -1,4 +1,5 @@
 import { useLenis } from '@/hooks/useLenis';
+import { useImagePreloader } from '@/hooks/useImagePreloader';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -18,6 +19,7 @@ import bgSite from '@/assets/bg-site.svg';
 
 const Index = () => {
   useLenis();
+  useImagePreloader();
 
   return (
     <PaintProvider>
