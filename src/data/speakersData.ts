@@ -34,7 +34,7 @@ export const speakersData: Speaker[] = [
     role: "Independent Agency",
     description: "Brand identity e comunicazione strategica ad alto impatto.",
     color: 'secondary',
-    image: "/assets/speakers/Auge.png"
+    image: "/assets/speakers/Auge.jpg"
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ export const speakersData: Speaker[] = [
     role: "Communication Studio",
     description: "Progettazione di connessioni e narrazioni visive contemporanee.",
     color: 'accent',
-    image: "/assets/speakers/Be Family.png"
+    image: "/assets/speakers/Be Family.jpg"
   },
   {
     id: 4,
@@ -90,7 +90,7 @@ export const speakersData: Speaker[] = [
     role: "UX Expert & Figma Master",
     description: "Pioniere della UX e formatore specializzato in interfacce.",
     color: 'accent',
-    image: "/assets/speakers/italo_sannino.png"
+    image: "/assets/speakers/italo_sannino.jpg"
   },
   {
     id: 10,
@@ -98,7 +98,7 @@ export const speakersData: Speaker[] = [
     role: "Strategic Design Studio",
     description: "Rigore strategico e follia creativa applicata al progetto.",
     color: 'primary',
-    image: "/assets/speakers/Jekyll & Hyde.png"
+    image: "/assets/speakers/Jekyll & Hyde.jpg"
   },
   {
     id: 11,
@@ -106,7 +106,7 @@ export const speakersData: Speaker[] = [
     role: "Graphic Designer",
     description: "Fonde tradizione popolare e ricerca visiva contemporanea.",
     color: 'secondary',
-    image: "/assets/speakers/Mauro Bubbico.png"
+    image: "/assets/speakers/Mauro Bubbico.jpg"
   },
   {
     id: 12,
@@ -122,7 +122,7 @@ export const speakersData: Speaker[] = [
     role: "Professoressa & Academic",
     description: "Docente e ricercatrice sull'evoluzione dei linguaggi visivi.",
     color: 'secondary',
-    image: "/assets/speakers/enricadaguanno.jpeg"
+    image: "/assets/speakers/enricadaguanno.jpg"
   },
   {
     id: 14,
@@ -162,7 +162,7 @@ export const speakersData: Speaker[] = [
     role: "Creative Production",
     description: "Contenuti visivi d'avanguardia tra tecnologia e visione.",
     color: 'primary',
-    image: "/assets/speakers/The wave.png"
+    image: "/assets/speakers/The wave.jpg"
   },
   {
     id: 19,

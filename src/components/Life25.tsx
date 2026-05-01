@@ -8,8 +8,8 @@ const CONFIG = {
   outDuration: 0.8,
   baseRotation: 15,
   maxRotationFactor: 2.0,
-  minImageSize: 140,        // Immagini più grandi
-  maxImageSize: 280,        // Immagini più grandi
+  minImageSize: 140,
+  maxImageSize: 280,
   speedSmoothingFactor: 0.1,
   maxActiveImages: 22,
 };
@@ -32,6 +32,13 @@ const IMAGES = [
   '/assets/life25/070599.jpg'
 ];
 
+interface PooledImage {
+  element: HTMLDivElement;
+  imgElement: HTMLImageElement;
+  inUse: boolean;
+  removeTime: number;
+}
+
 const Life25 = () => {
   const containerRef = useRef<HTMLElement>(null);
   const lastMousePos = useRef({ x: 0, y: 0 });
@@ -40,11 +47,39 @@ const Life25 = () => {
   const smoothedSpeed = useRef(0);
   const maxSpeed = useRef(0.5);
   const imageIndex = useRef(0);
-  const activeImages = useRef<{ element: HTMLDivElement; removeTime: number; isRemoving: boolean }[]>([]);
+  
+  // Object Pool for Zero-Lag Rendering
+  const imagePool = useRef<PooledImage[]>([]);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // Initialize the pool
+    const initializePool = () => {
+      for (let i = 0; i < CONFIG.maxActiveImages; i++) {
+        const div = document.createElement('div');
+        div.className = 'absolute pointer-events-none overflow-hidden opacity-0 will-change-transform';
+        div.style.zIndex = '10';
+        div.style.transform = 'translate(-50%, -50%) scale(0)';
+        
+        const img = document.createElement('img');
+        img.className = 'w-full h-full object-cover';
+        img.style.display = 'block';
+        div.appendChild(img);
+        
+        container.appendChild(div);
+        
+        imagePool.current.push({
+          element: div,
+          imgElement: img,
+          inUse: false,
+          removeTime: 0
+        });
+      }
+    };
+
+    initializePool();
 
     const ctx = gsap.context(() => {
       const handleMouseMove = (e: MouseEvent | TouchEvent) => {
@@ -72,9 +107,7 @@ const Life25 = () => {
         return smoothedSpeed.current;
       };
 
-      const createImage = () => {
-        if (activeImages.current.length >= CONFIG.maxActiveImages) return;
-
+      const triggerImage = () => {
         const rect = container.getBoundingClientRect();
         const isInside = (
             mousePos.current.x >= rect.left &&
@@ -90,6 +123,10 @@ const Life25 = () => {
 
         if (dist < CONFIG.mouseThreshold) return;
 
+        // Find an available image in the pool
+        const pooled = imagePool.current.find(p => !p.inUse);
+        if (!pooled) return;
+
         const speed = calculateSpeed();
         const size = CONFIG.minImageSize + (CONFIG.maxImageSize - CONFIG.minImageSize) * speed;
         const rot = (Math.random() - 0.5) * CONFIG.baseRotation * (1 + speed * (CONFIG.maxRotationFactor - 1));
@@ -97,36 +134,29 @@ const Life25 = () => {
         const x = mousePos.current.x - rect.left;
         const y = mousePos.current.y - rect.top;
 
-        const imgDiv = document.createElement('div');
-        imgDiv.className = 'absolute pointer-events-none overflow-hidden will-change-transform';
-        imgDiv.style.width = `${size}px`;
-        imgDiv.style.height = `${size}px`;
-        imgDiv.style.left = `${x}px`;
-        imgDiv.style.top = `${y}px`;
-        imgDiv.style.zIndex = '10';
-        imgDiv.style.transform = 'translate(-50%, -50%) scale(0)';
+        // Update pooled element
+        pooled.inUse = true;
+        pooled.removeTime = Date.now() + CONFIG.imageLifespan;
+        
+        pooled.imgElement.src = IMAGES[imageIndex.current];
+        pooled.element.style.width = `${size}px`;
+        pooled.element.style.height = `${size}px`;
+        pooled.element.style.left = `${x}px`;
+        pooled.element.style.top = `${y}px`;
+        
+        // Reset transform before new animation
+        gsap.set(pooled.element, { 
+          scale: 0.9, 
+          opacity: 0, 
+          rotation: rot 
+        });
 
-        const img = document.createElement('img');
-        img.src = IMAGES[imageIndex.current];
-        img.className = 'w-full h-full object-cover';
-        img.loading = 'eager'; 
-        imgDiv.appendChild(img);
-
-        container.appendChild(imgDiv);
-
-        gsap.to(imgDiv, {
-          scale: 0.9, // Parte quasi a dimensione piena
-          rotation: rot,
+        gsap.to(pooled.element, {
+          scale: 1,
           opacity: 1,
           duration: CONFIG.inDuration,
           ease: 'power2.out',
           force3D: true
-        });
-
-        activeImages.current.push({
-          element: imgDiv,
-          removeTime: Date.now() + CONFIG.imageLifespan,
-          isRemoving: false
         });
 
         imageIndex.current = (imageIndex.current + 1) % IMAGES.length;
@@ -135,12 +165,14 @@ const Life25 = () => {
 
       const update = () => {
         const now = Date.now();
-        if (activeImages.current.length > 0) {
-          const toRemove = activeImages.current.filter(img => now >= img.removeTime && !img.isRemoving);
-          toRemove.forEach(imgObj => {
-            imgObj.isRemoving = true;
-            // Correzione: rimpicciolisce (scale: 0.1) ruotando in senso anti-orario (-=30)
-            gsap.to(imgObj.element, {
+        
+        // Handle removals
+        imagePool.current.forEach(pooled => {
+          if (pooled.inUse && now >= pooled.removeTime) {
+            // Mark as "removing" by setting removeTime to infinity so it doesn't trigger again
+            pooled.removeTime = Infinity; 
+            
+            gsap.to(pooled.element, {
               opacity: 0,
               scale: 0.1,
               rotation: "-=30",
@@ -148,14 +180,15 @@ const Life25 = () => {
               ease: 'power2.in',
               force3D: true,
               onComplete: () => {
-                const idx = activeImages.current.indexOf(imgObj);
-                if (idx > -1) activeImages.current.splice(idx, 1);
-                if (imgObj.element.parentNode) imgObj.element.remove();
+                pooled.inUse = false;
+                pooled.removeTime = 0;
+                gsap.set(pooled.element, { scale: 0, opacity: 0 });
               }
             });
-          });
-        }
-        createImage();
+          }
+        });
+
+        triggerImage();
       };
 
       window.addEventListener('mousemove', handleMouseMove, { passive: true });
@@ -172,7 +205,12 @@ const Life25 = () => {
       };
     }, container);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      // Cleanup DOM
+      imagePool.current.forEach(p => p.element.remove());
+      imagePool.current = [];
+    };
   }, []);
 
   return (
@@ -190,27 +228,37 @@ const Life25 = () => {
         </div>
       </div>
 
-      <div className="relative select-none pointer-events-none flex items-center justify-center w-full h-full px-4 overflow-hidden">
+      <div className="relative select-none pointer-events-none flex items-center justify-center w-full h-full px-[40px] overflow-hidden box-border">
+        {/* Desktop Version */}
         <h2 
-          className="hidden md:flex whitespace-nowrap justify-center font-display font-medium text-[#262626]"
+          className="hidden md:flex whitespace-nowrap font-display font-medium text-[#262626] w-full"
           style={{ 
-            fontSize: 'min(30vw, 22rem)', 
-            lineHeight: '0.9', 
-            letterSpacing: '-0.04em' 
+            fontSize: 'min(36vw, 30rem)', 
+            lineHeight: '0.8', 
+            letterSpacing: '-0.05em',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
-          <span className="relative z-[15]">L</span>
-          <span className="relative z-[5]">i</span>
-          <span className="relative z-[15]">f</span>
-          <span className="relative z-[5]">e</span>
-          <span className="mx-[0.03em]"></span>
-          <span className="relative z-[15]">2</span>
-          <span className="relative z-[5]">5</span>
+          <div className="flex">
+            <span className="relative z-[15]">L</span>
+            <span className="relative z-[5]">i</span>
+            <span className="relative z-[15]">f</span>
+            <span className="relative z-[5]">e</span>
+          </div>
+          <div className="flex">
+            <span className="relative z-[15]">2</span>
+            <span className="relative z-[5]">5</span>
+          </div>
         </h2>
 
+        {/* Mobile Version */}
         <h2 
-          className="flex md:hidden flex-col items-center justify-center font-display font-medium uppercase text-[#262626] text-[28vw]"
-          style={{ lineHeight: '0.85', letterSpacing: '-0.04em' }}
+          className="flex md:hidden flex-col items-center justify-center font-display font-medium uppercase text-[#262626] text-[32vw] w-full"
+          style={{ 
+            lineHeight: '0.8', 
+            letterSpacing: '-0.05em',
+          }}
         >
           <div className="flex flex-col items-center">
             <div className="flex">
