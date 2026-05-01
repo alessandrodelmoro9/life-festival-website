@@ -276,7 +276,7 @@ const SpeakerItem = ({
       transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
         "group cursor-pointer border-b border-foreground/10 px-6 transition-all duration-300 relative flex flex-col justify-center items-start text-left",
-        isHost ? "md:col-span-2 h-[190px]" : "h-[150px]"
+        isHost ? "md:col-span-2 h-[190px] border-t" : "h-[150px]"
       )}
     >
       <div className="space-y-2 text-left">
