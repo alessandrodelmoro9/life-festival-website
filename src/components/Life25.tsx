@@ -2,16 +2,16 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const CONFIG = {
-  mouseThreshold: 80,       // Esatto da main
-  imageLifespan: 1200,      // Esatto da main
-  inDuration: 0.4,          // Esatto da main
-  outDuration: 0.8,         // Esatto da main
-  baseRotation: 15,         // Esatto da main
-  maxRotationFactor: 2.0,   // Esatto da main
-  minImageSize: 180,        // Esatto da main
-  maxImageSize: 350,        // Esatto da main
-  speedSmoothingFactor: 0.1, // Esatto da main
-  maxActiveImages: 15,      // Esatto da main
+  mouseThreshold: 45,
+  imageLifespan: 1200,
+  inDuration: 0.4,
+  outDuration: 0.8,
+  baseRotation: 15,
+  maxRotationFactor: 2.0,
+  minImageSize: 140,        // Immagini più grandi
+  maxImageSize: 280,        // Immagini più grandi
+  speedSmoothingFactor: 0.1,
+  maxActiveImages: 22,
 };
 
 const IMAGES = [
@@ -43,12 +43,6 @@ const Life25 = () => {
   const activeImages = useRef<{ element: HTMLDivElement; removeTime: number; isRemoving: boolean }[]>([]);
 
   useEffect(() => {
-    // Preload (Good practice from main)
-    IMAGES.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-
     const container = containerRef.current;
     if (!container) return;
 
@@ -109,21 +103,19 @@ const Life25 = () => {
         imgDiv.style.height = `${size}px`;
         imgDiv.style.left = `${x}px`;
         imgDiv.style.top = `${y}px`;
-        imgDiv.style.zIndex = '10'; // Images at z-10 for sandwich effect
+        imgDiv.style.zIndex = '10';
         imgDiv.style.transform = 'translate(-50%, -50%) scale(0)';
 
         const img = document.createElement('img');
         img.src = IMAGES[imageIndex.current];
         img.className = 'w-full h-full object-cover';
         img.loading = 'eager'; 
-        // @ts-ignore
-        img.decoding = 'async';
         imgDiv.appendChild(img);
 
         container.appendChild(imgDiv);
 
         gsap.to(imgDiv, {
-          scale: 1,
+          scale: 0.9, // Parte quasi a dimensione piena
           rotation: rot,
           opacity: 1,
           duration: CONFIG.inDuration,
@@ -143,14 +135,15 @@ const Life25 = () => {
 
       const update = () => {
         const now = Date.now();
-
         if (activeImages.current.length > 0) {
           const toRemove = activeImages.current.filter(img => now >= img.removeTime && !img.isRemoving);
           toRemove.forEach(imgObj => {
             imgObj.isRemoving = true;
+            // Correzione: rimpicciolisce (scale: 0.1) ruotando in senso anti-orario (-=30)
             gsap.to(imgObj.element, {
               opacity: 0,
               scale: 0.1,
+              rotation: "-=30",
               duration: CONFIG.outDuration,
               ease: 'power2.in',
               force3D: true,
@@ -162,7 +155,6 @@ const Life25 = () => {
             });
           });
         }
-
         createImage();
       };
 
@@ -189,7 +181,6 @@ const Life25 = () => {
       ref={containerRef}
       className="relative h-screen w-full bg-[#FF76BF] overflow-hidden flex items-center justify-center z-20"
     >
-      {/* Corner Labels - 40px offset as requested */}
       <div className="absolute inset-0 pointer-events-none p-[40px] z-30">
         <div className="relative w-full h-full text-[#262626] font-display uppercase text-[12px] tracking-widest opacity-100">
           <span className="absolute top-0 left-0">RICORDI</span>
@@ -200,7 +191,6 @@ const Life25 = () => {
       </div>
 
       <div className="relative select-none pointer-events-none flex items-center justify-center w-full h-full px-4 overflow-hidden">
-        {/* Desktop Layout - Big L as requested */}
         <h2 
           className="hidden md:flex whitespace-nowrap justify-center font-display font-medium text-[#262626]"
           style={{ 
@@ -218,7 +208,6 @@ const Life25 = () => {
           <span className="relative z-[5]">5</span>
         </h2>
 
-        {/* Mobile Layout - Fixed stacking */}
         <h2 
           className="flex md:hidden flex-col items-center justify-center font-display font-medium uppercase text-[#262626] text-[28vw]"
           style={{ lineHeight: '0.85', letterSpacing: '-0.04em' }}
