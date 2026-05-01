@@ -2,24 +2,34 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const CONFIG = {
-  mouseThreshold: 80,       // Increased threshold to reduce image density
-  imageLifespan: 1200,      // Longer lifespan for better visual impact
-  inDuration: 0.4,          
-  outDuration: 0.8,         
-  baseRotation: 15,         
-  maxRotationFactor: 2.0,   
-  minImageSize: 180,        // Slightly smaller images
-  maxImageSize: 350,        
-  speedSmoothingFactor: 0.1,
-  maxActiveImages: 15,      // Hard limit on DOM nodes for performance
+  mouseThreshold: 80,       // Esatto da main
+  imageLifespan: 1200,      // Esatto da main
+  inDuration: 0.4,          // Esatto da main
+  outDuration: 0.8,         // Esatto da main
+  baseRotation: 15,         // Esatto da main
+  maxRotationFactor: 2.0,   // Esatto da main
+  minImageSize: 180,        // Esatto da main
+  maxImageSize: 350,        // Esatto da main
+  speedSmoothingFactor: 0.1, // Esatto da main
+  maxActiveImages: 15,      // Esatto da main
 };
 
-// Selection of lighter images (avoiding the 14MB ones)
 const IMAGES = [
-  '/assets/life25/06051.jpg', '/assets/life25/06052.jpg', '/assets/life25/06053.jpg',
-  '/assets/life25/06054.jpg', '/assets/life25/06055.jpg', '/assets/life25/06056.jpg',
-  '/assets/life25/060510.jpg', '/assets/life25/060511.jpg', '/assets/life25/060512.jpg',
-  '/assets/life25/0705103.jpg', '/assets/life25/0705105.jpg', '/assets/life25/0705106.jpg',
+  '/assets/life25/060522.jpg',
+  '/assets/life25/06054.jpg',
+  '/assets/life25/06058.jpg',
+  '/assets/life25/070502.jpg',
+  '/assets/life25/070503.jpg',
+  '/assets/life25/0705102.jpg',
+  '/assets/life25/070519.jpg',
+  '/assets/life25/070522.jpg',
+  '/assets/life25/070540.jpg',
+  '/assets/life25/070549.jpg',
+  '/assets/life25/070574.jpg',
+  '/assets/life25/070577.jpg',
+  '/assets/life25/070584.jpg',
+  '/assets/life25/070592.jpg',
+  '/assets/life25/070599.jpg'
 ];
 
 const Life25 = () => {
@@ -33,6 +43,12 @@ const Life25 = () => {
   const activeImages = useRef<{ element: HTMLDivElement; removeTime: number; isRemoving: boolean }[]>([]);
 
   useEffect(() => {
+    // Preload (Good practice from main)
+    IMAGES.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -51,26 +67,25 @@ const Life25 = () => {
         const dx = mousePos.current.x - lastMousePos.current.x;
         const dy = mousePos.current.y - lastMousePos.current.y;
         const dist = Math.hypot(dx, dy);
-        
+
         const raw = dist / dt;
         if (raw > maxSpeed.current) maxSpeed.current = raw;
-        
+
         const norm = Math.min(raw / (maxSpeed.current || 0.5), 1);
         smoothedSpeed.current = smoothedSpeed.current * (1 - CONFIG.speedSmoothingFactor) + norm * CONFIG.speedSmoothingFactor;
         lastMoveTime.current = now;
-        
+
         return smoothedSpeed.current;
       };
 
       const createImage = () => {
-        // Performance guard: don't create too many images
         if (activeImages.current.length >= CONFIG.maxActiveImages) return;
 
         const rect = container.getBoundingClientRect();
         const isInside = (
-            mousePos.current.x >= rect.left && 
-            mousePos.current.x <= rect.right && 
-            mousePos.current.y >= rect.top && 
+            mousePos.current.x >= rect.left &&
+            mousePos.current.x <= rect.right &&
+            mousePos.current.y >= rect.top &&
             mousePos.current.y <= rect.bottom
         );
         if (!isInside) return;
@@ -94,23 +109,26 @@ const Life25 = () => {
         imgDiv.style.height = `${size}px`;
         imgDiv.style.left = `${x}px`;
         imgDiv.style.top = `${y}px`;
-        imgDiv.style.zIndex = '10'; // Images at z-10
+        imgDiv.style.zIndex = '10'; // Images at z-10 for sandwich effect
         imgDiv.style.transform = 'translate(-50%, -50%) scale(0)';
-        
+
         const img = document.createElement('img');
         img.src = IMAGES[imageIndex.current];
         img.className = 'w-full h-full object-cover';
-        img.loading = 'eager'; // Force loading for trail effect
+        img.loading = 'eager'; 
+        // @ts-ignore
+        img.decoding = 'async';
         imgDiv.appendChild(img);
-        
+
         container.appendChild(imgDiv);
-        
+
         gsap.to(imgDiv, {
           scale: 1,
           rotation: rot,
           opacity: 1,
           duration: CONFIG.inDuration,
-          ease: 'power2.out'
+          ease: 'power2.out',
+          force3D: true
         });
 
         activeImages.current.push({
@@ -125,9 +143,7 @@ const Life25 = () => {
 
       const update = () => {
         const now = Date.now();
-        
-        // Use a reverse loop for safer array modification if needed, 
-        // but here we just process the first one that needs removal
+
         if (activeImages.current.length > 0) {
           const toRemove = activeImages.current.filter(img => now >= img.removeTime && !img.isRemoving);
           toRemove.forEach(imgObj => {
@@ -137,6 +153,7 @@ const Life25 = () => {
               scale: 0.1,
               duration: CONFIG.outDuration,
               ease: 'power2.in',
+              force3D: true,
               onComplete: () => {
                 const idx = activeImages.current.indexOf(imgObj);
                 if (idx > -1) activeImages.current.splice(idx, 1);
@@ -170,13 +187,29 @@ const Life25 = () => {
     <section 
       id="life25"
       ref={containerRef}
-      className="relative h-screen w-full bg-[#262626] overflow-hidden flex items-center justify-center z-20"
+      className="relative h-screen w-full bg-[#FF76BF] overflow-hidden flex items-center justify-center z-20"
     >
-      {/* Monumental Typography with layered z-indexes */}
-      <div className="flex select-none pointer-events-none items-center justify-center w-full h-full px-4 overflow-hidden">
-        {/* Desktop Layout: Horizontal single line (lowercase) */}
-        <h2 className="hidden md:flex whitespace-nowrap justify-center font-display font-bold text-[28vw] lowercase leading-none tracking-tighter text-[#F4EEE4]">
-          <span className="relative z-[15]">l</span>
+      {/* Corner Labels - 40px offset as requested */}
+      <div className="absolute inset-0 pointer-events-none p-[40px] z-30">
+        <div className="relative w-full h-full text-[#262626] font-display uppercase text-[12px] tracking-widest opacity-100">
+          <span className="absolute top-0 left-0">RICORDI</span>
+          <span className="absolute top-0 right-0">DALLA</span>
+          <span className="absolute bottom-0 left-0">SCORSA</span>
+          <span className="absolute bottom-0 right-0">EDIZIONE</span>
+        </div>
+      </div>
+
+      <div className="relative select-none pointer-events-none flex items-center justify-center w-full h-full px-4 overflow-hidden">
+        {/* Desktop Layout - Big L as requested */}
+        <h2 
+          className="hidden md:flex whitespace-nowrap justify-center font-display font-medium text-[#262626]"
+          style={{ 
+            fontSize: 'min(30vw, 22rem)', 
+            lineHeight: '0.9', 
+            letterSpacing: '-0.04em' 
+          }}
+        >
+          <span className="relative z-[15]">L</span>
           <span className="relative z-[5]">i</span>
           <span className="relative z-[15]">f</span>
           <span className="relative z-[5]">e</span>
@@ -185,20 +218,23 @@ const Life25 = () => {
           <span className="relative z-[5]">5</span>
         </h2>
 
-        {/* Mobile Layout: 3 Lines (LI, FE, 25) in Uppercase with grid alignment */}
-        <h2 className="flex md:hidden flex-col items-center justify-center font-display font-bold uppercase leading-[0.8] tracking-tighter text-[#F4EEE4]">
+        {/* Mobile Layout - Fixed stacking */}
+        <h2 
+          className="flex md:hidden flex-col items-center justify-center font-display font-medium uppercase text-[#262626] text-[28vw]"
+          style={{ lineHeight: '0.85', letterSpacing: '-0.04em' }}
+        >
           <div className="flex flex-col items-center">
-            <div className="flex text-[38vw] leading-none">
-              <span className="relative z-[15] inline-block w-[0.5em] text-center">L</span>
-              <span className="relative z-[5] inline-block w-[0.5em] text-center">I</span>
+            <div className="flex">
+              <span className="relative z-[15] w-[0.55em] text-center">L</span>
+              <span className="relative z-[5] w-[0.55em] text-center">I</span>
             </div>
-            <div className="flex text-[38vw] leading-none -mt-[0.05em]">
-              <span className="relative z-[15] inline-block w-[0.5em] text-center">F</span>
-              <span className="relative z-[5] inline-block w-[0.5em] text-center">E</span>
+            <div className="flex -mt-[0.05em]">
+              <span className="relative z-[15] w-[0.55em] text-center">F</span>
+              <span className="relative z-[5] w-[0.55em] text-center">E</span>
             </div>
-            <div className="flex text-[38vw] leading-none -mt-[0.05em]">
-              <span className="relative z-[15] inline-block w-[0.5em] text-center">2</span>
-              <span className="relative z-[5] inline-block w-[0.5em] text-center">5</span>
+            <div className="flex -mt-[0.05em]">
+              <span className="relative z-[15] w-[0.55em] text-center">2</span>
+              <span className="relative z-[5] w-[0.55em] text-center">5</span>
             </div>
           </div>
         </h2>

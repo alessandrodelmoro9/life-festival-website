@@ -13,6 +13,14 @@ export interface Speaker {
 
 export const speakersData: Speaker[] = [
   {
+    id: 0,
+    name: "Samuela Vaccari aka Cromia Design",
+    role: "HOST",
+    description: "Designer e curatrice, guiderà il racconto di LIFE Design Festival 2026.",
+    color: 'primary',
+    image: "/assets/speakers/Cromia design_samuela vaccari.jpg"
+  },
+  {
     id: 1,
     name: "Adoratorio studio",
     role: "Digital Design Studio",
@@ -41,18 +49,20 @@ export const speakersData: Speaker[] = [
     name: "Brutto Studio",
     role: "Design Collective",
     description: "Sperimentazione visiva e approccio grafico non convenzionale.",
-    color: 'primary'
+    color: 'primary',
+    image: "/assets/speakers/bruttoStudio.jpg"
   },
   {
     id: 5,
     name: "Dude Agency",
     role: "Creative Agency",
     description: "Hub creativo tra pubblicità e intrattenimento internazionale.",
-    color: 'secondary'
+    color: 'secondary',
+    image: "/assets/speakers/Domenico LoperfidoDUDE.jpg"
   },
   {
     id: 6,
-    name: "dVerso Studio",
+    name: "dverso studio",
     role: "Visual Communication",
     description: "Motion design e innovazione dei linguaggi digitali.",
     color: 'accent',
@@ -71,7 +81,8 @@ export const speakersData: Speaker[] = [
     name: "ET STUDIO",
     role: "Design & Identity",
     description: "Identità visive forti e sistemi di design integrati.",
-    color: 'secondary'
+    color: 'secondary',
+    image: "/assets/speakers/EtStudio.jpg"
   },
   {
     id: 9,
@@ -142,7 +153,8 @@ export const speakersData: Speaker[] = [
     name: "Simone Checchia",
     role: "Creative Director",
     description: "Design di prodotto tra estetica funzionale e innovazione.",
-    color: 'accent'
+    color: 'accent',
+    image: "/assets/speakers/SimoneChecchia.jpg"
   },
   {
     id: 18,
