@@ -183,10 +183,10 @@ const SpeakersSection: React.FC = () => {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent 
           onInteractOutside={(e) => e.preventDefault()}
-          className="fixed inset-0 z-[9999] max-w-none w-screen h-screen m-0 p-0 border-none bg-primary rounded-none translate-x-0 translate-y-0 left-0 top-0 overflow-y-auto [&>button]:hidden"
+          className="fixed inset-0 z-[9999] max-w-none w-screen h-screen m-0 p-0 border-none bg-primary rounded-none translate-x-0 translate-y-0 left-0 top-0 overflow-hidden [&>button]:hidden"
         >
           {selectedSpeaker && (
-            <div className="relative w-full min-h-full flex flex-col md:flex-row items-center justify-start md:justify-between p-6 md:p-24 gap-8 md:gap-12">
+            <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center p-6 md:p-24 gap-8 md:gap-12 overflow-hidden">
               <button 
                 onClick={() => setIsDialogOpen(false)}
                 className="absolute top-6 right-6 md:top-10 md:right-10 z-[10000] text-foreground/60 hover:text-foreground transition-colors"
@@ -194,15 +194,15 @@ const SpeakersSection: React.FC = () => {
                 <X size={window.innerWidth < 768 ? 32 : 48} strokeWidth={1.5} />
               </button>
 
-              <div className="w-full md:w-3/5 order-2 md:order-1 mt-4 md:mt-0">
-                <h2 className="text-foreground font-display font-medium text-4xl md:text-[7vw] leading-[0.95] tracking-tighter mb-6 md:mb-10">
+              <div className="w-full md:w-3/5 order-2 md:order-1 flex flex-col justify-center">
+                <h2 className="text-foreground font-display font-medium text-4xl md:text-[7vw] leading-[0.95] tracking-tighter mb-4 md:mb-8">
                   {formatSpeakerName(selectedSpeaker.name)}
                 </h2>
                 <div className="max-w-xl">
-                  <span className="text-foreground/70 font-display font-medium uppercase tracking-[0.2em] text-xs md:text-sm block mb-3 md:mb-4">
+                  <span className="text-foreground/70 font-display font-medium uppercase tracking-[0.2em] text-xs md:text-sm block mb-2 md:mb-4">
                     {selectedSpeaker.role}
                   </span>
-                  <p className="text-foreground/90 text-lg md:text-2xl leading-relaxed font-body font-light mb-8 md:mb-10">
+                  <p className="text-foreground/90 text-base md:text-xl lg:text-2xl leading-relaxed font-body font-light mb-6 md:mb-8 line-clamp-6 md:line-clamp-none">
                     {selectedSpeaker.description}
                   </p>
                   <div className="flex gap-6 md:gap-10">
@@ -230,7 +230,7 @@ const SpeakersSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="w-full md:w-[35vw] aspect-square order-1 md:order-2 mt-12 md:mt-0">
+              <div className="w-full md:w-[35vw] aspect-square order-1 md:order-2 flex items-center justify-center">
                 <div className="w-full h-full rounded-none overflow-hidden border border-foreground/10 bg-background/20">
                   {selectedSpeaker.image ? (
                     <img src={selectedSpeaker.image} className="w-full h-full object-cover" alt={selectedSpeaker.name} />
