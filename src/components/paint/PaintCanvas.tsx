@@ -24,14 +24,18 @@ const PaintCanvas: React.FC = () => {
   }, []);
 
   const getCanvasPoint = useCallback((e: React.PointerEvent | PointerEvent): Point => {
-    // Memorizziamo il punto in coordinate ASSOLUTE (documento)
+    // Se siamo in un modale, salviamo le coordinate relative al viewport
+    if (activeSpeakerId !== null) {
+      return { x: e.clientX, y: e.clientY };
+    }
+    // Altrimenti coordinate assolute (documento)
     return {
       x: e.clientX + window.scrollX,
       y: e.clientY + window.scrollY
     };
-  }, []);
+  }, [activeSpeakerId]);
 
-  const drawSmoothedLine = (ctx: CanvasRenderingContext2D, points: Point[], color: string, width: number, scrollY: number) => {
+  const drawSmoothedLine = (ctx: CanvasRenderingContext2D, points: Point[], color: string, width: number, scrollY: number, isModal?: boolean) => {
     if (points.length < 2) return;
 
     ctx.beginPath();
@@ -40,19 +44,20 @@ const PaintCanvas: React.FC = () => {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
 
-    // Trasliamo i punti in base allo scroll attuale per il disegno su canvas FIXED
-    const firstPoint = { x: points[0].x, y: points[0].y - scrollY };
+    // Se è un tratto modale, non sottraiamo lo scroll perché è già in coordinate viewport
+    const offset = isModal ? 0 : scrollY;
+    const firstPoint = { x: points[0].x, y: points[0].y - offset };
     ctx.moveTo(firstPoint.x, firstPoint.y);
 
     if (points.length === 2) {
-      ctx.lineTo(points[1].x, points[1].y - scrollY);
+      ctx.lineTo(points[1].x, points[1].y - offset);
     } else {
       for (let i = 1; i < points.length - 1; i++) {
         const xc = (points[i].x + points[i + 1].x) / 2;
-        const yc = (points[i].y + points[i + 1].y) / 2 - scrollY;
-        ctx.quadraticCurveTo(points[i].x, points[i].y - scrollY, xc, yc);
+        const yc = (points[i].y + points[i + 1].y) / 2 - offset;
+        ctx.quadraticCurveTo(points[i].x, points[i].y - offset, xc, yc);
       }
-      ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y - scrollY);
+      ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y - offset);
     }
     ctx.stroke();
   };
@@ -67,19 +72,19 @@ const PaintCanvas: React.FC = () => {
     ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
 
     const filteredStrokes = strokes.filter(s => 
-      activeSpeakerId === null ? !s.speakerId : s.speakerId === activeSpeakerId
+      activeSpeakerId === null ? s.speakerId === undefined : s.speakerId === activeSpeakerId
     );
 
     const viewHeight = window.innerHeight;
     const currentScrollY = window.scrollY;
 
     filteredStrokes.forEach(stroke => {
-      // Ottimizzazione: Disegna solo se almeno un punto è nel viewport (o vicino)
-      const isVisible = stroke.points.some(p => 
+      // Per i tratti modali la visibilità è sempre vera se il modale è aperto
+      const isVisible = stroke.isModal || stroke.points.some(p => 
         p.y > currentScrollY - 200 && p.y < currentScrollY + viewHeight + 200
       );
       if (isVisible) {
-        drawSmoothedLine(ctx, stroke.points, stroke.color, stroke.width, currentScrollY);
+        drawSmoothedLine(ctx, stroke.points, stroke.color, stroke.width, currentScrollY, stroke.isModal);
       }
     });
   }, [strokes, activeSpeakerId, scrollPos]);
@@ -96,11 +101,11 @@ const PaintCanvas: React.FC = () => {
     ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
     
     if (currentStroke.current.length >= 2) {
-      drawSmoothedLine(ctx, currentStroke.current, color, 3, window.scrollY);
+      drawSmoothedLine(ctx, currentStroke.current, color, 3, window.scrollY, activeSpeakerId !== null);
     }
     
     requestRef.current = requestAnimationFrame(draw);
-  }, [color]);
+  }, [color, activeSpeakerId]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
     if (!isActive || mode !== 'draw' || (e.pointerType === 'mouse' && e.button !== 0)) return;
@@ -135,7 +140,8 @@ const PaintCanvas: React.FC = () => {
         color,
         width: 3,
         timestamp: Date.now(),
-        speakerId: activeSpeakerId || undefined
+        speakerId: activeSpeakerId ?? undefined,
+        isModal: activeSpeakerId !== null
       };
       setStrokes([...strokes, newStroke]);
     }
@@ -187,7 +193,7 @@ const PaintCanvas: React.FC = () => {
       ref={containerRef} 
       className={cn(
         "fixed top-0 left-0 w-full h-screen pointer-events-none", // Fixed e h-screen!
-        activeSpeakerId ? "z-[10000]" : "z-[9998]",
+        activeSpeakerId !== null ? "z-[10000]" : "z-[9998]",
         isActive && mode === 'draw' && "pointer-events-auto cursor-crosshair z-[10001] touch-none"
       )}
       style={{ 

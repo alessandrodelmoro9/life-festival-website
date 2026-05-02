@@ -51,8 +51,8 @@ const Index = () => {
         <SpeakersSection />
         <ProgramSection />
         <LocationSection />
-        <TicketsSection />
         <Life25 />
+        <TicketsSection />
         <SponsorSection />
         <FooterSection />
         <PaintCanvas />

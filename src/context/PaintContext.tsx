@@ -10,7 +10,8 @@ export type Stroke = {
   color: string;
   width: number;
   timestamp: number;
-  speakerId?: number; // Nuovo: ancora il tratto a uno speaker specifico
+  speakerId?: number;
+  isModal?: boolean; // Nuovo: indica se il tratto è relativo al viewport (modale)
 };
 
 type PaintMode = 'draw' | 'nav';
@@ -40,19 +41,13 @@ export const PaintProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [activeSpeakerId, setActiveSpeakerId] = useState<number | null>(null);
 
   const clearStrokes = () => {
-    // Pulisce solo i tratti del contesto attuale
-    setStrokes(prev => prev.filter(s => s.speakerId !== (activeSpeakerId || undefined)));
+    // Pulisce TUTTI i tratti (globale + modali)
+    setStrokes([]);
   };
 
   const undo = () => {
-    // Trova l'ultimo tratto del contesto attuale e lo rimuove
-    setStrokes(prev => {
-      const lastIdx = [...prev].reverse().findIndex(s => s.speakerId === (activeSpeakerId || undefined));
-      if (lastIdx === -1) return prev;
-      const newStrokes = [...prev];
-      newStrokes.splice(prev.length - 1 - lastIdx, 1);
-      return newStrokes;
-    });
+    // Rimuove l'ultimo tratto in ordine temporale, ovunque sia stato fatto
+    setStrokes(prev => prev.slice(0, -1));
   };
 
   return (
