@@ -254,7 +254,7 @@ const Life25 = () => {
 
         {/* Mobile Version */}
         <h2 
-          className="flex md:hidden flex-col items-center justify-center font-display font-medium uppercase text-[#262626] text-[32vw] w-full"
+          className="flex md:hidden flex-col items-center justify-center font-display font-medium uppercase text-[#262626] text-[32vw] w-full relative z-[15]"
           style={{ 
             lineHeight: '0.8', 
             letterSpacing: '-0.05em',
@@ -262,16 +262,16 @@ const Life25 = () => {
         >
           <div className="flex flex-col items-center">
             <div className="flex">
-              <span className="relative z-[15] w-[0.55em] text-center">L</span>
-              <span className="relative z-[5] w-[0.55em] text-center">I</span>
+              <span className="w-[0.55em] text-center">L</span>
+              <span className="w-[0.55em] text-center">I</span>
             </div>
             <div className="flex -mt-[0.05em]">
-              <span className="relative z-[15] w-[0.55em] text-center">F</span>
-              <span className="relative z-[5] w-[0.55em] text-center">E</span>
+              <span className="w-[0.55em] text-center">F</span>
+              <span className="w-[0.55em] text-center">E</span>
             </div>
             <div className="flex -mt-[0.05em]">
-              <span className="relative z-[15] w-[0.55em] text-center">2</span>
-              <span className="relative z-[5] w-[0.55em] text-center">5</span>
+              <span className="w-[0.55em] text-center">2</span>
+              <span className="w-[0.55em] text-center">5</span>
             </div>
           </div>
         </h2>
