@@ -48,10 +48,14 @@ Ogni oggetto speaker richiede:
 
 ### 2. Gestione Sponsor (`src/data/sponsorsData.ts`)
 Gli sponsor sono divisi per gerarchia visiva. Il sistema supporta 6 categorie:
-- **`main`**: Sponsor principali (Grid grande).
-- **`experience` / **`active`**: Partner tecnici e di settore.
-- **`partner`**: Logo wall standard (Grid fitta).
-- **`community` / **`patron`**: Loghi istituzionali e partner media.
+- **`main`**: Sponsor principali.
+- **`experience`**: Partner di esperienza.
+- **`active`**: Sponsor attivi.
+- **`partner`**: Partner standard.
+- **`community`**: Partner culturali e di comunità.
+- **`institutional`**: Patrocini istituzionali e strategici.
+
+Ogni sponsor supporta una proprietà opzionale `scale` (es. `1.5`) nel file data. Questa viene utilizzata per compensare otticamente i differenti padding interni dei file PNG, garantendo che tutti i loghi appaiano bilanciati all'interno dei loro bounding box centrati.
 *Nota: I loghi devono essere preferibilmente SVG o PNG trasparenti caricati in `public/assets/logos/`.*
 
 ### 3. Aggiornamento Programma (`src/data/programData.ts`)
