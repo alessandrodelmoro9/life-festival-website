@@ -30,6 +30,17 @@ const TicketsSection = () => {
       );
     }, sectionRef.current);
 
+    // Initialize Eventbrite Widget
+    if (window.EBWidgets) {
+      window.EBWidgets.createWidget({
+        widgetType: 'checkout',
+        eventId: '1985936059213',
+        modal: true,
+        modalTriggerElementId: 'eventbrite-widget-modal-trigger-1985936059213',
+        onOrderComplete: () => console.log('Ordine completato.')
+      });
+    }
+
     return () => ctx.revert();
   }, []);
 
@@ -104,10 +115,8 @@ const TicketsSection = () => {
 
               {/* CTA BUTTON - Geometric Rigid */}
               <div className="mt-auto">
-                <a 
-                  href={ticketLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button 
+                  id="eventbrite-widget-modal-trigger-1985936059213"
                   className="group relative flex items-center justify-center gap-3 bg-[#E25938] text-[#262626] px-8 py-5 md:py-6 rounded-none w-full transition-all duration-300 hover:bg-[#E25938]/90 active:scale-[0.99]"
                 >
                   <span className="text-2xl transform transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1 leading-none">
@@ -116,7 +125,7 @@ const TicketsSection = () => {
                   <span className="font-body font-bold text-sm md:text-base uppercase tracking-[0.2em]">
                     ACQUISTA IL TICKET
                   </span>
-                </a>
+                </button>
               </div>
             </div>
           </div>
