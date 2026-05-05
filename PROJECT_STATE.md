@@ -1,27 +1,30 @@
 # Project State: Life Design Festival Website
 
-## 📌 Status Update - May 2, 2026
-Phases 1, 2, and 3 are officially **COMPLETED** and merged into `main`. Il sito è ora allineato al design Figma per ordine sezioni, styling Ticket e fix interattivi.
+## 📌 Status Update - May 5, 2026
+Phases 1-5 are officially **COMPLETED**. Il sistema di vendita ticket è integrato e funzionante via modale Eventbrite.
 
 ---
 
 ## ✅ Completed Tasks
-1.  **Phase 1: Layout & Core Identity**: (Completed)
-2.  **Phase 2: Modal & Paint Fixes**: (Completed)
-3.  **Phase 3: Ticket Section Restyling**: (Completed)
-4.  **Phase 4: Sponsor Section Reconstruction**:
-    *   Implementato sistema di **Manual Scaling** per bilanciamento ottico fine.
-    *   Layout a griglia 1x2 con centratura assoluta interna a ogni colonna.
-    *   Ottimizzazione altezze verticali per un design compatto ed elegante.
+1.  **Phase 1-4**: (Completed)
+2.  **Phase 5: Ticket System Integration**:
+    *   Integrazione SDK Eventbrite e inizializzazione tramite React Hook.
+    *   Trigger modale checkout integrata (ID: `1985936059213`).
+    *   Update Navbar con smooth scroll alla sezione tickets.
 
 ---
 
 ## 🚧 Next Steps (TODO)
-1.  **Compliance & SEO**:
-    *   [ ] **Cookie Banner**: Implementazione banner GDPR.
-    *   [ ] **SEO Optimization**: Meta Tags, OpenGraph images e audit semantico.
-2.  **Fine-tuning Life25**:
-    *   [ ] Allineamento parametri "Fluidity" (threshold 80, max images 15).
+1.  **Phase 6: SEO Full Implementation**:
+    *   [ ] Fundamental Meta Tags (Title, Description, Canonical).
+    *   [ ] Social & AI Discovery (OG, Twitter Cards, llms.txt).
+    *   [ ] Semantic Hierarchy (H1-H3 restructuring).
+2.  **Phase 7: Legal Compliance**:
+    *   [ ] Iubenda Cookie Solution.
+    *   [ ] Prior Blocking for Eventbrite SDK.
+3.  **Phase 8: Migration & DNS**:
+    *   [ ] `vercel.json` redirects (WP to Vercel).
+    *   [ ] Subdomain setup for future FastAPI backend (`api.`).
 
 ---
 
