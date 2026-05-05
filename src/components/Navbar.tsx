@@ -50,17 +50,15 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <a
-              href="https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => scrollTo('tickets')}
               className="group font-body text-[13px] uppercase tracking-widest bg-life-blue text-[#262626] px-5 py-2 hover:bg-life-pink hover:text-foreground transition-all duration-300 flex items-center gap-2"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5">
                 <path d="M7 7L17 17M17 17V7M17 17H7" stroke="#262626" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <span>Ticket</span>
-            </a>
+            </button>
           </li>
         </ul>
 
@@ -87,14 +85,12 @@ const Navbar = () => {
             {item.label}
           </button>
         ))}
-        <a
-          href="https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => scrollTo('tickets')}
           className="font-body text-lg uppercase tracking-widest bg-primary text-primary-foreground px-8 py-3 mt-4"
         >
           Tickets
-        </a>
+        </button>
       </div>
     </nav>
   );
