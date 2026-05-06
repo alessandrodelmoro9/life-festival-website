@@ -30,15 +30,36 @@ const TicketsSection = () => {
       );
     }, sectionRef.current);
 
-    // Initialize Eventbrite Widget
-    if (window.EBWidgets) {
-      window.EBWidgets.createWidget({
-        widgetType: 'checkout',
-        eventId: '1985936059213',
-        modal: true,
-        modalTriggerElementId: 'eventbrite-widget-modal-trigger-1985936059213',
-        onOrderComplete: () => console.log('Ordine completato.')
-      });
+    // Initialize Eventbrite Widget with polling to handle GDPR blocking
+    const initWidget = () => {
+      if (window.EBWidgets) {
+        console.log('Eventbrite SDK detected, initializing widget...');
+        window.EBWidgets.createWidget({
+          widgetType: 'checkout',
+          eventId: '1985936059213',
+          modal: true,
+          modalTriggerElementId: 'eventbrite-widget-modal-trigger-1985936059213',
+          onOrderComplete: () => console.log('Ordine completato.')
+        });
+        return true;
+      }
+      return false;
+    };
+
+    // Try immediately
+    if (!initWidget()) {
+      // If blocked by Iubenda, check every 1000ms until loaded
+      const interval = setInterval(() => {
+        if (initWidget()) {
+          clearInterval(interval);
+        }
+      }, 1000);
+      
+      // Cleanup interval on unmount
+      return () => {
+        clearInterval(interval);
+        ctx.revert();
+      };
     }
 
     return () => ctx.revert();
