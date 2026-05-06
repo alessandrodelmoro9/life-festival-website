@@ -1,44 +1,45 @@
 # Project State: Life Design Festival Website
 
-## 📌 Status Update - May 5, 2026
-Phases 1-5 are officially **COMPLETED**. Il sistema di vendita ticket è integrato e funzionante via modale Eventbrite.
+## 📌 Status Update - May 6, 2026
+Phases 1-8 are officially **COMPLETED**. The website is technically and legally optimized for the live launch and migration from WordPress to Vercel.
 
 ---
 
-## ✅ Completed Tasks
-1.  **Phase 1-4**: (Completed)
-2.  **Phase 5: Ticket System Integration**:
-    *   Integrazione SDK Eventbrite e inizializzazione tramite React Hook.
-    *   Trigger modale checkout integrata (ID: `1985936059213`).
-    *   Update Navbar con smooth scroll alla sezione tickets.
+## ✅ Completed Tasks (Final Launch Phase)
+
+### 1. Phase 6: SEO & AI Full Implementation (COMPLETED)
+*   **Meta Tags**: Title, Description, Canonical, and advanced Robots directives (`max-image-preview:large`) implemented in `index.html`.
+*   **Social Cards**: Open Graph and Twitter Cards configured with absolute URLs and specific image dimensions (`1200x630`).
+*   **Local SEO**: Geo-tags and ICBM coordinates added for Potenza (PZ).
+*   **Schema.org**: Event JSON-LD implemented with Scheduled status, location details, and corrected pricing (30.00 EUR).
+*   **Semantic Hierarchy**: Consolidated H1/H2/H3 structure across all components.
+*   **Static Assets**: Generated `robots.txt`, `sitemap.xml`, and a comprehensive `llms.txt` (enriched with concept, speakers, and sponsors).
+
+### 2. Phase 7: Legal Compliance (Iubenda) (COMPLETED)
+*   **Iubenda Integration**: Recovered legacy scripts from WordPress and injected them into `index.html`.
+*   **Prior Blocking**: Implemented GDPR-compliant blocking for Eventbrite SDK (`type="text/plain"` + `class="_iub_cs_activate"`).
+
+### 3. Phase 8: Migration & Infrastructure (COMPLETED)
+*   **Vercel Configuration**: Created `vercel.json` with SPA routing rewrites and 301 redirects for legacy WordPress paths (`/about`, `/contact`, `/privacy-policy`, etc.).
+*   **DNS Strategy**: Prepared for A Record (`76.76.21.21`) and CNAME (`cname.vercel-dns.com`) migration.
 
 ---
 
-## 🚧 Next Steps (TODO)
-1.  **Phase 6: SEO Full Implementation**:
-    *   [ ] Fundamental Meta Tags (Title, Description, Canonical).
-    *   [ ] Social & AI Discovery (OG, Twitter Cards, llms.txt).
-    *   [ ] Semantic Hierarchy (H1-H3 restructuring).
-2.  **Phase 7: Legal Compliance**:
-    *   [ ] Iubenda Cookie Solution.
-    *   [ ] Prior Blocking for Eventbrite SDK.
-3.  **Phase 8: Migration & DNS**:
-    *   [ ] `vercel.json` redirects (WP to Vercel).
-    *   [ ] Subdomain setup for future FastAPI backend (`api.`).
+## 🚧 Roadmap & Future Developments
+
+### 1. Post-Launch Actions (User/Owner)
+*   [ ] **GSC Submission**: Submit `sitemap.xml` to Google Search Console immediately after DNS propagation.
+*   [ ] **Social Debugging**: Run URL through Facebook/LinkedIn sharing debuggers to refresh cache.
+*   [ ] **Iubenda Dashboard**: Verify domain registration in the Iubenda dashboard to remove any "unauthorized domain" warnings.
+
+### 2. Phase 9: Chatbot RAG Integration (Upcoming)
+*   **Status**: Postponed for post-launch stability.
+*   **Infrastructure**: Will require a subdomain (e.g., `api.lifedesignfestival.it`) pointing to a Render backend.
+*   **Security**: CORS configuration will be needed to allow requests from the main production domain.
 
 ---
 
-## 🛠 Tech Notes & Performance Rules
-*   **Sponsor Optical Balancing**:
-    *   **Scaling**: Utilizzo di coefficienti `scale` individuali in `sponsorsData.ts` per compensare i padding dei PNG.
-    *   **Container**: Altezze compatte (`h-28` per Main, `h-20` per altri) con centratura `object-center`.
-    *   **Alignment**: Traslazioni manuali (`translateY`/`translateX`) per loghi critici (Architetti, Etimologia).
-    *   **Normalization**: Filtro `brightness(0) invert(1) contrast(200%)`.
-*   **Paint System**: Canvas z-index `10000` (modal), `9998` (global).
-*   **Fluidità Life25 (Image Trail)**:
-    *   **Asset Weight**: Immagini tra **300KB e 600KB** per evitare lag di decodifica GPU.
-    *   **DOM Density**: Massimo **15 elementi attivi** (`maxActiveImages: 15`).
-    *   **Sampling**: `mouseThreshold: 80` per evitare sovrapposizioni eccessive.
-    *   **Engine**: Utilizzo obbligatorio di `gsap.ticker` per sincronizzazione a 60fps.
-*   **Typography**: Gestita centralmente in `src/index.css`. Usare tag standard (`h1`-`h6`, `p`).
-*   **Scroll**: Modal scroll disabilitato via `overflow-hidden` per evitare disallineamenti del tratto Canvas.
+## 🛠 Tech Notes
+*   **Current Branch**: `feature/seo-full-implementation` (Ready for Merge).
+*   **Eventbrite Note**: Prior blocking is active; the widget will only initialize after cookie consent is given.
+*   **SEO Assets**: `og-image.jpeg` must be present in the `public/` folder.

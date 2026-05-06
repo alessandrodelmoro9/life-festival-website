@@ -53,11 +53,11 @@ const HeroSection = () => {
           <span>PARTY</span>
         </div>
 
-        {/* MAIN TITLE (Left) */}
+        {/* MAIN TITLE (Left) - Changed from H1 to H2 for SEO */}
         <div className="hero-parallax hero-animate mt-12 max-w-[300px]">
-          <h1 className="text-[#262626] leading-[0.8] tracking-tight font-display font-medium text-[5.5rem] lowercase">
+          <h2 className="text-[#262626] leading-[0.8] tracking-tight font-display font-medium text-[5.5rem] lowercase">
             life<br />design<br />festival
-          </h1>
+          </h2>
         </div>
 
         {/* CENTER CLUSTER: Date Axis */}

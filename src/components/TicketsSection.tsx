@@ -66,9 +66,9 @@ const TicketsSection = () => {
           
           {/* LEFT CONTENT (INTRO) - Positioned higher with mt-8 on desktop */}
           <div className="flex flex-col md:mt-8 order-1">
-            <h1 className="ticket-animate font-display font-medium text-[#262626] tracking-tighter capitalize">
+            <h2 className="ticket-animate font-display font-medium text-[#262626] tracking-tighter capitalize">
               Ticket
-            </h1>
+            </h2>
             <h5 className="ticket-animate font-body leading-tight max-w-[280px] md:max-w-[450px] text-[#262626] mt-[49px] opacity-90 normal-case">
               Assicurati il tuo ticket per entrare al Life design festival 2026
             </h5>
