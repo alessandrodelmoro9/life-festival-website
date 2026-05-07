@@ -6,49 +6,38 @@ import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CategoryBlock = ({ label, sponsors, category }: { label: string, sponsors: Sponsor[], category: Sponsor['category'] }) => {
+const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[] }) => {
   if (sponsors.length === 0) return null;
 
-  // 1. Even More Compact Container Height
-  const containerHeight = (category === 'main' || category === 'experience') 
-    ? "h-20 md:h-28" 
-    : "h-14 md:h-20";
-
   return (
-    <div className="category-block border-t border-white/10 pt-6 pb-8 h-full flex flex-col">
-      <p className="font-body text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/50 mb-4 text-center">
+    <div className="category-block border-t border-white/10 pt-4 pb-4 flex flex-col h-full w-full">
+      <p className="font-body text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/40 mb-4 text-left">
         {label}
       </p>
       
-      {/* 2. CENTERED SINGLE LINE: Consistent container widths for uniform layout */}
-      <div className="flex flex-nowrap items-center justify-center gap-x-8 md:gap-x-12 w-full">
+      <div className="flex flex-nowrap items-center justify-start gap-x-8 md:gap-x-10 w-full overflow-visible">
         {sponsors.map((sponsor) => {
-          const scale = sponsor.scale || 1.0;
-          const isArchitetti = sponsor.name === "Ordine degli Architetti di Potenza";
-          const isEtimologia = sponsor.name === "Etimologia";
+          const isBCC = sponsor.name === "BCC Basilicata";
+          const isGrafica = sponsor.name === "Grafica Metelliana";
+          const isOrdine = sponsor.name.includes("Architetti");
           
-          let transform = `scale(${scale})`;
-          if (isArchitetti) transform += ' translateY(12%)';
-          if (isEtimologia) transform += ' translateY(8%) translateX(-6%)';
-
           return (
             <div 
               key={sponsor.id} 
               className={cn(
-                "flex items-center justify-center relative overflow-visible",
-                // Ensuring same size for all containers in the same row
-                "w-[120px] md:w-[160px]", 
-                containerHeight
+                "flex items-center justify-start relative shrink-0",
+                isBCC ? "h-24 md:h-36" : (isGrafica || isOrdine ? "h-16 md:h-24" : "h-12 md:h-16")
               )}
             >
               <img
                 src={sponsor.logo}
                 alt={sponsor.name}
-                className="object-contain object-center transition-all duration-300 opacity-90 hover:opacity-100 h-full w-auto max-w-full"
+                className={cn(
+                  "object-contain object-left h-full w-auto opacity-90 hover:opacity-100 transition-opacity duration-300",
+                  isBCC ? "max-w-[280px] md:max-w-[450px]" : (isGrafica || isOrdine ? "max-w-[180px] md:max-w-[280px]" : "max-w-[120px] md:max-w-[160px]")
+                )}
                 style={{ 
-                  filter: 'brightness(0) invert(1) contrast(200%)',
-                  transform: transform,
-                  transformOrigin: 'center center'
+                  filter: 'brightness(0) invert(1)'
                 }}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
@@ -99,7 +88,7 @@ const SponsorSection = () => {
 
   const rows = [
     {
-      left: { label: "MAIN SPONSOR", category: 'main' as const },
+      left: { label: "CON IL SOSTEGNO DEL FONDO ETICO DI", category: 'main' as const },
       right: { label: "EXPERIENCE SPONSOR", category: 'experience' as const }
     },
     {
@@ -127,19 +116,17 @@ const SponsorSection = () => {
 
         <div className="flex flex-col w-full">
           {rows.map((row, idx) => (
-            <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-24 xl:gap-x-32 items-stretch">
-              <div className="flex flex-col">
+            <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-24 xl:gap-x-32">
+              <div>
                 <CategoryBlock 
                   label={row.left.label} 
                   sponsors={sponsorsData.filter(s => s.category === row.left.category)} 
-                  category={row.left.category}
                 />
               </div>
-              <div className="flex flex-col">
+              <div>
                 <CategoryBlock 
                   label={row.right.label} 
                   sponsors={sponsorsData.filter(s => s.category === row.right.category)} 
-                  category={row.right.category}
                 />
               </div>
             </div>
