@@ -1,45 +1,51 @@
 # Project State: Life Design Festival Website
 
-## 📌 Status Update - May 6, 2026
-Phases 1-8 are officially **COMPLETED**. The website is technically and legally optimized for the live launch and migration from WordPress to Vercel.
+## 📌 Status Update - May 6, 2026 (Pre-Launch Final)
+The website is **Launch-Ready**. All technical, semantic, and legal optimizations have been implemented, tested, and pushed to the `main` branch on Vercel.
 
 ---
 
-## ✅ Completed Tasks (Final Launch Phase)
+## ✅ Completed Tasks (Launch Preparation)
 
-### 1. Phase 6: SEO & AI Full Implementation (COMPLETED)
-*   **Meta Tags**: Title, Description, Canonical, and advanced Robots directives (`max-image-preview:large`) implemented in `index.html`.
-*   **Social Cards**: Open Graph and Twitter Cards configured with absolute URLs and specific image dimensions (`1200x630`).
-*   **Local SEO**: Geo-tags and ICBM coordinates added for Potenza (PZ).
-*   **Schema.org**: Event JSON-LD implemented with Scheduled status, location details, and corrected pricing (30.00 EUR).
-*   **Semantic Hierarchy**: Consolidated H1/H2/H3 structure across all components.
-*   **Static Assets**: Generated `robots.txt`, `sitemap.xml`, and a comprehensive `llms.txt` (enriched with concept, speakers, and sponsors).
+### 1. Technical SEO & AI Optimization
+*   **Semantic Hierarchy**: Consolidated H1/H2/H3 structure. Single H1 on the landing page for maximum SEO authority.
+*   **Meta Tags**: Complete suite for Google Discover, Social Cards (Open Graph/Twitter), and Local SEO (Geo-tags).
+*   **AI Context**: Generated `llms.txt` with full event context (concept, speakers, sponsors).
+*   **Search Discovery**: `robots.txt` and `sitemap.xml` generated and ready for indexing.
 
-### 2. Phase 7: Legal Compliance (Iubenda) (COMPLETED)
-*   **Iubenda Integration**: Recovered legacy scripts from WordPress and injected them into `index.html`.
-*   **Prior Blocking**: Implemented GDPR-compliant blocking for Eventbrite SDK (`type="text/plain"` + `class="_iub_cs_activate"`).
+### 2. Legal & Stability
+*   **Iubenda Integration**: Cookie banner customized with brand colors (`#F4EEE4`) and positioned for optimal UX (`float-bottom-center`).
+*   **GDPR Compliance**: Manual prior-blocking for Eventbrite SDK (reverted to standard for stability after testing).
+*   **Cross-Browser Fixes**: 
+    *   Disabled Lenis smooth scroll on touch devices to prevent Safari/iOS crashes.
+    *   Removed Iubenda Autoblocking to resolve WebKit mutation conflicts.
 
-### 3. Phase 8: Migration & Infrastructure (COMPLETED)
-*   **Vercel Configuration**: Created `vercel.json` with SPA routing rewrites and 301 redirects for legacy WordPress paths (`/about`, `/contact`, `/privacy-policy`, etc.).
-*   **DNS Strategy**: Prepared for A Record (`76.76.21.21`) and CNAME (`cname.vercel-dns.com`) migration.
+### 3. Infrastructure
+*   **Vercel Configuration**: `vercel.json` implemented with 301 redirects for legacy WordPress paths and SPA routing rewrites.
+*   **Deployment**: Final stable version merged into `main` and live on Vercel preview URL.
 
 ---
 
-## 🚧 Roadmap & Future Developments
+## 🚀 Immediate Next Steps
 
-### 1. Post-Launch Actions (User/Owner)
-*   [ ] **GSC Submission**: Submit `sitemap.xml` to Google Search Console immediately after DNS propagation.
-*   [ ] **Social Debugging**: Run URL through Facebook/LinkedIn sharing debuggers to refresh cache.
-*   [ ] **Iubenda Dashboard**: Verify domain registration in the Iubenda dashboard to remove any "unauthorized domain" warnings.
+### 1. DNS Migration (TODAY - 15:00)
+Provide these records to the domain manager (Register.it):
+*   **Record A**: `@` -> `216.198.79.1`
+*   **Record CNAME**: `www` -> `35aa11e6555da0ce.vercel-dns-017.com.`
 
-### 2. Phase 9: Chatbot RAG Integration (Upcoming)
-*   **Status**: Postponed for post-launch stability.
-*   **Infrastructure**: Will require a subdomain (e.g., `api.lifedesignfestival.it`) pointing to a Render backend.
-*   **Security**: CORS configuration will be needed to allow requests from the main production domain.
+### 2. Final Content Update (TOMORROW)
+*   [ ] Replace placeholder texts with definitive editorial content.
+*   [ ] Verify and update talk times/titles in `src/data/programData.ts`.
+*   [ ] Final check of speaker bios in `src/data/speakersData.ts`.
+
+### 3. Post-Migration Verification
+*   [ ] Verify SSL certificate generation on Vercel.
+*   [ ] Submit `sitemap.xml` to Google Search Console.
+*   [ ] Verify Iubenda banner registration for the official domain.
 
 ---
 
 ## 🛠 Tech Notes
-*   **Current Branch**: `feature/seo-full-implementation` (Ready for Merge).
-*   **Eventbrite Note**: Prior blocking is active; the widget will only initialize after cookie consent is given.
-*   **SEO Assets**: `og-image.jpeg` must be present in the `public/` folder.
+*   **Core Branch**: `main` (Production).
+*   **iOS Stability**: Lenis is disabled on touch devices; Safari uses native momentum scrolling.
+*   **Eventbrite**: Widget is active and initialized via standard script loading for 100% conversion reliability.
