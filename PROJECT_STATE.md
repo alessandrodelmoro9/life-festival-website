@@ -24,6 +24,11 @@ The website is **Launch-Ready**. All technical, semantic, and legal optimization
 *   **Vercel Configuration**: `vercel.json` implemented with 301 redirects for legacy WordPress paths and SPA routing rewrites.
 *   **Deployment**: Final stable version merged into `main` and live on Vercel preview URL.
 
+### 4. Conversion & Engagement
+*   **SocialProofWidget**: Implemented a dynamic "Live" widget in the bottom-right.
+    *   Features: Real-time user count (5-180), brand-aligned design (Aquawax/Automat fonts, Cream/Purple colors).
+    *   Goal: Increase urgency and ticket conversion.
+
 ---
 
 ## 🚀 Immediate Next Steps
@@ -33,7 +38,12 @@ Provide these records to the domain manager (Register.it):
 *   **Record A**: `@` -> `216.198.79.1`
 *   **Record CNAME**: `www` -> `35aa11e6555da0ce.vercel-dns-017.com.`
 
-### 2. Final Content Update (TOMORROW)
+### 2. Eventbrite Link Resolution (TOMORROW MORNING)
+*   [ ] **Issue**: The current discount link (`PROMO-WEBSITE`) returns a 403/Policy error.
+*   [ ] **Action**: Verify discount code activation in Eventbrite dashboard and ensure the event is public/accessible.
+*   [ ] **Action**: Test the final redirect flow.
+
+### 3. Final Content Update (TOMORROW)
 *   [ ] Replace placeholder texts with definitive editorial content.
 *   [ ] Verify and update talk times/titles in `src/data/programData.ts`.
 *   [ ] Final check of speaker bios in `src/data/speakersData.ts`.
