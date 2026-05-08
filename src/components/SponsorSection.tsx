@@ -36,9 +36,6 @@ const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[]
                   "object-contain object-left h-full w-auto opacity-90 hover:opacity-100 transition-opacity duration-300",
                   isBCC ? "max-w-[280px] md:max-w-[450px]" : (isGrafica || isOrdine ? "max-w-[180px] md:max-w-[280px]" : "max-w-[120px] md:max-w-[160px]")
                 )}
-                style={{ 
-                  filter: 'brightness(0) invert(1)'
-                }}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
