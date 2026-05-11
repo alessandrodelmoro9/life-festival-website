@@ -81,10 +81,10 @@ const TicketsSection = () => {
           {/* LEFT CONTENT (INTRO) - Box 487x219 with 49px gap */}
           <div className="ticket-animate flex flex-col w-full max-w-[487px] md:h-[219px] justify-start order-1">
             <h2 className="text-h1 text-[#262626] tracking-tighter capitalize leading-none mb-[49px]">
-              Life pass 2 giorni
+              Ticket
             </h2>
             <h5 className="text-[#262626] opacity-90 normal-case font-body">
-              Assicurati il tuo ticket per entrare al Life design festival 2026
+              Assicurati il tuo ticket per entrare al Life <br /> design festival 2026
             </h5>
           </div>
 

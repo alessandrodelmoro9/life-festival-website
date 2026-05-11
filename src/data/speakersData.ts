@@ -22,7 +22,7 @@ export const speakersData: Speaker[] = [
   },
   {
     id: 1,
-    name: "Adoratorio® Studio",
+    name: "Adoratorio Studio",
     role: "Independent Design Studio",
     description: "Ciarli e Riccardo, Design Lead e Junior Art Director in Adoratorio Studio, immaginano progetti simbiotici di design consapevole, inclusivo e rilevante tramite linguaggi visivi contemporanei, ricerca di nicchia e sensibilità personale.",
     color: 'primary',

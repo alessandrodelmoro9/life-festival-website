@@ -42,7 +42,7 @@ const LocationSection = () => {
   }, []);
 
   return (
-    <section id="location" ref={sectionRef} className="relative py-32 md:py-48 bg-background overflow-hidden">
+    <section id="location" ref={sectionRef} className="relative py-16 md:py-48 bg-background overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           
@@ -72,7 +72,7 @@ const LocationSection = () => {
           </div>
 
           {/* COLONNA DESTRA (Collage "A Ventaglio") */}
-          <div className="location-collage relative w-full h-[400px] md:h-[550px] flex items-start justify-center mt-12 md:mt-0">
+          <div className="location-collage relative w-full h-[320px] md:h-[550px] flex items-start justify-center mt-8 md:mt-0">
             
             {/* FOTO 1 (Sinistra) */}
             <div 

@@ -81,7 +81,7 @@ const ProgramSection = () => {
       <div 
         onClick={() => toggleDay(number)}
         className={cn(
-          "program-day-header relative flex flex-col items-start w-full mt-16 md:mt-24 mb-12 pl-10 md:pl-14 transition-all duration-300",
+          "program-day-header relative flex flex-col items-start w-full mt-4 md:mt-24 mb-4 md:mb-12 pl-10 md:pl-14 transition-all duration-300",
           "lg:cursor-default cursor-pointer group"
         )}
       >
@@ -113,8 +113,8 @@ const ProgramSection = () => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-[1400px] mx-auto">
           {/* HEADER SECTION */}
-          <div className="mb-16 md:mb-24 ml-10 md:ml-14">
-            <h2 className="text-h1 text-life-cream mb-6 tracking-tighter program-heading">Programma</h2>
+          <div className="mb-12 md:mb-24 ml-10 md:ml-14">
+            <h2 className="text-h1 text-life-cream mb-4 md:mb-6 tracking-tighter program-heading">Programma</h2>
             <h5 className="text-life-cream/80 max-w-[642.86px] leading-snug font-body uppercase tracking-[0px] program-heading">
               CHI LASCERÀ UNA TRACCIA SUL NOSTRO PALCO
             </h5>
