@@ -60,18 +60,18 @@ const HeroSection = () => {
         </div>
 
         {/* CENTER CLUSTER: Date Axis */}
-        <div className="hero-parallax hero-animate flex items-center justify-center gap-10 my-auto w-full">
-          <img src={Icon5} alt="5" className="w-24 h-24 object-contain" />
+        <div className="hero-parallax hero-animate flex items-center justify-between w-full max-w-[348px] mx-auto my-auto flex-nowrap">
+          <img src={Icon5} alt="5" className="w-[82px] h-[82px] object-contain shrink-0" />
           <button
             onClick={() => {
               const el = document.getElementById('about');
               el?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="w-32 h-32 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95"
+            className="w-[79px] h-[79px] flex items-center justify-center transform transition-all duration-300 hover:scale-105 active:scale-95 shrink-0"
           >
             <img src={Group46} alt="Go to About" className="w-full h-full object-contain" />
           </button>
-          <img src={Icon6} alt="6" className="w-24 h-24 object-contain" />
+          <img src={Icon6} alt="6" className="w-[82px] h-[82px] object-contain shrink-0" />
         </div>
 
         {/* INFORMATION MID-LAYER */}
@@ -110,7 +110,7 @@ const HeroSection = () => {
       {/* ============================================================
           DESKTOP VERSION (Unchanged)
           ============================================================ */}
-      <div className="hidden md:flex container mx-auto px-12 flex-1 flex-col justify-between py-20 relative z-10">
+      <div className="hidden md:flex container mx-auto px-12 flex-1 flex-col justify-between pt-32 pb-20 relative z-10">
         
         {/* RIGA SUPERIORE: TOP */}
         <div className="flex justify-between items-start w-full">
