@@ -163,10 +163,6 @@
     letter-spacing: -0.04em;
   }
 
-  a, button, [role="button"], input, select, textarea {
-    /* cursor will be managed by CustomCursor component */
-  }
-
   h1, h2, h3, h4, h5, h6 {
     @apply font-display leading-[1.1];
   }
