@@ -47,45 +47,38 @@ const LocationSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           
           {/* COLONNA SINISTRA (Testo) */}
-          <div className="flex flex-col justify-center">
-            <h2 className="location-heading font-display text-5xl md:text-8xl leading-none font-medium text-foreground">
-              Una traccia <br /> indelebile sul <br /> territorio
+          <div className="flex flex-col justify-start">
+            <h2 className="text-h1 location-heading text-life-black mb-10 leading-[0.9] tracking-tighter">
+              Una traccia <br /> indelebile
             </h2>
             
-            <p className="location-detail font-body text-base md:text-lg text-foreground/80 mt-8 max-w-xl leading-relaxed">
-              L'anno scorso abbiamo fatto proliferare le connessioni, quest'anno ne tracciamo la rotta. 
+            <h5 className="location-detail text-life-black/80 max-w-xl leading-snug font-body normal-case">
+              Nel 2025 sono proliferate le connessioni, quest'anno ne tracciamo la rotta. 
               Il Terminal Gallitello si conferma la nostra casa: un luogo naturalmente simbolo del passaggio temporaneo 
-              che viene trasformato nell'epicentro di un'impronta indelebile. Qui il design non è di passaggio, lascia il segno.
-            </p>
+              che viene trasformato nell'epicentro di un'impronta indelebile. In Basilicata il design non è più solo di passaggio, 
+              finalmente lascia il segno.
+            </h5>
 
-            <div className="mt-12 md:mt-16 space-y-8">
-              <div className="location-detail">
-                <p className="font-body text-xs uppercase tracking-normal text-black font-bold">VENUE</p>
-                <p className="font-body font-bold text-xl text-foreground mt-1 uppercase">TERMINAL FAL GALLITELLO</p>
+            <div className="mt-12 md:mt-16 w-full max-w-xl flex flex-col gap-y-4 location-detail">
+              <div className="flex justify-between items-center w-full">
+                <span className="text-[14px] font-body font-bold uppercase tracking-wider text-life-black">VENUE</span>
+                <span className="text-[14px] font-body font-bold uppercase text-life-black">TERMINAL GALLITELLO</span>
               </div>
-              
-              <div className="location-detail">
-                <p className="font-body text-xs uppercase tracking-normal text-black font-bold">INDIRIZZO</p>
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=TERMINAL+FAL+GALLITELLO+POTENZA" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="font-body font-bold text-lg text-foreground mt-1 uppercase hover:text-primary transition-colors duration-300"
-                >
-                  VIA DEL GALLITELLO, 85100 POTENZA PZ
-                </a>
+              <div className="flex justify-between items-center w-full">
+                <span className="text-[14px] font-body font-bold uppercase tracking-wider text-life-black">INDIRIZZO</span>
+                <span className="text-[14px] font-body font-bold uppercase text-life-black">VIA DEL GALLITELLO, POTENZA</span>
               </div>
             </div>
           </div>
 
           {/* COLONNA DESTRA (Collage "A Ventaglio") */}
-          <div className="location-collage relative w-full h-[450px] md:h-[650px] flex items-center justify-center mt-12 md:mt-0">
+          <div className="location-collage relative w-full h-[400px] md:h-[550px] flex items-start justify-center mt-12 md:mt-0">
             
             {/* FOTO 1 (Sinistra) */}
             <div 
               onClick={() => setTopIndex(0)}
-              className={`collage-item collage-left absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 0 ? 'is-active z-40' : 'z-10'}`}
-              style={{ transform: 'translateX(calc(-50% - 40px)) rotate(-12deg)' }}
+              className={`collage-item collage-left absolute left-1/2 top-0 w-40 h-56 md:w-56 md:h-80 shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 0 ? 'is-active z-40' : 'z-10'}`}
+              style={{ transform: 'translateX(calc(-50% - 30px)) rotate(-12deg)' }}
             >
               <img 
                 src="/assets/location/060520 1.png" 
@@ -97,8 +90,8 @@ const LocationSection = () => {
             {/* FOTO 3 (Destra) */}
             <div 
               onClick={() => setTopIndex(2)}
-              className={`collage-item collage-right absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 2 ? 'is-active z-40' : 'z-10'}`}
-              style={{ transform: 'translateX(calc(-50% + 40px)) rotate(12deg)' }}
+              className={`collage-item collage-right absolute left-1/2 top-0 w-40 h-56 md:w-56 md:h-80 shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 2 ? 'is-active z-40' : 'z-10'}`}
+              style={{ transform: 'translateX(calc(-50% + 30px)) rotate(12deg)' }}
             >
               <img 
                 src="/assets/location/060520 2.png" 
@@ -110,7 +103,7 @@ const LocationSection = () => {
             {/* FOTO 2 (Centrale) */}
             <div 
               onClick={() => setTopIndex(1)}
-              className={`collage-item collage-center absolute left-1/2 bottom-16 md:bottom-24 w-48 h-64 md:w-72 md:h-[400px] shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 1 ? 'is-active z-40' : (topIndex === null ? 'z-20' : 'z-10')}`}
+              className={`collage-item collage-center absolute left-1/2 top-0 w-40 h-56 md:w-56 md:h-80 shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 1 ? 'is-active z-40' : (topIndex === null ? 'z-20' : 'z-10')}`}
               style={{ transform: 'translateX(-50%) rotate(0deg)' }}
             >
               <img 
@@ -121,7 +114,7 @@ const LocationSection = () => {
             </div>
 
             {/* LA "PUNTINA" ARANCIONE */}
-            <div className="absolute bottom-[60px] md:bottom-[80px] left-1/2 -translate-x-1/2 w-6 h-6 md:w-8 md:h-8 bg-[#E25938] z-50 pointer-events-none shadow-lg"></div>
+            <div className="absolute top-[210px] md:top-[300px] left-1/2 -translate-x-1/2 w-5 h-5 md:w-6 md:h-6 bg-life-red z-50 pointer-events-none shadow-lg"></div>
             
           </div>
         </div>

@@ -21,6 +21,7 @@ const Navbar = () => {
     { label: 'About', id: 'about' },
     { label: 'Speaker', id: 'speakers' },
     { label: 'Programma', id: 'program' },
+    { label: 'Alloggi', id: 'accommodation' },
     { label: 'LIFE 25', id: 'life25' },
     { label: 'Location', id: 'location' },
     { label: 'Partner', id: 'sponsors' },

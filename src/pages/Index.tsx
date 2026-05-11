@@ -8,6 +8,7 @@ import SpeakersSection from '@/components/SpeakersSection';
 import ProgramSection from '@/components/ProgramSection';
 import LocationSection from '@/components/LocationSection';
 import TicketsSection from '@/components/TicketsSection';
+import AccommodationSection from '@/components/AccommodationSection';
 import Life25 from '@/components/Life25';
 import SponsorSection from '@/components/SponsorSection';
 import FooterSection from '@/components/FooterSection';
@@ -53,6 +54,7 @@ const Index = () => {
         <LocationSection />
         <Life25 />
         <TicketsSection />
+        <AccommodationSection />
         <SponsorSection />
         <FooterSection />
         <PaintCanvas />

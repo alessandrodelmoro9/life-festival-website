@@ -219,62 +219,64 @@ const Life25 = () => {
       ref={containerRef}
       className="relative h-screen w-full bg-[#FF76BF] overflow-hidden flex items-center justify-center z-20"
     >
-      <div className="absolute inset-0 pointer-events-none p-[40px] z-30">
-        <div className="relative w-full h-full text-[#262626] font-display uppercase text-[12px] tracking-widest opacity-100">
-          <span className="absolute top-0 left-0">RICORDI</span>
-          <span className="absolute top-0 right-0">DALLA</span>
-          <span className="absolute bottom-0 left-0">SCORSA</span>
-          <span className="absolute bottom-0 right-0">EDIZIONE</span>
+      <div className="relative w-full h-full max-w-[1440px] max-h-[611px] mx-auto flex items-center justify-center">
+        <div className="absolute inset-0 pointer-events-none p-[40px] z-30">
+          <div className="relative w-full h-full text-[#262626] font-display uppercase text-[12px] tracking-widest opacity-100">
+            <span className="absolute top-0 left-0">RICORDI</span>
+            <span className="absolute top-0 right-0">DALLA</span>
+            <span className="absolute bottom-0 left-0">SCORSA</span>
+            <span className="absolute bottom-0 right-0">EDIZIONE</span>
+          </div>
         </div>
-      </div>
 
-      <div className="relative select-none pointer-events-none flex items-center justify-center w-full h-full px-[40px] overflow-hidden box-border">
-        {/* Desktop Version */}
-        <h2 
-          className="hidden md:flex whitespace-nowrap font-display font-medium text-[#262626] w-full"
-          style={{ 
-            fontSize: 'min(36vw, 30rem)', 
-            lineHeight: '0.8', 
-            letterSpacing: '-0.05em',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <div className="flex">
-            <span className="relative z-[15]">L</span>
-            <span className="relative z-[5]">i</span>
-            <span className="relative z-[15]">f</span>
-            <span className="relative z-[5]">e</span>
-          </div>
-          <div className="flex">
-            <span className="relative z-[15]">2</span>
-            <span className="relative z-[5]">5</span>
-          </div>
-        </h2>
-
-        {/* Mobile Version */}
-        <h2 
-          className="flex md:hidden flex-col items-center justify-center font-display font-medium uppercase text-[#262626] text-[32vw] w-full relative z-[15]"
-          style={{ 
-            lineHeight: '0.8', 
-            letterSpacing: '-0.05em',
-          }}
-        >
-          <div className="flex flex-col items-center">
+        <div className="relative select-none pointer-events-none flex items-center justify-center w-full h-full px-[40px] overflow-hidden box-border">
+          {/* Desktop Version */}
+          <h2 
+            className="hidden md:flex whitespace-nowrap font-display font-medium text-[#262626] w-full"
+            style={{ 
+              fontSize: 'min(36vw, 30rem)', 
+              lineHeight: '0.8', 
+              letterSpacing: '-0.05em',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             <div className="flex">
-              <span className="w-[0.55em] text-center">L</span>
-              <span className="w-[0.55em] text-center">I</span>
+              <span className="relative z-[15]">L</span>
+              <span className="relative z-[5]">i</span>
+              <span className="relative z-[15]">f</span>
+              <span className="relative z-[5]">e</span>
             </div>
-            <div className="flex -mt-[0.05em]">
-              <span className="w-[0.55em] text-center">F</span>
-              <span className="w-[0.55em] text-center">E</span>
+            <div className="flex">
+              <span className="relative z-[15]">2</span>
+              <span className="relative z-[5]">5</span>
             </div>
-            <div className="flex -mt-[0.05em]">
-              <span className="w-[0.55em] text-center">2</span>
-              <span className="w-[0.55em] text-center">5</span>
+          </h2>
+
+          {/* Mobile Version */}
+          <h2 
+            className="flex md:hidden flex-col items-center justify-center font-display font-medium uppercase text-[#262626] text-[32vw] w-full relative z-[15]"
+            style={{ 
+              lineHeight: '0.8', 
+              letterSpacing: '-0.05em',
+            }}
+          >
+            <div className="flex flex-col items-center">
+              <div className="flex">
+                <span className="w-[0.55em] text-center">L</span>
+                <span className="w-[0.55em] text-center">I</span>
+              </div>
+              <div className="flex -mt-[0.05em]">
+                <span className="w-[0.55em] text-center">F</span>
+                <span className="w-[0.55em] text-center">E</span>
+              </div>
+              <div className="flex -mt-[0.05em]">
+                <span className="w-[0.55em] text-center">2</span>
+                <span className="w-[0.55em] text-center">5</span>
+              </div>
             </div>
-          </div>
-        </h2>
+          </h2>
+        </div>
       </div>
     </section>
   );

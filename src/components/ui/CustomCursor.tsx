@@ -8,7 +8,7 @@ const CustomCursor: React.FC = () => {
   const follower2Ref = useRef<HTMLDivElement>(null);
   const follower3Ref = useRef<HTMLDivElement>(null);
   const { mode, isActive } = usePaint();
-  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash
+  const [isMobile, setIsMobile] = useState(true); 
   const [isOverToolbar, setIsOverToolbar] = useState(false);
 
   useEffect(() => {
@@ -23,20 +23,29 @@ const CustomCursor: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobile) {
+      document.body.classList.remove('hide-cursor');
+      return;
+    }
 
-    document.body.classList.add('hide-cursor');
+    // Aggiungiamo la classe solo se non siamo in modalità disegno
+    // o se siamo sopra la toolbar
+    const shouldHideNative = !isActive || mode !== 'draw' || isOverToolbar;
+    
+    if (shouldHideNative) {
+      document.body.classList.add('hide-cursor');
+    } else {
+      document.body.classList.remove('hide-cursor');
+    }
 
     const moveCursor = (e: MouseEvent) => {
       if (cursorRef.current) {
-        gsap.to(cursorRef.current, {
+        gsap.set(cursorRef.current, {
           x: e.clientX,
           y: e.clientY,
-          duration: 0,
         });
       }
 
-      // Three followers with increasing delays
       if (follower1Ref.current) {
         gsap.to(follower1Ref.current, {
           x: e.clientX,
@@ -88,13 +97,13 @@ const CustomCursor: React.FC = () => {
       window.removeEventListener('mouseout', handleMouseOut);
       document.body.classList.remove('hide-cursor');
     };
-  }, [isMobile]);
+  }, [isMobile, isActive, mode, isOverToolbar]);
 
-  // Hide cursor on mobile
   if (isMobile) return null;
   
   // In draw mode, hide custom cursor ONLY if NOT over the toolbar
-  if (isActive && mode === 'draw' && !isOverToolbar) return null;
+  const isCursorHidden = isActive && mode === 'draw' && !isOverToolbar;
+  if (isCursorHidden) return null;
 
   return (
     <>
@@ -104,7 +113,6 @@ const CustomCursor: React.FC = () => {
         }
       `}</style>
       
-      {/* Main Cursor (SVG) - The tip is at top-left of the div */}
       <div
         ref={cursorRef}
         className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[10003] will-change-transform"

@@ -37,7 +37,7 @@ const SocialProofWidget = () => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[100] w-[400px] bg-[#F4EEE4] rounded-[24px] shadow-2xl border border-black/5 overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 duration-500 pointer-events-auto">
+    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 md:left-auto md:right-8 md:translate-x-0 z-[100] w-[calc(100%-2rem)] md:w-[400px] bg-[#f3f3f3] rounded-[24px] shadow-2xl border border-black/5 overflow-hidden flex flex-col animate-in fade-in slide-in-from-bottom-4 duration-500 pointer-events-auto">
       {/* Close Button */}
       <button 
         onClick={() => setIsVisible(false)}
@@ -75,7 +75,7 @@ const SocialProofWidget = () => {
       <div className="px-7 pb-6">
         <button 
           onClick={handleRedirect}
-          className="w-full bg-[#7678F6] text-[#262626] font-body font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 hover:brightness-105 active:scale-[0.98] transition-all shadow-md group"
+          className="w-full bg-[#7678F6] text-[#262626] font-body font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 hover:bg-[#FF76BF] active:scale-[0.98] transition-all shadow-md group"
         >
           <ArrowDownRight size={16} strokeWidth={3} className="group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" />
           <span className="text-[10px] tracking-[0.1em] uppercase">ACCEDI ALLO SCONTO</span>

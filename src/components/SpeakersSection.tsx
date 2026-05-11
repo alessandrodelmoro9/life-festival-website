@@ -61,24 +61,13 @@ const SpeakersSection: React.FC = () => {
     >
       <div className="container mx-auto px-6 md:px-12">
         
-        <div className="mb-24 md:mb-40 text-left">
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "power3.out" }}
-            className="speaker-heading font-display text-foreground leading-[0.95] font-medium mb-4 tracking-tighter"
-            style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)' }}
-          >
+        <div className="mb-24 md:mb-32 text-left">
+          <h2 className="text-h1 text-life-black mb-6 tracking-tighter about-animate">
             Speakers
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: "power3.out" }}
-            className="speaker-heading font-body text-[10px] md:text-xs uppercase tracking-[0.3em] text-muted-foreground"
-          >
-            I protagonisti della scena creativa nazionale
-          </motion.p>
+          </h2>
+          <h5 className="text-life-black/80 max-w-[642.86px] leading-snug font-body uppercase tracking-[0px] about-animate">
+            I PROTAGONISTI DELLA SCENA CREATIVA NAZIONALE
+          </h5>
         </div>
 
         <div className="relative">
@@ -186,7 +175,7 @@ const SpeakersSection: React.FC = () => {
           className="fixed inset-0 z-[9999] max-w-none w-screen h-screen m-0 p-0 border-none bg-primary rounded-none translate-x-0 translate-y-0 left-0 top-0 overflow-hidden [&>button]:hidden"
         >
           {selectedSpeaker && (
-            <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center p-6 md:p-24 gap-8 md:gap-12 overflow-hidden">
+            <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center p-6 md:p-12 lg:p-20 gap-8 md:gap-12 lg:gap-20 overflow-hidden">
               <button 
                 onClick={() => setIsDialogOpen(false)}
                 className="absolute top-6 right-6 md:top-10 md:right-10 z-[10000] text-foreground/60 hover:text-foreground transition-colors"
@@ -194,21 +183,21 @@ const SpeakersSection: React.FC = () => {
                 <X size={window.innerWidth < 768 ? 32 : 48} strokeWidth={1.5} />
               </button>
 
-              <div className="w-full md:w-3/5 order-2 md:order-1 flex flex-col justify-center">
-                <h2 className="text-foreground font-display font-medium text-4xl md:text-[7vw] leading-[0.95] tracking-tighter mb-4 md:mb-8">
+              <div className="w-full md:w-[55%] lg:w-[60%] order-2 md:order-1 flex flex-col justify-center">
+                <h2 className="text-foreground font-display font-medium text-4xl md:text-[5vw] lg:text-[5.5vw] leading-[0.9] tracking-tighter mb-4 md:mb-6">
                   {formatSpeakerName(selectedSpeaker.name)}
                 </h2>
-                <div className="max-w-xl">
-                  <span className="text-foreground/70 font-display font-medium uppercase tracking-[0.2em] text-xs md:text-sm block mb-2 md:mb-4">
+                <div className="max-w-2xl">
+                  <span className="text-foreground/70 font-display font-medium uppercase tracking-[0.2em] text-xs md:text-sm block mb-4 md:mb-6">
                     {selectedSpeaker.role}
                   </span>
-                  <p className="text-foreground/90 text-base md:text-xl lg:text-2xl leading-relaxed font-body font-light mb-6 md:mb-8 line-clamp-6 md:line-clamp-none">
+                  <p className="text-foreground/90 text-base md:text-lg lg:text-[1.25rem] leading-[1.4] font-body font-light mb-8 md:mb-10 whitespace-pre-wrap">
                     {selectedSpeaker.description}
                   </p>
-                  <div className="flex gap-6 md:gap-10">
-                    {selectedSpeaker.socials?.instagram && (
+                  <div className="flex flex-wrap gap-6 md:gap-10">
+                    {selectedSpeaker.instagram && (
                       <a 
-                        href={selectedSpeaker.socials.instagram} 
+                        href={selectedSpeaker.instagram} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-foreground/40 hover:text-foreground uppercase tracking-widest text-[10px] md:text-xs font-display font-medium border-b border-foreground/20 pb-1 transition-all"
@@ -216,22 +205,22 @@ const SpeakersSection: React.FC = () => {
                         Instagram ↗
                       </a>
                     )}
-                    {selectedSpeaker.socials?.linkedin && (
+                    {selectedSpeaker.website && (
                       <a 
-                        href={selectedSpeaker.socials.linkedin} 
+                        href={selectedSpeaker.website} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-foreground/40 hover:text-foreground uppercase tracking-widest text-[10px] md:text-xs font-display font-medium border-b border-foreground/20 pb-1 transition-all"
                       >
-                        Linkedin ↗
+                        Website ↗
                       </a>
                     )}
                   </div>
                 </div>
               </div>
 
-              <div className="w-full md:w-[35vw] aspect-square order-1 md:order-2 flex items-center justify-center">
-                <div className="w-full h-full rounded-none overflow-hidden border border-foreground/10 bg-background/20">
+              <div className="w-[50vw] md:w-[28vw] lg:w-[24vw] aspect-square order-1 md:order-2 flex items-center justify-center shrink-0">
+                <div className="w-full h-full rounded-none overflow-hidden border border-foreground/10 bg-background/20 shadow-2xl">
                   {selectedSpeaker.image ? (
                     <img src={selectedSpeaker.image} className="w-full h-full object-cover" alt={selectedSpeaker.name} />
                   ) : (
@@ -281,17 +270,17 @@ const SpeakerItem = ({
     >
       <div className="space-y-2 text-left">
         <h3 className={cn(
-          "font-display font-medium leading-[0.9] tracking-tighter text-foreground whitespace-nowrap text-left",
-          isHost ? "text-[5.5vw] md:text-[4.5vw]" : "text-[5vw] md:text-[3.2vw]"
+          "font-display font-medium leading-tight tracking-tighter text-foreground text-left whitespace-nowrap overflow-hidden pb-1",
+          "text-[30px] md:text-[60px]" // Standard H3 sizes from index.css
         )}>
           {formatSpeakerName(speaker.name)}
         </h3>
-        <p className={cn(
-          "font-body text-[10px] md:text-xs uppercase tracking-[0.2em] transition-colors duration-300 text-left",
+        <h6 className={cn(
+          "font-body uppercase transition-colors duration-300 text-left",
           isHovered ? "text-foreground/70" : "text-muted-foreground"
         )}>
           {speaker.role}
-        </p>
+        </h6>
       </div>
     </motion.div>
   );

@@ -12,7 +12,7 @@ Il sito ufficiale della seconda edizione del Life Design Festival a Potenza (5-6
 ## Struttura SEO & AI
 Il progetto segue il "Gold Standard" della SEO tecnica:
 - **H1 Unico**: "Life Design Festival" nella Hero Section.
-- **Gerarchia Semantica**: H2 per le sezioni principali, H3 per i dettagli (programma, speakers).
+- **Gerarchia Semantica**: Utilizzo di tag `H2` per le sezioni, ma con classi `.text-h1` per mantenere l'impatto visivo di 120px. Questo scollega la semantica (per Google) dallo stile (per il design).
 - **Metadata**: Configurazione avanzata per Google Discover e Social Cards.
 - **AI Context**: Il file `public/llms.txt` fornisce un contesto strutturato per i Large Language Models (LLM).
 
