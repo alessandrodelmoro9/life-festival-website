@@ -259,12 +259,12 @@ const SpeakerItem = ({
       onMouseLeave={() => setHoveredId(null)}
       onClick={onClick}
       animate={{ 
-        opacity: hoveredId === null || isHovered ? 1 : 0.15,
+        opacity: hoveredId === null || isHovered ? 1 : 0.2,
         backgroundColor: isHovered ? "#FF76BF" : "transparent",
       }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={{ duration: 0.3, ease: [0.215, 0.61, 0.355, 1.0] }}
       className={cn(
-        "group cursor-pointer border-b border-foreground/10 px-6 transition-all duration-300 relative flex flex-col justify-center items-start text-left",
+        "group cursor-pointer border-b border-foreground/10 px-6 transition-all duration-300 relative flex flex-col justify-center items-start text-left will-change-[opacity,background-color]",
         isHost ? "md:col-span-2 h-[190px] border-t" : "h-[150px]"
       )}
     >

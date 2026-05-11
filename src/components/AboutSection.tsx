@@ -43,7 +43,7 @@ const AboutSection = () => {
         
         {/* RIGA SUPERIORE: H1 + Bottone */}
         <div className="about-animate flex flex-col md:flex-row justify-between items-start w-full gap-8 md:gap-0">
-          <h2 className="text-h1 text-life-black leading-tight tracking-tighter">
+          <h2 className="text-h1 text-life-black leading-[0.9] tracking-tighter">
             Ogni gesto<br />lascia una<br />traccia.
           </h2>
 
