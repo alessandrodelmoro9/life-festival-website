@@ -13,7 +13,7 @@ export const speakersData: Speaker[] = [
   {
     id: 0,
     name: "Cromia Design",
-    role: "Graphic designer",
+    role: "Graphic designer - Host",
     description: "Samuela Vaccari è graphic designer e fondatrice di Cromia Design. Si occupa di brand identity, sviluppando identità visive basate su ricerca, coerenza e attenzione alle scelte progettuali. Il suo lavoro è orientato a costruire sistemi chiari e riconoscibili nel tempo.",
     color: 'primary',
     image: "/assets/speakers/Cromia design_samuela vaccari.jpg",

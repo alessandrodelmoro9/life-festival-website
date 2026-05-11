@@ -184,14 +184,14 @@ const SpeakersSection: React.FC = () => {
               </button>
 
               <div className="w-full md:w-[55%] lg:w-[60%] order-2 md:order-1 flex flex-col justify-center">
-                <h2 className="text-foreground font-display font-medium text-4xl md:text-[5vw] lg:text-[5.5vw] leading-[0.9] tracking-tighter mb-4 md:mb-6">
+                <h2 className="text-foreground text-h2 mb-4 md:mb-6">
                   {formatSpeakerName(selectedSpeaker.name)}
                 </h2>
                 <div className="max-w-2xl">
-                  <span className="text-foreground/70 font-display font-medium uppercase tracking-[0.2em] text-xs md:text-sm block mb-4 md:mb-6">
+                  <h5 className="text-foreground/70 font-body uppercase mb-4 md:mb-6">
                     {selectedSpeaker.role}
-                  </span>
-                  <p className="text-foreground/90 text-base md:text-lg lg:text-[1.25rem] leading-[1.4] font-body font-light mb-8 md:mb-10 whitespace-pre-wrap">
+                  </h5>
+                  <p className="text-foreground/90 leading-[1.4] mb-8 md:mb-10 whitespace-pre-wrap">
                     {selectedSpeaker.description}
                   </p>
                   <div className="flex flex-wrap gap-6 md:gap-10">
@@ -200,7 +200,7 @@ const SpeakersSection: React.FC = () => {
                         href={selectedSpeaker.instagram} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-foreground/40 hover:text-foreground uppercase tracking-widest text-[10px] md:text-xs font-display font-medium border-b border-foreground/20 pb-1 transition-all"
+                        className="text-foreground/40 hover:text-foreground uppercase text-h6 font-body pb-1 transition-all"
                       >
                         Instagram ↗
                       </a>
@@ -210,7 +210,7 @@ const SpeakersSection: React.FC = () => {
                         href={selectedSpeaker.website} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-foreground/40 hover:text-foreground uppercase tracking-widest text-[10px] md:text-xs font-display font-medium border-b border-foreground/20 pb-1 transition-all"
+                        className="text-foreground/40 hover:text-foreground uppercase text-h6 font-body pb-1 transition-all"
                       >
                         Website ↗
                       </a>
