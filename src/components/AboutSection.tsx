@@ -69,17 +69,11 @@ const AboutSection = () => {
 
         {/* RIGA INFERIORE: Colonne di testo */}
         <div className="about-animate grid grid-cols-1 md:grid-cols-2 gap-[34px] w-full">
-          <h5 className="text-life-black tracking-[0px] leading-relaxed font-body normal-case">
-            Il 5 e 6 giugno 2026, il Terminal Gallitello di Potenza diventa il fulcro della creatività in Basilicata. 
-            2 giorni di talk, workshop, mostre e attività per esplorare il presente ed il futuro della progettazione, 
-            con grandi professionisti, esperti del settore e docenti accademici. Torna per la seconda edizione Life Design Festival, 
-            il festival del design della comunicazione della Basilicata. Qui, ogni idea conta.
+          <h5 className="text-life-black tracking-[0px] leading-snug font-body normal-case">
+            Il 5 e 6 giugno 2026, torna per la seconda edizione Life Design Festival, il festival del design della comunicazione della Basilicata. Il Terminal Gallitello di Potenza diventa il fulcro della creatività in lucania: 2 giorni di talk, workshop, mostre e attività per esplorare il presente ed il futuro della progettazione, con grandi professionisti, esperti del settore e docenti accademici. Qui, ogni idea conta.
           </h5>
-          <h5 className="text-life-black tracking-[0px] leading-relaxed font-body normal-case">
-            Ogni segno è l'inizio di qualcosa di nuovo. Qui definiamo una cultura progettuale lucana. 
-            Crediamo che la vita sia una superficie da disegnare. Life è il punto di incontro tra la visione creativa 
-            e l'azione consapevole: due giorni per connettere idee, persone e territori. Vivi un'esperienza immersiva 
-            e progetta il futuro attraverso decisioni progettuali consapevoli, perché ogni gesto lascia una traccia.
+          <h5 className="text-life-black tracking-[0px] leading-snug font-body normal-case">
+            Crediamo che la vita sia una superficie da disegnare. Ogni segno è l'inizio di qualcosa di nuovo, al Life definiamo una cultura progettuale lucana. Il festival è il punto di incontro tra la visione creativa e l'azione consapevole: due giorni per connettere idee, persone e territori. Vivi un'esperienza immersiva e definisci il futuro attraverso decisioni progettuali consapevoli, perché ogni gesto lascia una traccia.
           </h5>
         </div>
 
