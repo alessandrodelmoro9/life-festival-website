@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { usePaint } from '@/context/PaintContext';
 import BottoneIcon from '@/assets/bottone.svg';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,48 +15,18 @@ const AboutSection = () => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo('.about-text',
+      gsap.fromTo('.about-animate',
         { opacity: 0, y: 50 },
         {
           opacity: 1, y: 0, duration: 1, ease: 'power3.out',
           stagger: 0.2,
           scrollTrigger: {
-            trigger: '.about-text',
+            trigger: sectionRef.current,
             start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            toggleActions: 'play none none none',
           },
         }
       );
-
-      gsap.fromTo('.about-heading',
-        { opacity: 0, x: -80 },
-        {
-          opacity: 1, x: 0, duration: 1.2, ease: 'power4.out',
-          scrollTrigger: {
-            trigger: '.about-heading',
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-
-      // Pulse animation for the trigger square
-      gsap.to('.trace-trigger-square', {
-        scale: 1.2,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.5,
-        ease: "sine.inOut"
-      });
-
-      // Subtle arrow "bounce"
-      gsap.to('.trace-curved-arrow', {
-        y: 10,
-        repeat: -1,
-        yoyo: true,
-        duration: 2,
-        ease: "sine.inOut"
-      });
     }, sectionRef.current);
 
     return () => ctx.revert();
@@ -67,55 +38,51 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" ref={sectionRef} className="relative py-24 md:py-48 overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Header Row: Title + Trigger */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-            <h2
-              className="about-heading font-display text-foreground leading-[0.95] font-medium tracking-tighter"
-              style={{ fontSize: 'clamp(4rem, 10vw, 7.5rem)' }}
-            >
-              Ogni gesto<br />
-              lascia una<br />
-              traccia.
-            </h2>
+    <section id="about" ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden flex items-center justify-center">
+      <div className="w-full max-w-[1008px] mx-auto h-auto px-6 md:px-0">
+        
+        {/* RIGA SUPERIORE: H1 + Bottone */}
+        <div className="about-animate flex flex-col md:flex-row justify-between items-start w-full gap-8 md:gap-0">
+          <h2 className="text-h1 text-life-black leading-tight tracking-tighter">
+            Ogni gesto<br />lascia una<br />traccia.
+          </h2>
 
-            {/* Interactive Trigger (Desktop: Right of Title, Mobile: Below Title) */}
-            <div className="about-text flex flex-col items-center md:items-start md:pt-16">
-              <button 
-                className="group flex flex-row items-center cursor-pointer gap-6"
-                onClick={handleActivatePaint}
-              >
-                <span className="font-body text-[13px] md:text-[15px] uppercase tracking-wider text-black font-medium group-hover:text-primary transition-colors leading-[1.2] text-center md:text-left">
-                  DISEGNA<br />
-                  LA TUA<br />
-                  TRACCIA
-                </span>
-                
-                <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
-                  <img src={BottoneIcon} alt="Paint Mode" className="w-full h-full object-contain" />
-                </div>
-              </button>
+          <div 
+            className="group flex items-center justify-end gap-4 cursor-pointer md:mt-4 w-[199px] h-[86px]"
+            onClick={handleActivatePaint}
+          >
+            <span className="font-body text-[12px] font-bold uppercase text-left leading-tight tracking-[0px] text-life-black">
+              DISEGNA <br /> LA TUA <br /> TRACCIA
+            </span>
+            <div className="w-14 h-14 bg-life-pink flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-sm flex-shrink-0">
+              <img src={BottoneIcon} alt="Paint Mode" className="w-8 h-8 object-contain" />
             </div>
           </div>
-
-          <div className="mt-16 md:mt-24 grid md:grid-cols-2 gap-12 md:gap-24">
-            <p className="about-text font-body text-lg md:text-xl leading-relaxed text-foreground">
-              Crediamo che la vita non sia un binario da seguire, ma una superficie da disegnare. LIFE è il punto di incontro tra la visione creativa e l'azione consapevole: due giorni per esplorare nuove traiettorie, connettere nodi distanti e trasformare l'incertezza in un progetto di valore.
-            </p>
-            <p className="about-text font-body text-lg md:text-xl leading-relaxed text-muted-foreground">
-              Il 5 e 6 giugno 2026, il Terminal Gallitello di Potenza diventa il laboratorio di una comunità che non aspetta il futuro, ma lo disegna. Oltre i talk e i workshop, LIFE è lo spazio dove ogni connessione diventa una traccia indelebile. Qui, ogni idea conta. Ogni segno è l'inizio di qualcosa di nuovo.
-            </p>
-          </div>
-
-          {/* Minimalist Mobile Line */}
-          <div className="md:hidden mt-16 opacity-20">
-            <svg className="w-full h-px" viewBox="0 0 1000 1">
-              <line x1="0" y1="0" x2="1000" y2="0" stroke="currentColor" strokeWidth="2" />
-            </svg>
-          </div>
         </div>
+
+        {/* RIGA CENTRALE: Sottotitolo */}
+        <div className="about-animate mt-[90px] mb-8 max-w-[356px]">
+          <h4 className="text-life-black leading-tight">
+            Il festival del design <br /> digitale in Basilicata
+          </h4>
+        </div>
+
+        {/* RIGA INFERIORE: Colonne di testo */}
+        <div className="about-animate grid grid-cols-1 md:grid-cols-2 gap-[34px] w-full">
+          <h5 className="text-life-black tracking-[0px] leading-relaxed font-body normal-case">
+            Il 5 e 6 giugno 2026, il Terminal Gallitello di Potenza diventa il fulcro della creatività in Basilicata. 
+            2 giorni di talk, workshop, mostre e attività per esplorare il presente ed il futuro della progettazione, 
+            con grandi professionisti, esperti del settore e docenti accademici. Torna per la seconda edizione Life Design Festival, 
+            il festival del design della comunicazione della Basilicata. Qui, ogni idea conta.
+          </h5>
+          <h5 className="text-life-black tracking-[0px] leading-relaxed font-body normal-case">
+            Ogni segno è l'inizio di qualcosa di nuovo. Qui definiamo una cultura progettuale lucana. 
+            Crediamo che la vita sia una superficie da disegnare. Life è il punto di incontro tra la visione creativa 
+            e l'azione consapevole: due giorni per connettere idee, persone e territori. Vivi un'esperienza immersiva 
+            e progetta il futuro attraverso decisioni progettuali consapevoli, perché ogni gesto lascia una traccia.
+          </h5>
+        </div>
+
       </div>
     </section>
   );

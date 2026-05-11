@@ -5,6 +5,8 @@ import { programData, ProgramItem } from '@/data/programData';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import Day5Icon from '@/assets/5.svg';
+import Day6Icon from '@/assets/6.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,8 +67,6 @@ const ProgramSection = () => {
         [day]: !prev[day]
       }));
       
-      // If closing, we might want to ensure the user doesn't lose context
-      // but usually ScrollTrigger.refresh() is enough if the height changes.
       setTimeout(() => {
         ScrollTrigger.refresh();
       }, 400);
@@ -75,6 +75,8 @@ const ProgramSection = () => {
 
   const DayHeader = ({ number, month }: { number: string, month: string }) => {
     const isOpen = openDays[number];
+    const icon = number === '5' ? Day5Icon : Day6Icon;
+
     return (
       <div 
         onClick={() => toggleDay(number)}
@@ -84,12 +86,15 @@ const ProgramSection = () => {
         )}
       >
         <div className="flex items-center gap-3 md:gap-4 relative z-10 mb-2 w-full">
-          <div className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full border-[3px] border-[#F4EEE4] font-display text-2xl md:text-4xl pt-1 bg-[#262626]">
-            {number}
+          <div className="flex-shrink-0 w-[40px] md:w-[75px]">
+            <img 
+              src={icon} 
+              alt={`Giorno ${number}`} 
+              className="w-full h-auto block" 
+            />
           </div>
-          <span className="font-display text-3xl md:text-5xl lowercase leading-none">{month}</span>
+          <h2 className="lowercase leading-none flex-grow">{month}</h2>
           
-          {/* Mobile indicator */}
           <div className="lg:hidden ml-auto pr-4">
             <motion.div
               animate={{ rotate: isOpen ? 180 : 0 }}
@@ -109,8 +114,10 @@ const ProgramSection = () => {
         <div className="max-w-[1400px] mx-auto">
           {/* HEADER SECTION */}
           <div className="mb-16 md:mb-24 ml-10 md:ml-14">
-            <h2 className="program-heading font-display leading-[0.95] font-medium tracking-tighter text-[#F4EEE4]" style={{ fontSize: 'clamp(3rem, 8vw, 8rem)' }}>Programma</h2>
-            <p className="program-heading font-body text-[10px] md:text-xs uppercase tracking-normal text-[#F4EEE4] mt-4 font-bold">IL PROGRAMMA DETTAGLIATO DEL FESTIVAL</p>
+            <h2 className="text-h1 text-life-cream mb-6 tracking-tighter program-heading">Programma</h2>
+            <h5 className="text-life-cream/80 max-w-[642.86px] leading-snug font-body uppercase tracking-[0px] program-heading">
+              CHI LASCERÀ UNA TRACCIA SUL NOSTRO PALCO
+            </h5>
           </div>
 
           {/* DUAL TIMELINE GRID */}
@@ -174,7 +181,7 @@ const ProgramItemComponent = ({ item, prevColorClass }: { item: ProgramItem, pre
   const currentColorClass = typeColors[item.type] || "bg-white/20";
 
   return (
-    <div id={`event-${item.id}`} className="program-item group relative flex items-center justify-between py-8 pl-10 md:pl-14 pr-4 transition-all duration-500 cursor-default">
+    <div id={`event-${item.id}`} className="program-item group relative flex items-start justify-between py-8 pl-10 md:pl-14 pr-4 transition-all duration-500 cursor-default">
       
       {/* SEPARATOR LINE */}
       <div className="absolute bottom-0 left-10 md:left-14 right-4 h-[1px] bg-white/10" />
@@ -205,13 +212,13 @@ const ProgramItemComponent = ({ item, prevColorClass }: { item: ProgramItem, pre
         )}
       ></div>
       
-      <div className="flex flex-col gap-1 relative z-10 pr-4">
-        <h3 className="font-display font-medium text-xl md:text-3xl leading-tight tracking-tight group-hover:text-white transition-colors duration-300">{item.title}</h3>
-        <span className="font-body text-xs md:text-sm text-[#F4EEE4]/60 mt-1 uppercase tracking-wider">{item.time}</span>
+      <div className="flex flex-col gap-1 relative z-10 pr-4 mt-[-6px]">
+        <h4 className="group-hover:text-white transition-colors duration-300">{item.title}</h4>
+        <h6 className="text-[#F4EEE4]/60 mt-1 uppercase">{item.time}</h6>
       </div>
 
-      <div className="text-right shrink-0 relative z-10">
-        <span className="font-body text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-[#F4EEE4]/40 font-bold">{item.type}</span>
+      <div className="text-right shrink-0 relative z-10 mt-[-2px]">
+        <p className="uppercase text-[#F4EEE4]/40 font-bold text-[10px] tracking-[0.05em]">{item.type}</p>
       </div>
     </div>
   );

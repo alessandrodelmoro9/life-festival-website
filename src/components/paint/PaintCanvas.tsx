@@ -192,11 +192,12 @@ const PaintCanvas: React.FC = () => {
     <div 
       ref={containerRef} 
       className={cn(
-        "fixed top-0 left-0 w-full h-screen pointer-events-none", // Fixed e h-screen!
-        activeSpeakerId !== null ? "z-[10000]" : "z-[9998]",
-        isActive && mode === 'draw' && "pointer-events-auto cursor-crosshair z-[10001] touch-none"
+        "fixed top-0 left-0 w-full h-screen", 
+        activeSpeakerId !== null ? "z-[10000]" : (isActive ? "z-[9998]" : "z-[1]"),
+        isActive && mode === 'draw' ? "cursor-crosshair touch-none" : "pointer-events-none"
       )}
       style={{ 
+        pointerEvents: isActive && mode === 'draw' ? 'auto' : 'none',
         touchAction: isActive && mode === 'draw' ? 'none' : 'auto'
       }}
     >
