@@ -76,7 +76,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden fixed inset-0 bg-background z-[100] flex flex-col items-center justify-center gap-8 transition-all duration-500 h-screen w-screen overflow-hidden ${menuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-10'}`}>
+      <div className={`md:hidden fixed inset-0 bg-background z-[100] flex flex-col items-center justify-center gap-8 transition-all duration-500 h-screen w-screen overflow-hidden touch-none overscroll-none ${menuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-10'}`}>
         {navItems.map((item) => (
           <button
             key={item.id}
