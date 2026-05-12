@@ -34,7 +34,7 @@ export const speakersData: Speaker[] = [
     id: 2,
     name: "AUGE Design",
     role: "Independent Studio",
-    description: "Andrea Mastroluca è Associate Creative Director in Auge Design, studio italiano specializzato in Packaging Design e Branding. Designer con 10 anni di esperienza nel settore, ha avuto l’opportunità di collaborare con brand come Barilla, Chobani, Bahlsen, Rana, Sammontana, Casa Marrazzo, ottenendo i più importanti award nazionali e internazionali, tra cui ADC, D&AD, Dieline Awards e Diamond Pentawards. Il suo lavoro ha inoltre contribuito ai principali successi di Auge Design degli ultimi anni, premiata come Dieline Studio of the Year nel 2022, Pentawards Design Agency of the Year nel 2023 e Boutique Design Studio of the Year agli ADC NY 2025.",
+    description: "Andrea Mastroluca è Associate Creative Director in Auge Design, studio specializzato in Packaging Design e Branding. In oltre 10 anni di carriera ha collaborato con brand come Barilla, Chobani e Rana, ottenendo prestigiosi award internazionali tra cui ADC, D&AD e Pentawards. Sotto la sua guida, Auge Design è stata premiata come Dieline Studio of the Year 2022 e Pentawards Agency of the Year 2023.",
     color: 'secondary',
     image: "/assets/speakers/Auge.jpg",
     instagram: "https://www.instagram.com/auge_d/",
