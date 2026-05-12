@@ -18,7 +18,7 @@ export const speakersData: Speaker[] = [
     color: 'primary',
     image: "/assets/speakers/Cromia design_samuela vaccari.jpg",
     instagram: "https://www.instagram.com/cromiadesign/",
-    website: "https://cromiadesign.myportfolio.com/"
+    website: "https://cromiadesign.myportfolio.com"
   },
   {
     id: 1,
@@ -28,7 +28,7 @@ export const speakersData: Speaker[] = [
     color: 'primary',
     image: "/assets/speakers/adoratorio studio.jpg",
     instagram: "https://www.instagram.com/adoratorio.studio",
-    website: "https://adoratorio.studio/"
+    website: "https://www.adoratorio.studio"
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ export const speakersData: Speaker[] = [
     color: 'secondary',
     image: "/assets/speakers/Auge.jpg",
     instagram: "https://www.instagram.com/auge_d/",
-    website: "https://auge-design.com/"
+    website: "https://www.auge-design.com"
   },
   {
     id: 3,
@@ -48,7 +48,7 @@ export const speakersData: Speaker[] = [
     color: 'accent',
     image: "/assets/speakers/Be Family.jpg",
     instagram: "https://www.instagram.com/befamily_studio/",
-    website: "https://www.befamily.it/"
+    website: "https://www.befamily.it"
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ export const speakersData: Speaker[] = [
     color: 'primary',
     image: "/assets/speakers/bruttoStudio.jpg",
     instagram: "https://www.instagram.com/brutto.studio/",
-    website: "https://www.brutto.shop/"
+    website: "https://www.brutto.shop"
   },
   {
     id: 5,
@@ -68,7 +68,7 @@ export const speakersData: Speaker[] = [
     color: 'secondary',
     image: "/assets/speakers/Domenico LoperfidoDUDE.jpg",
     instagram: "https://www.instagram.com/dude_frames/",
-    website: "https://dude.it/"
+    website: "https://www.dude.it"
   },
   {
     id: 6,
@@ -78,7 +78,7 @@ export const speakersData: Speaker[] = [
     color: 'accent',
     image: "/assets/speakers/Dverso studio.jpg",
     instagram: "https://www.instagram.com/dverso.io/",
-    website: "https://dversostudio.io/"
+    website: "https://www.dversostudio.io"
   },
   {
     id: 7,
@@ -88,7 +88,7 @@ export const speakersData: Speaker[] = [
     color: 'primary',
     image: "/assets/speakers/ego55.jpg",
     instagram: "https://www.instagram.com/ego55_branding_studio/",
-    website: "https://www.ego55.com/"
+    website: "https://www.ego55.com"
   },
   {
     id: 8,
@@ -98,7 +98,7 @@ export const speakersData: Speaker[] = [
     color: 'secondary',
     image: "/assets/speakers/EtStudio.jpg",
     instagram: "https://www.instagram.com/et__studio/",
-    website: "https://www.e-t.studio/"
+    website: "https://www.e-t.studio"
   },
   {
     id: 9,
@@ -108,7 +108,7 @@ export const speakersData: Speaker[] = [
     color: 'accent',
     image: "/assets/speakers/italo_sannino.jpg",
     instagram: "https://www.instagram.com/italosan/",
-    website: "https://www.italosan.com/"
+    website: "https://www.italosan.com"
   },
   {
     id: 10,
@@ -118,7 +118,7 @@ export const speakersData: Speaker[] = [
     color: 'primary',
     image: "/assets/speakers/Jekyll & Hyde.jpg",
     instagram: "https://www.instagram.com/jeh_it/",
-    website: "https://www.jeh.it/"
+    website: "https://www.jeh.it"
   },
   {
     id: 11,
@@ -128,7 +128,7 @@ export const speakersData: Speaker[] = [
     color: 'secondary',
     image: "/assets/speakers/Mauro Bubbico.jpg",
     instagram: "https://www.instagram.com/mauro_bubbico/",
-    website: "https://www.maurobubbico.it/"
+    website: "https://www.maurobubbico.it"
   },
   {
     id: 12,
@@ -156,7 +156,7 @@ export const speakersData: Speaker[] = [
     color: 'accent',
     image: "/assets/speakers/pug design fest.jpg",
     instagram: "https://www.instagram.com/pugdesignfest/",
-    website: "https://pugdesignfest.com/"
+    website: "https://www.pugdesignfest.com"
   },
   {
     id: 15,
@@ -166,7 +166,7 @@ export const speakersData: Speaker[] = [
     color: 'primary',
     image: "/assets/speakers/Riccardo Albertini (Rocketpanda).jpg",
     instagram: "https://www.instagram.com/rocketpanda/",
-    website: "https://www.therocketpanda.com/"
+    website: "https://www.therocketpanda.com"
   },
   {
     id: 16,
@@ -186,7 +186,7 @@ export const speakersData: Speaker[] = [
     color: 'accent',
     image: "/assets/speakers/SimoneChecchia.jpg",
     instagram: "https://www.instagram.com/checchiadesign/",
-    website: "https://www.checchiadesign.com/"
+    website: "https://www.checchiadesign.com"
   },
   {
     id: 18,
@@ -196,7 +196,7 @@ export const speakersData: Speaker[] = [
     color: 'primary',
     image: "/assets/speakers/The wave.jpg",
     instagram: "https://www.instagram.com/thewavestudio.it/",
-    website: "https://www.thewavestudio.it/"
+    website: "https://www.thewavestudio.it"
   },
   {
     id: 19,
@@ -206,6 +206,6 @@ export const speakersData: Speaker[] = [
     color: 'secondary',
     image: "/assets/speakers/zeta fonts.jpg",
     instagram: "https://www.instagram.com/zetafonts/",
-    website: "https://www.zetafonts.com/"
+    website: "https://www.zetafonts.com"
   }
 ];
