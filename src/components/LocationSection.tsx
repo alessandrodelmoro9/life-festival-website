@@ -75,44 +75,43 @@ const LocationSection = () => {
           <div className="location-collage relative w-full h-[320px] md:h-[550px] flex items-start justify-center mt-8 md:mt-0">
             
             {/* FOTO 1 (Sinistra) */}
-            <div 
+            <div
               onClick={() => setTopIndex(0)}
               className={`collage-item collage-left absolute left-1/2 top-0 w-40 h-56 md:w-56 md:h-80 shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 0 ? 'is-active z-40' : 'z-10'}`}
               style={{ transform: 'translateX(calc(-50% - 30px)) rotate(-12deg)' }}
             >
-              <img 
-                src="/assets/location/060520 1.png" 
-                alt="Location 1" 
+              <img
+                src="/assets/location/060520.jpg"
+                alt="Location 1"
                 className="w-full h-full object-cover pointer-events-none"
               />
             </div>
 
             {/* FOTO 3 (Destra) */}
-            <div 
+            <div
               onClick={() => setTopIndex(2)}
               className={`collage-item collage-right absolute left-1/2 top-0 w-40 h-56 md:w-56 md:h-80 shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 2 ? 'is-active z-40' : 'z-10'}`}
               style={{ transform: 'translateX(calc(-50% + 30px)) rotate(12deg)' }}
             >
-              <img 
-                src="/assets/location/060520 2.png" 
-                alt="Location 3" 
+              <img
+                src="/assets/location/060521.jpg"
+                alt="Location 3"
                 className="w-full h-full object-cover pointer-events-none"
               />
             </div>
 
             {/* FOTO 2 (Centrale) */}
-            <div 
+            <div
               onClick={() => setTopIndex(1)}
               className={`collage-item collage-center absolute left-1/2 top-0 w-40 h-56 md:w-56 md:h-80 shadow-2xl cursor-pointer origin-bottom overflow-hidden ${topIndex === 1 ? 'is-active z-40' : (topIndex === null ? 'z-20' : 'z-10')}`}
               style={{ transform: 'translateX(-50%) rotate(0deg)' }}
             >
-              <img 
-                src="/assets/location/070535 1.png" 
-                alt="Location 2" 
+              <img
+                src="/assets/location/070535.jpg"
+                alt="Location 2"
                 className="w-full h-full object-cover pointer-events-none"
               />
             </div>
-
             {/* LA "PUNTINA" ARANCIONE */}
             <div className="absolute top-[210px] md:top-[300px] left-1/2 -translate-x-1/2 w-5 h-5 md:w-6 md:h-6 bg-life-red z-50 pointer-events-none shadow-lg"></div>
             
