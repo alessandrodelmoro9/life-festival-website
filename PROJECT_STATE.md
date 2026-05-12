@@ -1,44 +1,35 @@
-# Project State: Life Design Festival Website
+# Project State - Life Design Festival 2026
 
-## 📌 Status Update - May 11, 2026 (Final Audit)
-The website is **Launch-Ready**. All technical, semantic, and design refinements have been implemented.
+## 🎯 Overall Goal
+Finalize and deploy the Life Design Festival 2026 website, ensuring optimal SEO, mobile UX stability, and consistent brand typography across all interactive components.
 
----
+## 🛠️ Active Constraints & Standards
+- **SEO Hierarchy**: Strictly one `h1` per page (Hero section). Sub-sections use `h2` + `.text-h1` utility class.
+- **Visual Decoupling**: Font sizes managed via `.text-h1` to `.text-h6` classes in `index.css`.
+- **Compliance**: Meta Pixel integrated with Iubenda "Prior Blocking" (`type="text/plain"`, class `_iub_cs_activate`).
+- **Cache Policy**: Optimized `vercel.json` with 1-year cache for assets/fonts and `max-age=0` for `index.html`.
+- **Mobile Precision**: Hero cluster fixed at 348px width with exact Figma dimensions (Icons 82px, Button 79px).
 
 ## ✅ Completed Tasks
+1. **SEO & Accessibility**: Validated heading hierarchy and meta tags.
+2. **Typography Refinement**: Standardized About, Tickets, and Speaker Modal typography.
+3. **Bug Fixes**: 
+    - Resolved Mac/Safari hover flickering in Speakers section.
+    - Fixed Vercel build error caused by `<noscript>` in `<head>`.
+    - Corrected "Cromia Design" role and "Workshop" title redundancy.
+4. **Integration**: Meta Pixel fully integrated and GDPR compliant.
+5. **UI Stabilization**: Hero button size fixed across Android and iOS.
 
-### 1. SEO & Semantic Optimization
-*   **Consolidated Hierarchy**: Implemented utility classes (`.text-h1`, `.text-h2`) to decouple visual size from HTML tags.
-*   **Single H1**: Only the Hero section title remains an `H1`. All other section titles moved to `H2` while preserving their 120px impact.
-*   **Metadata**: Updated meta tags for Google Discover and Social Sharing.
+## 🚀 Current Status: Domain Migration
+- **Branch**: `main` is up-to-date and production-ready.
+- **Deployment**: Local build verified (`npm run build`).
+- **DNS Phase**: Instructions sent for pointing `lifedesignfestival.it` to Vercel (Record A: `216.198.79.1`, CNAME: `35aa11e6555da0ce.vercel-dns-017.com.`).
 
-### 2. Design & UX Refinements
-*   **Speaker Modal**: Refactored layout to eliminate scrolling. Increased image size to 24vw and optimized text container for long bios (AUGE, Mauro Mazzei).
-*   **Asset Visibility**: Switched to dark SVG icons (5/6) in the Hero section to ensure contrast on cream background.
-*   **Interactive Elements**: Updated `SocialProofWidget` with brand-pink hover states.
-*   **Navigation**: Added "Alloggi" anchor to the Navbar.
+## ⚠️ Potential Deployment Issues (Watchlist)
+1. **Propagation Latency**: DNS changes can take 1-24 hours. Users might see the old site or a "Not Found" page during this window.
+2. **SSL Wait Time**: Vercel generates the certificate *after* DNS is verified. The site might show a security warning for a few minutes once it first points to Vercel.
+3. **Local Browser Cache**: Users who visited the `.vercel.app` version might need to hard-refresh (`Cmd+Shift+R` or `Ctrl+F5`) to see the latest fixes if they bypass the new cache headers initially.
+4. **Register.it Interface**: Some registrars require a dot `.` at the end of CNAME values; if it fails, try without the trailing dot.
 
-### 3. Content Updates
-*   **Editorial Sync**: All speakers, roles, and program events updated with final 2026 data.
-*   **Links**: Social links changed from LinkedIn to Instagram/Website as requested.
-
----
-
-## 🚀 Future Integrations (Pending Credentials)
-
-### 1. Marketing & Tracking
-*   **GA4 (Google Analytics)**: Integration planned upon receipt of tracking ID.
-*   **Meta Pixel**: Integration planned for conversion tracking.
-*   **Implementation**: Scripts will be added to `index.html` using Iubenda's prior-blocking protocol.
-
-### 2. Post-Launch
-*   **Sitemap Submission**: Submit `sitemap.xml` to Google Search Console once DNS is live.
-*   **SSL Verification**: Confirm certificate activation on Vercel.
-
----
-
-## 🛠 Tech Notes
-*   **Framework**: React + TypeScript + Vite.
-*   **Styling**: Tailwind CSS + Custom Utility Classes for SEO.
-*   **Animation**: GSAP + ScrollTrigger for sections entrance.
-*   **Compatibility**: Lenis smooth-scroll disabled on touch devices for iOS stability.
+## 📝 Personal Notes
+The project is in a highly polished state. All typography matches Figma specs, and performance headers are optimized for a smooth launch.
