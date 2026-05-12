@@ -165,7 +165,8 @@ const PaintCanvas: React.FC = () => {
     const updateCanvasSize = () => {
       [canvasRef.current, tempCanvasRef.current].forEach(canvas => {
         if (canvas) {
-          const dpr = window.devicePixelRatio || 1;
+          // Limita il DPR a 2 per risparmiare memoria su iOS/dispositivi high-res
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
           const width = window.innerWidth;
           const height = window.innerHeight; // Solo l'altezza del viewport!
           canvas.width = width * dpr;

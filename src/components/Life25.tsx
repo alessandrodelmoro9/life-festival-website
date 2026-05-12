@@ -55,9 +55,14 @@ const Life25 = () => {
     const container = containerRef.current;
     if (!container) return;
 
+    // Detect if it's a mobile/touch device to reduce pool size
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const maxImages = isTouchDevice ? 10 : CONFIG.maxActiveImages;
+
     // Initialize the pool
     const initializePool = () => {
-      for (let i = 0; i < CONFIG.maxActiveImages; i++) {
+      imagePool.current = []; // Reset pool
+      for (let i = 0; i < maxImages; i++) {
         const div = document.createElement('div');
         div.className = 'absolute pointer-events-none overflow-hidden opacity-0 will-change-transform';
         div.style.zIndex = '10';
