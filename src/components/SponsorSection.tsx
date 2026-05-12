@@ -18,13 +18,14 @@ const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[]
       <div className="flex flex-nowrap items-center justify-start gap-x-4 md:gap-x-8 w-full h-16 md:h-32 overflow-hidden">
         {sponsors.map((sponsor) => {
           const isBCC = sponsor.name === "BCC Basilicata";
+          const isMainSponsor = sponsor.name === "La Gala Home";
           
           return (
             <div 
               key={sponsor.id} 
               className={cn(
                 "flex items-center justify-start relative min-w-0 h-full",
-                isBCC ? "w-full" : "flex-1"
+                (isBCC || isMainSponsor) ? "w-full" : "flex-1"
               )}
             >
               <img
@@ -32,7 +33,8 @@ const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[]
                 alt={sponsor.name}
                 className={cn(
                   "object-contain object-left h-full w-auto opacity-90 hover:opacity-100 transition-opacity duration-300",
-                  isBCC && "scale-[2.2] origin-left"
+                  isBCC && "scale-[2.2] origin-left",
+                  isMainSponsor && "scale-[1.2] origin-left"
                 )}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
@@ -98,7 +100,7 @@ const SponsorSection = () => {
 
   return (
     <section id="sponsors" ref={sectionRef} className="bg-life-black py-24 md:py-32 overflow-hidden flex items-center justify-center">
-      <div className="w-full max-w-[1441px] md:h-[1062px] flex items-center justify-center">
+      <div className="w-full max-w-[1441px] md:h-[1262px] flex items-center justify-center">
         <div className="w-full max-w-[1011px] h-full flex flex-col justify-center px-6 md:px-0">
           
           <div className="sponsor-animate mb-12 md:mb-16">
@@ -111,6 +113,17 @@ const SponsorSection = () => {
           </div>
 
           <div className="flex flex-col w-full max-w-[1011px] gap-y-8 md:gap-y-10">
+            {/* Main Sponsor Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20">
+              <div className="flex flex-col min-w-0">
+                <CategoryBlock 
+                  label="MAIN SPONSOR" 
+                  sponsors={sponsorsData.filter(s => s.category === 'top')} 
+                />
+              </div>
+              <div className="hidden md:block" />
+            </div>
+
             {rows.map((row, idx) => (
               <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20">
                 <div className="flex flex-col min-w-0">
