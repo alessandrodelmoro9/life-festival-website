@@ -164,6 +164,9 @@ const Life25 = () => {
       };
 
       const update = () => {
+        // Pausa animazioni se il modale è aperto (body overflow hidden)
+        if (document.body.style.overflow === 'hidden') return;
+
         const now = Date.now();
         
         // Handle removals

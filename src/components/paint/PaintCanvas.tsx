@@ -17,11 +17,13 @@ const PaintCanvas: React.FC = () => {
   // Monitoriamo lo scroll per ridisegnare i tratti nella posizione corretta
   useEffect(() => {
     const handleScroll = () => {
+      // Se il modale è aperto, non serve aggiornare la posizione dello scroll globale (risparmio GPU)
+      if (activeSpeakerId !== null) return;
       setScrollPos({ x: window.scrollX, y: window.scrollY });
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSpeakerId]);
 
   const getCanvasPoint = useCallback((e: React.PointerEvent | PointerEvent): Point => {
     // Se siamo in un modale, salviamo le coordinate relative al viewport
