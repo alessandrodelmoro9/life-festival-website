@@ -21,6 +21,10 @@ const LIFE25_IMAGES = [
 
 export const useImagePreloader = () => {
   useEffect(() => {
+    // Disabilita il preloader su mobile/touch per risparmiare RAM critica
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
     const imagesToPreload = [
       ...LIFE25_IMAGES,
       ...speakersData.map(s => s.image).filter(Boolean) as string[]
