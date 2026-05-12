@@ -38,7 +38,7 @@ export const speakersData: Speaker[] = [
     color: 'secondary',
     image: "/assets/speakers/Auge.jpg",
     instagram: "https://www.instagram.com/auge_d/",
-    website: "https://www.auge.it/"
+    website: "https://auge-design.com/"
   },
   {
     id: 3,
@@ -98,13 +98,13 @@ export const speakersData: Speaker[] = [
     color: 'secondary',
     image: "/assets/speakers/EtStudio.jpg",
     instagram: "https://www.instagram.com/et__studio/",
-    website: "https://etstudio.io/"
+    website: "https://www.e-t.studio/"
   },
   {
     id: 9,
     name: "Italo Sannino",
     role: "Design Professor & Product/UI/UX Designer",
-    description: "Italo Sannino è progettista, docente e ricercatore. Titolare della cattedra di Progettazione delle Interfacce, da vent'anni porta il design nelle aule accademiche e nei contesti di ricerca con un'idea precisa: sistemico, contestuale, fondato su metodo. Lavora su design system, usabilità - anche normativa - e intelligenza artificiale applicata alla progettazione. Figma Community Leader e Adobe Community Expert, ha tenuto speech e workshop in contesti nazionali e internazionali - da Adobe MAX a TEDx. È membro del collegio di dottorato dell'Università di Foggia, dove porta il design dentro la ricerca.",
+    description: "Italo Sannino è progettista, docente e ricercatore. Titolare della cattedra di Progettazione delle Interfacce, da vent'anni porta il design nelle aule accademiche con un approccio sistemico e fondato sul metodo. Lavora su design system, usabilità e intelligenza artificiale applicata alla progettazione. Figma Community Leader e Adobe Community Expert, è stato speaker in contesti globali come Adobe MAX. Membro del collegio di dottorato dell'Università di Foggia, integra costantemente il design nel mondo della ricerca.",
     color: 'accent',
     image: "/assets/speakers/italo_sannino.jpg",
     instagram: "https://www.instagram.com/italosan/",
@@ -124,7 +124,7 @@ export const speakersData: Speaker[] = [
     id: 11,
     name: "Mauro Bubbico",
     role: "Progettista grafico e insegnante",
-    description: "Mauro Bubbico vive e lavora a Montescaglioso come grafico professionista. Tra i campi di intervento privilegia il design finalizzato all'educazione sociale e alla sostenibilità ambientale. È convinto che la cultura grafica sia, prima di tutto, capacità di costruire grandi narrazioni. Nel corso degli anni i suoi interessi, le ricerche sui luoghi e i loro abitanti, lo hanno portato alla definizione di un linguaggio grafico efficace e contemporaneo adatto a raccontarli e a valorizzarli per favorire lo sviluppo umano, economico e culturale. Ha insegnato Progettazione Grafica agli lsia di Urbino e di Faenza, alle Università di Bolzano e di San Marino e all'Accademia di Belle Arti di Lecce. Attualmente insegna all'Abadir di Catania. È membro AGI (Alliance Graphique Internationale).",
+    description: "Mauro Bubbico vive e lavora a Montescaglioso come grafico professionista, privilegiando il design finalizzato all'educazione sociale e alla sostenibilità ambientale. Convinto che la cultura grafica sia capacità di costruire grandi narrazioni, ha definito un linguaggio contemporaneo per raccontare e valorizzare i luoghi e i loro abitanti. Membro AGI (Alliance Graphique Internationale), ha insegnato Progettazione Grafica in prestigiosi atenei come l’lsia di Urbino e l’Università di Bolzano. Attualmente insegna all'Abadir di Catania.",
     color: 'secondary',
     image: "/assets/speakers/Mauro Bubbico.jpg",
     instagram: "https://www.instagram.com/mauro_bubbico/",
@@ -134,11 +134,10 @@ export const speakersData: Speaker[] = [
     id: 12,
     name: "Mauro Mazzei",
     role: "Global Head of Creative Technology at LePub",
-    description: "Mauro Mazzei è un creative technologist con oltre 15 anni di esperienza nel settore pubblicitario. Ha costruito la sua carriera lavorando a stretto contatto con team creativi, tecnologici e strategici su una vasta gamma di progetti, sperimentando tecnologie emergenti e spingendo costantemente i confini dell’innovazione, coniugando tecnologia, cultura e storytelling. Attualmente ricopre il ruolo di Global Head of Creative Technology in LePub, dove guida l’integrazione tra creatività e innovazione tecnologica. Nel corso della sua carriera, Mauro ha contribuito allo sviluppo di numerose iniziative creative riconosciute a livello internazionale, distinguendosi per la capacità di trasformare intuizioni concettuali in esperienze digitali coinvolgenti e memorabili.",
+    description: "Mauro Mazzei è un creative technologist con oltre 15 anni di esperienza. Ha costruito la sua carriera lavorando a stretto contatto con team creativi e strategici, sperimentando tecnologie emergenti e coniugando innovazione e storytelling. Attualmente è Global Head of Creative Technology in LePub, dove guida l’integrazione tra creatività e tecnologia. Nel corso della sua carriera ha contribuito allo sviluppo di numerose iniziative internazionali, trasformando intuizioni concettuali in esperienze digitali memorabili.",
     color: 'accent',
     image: "/assets/speakers/Mauro-Mazzei.jpg",
-    instagram: "https://www.instagram.com/mauromazzei/",
-    website: "https://www.linkedin.com/in/mauromazzei/"
+    instagram: "https://www.instagram.com/mauromazzei/"
   },
   {
     id: 13,
@@ -147,8 +146,7 @@ export const speakersData: Speaker[] = [
     description: "Art Director e docente di Progettazione grafica, è coordinatrice della Scuola di Progettazione Artistica per l’Impresa presso l’Accademia di Belle Arti di Napoli. La sua attività professionale si concentra nell’ambito della comunicazione visiva e della grafica editoriale, con una particolare attenzione alla progettazione del libro d’arte e dei sistemi di identità visiva per il settore culturale. Ha collaborato come art director con importanti realtà editoriali e istituzionali, tra cui Electa Napoli, Prismi Editrice Politecnica Napoli, Mondadori, Artem, White Cloud University.",
     color: 'secondary',
     image: "/assets/speakers/enricadaguanno.jpg",
-    instagram: "https://www.instagram.com/enricadaguanno/",
-    website: "https://www.linkedin.com/in/enrica-d-aguanno-8a5388a3/"
+    instagram: "https://www.instagram.com/enricadaguanno/"
   },
   {
     id: 14,
