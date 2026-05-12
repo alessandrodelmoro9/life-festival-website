@@ -4,6 +4,7 @@ export interface Sponsor {
   logo: string;
   url?: string;
   category: 
+    | 'top'
     | 'main' 
     | 'active' 
     | 'community' 
@@ -13,7 +14,10 @@ export interface Sponsor {
 }
 
 export const sponsorsData: Sponsor[] = [
-  // MAIN SPONSOR
+  // MAIN SPONSOR (TOP)
+  { id: 17, name: "La Gala Home", category: 'top', logo: "/assets/logos/la-gala-home.png" },
+
+  // CON IL SOSTEGNO DEL FONDO ETICO DI
   { id: 1, name: "BCC Basilicata", category: 'main', logo: "/assets/logos/bcc.png" },
 
   // ACTIVE SPONSOR
