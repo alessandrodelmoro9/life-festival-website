@@ -175,15 +175,15 @@ const SpeakersSection: React.FC = () => {
           className="fixed inset-0 z-[9999] max-w-none w-screen h-screen m-0 p-0 border-none bg-primary rounded-none translate-x-0 translate-y-0 left-0 top-0 overflow-hidden [&>button]:hidden"
         >
           {selectedSpeaker && (
-            <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center p-6 md:p-12 lg:p-20 gap-8 md:gap-12 lg:gap-20 overflow-hidden">
+            <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-start md:justify-center p-6 md:p-12 lg:p-20 gap-8 md:gap-12 lg:gap-20 overflow-y-auto md:overflow-hidden">
               <button 
                 onClick={() => setIsDialogOpen(false)}
-                className="absolute top-6 right-6 md:top-10 md:right-10 z-[10000] text-foreground/60 hover:text-foreground transition-colors"
+                className="fixed top-6 right-6 md:absolute md:top-10 md:right-10 z-[10000] text-foreground/60 hover:text-foreground transition-colors"
               >
                 <X size={window.innerWidth < 768 ? 32 : 48} strokeWidth={1.5} />
               </button>
 
-              <div className="w-full md:w-[55%] lg:w-[60%] order-2 md:order-1 flex flex-col justify-center">
+              <div className="w-full md:w-[55%] lg:w-[60%] order-2 md:order-1 flex flex-col justify-start md:justify-center mb-8 md:mb-0">
                 <h2 className="text-foreground text-h2 mb-4 md:mb-6">
                   {formatSpeakerName(selectedSpeaker.name)}
                 </h2>
@@ -194,7 +194,7 @@ const SpeakersSection: React.FC = () => {
                   <p className="text-foreground/90 leading-[1.4] mb-8 md:mb-10 whitespace-pre-wrap">
                     {selectedSpeaker.description}
                   </p>
-                  <div className="flex flex-wrap gap-6 md:gap-10">
+                  <div className="flex flex-wrap gap-6 md:gap-10 pb-10 md:pb-0">
                     {selectedSpeaker.instagram && (
                       <a 
                         href={selectedSpeaker.instagram} 
@@ -219,7 +219,7 @@ const SpeakersSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="w-[50vw] md:w-[28vw] lg:w-[24vw] aspect-square order-1 md:order-2 flex items-center justify-center shrink-0">
+              <div className="w-[70vw] md:w-[28vw] lg:w-[24vw] aspect-square order-1 md:order-2 flex items-center justify-center shrink-0 mt-12 md:mt-0">
                 <div className="w-full h-full rounded-none overflow-hidden border border-foreground/10 bg-background/20 shadow-2xl">
                   {selectedSpeaker.image ? (
                     <img src={selectedSpeaker.image} className="w-full h-full object-cover" alt={selectedSpeaker.name} />
