@@ -1,35 +1,48 @@
 # Project State - Life Design Festival 2026
 
 ## 🎯 Overall Goal
-Finalize and deploy the Life Design Festival 2026 website, ensuring optimal SEO, mobile UX stability, and consistent brand typography across all interactive components.
+Finalize the Life Design Festival 2026 website and implement a high-performance RAG Chatbot with a hybrid Python backend (Cloud/Local RTX 5090) to assist visitors.
 
 ## 🛠️ Active Constraints & Standards
-- **SEO Hierarchy**: Strictly one `h1` per page (Hero section). Sub-sections use `h2` + `.text-h1` utility class.
-- **Visual Decoupling**: Font sizes managed via `.text-h1` to `.text-h6` classes in `index.css`.
-- **Compliance**: Meta Pixel integrated with Iubenda "Prior Blocking" (`type="text/plain"`, class `_iub_cs_activate`).
-- **Cache Policy**: Optimized `vercel.json` with 1-year cache for assets/fonts and `max-age=0` for `index.html`.
-- **Mobile Precision**: Hero cluster fixed at 348px width with exact Figma dimensions (Icons 82px, Button 79px).
+- **Backend Architecture**: FastAPI (Asynchronous), Pydantic for validation, Clean Architecture.
+- **AI Stack**: LlamaIndex/LangChain, Vector DB (ChromaDB/Qdrant), Hybrid LLM (DeepSeek Cloud / Local vLLM-Ollama).
+- **Hybrid Hosting**: Vercel (Frontend) + Render (Cloud Backend) + Cloudflare Tunnel (Local RTX 5090 Backend).
+- **Security**: CORS restriction to production domain, API Rate Limiting, secure .env management.
+- **UI/UX**: Floating/Draggable Chat Widget with collision avoidance (Paint System).
+
+## 🚀 Roadmap & Tasks
+
+### Phase 1: Knowledge Base (Data Engineering)
+- [ ] Create structured Markdown files (`speakers.md`, `programma.md`, `vision.md`, etc.) with rich metadata (images, links).
+- [ ] Develop a Python Ingestion Script to parse and clean data.
+- [ ] Implement a Vector Indexing pipeline (Embeddings generation).
+
+### Phase 2: Python Backend Development (The "Jewel")
+- [ ] Setup FastAPI boilerplate with professional directory structure.
+- [ ] Implement the **Strategy Pattern** for Cloud/Local LLM switching.
+- [ ] Create the RAG Query Engine (Context retrieval + LLM synthesis).
+- [ ] Add Rich Metadata support (returning image URLs and links in JSON).
+- [ ] Implement Unit Tests for retrieval and API endpoints.
+
+### Phase 3: Frontend Integration
+- [ ] Create `ChatWidget.tsx` using `framer-motion` (Draggable).
+- [ ] Implement collision logic with `PaintToolbar.tsx`.
+- [ ] Connect Frontend to Backend via `fetch` using environment variables.
+- [ ] Render "Rich Cards" (Speaker/Sponsor) in the chat UI.
+
+### Phase 4: Infrastructure & Deployment
+- [ ] Dockerize the Python Backend.
+- [ ] Deploy Cloud version to Render.
+- [ ] Setup Cloudflare Tunnel for local RTX 5090 testing.
+- [ ] Configure DNS for `api.lifedesignfestival.it`.
 
 ## ✅ Completed Tasks
 1. **SEO & Accessibility**: Validated heading hierarchy and meta tags.
 2. **Typography Refinement**: Standardized About, Tickets, and Speaker Modal typography.
-3. **Bug Fixes**: 
-    - Resolved Mac/Safari hover flickering in Speakers section.
-    - Fixed Vercel build error caused by `<noscript>` in `<head>`.
-    - Corrected "Cromia Design" role and "Workshop" title redundancy.
-4. **Integration**: Meta Pixel fully integrated and GDPR compliant.
-5. **UI Stabilization**: Hero button size fixed across Android and iOS.
-
-## 🚀 Current Status: Domain Migration
-- **Branch**: `main` is up-to-date and production-ready.
-- **Deployment**: Local build verified (`npm run build`).
-- **DNS Phase**: Instructions sent for pointing `lifedesignfestival.it` to Vercel (Record A: `216.198.79.1`, CNAME: `35aa11e6555da0ce.vercel-dns-017.com.`).
-
-## ⚠️ Potential Deployment Issues (Watchlist)
-1. **Propagation Latency**: DNS changes can take 1-24 hours. Users might see the old site or a "Not Found" page during this window.
-2. **SSL Wait Time**: Vercel generates the certificate *after* DNS is verified. The site might show a security warning for a few minutes once it first points to Vercel.
-3. **Local Browser Cache**: Users who visited the `.vercel.app` version might need to hard-refresh (`Cmd+Shift+R` or `Ctrl+F5`) to see the latest fixes if they bypass the new cache headers initially.
-4. **Register.it Interface**: Some registrars require a dot `.` at the end of CNAME values; if it fails, try without the trailing dot.
+3. **Bug Fixes**: Resolved Mac/Safari hover flickering and Vercel build errors.
+4. **Integration**: Meta Pixel fully integrated.
+5. **UI Stabilization**: Hero button size fixed.
+6. **Domain**: `lifedesignfestival.it` is live on Vercel.
 
 ## 📝 Personal Notes
-The project is in a highly polished state. All typography matches Figma specs, and performance headers are optimized for a smooth launch.
+The backend is planned to be a "Master's level" showcase of Python engineering. The focus is on clean architecture, hybrid scalability, and the RAG pipeline efficiency.

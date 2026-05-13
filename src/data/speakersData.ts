@@ -62,9 +62,9 @@ export const speakersData: Speaker[] = [
   },
   {
     id: 5,
-    name: "DUDE Agency",
+    name: "DUDE Design",
     role: "Independent Agency",
-    description: "Domenico Loperfido nasce a Noci e, per quanto indossi uno dei cognomi più comuni della Basilicata, è un pugliese trapiantato a Milano per lavoro. Da più di 10 anni nel mondo del marketing e della creatività, oggi è CEO e Partner di DUDE Agency, la divisione del gruppo dedicata a branding e visual identity. È anche Chief Growth Officer di DUDE, dove guida le strategie di crescita del gruppo e si occupa di far succedere cose belle. Dal 2023 cura la newsletter In Case You Missed It, dedicata a marketing, advertising, design e cultura pop.",
+    description: "Domenico Loperfido nasce a Noci e, per quanto indossi uno dei cognomi più comuni della Basilicata, è un pugliese trapiantato a Milano per lavoro. Da più di 10 anni nel mondo del marketing e della creatività, oggi è CEO e Partner di DUDE Design, la divisione del gruppo dedicata a branding e visual identity. È anche Chief Growth Officer di DUDE, dove guida le strategie di crescita del gruppo e si occupa di far succedere cose belle. Dal 2023 cura la newsletter In Case You Missed It, dedicata a marketing, advertising, design e cultura pop.",
     color: 'secondary',
     image: "/assets/speakers/Domenico LoperfidoDUDE.jpeg",
     instagram: "https://www.instagram.com/dude_frames/",

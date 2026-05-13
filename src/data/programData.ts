@@ -39,7 +39,7 @@ export const programData: ProgramItem[] = [
   { id: 29, time: '16:05 - 16:25', title: 'Rocket Panda', day: '6 GIU', type: 'Talk' },
   { id: 30, time: '16:30 - 16:55', title: 'Zetafonts', day: '6 GIU', type: 'Talk' },
   { id: 31, time: '17:00 - 17:30', title: 'Pausetta', day: '6 GIU', type: 'Break' },
-  { id: 32, time: '17:35 - 18:00', title: 'Dude Agency', day: '6 GIU', type: 'Talk' },
+  { id: 32, time: '17:35 - 18:00', title: 'Dude Design', day: '6 GIU', type: 'Talk' },
   { id: 33, time: '18:05 - 18:30', title: 'ET studio', day: '6 GIU', type: 'Talk' },
   { id: 37, time: '18:35 - 19:00', title: 'Cromia Design (Samuela Vaccari)', day: '6 GIU', type: 'Talk' },
   { id: 34, time: '19:05 - 19:25', title: 'Mauro Bubbico', day: '6 GIU', type: 'Talk' },
