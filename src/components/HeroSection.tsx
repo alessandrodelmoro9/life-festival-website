@@ -49,13 +49,13 @@ const HeroSection = () => {
           <span>TALK</span><br />
           <span>WORKSHOP</span><br />
           <span>NETWORK</span><br />
-          <span>EXPOSITION</span><br />
+          <span>EXHIBITIONS</span><br />
           <span>PARTY</span>
         </div>
 
         <div className="hero-parallax hero-animate mt-12 max-w-[300px]">
-          <h1 className="text-[#262626] leading-[0.8] tracking-tight font-display font-medium text-[5.5rem] lowercase">
-            life<br />design<br />festival
+          <h1 className="text-[#262626] leading-[0.8] tracking-tight font-display font-medium text-[5.5rem]">
+            Life<br />design<br />festival
           </h1>
         </div>
 
@@ -93,7 +93,7 @@ const HeroSection = () => {
         <div className="absolute bottom-10 left-6 right-6 flex justify-between items-end">
           {/* Bottom-Left: Edition */}
           <div className="hero-animate mb-2">
-            <span className="font-body text-[13px] uppercase tracking-[0.2em] text-[#262626] font-normal">
+            <span className="font-body text-[13px] uppercase tracking-normal text-[#262626] font-normal">
               SECONDA EDIZIONE
             </span>
           </div>
@@ -124,7 +124,7 @@ const HeroSection = () => {
             <span>TALK</span><br />
             <span>WORKSHOP</span><br />
             <span>NETWORK</span><br />
-            <span>EXPOSITION</span><br />
+            <span>EXHIBITIONS</span><br />
             <span>PERFORMANCE</span><br />
             <span>PARTY</span>
           </div>
