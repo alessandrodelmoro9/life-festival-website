@@ -28,6 +28,7 @@ export const sponsorsData: Sponsor[] = [
   { id: 4, name: "FM Visual Designer", category: 'community', logo: "/assets/logos/fm.png" },
   { id: 5, name: "Etimologia", category: 'community', logo: "/assets/logos/etmiologia.png" },
   { id: 6, name: "Jupiter", category: 'community', logo: "/assets/logos/jupiter.png" },
+  { id: 18, name: "Unidea", category: 'community', logo: "/assets/logos/unidea.png" },
 
   // EXPERIENCE SPONSOR
   { id: 7, name: "Ordine degli Architetti di Potenza", category: 'experience', logo: "/assets/logos/ordine-architetti.png" },
