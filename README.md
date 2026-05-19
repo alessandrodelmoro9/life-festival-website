@@ -4,10 +4,18 @@ Il sito ufficiale della seconda edizione del Life Design Festival a Potenza (5-6
 
 ## Caratteristiche Tecniche
 - **Frontend**: React + TypeScript + Vite
+- **Backend (AI Chatbot)**: Python (FastAPI) + LlamaIndex + Qdrant Cloud
 - **Styling**: Tailwind CSS + Framer Motion + GSAP
-- **Infrastruttura**: Vercel (SPA routing & 301 Redirects)
+- **Infrastruttura**: Vercel (Frontend) & Render.com (Backend)
 - **Legal**: Iubenda Cookie Solution with Prior Blocking
 - **SEO**: Full Meta Tag Suite, Schema.org Event Data, AI-ready (`llms.txt`)
+
+## Architettura del Backend
+Il festival integra un chatbot RAG (Retrieval-Augmented Generation) avanzato:
+- **Motore AI**: LlamaIndex per la gestione del contesto e della knowledge base in Markdown.
+- **Strategia Ibrida**: Utilizzo primario di Google Gemini 1.5 Flash con fallback automatico su OpenRouter.
+- **Vector DB**: Qdrant Cloud per la ricerca semantica ad alte prestazioni.
+- **Knowledge Base**: 6 moduli Markdown che coprono Visione, Programma, Speaker, Partner e Workshop.
 
 ## Struttura SEO & AI
 Il progetto segue il "Gold Standard" della SEO tecnica:
