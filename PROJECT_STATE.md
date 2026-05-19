@@ -15,37 +15,44 @@ Finalize the Life Design Festival 2026 website and implement a high-performance 
   - **Backend**: Render.com (Free Tier) + `cron-job.org` (to prevent sleep).
   - **Repository**: Monorepo structure (Frontend + Backend).
 - **Security**: CORS restriction to production domain, API Rate Limiting, secure .env management.
-- **UI/UX**: Floating/Draggable Chat Widget with "Rich Cards" support for speakers/sponsors.
+- **UI/UX**: 
+  - **Desktop**: Pill-shaped/Industrial box (inspired by `PaintToolbar`) with semi-transparent blur and `Automat Grotesk` typography. Expands upwards upon input.
+  - **Mobile**: Small draggable/floating button triggering a clean fullscreen overlay or bottom drawer.
+  - **Interactivity**: Real-time text streaming and embedded media support.
+
+- **Economic Plan (Zero-Cost Strategy)**:
+  - **LLM**: Primary use of Google Gemini 1.5 Flash (Free Tier) + OpenRouter (Prepaid credits for DeepSeek/GPT-4o-mini as low-cost fallback).
+  - **Vector DB**: Qdrant Cloud (Free Tier - Serverless, 1GB storage).
+  - **Hosting**: Render.com (Free Tier) + `cron-job.org` for keep-alive.
+  - **Embeddings**: Evaluate `text-embedding-004` (Gemini Free) vs. HuggingFace Free Inference API.
 
 ## 🚀 Roadmap & Tasks
 
-### 🔴 URGENT: Tonight's Task (May 19, 23:30)
-- [ ] **Remove SocialProofWidget**: 
-  - Delete `import SocialProofWidget` from `src/App.tsx`.
-  - Delete `<SocialProofWidget />` from the JSX in `src/App.tsx`.
-  - Push to `main` to trigger Vercel deploy.
+### 🔴 URGENT: Frontend Maintenance (Separate Branch)
+- [ ] **Remove SocialProofWidget**: Dedicated branch `fix/remove-social-proof`.
 
-### Phase 0: Preparation & Demo Analysis (Current)
-- [ ] **Repository Cleanup**: Delete local branches except `main`.
-- [ ] **Monorepo Setup**: Create `feature/backend-setup` branch and `backend/` directory.
-- [ ] **Demo Migration**: User to copy existing demo codebase into the `backend/` folder.
-- [ ] **Codebase Review**: Analyze the demo logic to finalize the RAG engine and data structure.
+### Phase 0: Knowledge Base Enrichment & Deep Research (CURRENT FOCUS)
+- [ ] **Comprehensive Deep Search**: Speakers, Press, Potenza, and "TRACCIA" philosophy.
+- [ ] **RAG Engine Research**:
+  - **Chunking Strategy**: Semantic chunking vs. Fixed-size with overlap.
+  - **Prompt Engineering**: System prompts for "Industrial/Professional" tone and citation handling.
+  - **Verification**: Cross-reference all data with the original `Line up` file for truthfulness.
 
-### Phase 1: Knowledge Base & Ingestion
-- [ ] Structure Markdown and JSON data for speakers, program, and vision.
-- [ ] Develop the ingestion pipeline to populate Qdrant Cloud.
-- [ ] Implement rich metadata support (returning image URLs and card data).
+### Phase 1: Technical Foundation & Demo Adaptation
+- [ ] **Demo Analysis & Cleanup**: Analyze the existing "Demo Base" for reusable patterns.
+- [ ] **Technical Implementation**: Finalize `requirements.txt`, `ingest.py`, and Docker configuration.
+- [ ] **Qdrant Setup**: Initialize cloud collection and test vector ingestion.
 
 ### Phase 2: Python Backend Development
 - [ ] Setup FastAPI boilerplate with professional directory structure.
 - [ ] Implement the **Strategy Pattern** for Gemini/OpenRouter switching.
-- [ ] Create the RAG Query Engine (LlamaIndex/LangChain).
+- [ ] Create the RAG Query Engine (LlamaIndex).
 - [ ] Implement Unit Tests for retrieval and API endpoints.
 
 ### Phase 3: Frontend Integration
 - [ ] Create `ChatWidget.tsx` using `framer-motion` (Draggable).
-- [ ] Connect Frontend to Backend via `fetch` using environment variables.
-- [ ] Implement "Rich Card" rendering in the chat UI.
+- [ ] Connect Frontend to Backend via `fetch`.
+- [ ] Implement "Rich Card" rendering for speakers/sponsors.
 
 ### Phase 4: Infrastructure & Deployment
 - [ ] Dockerize the Python Backend.
