@@ -3,7 +3,7 @@ export interface ProgramItem {
   time: string;
   title: string;
   day: string;
-  type: 'Talk' | 'Workshop' | 'Exposition' | 'Party' | 'Portfolio Review' | 'Intro' | 'Break' | 'Activity';
+  type: 'Talk' | 'Workshop' | 'Exhibitions' | 'Party' | 'Portfolio Review' | 'Intro' | 'Break' | 'Activity';
 }
 
 export const programData: ProgramItem[] = [

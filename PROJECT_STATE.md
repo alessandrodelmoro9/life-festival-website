@@ -12,6 +12,12 @@ Finalize the Life Design Festival 2026 website and implement a high-performance 
 
 ## 🚀 Roadmap & Tasks
 
+### 🔴 URGENT: Tonight's Task (May 19, 23:30)
+- [ ] **Remove SocialProofWidget**: 
+  - Delete `import SocialProofWidget` from `src/App.tsx`.
+  - Delete `<SocialProofWidget />` from the JSX in `src/App.tsx`.
+  - Push to `main` to trigger Vercel deploy.
+
 ### Phase 1: Knowledge Base (Data Engineering)
 - [ ] Create structured Markdown files (`speakers.md`, `programma.md`, `vision.md`, etc.) with rich metadata (images, links).
 - [ ] Develop a Python Ingestion Script to parse and clean data.

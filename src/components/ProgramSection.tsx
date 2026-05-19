@@ -14,7 +14,7 @@ const typeColors: Record<string, string> = {
   Talk: "bg-[#FF76BF]",           // Pink
   Workshop: "bg-[#7678F6]",       // Blue
   "Portfolio Review": "bg-[#B78F75]", // Brown
-  Exposition: "bg-[#E25938]",      // Orange
+  Exhibitions: "bg-[#E25938]",      // Orange
   Party: "bg-[#E25938]",           // Orange
   Intro: "bg-[#E25938]",           // Orange
   Break: "bg-[#F4EEE4]",           // Cream
