@@ -1,0 +1,15 @@
+# Python & Ambiente Virtuale
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Streamlit Secrets (FONDAMENTALE NON PUSHARE)
+.streamlit/secrets.toml
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+
