@@ -33,16 +33,20 @@ export const sponsorsData: Sponsor[] = [
   // EXPERIENCE SPONSOR
   { id: 7, name: "Ordine degli Architetti di Potenza", category: 'experience', logo: "/assets/logos/ordine-architetti.png" },
   { id: 8, name: "MSD Design", category: 'experience', logo: "/assets/logos/msd.png" },
-  { id: 9, name: "Basilicata Turistica", category: 'experience', logo: "/assets/logos/apt.png" },
 
   // PARTNER
   { id: 10, name: "Zetafonts", category: 'partner', logo: "/assets/logos/zetafont.png" },
   { id: 11, name: "Basic Records", category: 'partner', logo: "/assets/logos/basic.png" },
   { id: 12, name: "Overclouds", category: 'partner', logo: "/assets/logos/overclouds.png" },
   { id: 13, name: "Autoelite", category: 'partner', logo: "/assets/logos/autoelite.png" },
+  { id: 19, name: "Avena", category: 'partner', logo: "/assets/logos/avena.png" },
+  { id: 20, name: "Retro Gusto", category: 'partner', logo: "/assets/logos/retrò-gusto.png" },
+  { id: 21, name: "BNB", category: 'partner', logo: "/assets/logos/BNB.png" },
 
   // PATROCINI ISTITUZIONALI
   { id: 14, name: "ADCI", category: 'institutional', logo: "/assets/logos/adci.png" },
   { id: 15, name: "Comune di Potenza", category: 'institutional', logo: "/assets/logos/comune.png" },
   { id: 16, name: "Regione Basilicata", category: 'institutional', logo: "/assets/logos/regione.png" },
+  { id: 22, name: "ADI", category: 'institutional', logo: "/assets/logos/ADI.png" },
+  { id: 9, name: "Basilicata Turistica", category: 'institutional', logo: "/assets/logos/apt.png" },
 ];
