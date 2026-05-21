@@ -11,14 +11,14 @@ import Day6Icon from '@/assets/6.svg';
 gsap.registerPlugin(ScrollTrigger);
 
 const typeColors: Record<string, string> = {
-  Talk: "bg-[#FF76BF]",           // Pink
-  Workshop: "bg-[#7678F6]",       // Blue
-  "Portfolio Review": "bg-[#B78F75]", // Brown
-  Exhibitions: "bg-[#E25938]",      // Orange
-  Party: "bg-[#E25938]",           // Orange
-  Intro: "bg-[#E25938]",           // Orange
-  Break: "bg-[#F4EEE4]",           // Cream
-  Activity: "bg-[#B78F75]"         // Brown
+  Talk: "bg-life-pink",           // Pink
+  Workshop: "bg-life-blue",       // Blue
+  "Portfolio Review": "bg-life-brown", // Brown
+  Exhibitions: "bg-life-red",      // Orange
+  Party: "bg-life-red",           // Orange
+  Intro: "bg-life-red",           // Orange
+  Break: "bg-life-cream",           // Cream
+  Activity: "bg-life-brown"         // Brown
 };
 
 const ProgramSection = () => {
@@ -218,7 +218,9 @@ const ProgramItemComponent = ({ item, prevColorClass }: { item: ProgramItem, pre
       </div>
 
       <div className="text-right shrink-0 relative z-10 mt-[-2px]">
-        <p className="uppercase text-[#F4EEE4]/40 font-bold text-[10px] tracking-[0.05em]">{item.type}</p>
+        <p className="uppercase text-life-cream/40 font-bold text-[10px] tracking-[0.05em]">
+          {item.title.toLowerCase().includes('cosmico') ? 'Talk Online' : item.type}
+        </p>
       </div>
     </div>
   );

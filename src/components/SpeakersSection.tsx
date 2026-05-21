@@ -260,7 +260,7 @@ const SpeakerItem = ({
       onClick={onClick}
       animate={{ 
         opacity: hoveredId === null || isHovered ? 1 : 0.2,
-        backgroundColor: isHovered ? "#FF76BF" : "transparent",
+        backgroundColor: isHovered ? "hsl(var(--life-pink))" : "transparent",
       }}
       transition={{ duration: 0.3, ease: [0.215, 0.61, 0.355, 1.0] }}
       className={cn(

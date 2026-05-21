@@ -32,7 +32,7 @@ export const programData: ProgramItem[] = [
   { id: 23, time: '11:00 - 11:30', title: 'Zetafonts - Attività', day: '6 GIU', type: 'Activity' },
   { id: 24, time: '11:35 - 12:00', title: 'Auge', day: '6 GIU', type: 'Talk' },
   { id: 25, time: '12:05 - 12:30', title: 'The Wave studio', day: '6 GIU', type: 'Talk' },
-  { id: 36, time: '12:35 - 13:00', title: 'Cosmico online', day: '6 GIU', type: 'Talk' },
+  { id: 36, time: '12:35 - 13:00', title: 'Cosmico', day: '6 GIU', type: 'Talk' },
   { id: 26, time: '13:00 - 15:30', title: 'Pausona', day: '6 GIU', type: 'Break' },
   { id: 27, time: '13:30 - 15:30', title: 'Zetafonts', day: '6 GIU', type: 'Workshop' },
   { id: 28, time: '15:35 - 16:00', title: 'Mauro Mazzei', day: '6 GIU', type: 'Talk' },
