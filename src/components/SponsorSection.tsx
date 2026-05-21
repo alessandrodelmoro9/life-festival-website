@@ -9,13 +9,20 @@ gsap.registerPlugin(ScrollTrigger);
 const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[] }) => {
   if (sponsors.length === 0) return null;
 
+  // Detect if this block has few items to make them larger
+  const isSmallSet = sponsors.length <= 2;
+
   return (
     <div className="category-block border-t border-white/10 pt-2 pb-2 flex flex-col w-full overflow-hidden">
       <span className="uppercase text-white/40 mb-2 text-left font-body font-medium text-[10px] md:text-[11px]">
         {label}
       </span>
       
-      <div className="flex flex-nowrap items-center justify-start gap-x-4 md:gap-x-8 w-full h-16 md:h-32 overflow-hidden">
+      {/* Grid container to enforce max 4 logos per row */}
+      <div className={cn(
+        "grid items-center justify-items-start gap-4 md:gap-8 w-full min-h-[4rem] md:min-h-[8rem]",
+        isSmallSet ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-4"
+      )}>
         {sponsors.map((sponsor) => {
           const isBCC = sponsor.name === "BCC Basilicata";
           const isMainSponsor = sponsor.name === "La Gala Home";
@@ -24,8 +31,9 @@ const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[]
             <div 
               key={sponsor.id} 
               className={cn(
-                "flex items-center justify-start relative min-w-0 h-full",
-                (isBCC || isMainSponsor) ? "w-full" : "flex-1"
+                "flex items-center justify-start relative w-full",
+                isSmallSet ? "h-16 md:h-32" : "h-12 md:h-24",
+                (isBCC || isMainSponsor) && "col-span-full"
               )}
             >
               <img
@@ -34,7 +42,8 @@ const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[]
                 className={cn(
                   "object-contain object-left h-full w-auto opacity-90 hover:opacity-100 transition-opacity duration-300",
                   isBCC && "scale-[2.2] origin-left",
-                  isMainSponsor && "scale-[1.2] origin-left"
+                  isMainSponsor && "scale-[1.2] origin-left",
+                  (isSmallSet && !isBCC && !isMainSponsor) && "scale-[1.1] md:scale-[1.2] origin-left"
                 )}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
@@ -100,7 +109,7 @@ const SponsorSection = () => {
 
   return (
     <section id="sponsors" ref={sectionRef} className="bg-life-black py-24 md:py-32 overflow-hidden flex items-center justify-center">
-      <div className="w-full max-w-[1441px] md:h-[1262px] flex items-center justify-center">
+      <div className="w-full max-w-[1441px] flex items-center justify-center">
         <div className="w-full max-w-[1011px] h-full flex flex-col justify-center px-6 md:px-0">
           
           <div className="sponsor-animate mb-12 md:mb-16">
