@@ -25,30 +25,29 @@ Implement a high-performance, secure, and cost-effective RAG Chatbot for the Lif
   - **DNS**: API mapped to `api.lifedesignfestival.it` via CNAME.
   - **Keep-Alive**: `cron-job.org` pinging every 14 min to prevent Render Free Tier sleep.
 
-## 🚀 Step-by-Step Roadmap
+## 🚀 Roadmap Operativa (7 Giorni al Lancio)
 
-### Phase 1: Knowledge Base Refinement (CURRENT)
-- [ ] **Data Segregation**: Split existing 2026 drafts into "Identity" (Bios) vs "Content" (Talks).
-- [ ] **Web Research Enrichment**: Integrate external articles and background info for speakers/partners.
-- [ ] **Metadata Mapping**: Ensure every chunk has a source URL and a reference to its category (Speaker/Partner/Press).
+### Giorni 1-2: Chiusura KB & Setup Tecnico
+- [ ] **Revisione Finale (Utente)**: Ultime modifiche manuali a Ticket (03), Talk (05) e Workshop (07).
+- [ ] **Setup Ambiente**: Configurazione Poetry (LlamaIndex, FastAPI, Qdrant) e ripristino `.gitignore` root.
+- [ ] **API Handshake**: Creazione `.env` e test connessione con Google Gemini e Qdrant Cloud.
 
-### Phase 2: Technical Environment Setup
-- [ ] **Poetry Configuration**: Update `pyproject.toml` with LlamaIndex, FastAPI, and Qdrant-client.
-- [ ] **Security Handshake**: Create local `backend/.env` with placeholders for User to fill.
-- [ ] **Backend .gitignore Verification**: Re-confirm isolation of local credentials.
+### Giorni 3-4: Ingestion & RAG Logic
+- [ ] **Data Ingestion**: Caricamento dei file Markdown su Qdrant Cloud preservando metadati e link.
+- [ ] **RAG Tuning**: Ottimizzazione del System Prompt per il tono di voce e la gestione dei link (con favicons).
 
-### Phase 3: RAG Engine & Ingestion
-- [ ] **Ingestion Script**: Build `ingest.py` to process the new Markdown structure and upload to Qdrant Cloud.
-- [ ] **Citation Engine**: Configure LlamaIndex to return source URLs in every chat response.
-- [ ] **Query Logic**: Implement the strategy pattern to switch between Gemini and OpenRouter.
+### Giorni 5-6: Sviluppo API & Widget UI
+- [ ] **FastAPI Backend**: Implementazione endpoint `/chat` in streaming su Render.com.
+- [ ] **React Widget**: Sviluppo del componente chat nel frontend (Vercel) con integrazione link professionali.
 
-### Phase 4: FastAPI & Integration
-- [ ] **API Development**: Create `/chat` endpoint with streaming support.
-- [ ] **CORS Security**: Restrict API access only to the official frontend domain.
-- [ ] **Frontend Widget**: Build the interactive Chat UI in React.
+### Giorni 7-8: Testing & Produzione
+- [ ] **User Testing**: Invio link di staging per prove di "stress" sul chatbot.
+- [ ] **Go Live**: Collegamento finale al dominio `api.lifedesignfestival.it` e monitoraggio.
 
-## ✅ Completed Tasks
-- [x] Full purge of 2025 legacy data and obsolete Streamlit/FAISS files.
-- [x] Implementation of double-layered `.gitignore` for root and backend.
-- [x] Security verification for local credential protection.
-- [x] Strategy alignment on Hybrid LLM and Vector Cloud providers.
+## ✅ Task Completati
+- [x] **01_CONCEPT_E_VISIONE**: Revisionato e arricchito con filosofia 2025/2026.
+- [x] **02_PROGRAMMA_E_ORARI**: Strutturato per blocchi dinamici e networking.
+- [x] **04_SPEAKER_IDENTITY**: Arricchito con bio integrali, progetti 2024-2025 e link web.
+- [x] **06_PARTNER_E_SPONSOR**: Aggiornato con dettagli tecnici (Metaglass, Fondo Etico) e link.
+- [x] **Pulizia 2025**: Eliminati tutti i file obsoleti e i vecchi database locali.
+- [x] **Branching**: Setup del ramo `feature/backend-setup` isolato dal frontend stabile.
