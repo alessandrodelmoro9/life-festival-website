@@ -103,7 +103,7 @@ const SponsorSection = () => {
     },
     {
       left: { label: "COMMUNITY E CULTURAL PARTNER", category: 'community' as const },
-      right: { label: "PATROCINI ISTITUZIONALI E STRATEGICI", category: 'institutional' as const }
+      right: { label: "CON IL PATROCINIO DI", category: 'institutional' as const }
     }
   ];
 

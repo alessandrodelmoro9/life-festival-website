@@ -44,7 +44,7 @@ export const sponsorsData: Sponsor[] = [
   { id: 21, name: "BNB", category: 'partner', logo: "/assets/logos/BNB.png" },
 
   // PATROCINI ISTITUZIONALI
-  { id: 14, name: "ADCI", category: 'institutional', logo: "/assets/logos/adci.png" },
+  { id: 14, name: "ADCI", category: 'institutional', logo: "/assets/logos/adci-v2.png" },
   { id: 15, name: "Comune di Potenza", category: 'institutional', logo: "/assets/logos/comune.png" },
   { id: 16, name: "Regione Basilicata", category: 'institutional', logo: "/assets/logos/regione.png" },
   { id: 22, name: "ADI", category: 'institutional', logo: "/assets/logos/ADI.png" },
