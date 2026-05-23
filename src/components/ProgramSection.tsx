@@ -12,11 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const typeColors: Record<string, string> = {
   Talk: "bg-life-pink",           // Pink
-  Workshop: "bg-life-blue",       // Blue
+  Workshop: "bg-life-red",        // Orange
   "Portfolio Review": "bg-life-brown", // Brown
   Exhibitions: "bg-life-red",      // Orange
   Party: "bg-life-red",           // Orange
-  Intro: "bg-life-red",           // Orange
+  Intro: "bg-life-blue",          // Blue
   Break: "bg-life-cream",           // Cream
   Activity: "bg-life-brown"         // Brown
 };

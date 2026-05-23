@@ -53,14 +53,14 @@ const HeroSection = () => {
           <span>PARTY</span>
         </div>
 
-        <div className="hero-parallax hero-animate mt-12 max-w-[300px]">
-          <h1 className="text-[#262626] leading-[0.8] tracking-tight font-display font-medium text-[5.5rem]">
+        <div className="hero-parallax hero-animate mt-8 max-w-[300px]">
+          <h1 className="text-[#262626] leading-[1] tracking-tight font-display font-medium text-[5.5rem]">
             Life<br />design<br />festival
           </h1>
         </div>
 
         {/* CENTER CLUSTER: Date Axis */}
-        <div className="hero-parallax hero-animate flex items-center justify-between w-full max-w-[348px] mx-auto my-auto flex-nowrap">
+        <div className="hero-parallax hero-animate flex items-center justify-between w-full max-w-[348px] mx-auto mt-10 mb-10 flex-nowrap">
           <img src={Icon5} alt="5" className="w-[82px] h-[82px] object-contain shrink-0" />
           <button
             onClick={() => {
@@ -75,7 +75,7 @@ const HeroSection = () => {
         </div>
 
         {/* INFORMATION MID-LAYER */}
-        <div className="relative w-full flex justify-between items-end mb-32">
+        <div className="relative w-full flex justify-between items-end mb-16">
           {/* Month (Left) */}
           <div className="hero-animate">
             <span className="font-display font-medium text-7xl text-[#262626] leading-none lowercase">
@@ -90,7 +90,7 @@ const HeroSection = () => {
         </div>
 
         {/* FOOTER ELEMENTS */}
-        <div className="absolute bottom-10 left-6 right-6 flex justify-between items-end">
+        <div className="absolute bottom-14 left-6 right-6 flex justify-between items-end">
           {/* Bottom-Left: Edition */}
           <div className="hero-animate mb-2">
             <span className="font-body text-[13px] uppercase tracking-normal text-[#262626] font-normal">
