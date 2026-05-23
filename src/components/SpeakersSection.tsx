@@ -252,6 +252,7 @@ const SpeakerItem = ({
   onClick: () => void 
 }) => {
   const isHovered = hoveredId === speaker.id;
+  const isLongName = speaker.name.length > 20;
 
   return (
     <motion.div 
@@ -268,10 +269,10 @@ const SpeakerItem = ({
         isHost ? "md:col-span-2 h-[190px] border-t" : "h-[150px]"
       )}
     >
-      <div className="space-y-2 text-left">
+      <div className="space-y-2 text-left w-full">
         <h3 className={cn(
           "font-display font-medium leading-tight tracking-tighter text-foreground text-left whitespace-nowrap overflow-hidden pb-1",
-          "text-[30px] md:text-[60px]" // Standard H3 sizes from index.css
+          isLongName ? "text-[26px] md:text-[42px] lg:text-[48px]" : "text-[30px] md:text-[60px]"
         )}>
           {formatSpeakerName(speaker.name)}
         </h3>
