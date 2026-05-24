@@ -1,187 +1,379 @@
-# IDENTITÀ SPEAKER E PROTAGONISTI: LIFE 2026
+# IDENTITY E BIO DEGLI SPEAKER - LIFE DESIGN FESTIVAL 2026
 
-Questo file contiene le anagrafiche complete, le biografie integrali, i progetti chiave e i riferimenti digitali di tutti i protagonisti del festival, ordinati alfabeticamente.
+Questo documento costituisce la base di conoscenza ufficiale per l'identità dei relatori del LIFE 2026. Ogni sezione è ottimizzata per il recupero semantico (RAG).
 
 ---
 
 ## Adoratorio Studio
-- **Ruolo**: Independent Design Studio.
-- **Protagonisti**: Ciarli e Riccardo (Design Lead & Junior Art Director).
-- **Bio Integrale**: Ciarli e Riccardo, Design Lead e Junior Art Director in Adoratorio Studio, immaginano progetti simbiotici di design consapevole, inclusivo e rilevante tramite linguaggi visivi contemporanei, ricerca di nicchia e sensibilità personale. Adoratorio è uno studio indipendente che utilizza il design come strumento per lasciare tracce profonde nel panorama creativo nazionale.
-- **Progetto Chiave**: **Intrusion Project (Radio Alice 1977)**. Un archivio digitale immersivo che commemora la storica emittente bolognese, premiato come *Site of the Day* su Awwwards (Aprile 2024). Il progetto usa shader audio-reattivi per sincronizzare visual e suoni d'archivio.
-- **Link Progetto**: [intrusion.radioalice.org](https://intrusion.radioalice.org)
-- **Instagram**: [https://www.instagram.com/adoratorio.studio](https://www.instagram.com/adoratorio.studio)
-- **Website**: [https://www.adoratorio.studio](https://www.adoratorio.studio)
-- **Immagine**: `/assets/speakers/adoratorio studio.jpg`
+- **ID_SPEAKER:** adoratorio-studio
+- **Ruolo:** Independent Design Studio
+- **Protagonisti:** Ciarli e Riccardo (Design Lead & Junior Art Director)
+- **Sito Ufficiale:** [adoratorio.studio](https://www.adoratorio.studio)
+- **Instagram:** [@adoratorio.studio](https://www.instagram.com/adoratorio.studio)
+- **Behance:** [behance.net/adoratoriostudio](https://www.behance.net/adoratoriostudio)
+- **Immagine:** `/assets/speakers/adoratorio studio.jpg`
+
+### Bio Integrale
+Adoratorio è un prestigioso e pluripremiato collettivo creativo fondato da Camilla Zampolini ed Enea Rossi. Lo studio è riconosciuto a livello globale per la creazione di esperienze digitali immersive che sfidano le convenzioni dell'estetica web standardizzata. Attraverso l'uso di linguaggi visivi contemporanei, tipografia cinetica e WebGL, Adoratorio sviluppa progetti simbiotici che pongono l'accento su un design consapevole, etico e inclusivo. La loro missione è utilizzare la programmazione creativa per veicolare narrazioni culturali di spessore nel paesaggio creativo internazionale.
+
+### Progetti Chiave
+- **Intrusion Project - Voices of Radio Alice (1977):** Un archivio digitale che commemora la storica emittente bolognese. Utilizza audio-reactive shaders complessi per sincronizzare animazioni particellari agli ultimi 23 minuti di trasmissione audio originali.
+- **Max Mara - Jacket Circle:** Esperienza web immersiva sviluppata su framework Vue.js, che celebra la matericità e le geometrie dei tessuti del brand attraverso interazioni fluide.
+
+### Riconoscimenti
+- Vincitori del "Site of the Day" (SOTD) su Awwwards (Aprile 2024) per il progetto Radio Alice.
+- Speaker regolari in summit mondiali come l'Awwwards Conference di Tokyo.
+
+---
 
 ## AUGE Design
-- **Ruolo**: Independent Studio specializzato in Branding e Packaging.
-- **Protagonista**: Andrea Mastroluca (Associate Creative Director).
-- **Bio Integrale**: Andrea Mastroluca è Associate Creative Director in Auge Design, studio italiano specializzato in Packaging Design e Branding. Designer con 10 anni di experience nel settore, ha avuto l’opportunità di collaborare con brand come Barilla, Chobani, Bahlsen, Rana, Sammontana, Casa Marrazzo, ottenendo i più importanti award nazionali e internazionali, tra cui ADC, D&AD, Dieline Awards e Diamond Pentawards. Il suo lavoro ha inoltre contribuito ai principali successi di Auge Design degli ultimi anni, premiata come Dieline Studio of the Year nel 2022, Pentawards Design Agency of the Year nel 2023 e Boutique Design Studio of the Year agli ADC NY 2025.
-- **News**: Andrea Mastroluca è stato ufficialmente nominato Juror per i **Pentawards 2026**.
-- **Progetto Chiave**: **Collezione Casa Marrazzo 1934**. Vincitore del *Pentawards Diamond Award 2023* (Best of Show). Il design trasforma barattoli di vetro in icone domestiche tramite illustrazioni serigrafate di sedie e lampade.
-- **Link Progetto**: [Casa Marrazzo Case Study](https://www.auge-design.com/work/casa-marrazzo/)
-- **Instagram**: [https://www.instagram.com/auge_d/](https://www.instagram.com/auge_d/)
-- **Website**: [https://www.auge-design.com](https://www.auge-design.com)
-- **Immagine**: `/assets/speakers/3. Auge.jpg`
+- **ID_SPEAKER:** auge-design
+- **Ruolo:** Independent Studio specialized in Branding and Packaging
+- **Protagonisti:** Andrea Mastroluca (Associate Creative Director)
+- **Sito Ufficiale:** [auge-design.com](https://www.auge-design.com)
+- **Instagram:** [@auge_d](https://www.instagram.com/auge_d/)
+- **LinkedIn:** [company/auge-design](https://www.linkedin.com/company/auge-design)
+- **Immagine:** `/assets/speakers/3. Auge.jpg`
+
+### Bio Integrale
+AUGE Design è una delle agenzie di branding e packaging di maggior successo in Europa. Andrea Mastroluca, con oltre un decennio di esperienza, dirige creativamente lo studio plasmando l'identità di giganti come Barilla, Chobani, Bahlsen, Giovanni Rana e Sammontana. Il metodo di AUGE si basa sulla decodifica della "Parabola di un progetto", superando le fluttuazioni creative per giungere a soluzioni che bilanciano calore artigianale e impatto visivo globale.
+
+### Progetti Chiave
+- **Casa Marrazzo 1934:** Ridefinizione radicale del packaging in vetro tramite illustrazioni serigrafate di oggetti d'epoca, trasformando il barattolo in un oggetto di interior design.
+- **Amaro e Limoncello Nazionale:** Lavoro di nobilitazione cartotecnica su carta Fasson Cotton Touch, con verniciature UV lucide e fustellature chirurgiche per comunicare autenticità.
+
+### Riconoscimenti
+- Diamond Pentaward 2023 (Best of Show) per Casa Marrazzo.
+- Dieline Studio of the Year 2022.
+- Boutique Design Studio of the Year agli ADC NY 2025.
+- Andrea Mastroluca è giurato per i Pentawards 2026 e i Dieline Awards.
+
+---
 
 ## Be.Family
-- **Ruolo**: Studio di comunicazione digitale.
-- **Protagonista**: Pierfilippo Ariano (Fondatore).
-- **Bio Integrale**: Pierfilippo Ariano, classe ’91. Parte dal design della comunicazione, poi si complica la vita studiando anche web marketing, più per capire come funzionano le cose che per amore della materia. Dopo qualche anno da freelance, nel 2016 fonda Be.Family: uno studio che lavora da remoto quando ancora non era “di moda”, occupandosi di progetti digitali senza separare design, sviluppo e comunicazione. Tra il 2019 e il 2021 collabora con Sketch nell’organizzazione di eventi sul design e dal 2020 insegna UI/UX design tra università e aziende (IED, IUSVE e altri), cercando di spiegare agli studenti che il problema non è usare Figma, ma capire cosa stanno facendo e perché.
-- **Approccio**: Il design non è uno strumento, ma la comprensione critica del problema utente.
-- **Instagram**: [https://www.instagram.com/befamily_studio/](https://www.instagram.com/befamily_studio/)
-- **Website**: [https://www.befamily.it](https://www.befamily.it)
-- **Immagine**: `/assets/speakers/1. Be Family.jpg`
+- **ID_SPEAKER:** be-family
+- **Ruolo:** Digital Communication Studio
+- **Protagonisti:** Pierfilippo Ariano (Founder)
+- **Sito Ufficiale:** [befamily.it](https://www.befamily.it)
+- **Instagram:** [@befamily_studio](https://www.instagram.com/befamily_studio/)
+- **LinkedIn:** [company/be.family](https://www.linkedin.com/company/be.family)
+- **Immagine:** `/assets/speakers/1. Be Family.jpg`
+
+### Bio Integrale
+Fondato nel 2016 da Pierfilippo Ariano e Niccolò Mamprin, Be.Family è uno studio di comunicazione integrata che opera con un modello 100% remote working. Ariano, formatosi tra design della comunicazione e web marketing, promuove una filosofia dove l'obiettivo è la comprensione profonda ed empatica del problema dell'utente, decostruendo il brief iniziale. È docente presso IED e IUSVE, dove insegna che il design non è solo "usare Figma", ma capire il "perché" dietro ogni scelta.
+
+### Progetti Chiave
+- **Ducati Digital Ecosystem:** Architettura informativa e UI/UX per il leggendario marchio motociclistico, unendo performance tecnica ed emozione di brand.
+- **Pitti Immagine (Danzainfiera 2024):** Branding e identità digitale per il principale evento internazionale dedicato alla danza, gestendo complessi ecosistemi di comunicazione.
+
+---
 
 ## Brutto Studio
-- **Ruolo**: Independent Studio e Brand di Design.
-- **Protagonisti**: Marco Oggian e Samuel Canay.
-- **Bio Integrale**: Brutto è uno studio di design fondato da Marco Oggian e Samuel Canay, con base tra l'Italia e la Galizia. Nata come realtà di progettazione per clienti terzi, con collaborazioni che includono Reebok, Zara e gruppo Meliá Hotels, oggi Brutto è prima di tutto una marca: un catalogo di oggetti di design carichi di cultura visiva, ironia e riferimenti che attraversano grafica, musica e sport. Il loro approccio non si limita a un mercato né a un'estetica di territorio. Lavorano, vendono e pensano su scala internazionale, con una produzione che spazia dagli orologi da parete ai palloni da basket, dagli utensili da cucina alle stampe d'arte, tutti accomunati da un linguaggio riconoscibile e volutamente controcorrente. Brutto opera alla frontiera tra oggetto e comunicazione, convinti che il design ben fatto non abbia bisogno di spiegarsi.
-- **Progetto Chiave**: **Zara Metropolis Mural (2024)**. Un'opera murale di 25 metri per lo store Zara e la collaborazione continuativa per la linea streetwear.
-- **Link Progetto**: [HOFF x Marco Oggian 2025](https://thehoffbrand.com)
-- **Instagram**: [https://www.instagram.com/brutto.studio/](https://www.instagram.com/brutto.studio/)
-- **Website**: [https://www.brutto.shop](https://www.brutto.shop)
-- **Immagine**: `/assets/speakers/bruttoStudio.jpg`
+- **ID_SPEAKER:** brutto-studio
+- **Ruolo:** Independent Studio and Design Brand
+- **Protagonisti:** Marco Oggian e Samuel Canay (Co-Founders)
+- **Sito Ufficiale:** [brutto.shop](https://www.brutto.shop)
+- **Instagram:** [@brutto.studio](https://www.instagram.com/brutto.studio/)
+- **Immagine:** `/assets/speakers/bruttoStudio.jpg`
+
+### Bio Integrale
+Brutto Studio, fondato nel 2020 tra Italia e Galizia, è un'entità ibrida tra agenzia di art direction e marchio di oggettistica irriverente. Marco Oggian e Samuel Canay hanno codificato un linguaggio visivo brutalmente riconoscibile: forme geometriche essenziali, colori primari saturi e ironia caustica. Utilizzano oggetti quotidiani (orologi, palloni da basket, stampe) come strumenti di commento sociopolitico su scala internazionale.
+
+### Progetti Chiave
+- **Manifesti "Be a better human":** Stampe Giclée che criticano il narcisismo tossico dei social media e l'apatia moderna.
+- **Zara Metropolis Mural:** Murale di 25 metri per il flagship store Zara, integrato con uno sviluppo di visual identity esclusiva.
+
+---
 
 ## Cosmico
-- **Ruolo**: Piattaforma per i talenti del digitale.
-- **Protagonista**: Marco (Graphic Designer).
-- **Bio Integrale**: Marco è graphic designer in Cosmico, dove si occupa della progettazione grafica dell'intero gruppo, dalla comunicazione digitale ai progetti editoriali, dal merchandise agli eventi. Classe '96, scorpione ascendente sagittario, si laurea in Product & Service Design e da (quasi) 2 anni lavora in Cosmico con la stessa curiosità con cui da bambino smontava (e a volte rimontava) i suoi giocattoli preferiti per capire come funzionavano. Nerd incallito, amante della cultura pop, entusiasta per natura e quasi sempre con il cappellino in testa.
-- **Mission**: Cosmico connette i migliori talenti freelance (Talent-as-a-Service) con le grandi aziende, promuovendo il "work from anywhere".
-- **Instagram**: [https://www.instagram.com/cosmico.italia/](https://www.instagram.com/cosmico.italia/)
-- **Website**: [https://wearecosmico.com/it](https://wearecosmico.com/it)
-- **Immagine**: `/assets/speakers/cosmico.jpg`
+- **ID_SPEAKER:** cosmico
+- **Ruolo:** Piattaforma per i talenti del digitale (Talent-as-a-Service)
+- **Protagonisti:** Marco (Graphic Designer)
+- **Sito Ufficiale:** [wearecosmico.com](https://wearecosmico.com/it)
+- **Instagram:** [@cosmico.italia](https://www.instagram.com/cosmico.italia/)
+- **LinkedIn:** [company/wearecosmico](https://www.linkedin.com/company/wearecosmico)
+- **Immagine:** `/assets/speakers/cosmico.jpg`
+
+### Bio Integrale
+Nata nel 2020, Cosmico è una holding europea dedicata al "Future of Work", leader nel paradigma "Talent-as-a-Service". Con una community di oltre 35.000 professionisti, promuove uno stile di vita svincolato dalla geografia ("work from anywhere"). Marco, graphic designer classe '96, cura l'identità visiva e il merchandising di questo ecosistema che serve clienti come Accenture, Deloitte e Dolce & Gabbana.
+
+### Progetti Chiave & Business
+- **Round Serie B 2026:** Chiusura di un round da 12 milioni di euro guidato da P101 SGR, con l'obiettivo di raggiungere 100 milioni di fatturato entro il 2028.
+- **Acquisizione Flatmates:** Integrazione dell'agenzia di creator economy per espandere i servizi della holding.
+
+---
 
 ## DUDE Design
-- **Ruolo**: Independent Agency.
-- **Protagonista**: Domenico Loperfido (CEO & Partner).
-- **Bio Integrale**: Domenico Loperfido nasce a Noci e, per quanto indossi uno dei cognomi più comuni della Basilicata, è un pugliese trapiantato a Milano per lavoro. Da più di 10 anni nel mondo del marketing e della creatività, oggi è CEO e Partner di DUDE Design, la divisione del gruppo dedicata a branding e visual identity. È anche Chief Growth Officer di DUDE, dove guida le strategie di crescita del gruppo e si occupa di far succedere cose belle. Dal 2023 cura la newsletter In Case You Missed It, dedicata a marketing, advertising, design e cultura pop.
-- **Newsletter**: **In Case You Missed It**. Una delle fonti più seguite in Italia per aggiornamenti su design e pop-culture.
-- **Instagram**: [https://www.instagram.com/dude_frames/](https://www.instagram.com/dude_frames/)
-- **Website**: [https://www.dude.it](https://www.dude.it)
-- **Immagine**: `/assets/speakers/DUDE.jpg`
+- **ID_SPEAKER:** dude-design
+- **Ruolo:** Independent Agency
+- **Protagonisti:** Domenico Loperfido (CEO & Partner)
+- **Sito Ufficiale:** [dude.it](https://www.dude.it)
+- **Instagram:** [@dude_frames](https://www.instagram.com/dude_frames/)
+- **Newsletter:** [In Case You Missed It](https://icymi.substack.com)
+- **Immagine:** `/assets/speakers/DUDE.jpg`
+
+### Bio Integrale
+Divisione del gruppo milanese DUDE dedicata esclusivamente al branding e alla visual identity. Sotto la guida di Domenico Loperfido, l'agenzia opera secondo il concetto "No Straight Lines", valorizzando le deviazioni inaspettate e le contaminazioni pop. Loperfido cura anche la newsletter ICYMI, un sismografo delle tendenze globali nel marketing e design.
+
+### Progetti Chiave
+- **Le Cashmere:** Rebranding per un marchio coreano di cashmere sostenibile, basato su griglie naturali e autenticità materica.
+- **Identità per Netflix e Campari:** Sviluppo di sistemi visivi e title treatments per giganti dell'entertainment e del beverage.
+
+---
 
 ## dverso studio
-- **Ruolo**: Creative studio specializzato in esperienze immersive.
-- **Bio Integrale**: dverso è uno studio creativo con sede a Milano, specializzato nella progettazione e sviluppo di esperienze digitali immersive e interattive. Riconosciuto a livello internazionale con Awwwards Site of the Day, Developer Award, Portfolio Honors, e Muzli Top 100 Creative Portfolios 2025.
-- **Focus**: Gamification, WebGL e web design non-uniforme per combattere l'omogeneità dell'AI.
-- **Instagram**: [https://www.instagram.com/dverso.io/](https://www.instagram.com/dverso.io/)
-- **Website**: [https://www.dversostudio.io](https://www.dversostudio.io)
-- **Immagine**: `/assets/speakers/Dverso studio.jpg`
+- **ID_SPEAKER:** dverso-studio
+- **Ruolo:** Creative Studio specialized in Immersive Experiences
+- **Protagonisti:** Bogdan Skutkiewicz e Danilo Flemma
+- **Sito Ufficiale:** [dversostudio.io](https://www.dversostudio.io)
+- **Instagram:** [@dverso.io](https://www.instagram.com/dverso.io/)
+- **Immagine:** `/assets/speakers/Dverso studio.jpg`
+
+### Bio Integrale
+Studio milanese d'avanguardia che fonde creative coding e 3D artistry per costruire esperienze digitali immersive. Sviluppano il "Dverso Metaverse Engine", che permette di esplorare mondi 3D direttamente nel browser senza hardware specializzato.
+
+### Progetti Chiave
+- **Nameless Festival 2025:** Sito web immersivo ad alte prestazioni per uno dei principali festival musicali italiani.
+- **Dverso Laundry:** Strumento AI-powered per la rimozione istantanea degli sfondi, dimostrazione della loro capacità di integrare AI e web technologies.
+
+---
 
 ## EGO55
-- **Ruolo**: Branding studio.
-- **Bio Integrale**: EGO55 è uno studio di branding, design e comunicazione integrata, nato a Matera nel 2011, con la voglia di ripartire dal Sud, dalla propria città di origine per sognare un mondo dove il branding aiutasse le imprese a raccontare la propria storia. Sviluppa progetti multidisciplinari e personalizzati, con un approccio design focused, per rendere i brand impattanti, differenti e desiderabili con l'obiettivo di migliorare la percezione attraverso le giuste strategie, parole e soluzioni visive. EGO55 è un luogo di pensiero. Un laboratorio di idee in cui la filosofia incontra il business, e l’arte incontra la strategia. Il branding è un atto di responsabilità, un modo per fare impresa con ambizione.
-- **Metodo**: Il "Setaccio" per far emergere le "pepite" essenziali dai brand.
-- **Instagram**: [https://www.instagram.com/ego55_branding_studio/](https://www.instagram.com/ego55_branding_studio/)
-- **Website**: [https://www.ego55.com](https://www.ego55.com)
-- **Immagine**: `/assets/speakers/ego55.jpg`
+- **ID_SPEAKER:** ego55
+- **Ruolo:** Branding Studio
+- **Protagonisti:** Gianni Andrulli e Daniele Maria Porcari
+- **Sito Ufficiale:** [ego55.com](https://www.ego55.com)
+- **Instagram:** [@ego55_branding_studio](https://www.instagram.com/ego55_branding_studio/)
+- **Immagine:** `/assets/speakers/ego55.jpg`
+
+### Bio Integrale
+Situato nei Sassi di Matera dal 2011, EGO55 è un laboratorio filosofico applicato al business. Utilizzano la metodologia brevettata "Il Setaccio" per filtrare il rumore comunicativo e rinvenire le essenze strategiche di ogni brand. Per loro, il branding è un atto di responsabilità pubblica e territoriale.
+
+### Progetti Chiave
+- **Ecoverticale:** Sviluppo identitario per un quartiere culturale multifunzionale a Matera, basato su tratti imperfetti e palette terrose.
+- **Matera 2019:** Curatela visiva per i palinsesti di Matera Capitale Europea della Cultura, con l'uso sapiente di font storici come Fournier-le-jeune.
+
+---
 
 ## Enrica D'Aguanno
-- **Ruolo**: Art Director e docente ABA Napoli.
-- **Bio Integrale**: Art director e docente di Progettazione grafica, è coordinatrice della Scuola di Progettazione Artistica per l’Impresa presso l’Accademia di Belle Arti di Napoli. La sua attività professionale si concentra nell’ambito della comunicazione visiva e della grafica editoriale, con una particolare attenzione alla progettazione del libro d’arte e dei sistemi di identità visiva per il settore culturale. Ha collaborato come art director con importanti realtà editoriali e istituzionali, tra cui Electa Napoli, Prismi Editrice Politecnica Napoli, Mondadori, Artem, White Cloud University.
-- **Progetti Chiave**: Visual identity per il **Teatro di San Carlo** (2011-2013) e il **Ravello Festival**. Coordinatrice del polo FoQus nei Quartieri Spagnoli di Napoli.
-- **Instagram**: [https://www.instagram.com/enricadaguanno/](https://www.instagram.com/enricadaguanno/)
-- **Immagine**: `/assets/speakers/enrica.jpg`
+- **ID_SPEAKER:** enrica-d-aguanno
+- **Ruolo:** Art Director e Docente presso ABA Napoli
+- **Sito Ufficiale:** [abana.it](https://www.abana.it)
+- **Instagram:** [@enricadaguanno](https://www.instagram.com/enricadaguanno/)
+- **Immagine:** `/assets/speakers/enrica.jpg`
+
+### Bio Integrale
+Coordinatrice della Scuola di Progettazione Artistica per l'Impresa all'Accademia di Belle Arti di Napoli. La sua carriera è dedicata alla comunicazione visiva per l'alta cultura. Eccelle nel tradurre concetti umanistici stratificati in sistemi visivi fruibili, unendo composizione analogica (manuale) e digitale.
+
+### Progetti Chiave
+- **Teatro di San Carlo & Ravello Festival:** Direzione artistica e svecchiamento dell'immagine coordinata per due dei più prestigiosi enti lirici italiani.
+- **Art Direction Editoriale:** Cura di oltre 700 volumi d'arte per Electa Napoli e monografie monumentali per Mondadori e Artem.
+
+---
 
 ## ET Studio
-- **Ruolo**: Independent Extraterrestrial Studio.
-- **Bio Integrale**: ET Studio è uno studio indipendente che crede nel potere della bellezza. Unisce design, branding e scrittura per creare esperienze digitali in cui estetica e funzionalità convivono. Nasce da un background tra arti e discipline umanistiche e lavora in team piccoli, dove il confronto è diretto e continuo. Scegliere la propria dimensione significa capire qual è la propria traccia, il modo in cui si desidera stare al mondo e dargli forma attraverso i progetti.
-- **Filosofia**: **Eudaimonia** (la fioritura umana). Studio dell'anno 2025 ai CSS Design Awards.
-- **Progetti Chiave**: Identità per *Don Molinico* e *Jam Area*.
-- **Instagram**: [https://www.instagram.com/et__studio/](https://www.instagram.com/et__studio/)
-- **Website**: [https://www.e-t.studio](https://www.e-t.studio)
-- **Immagine**: `/assets/speakers/et.jpg`
+- **ID_SPEAKER:** et-studio
+- **Ruolo:** Independent Extraterrestrial Studio
+- **Sito Ufficiale:** [e-t.studio](https://www.e-t.studio)
+- **Instagram:** [@et__studio](https://www.instagram.com/et__studio/)
+- **Immagine:** `/assets/speakers/et.jpg`
+
+### Bio Integrale
+Studio indipendente nato da un background umanistico e filologico. Operano secondo il precetto dell'antica "Eudaimonia", puntando alla comprensione della propria vocazione attraverso il design. Costruiscono interfacce dove l'estetica formale e i vincoli del codice convivono in armonia matematica.
+
+### Progetti Chiave
+- **Don Molinico:** Opera interattiva che mescola storytelling di marca e innovazioni radicali nella UI.
+- **Jam Area:** Digital experience immersiva che converte la storia aziendale in uno storytelling tridimensionale ed empatico.
+
+### Riconoscimenti
+- Studio of the Year 2025 per CSS Design Awards.
+- Vincitori di Developer Awards e multipli SOTD su Awwwards.
+
+---
 
 ## Italo Sannino
-- **Ruolo**: Design Professor & Product/UI/UX Designer.
-- **Bio Integrale**: Italo Sannino è progettista, docente e ricercatore. Titolare della cattedra di Progettazione delle Interfacce, da vent'anni porta il design nelle aule accademiche con un approccio sistemico e fondato sul metodo. Lavora su design system, usabilità e intelligenza artificiale applicata alla progettazione. Figma Community Leader e Adobe Community Expert, è stato speaker in contesti globali come Adobe MAX. Membro del collegio di dottorato dell'Università di Foggia, integra costantemente il design nel mondo della ricerca.
-- **Focus**: Integrazione di AI e Vibe Coding (Claude/MCP) nei workflow professionali di Figma.
-- **Instagram**: [https://www.instagram.com/italosan/](https://www.instagram.com/italosan/)
-- **Website**: [https://www.italosan.com](https://www.italosan.com)
-- **Immagine**: `/assets/speakers/italo_sannino.jpg`
+- **ID_SPEAKER:** italo-sannino
+- **Ruolo:** Design Professor & Product/UI/UX Designer
+- **Sito Ufficiale:** [italosan.com](https://www.italosan.com)
+- **Instagram:** [@italosan](https://www.instagram.com/italosan/)
+- **LinkedIn:** [in/italosannino](https://www.linkedin.com/in/italosannino)
+- **Immagine:** `/assets/speakers/italo_sannino.jpg`
+
+### Bio Integrale
+Titolare della cattedra di Interface Design e Figma Community Leader, Sannino è il principale promulgatore in Italia dell'integrazione tra AI Generativa e processi creativi. Promuove il concetto di **"Vibe Coding"**: l'uso dell'AI per automatizzare la fatica tecnica, permettendo al designer di concentrarsi sulla comprensione sistemica del contesto.
+
+### Progetti Chiave
+- **Model Context Protocol (MCP) in Figma:** Implementazione di workflow in cui l'AI legge direttamente i dati strutturati (token, variabili) da Figma tramite server MCP, garantendo che il design sia la "Single Source of Truth".
+- **Ricerca sull'Usabilità Aumentata:** Stress-test scientifici per definire l'ergonomia cognitiva nelle interfacce del futuro assistite da LLM.
+
+---
 
 ## Jekyll & Hyde
-- **Ruolo**: Studio di graphic design e comunicazione visiva.
-- **Bio Integrale**: jekyll & hyde è uno studio di brand design fondato nel 1996 a Milano da Marco Molteni e Margherita Monguzzi. Definisce e sviluppa l’identità di brand italiani e internazionali in diversi settori, dal design alla moda, dalla finanza alla tecnologia, dall’arte contemporanea alla musica. Lo studio unisce strategia e cultura del progetto per creare soluzioni distintive in ogni ambito della comunicazione visiva.
-- **Progetti Chiave**: Rebranding di **Missoni** (2021) e creazione dell'identità **YAP (Nexi)** per il fintech giovanile.
-- **Instagram**: [https://www.instagram.com/jeh_it/](https://www.instagram.com/jeh_it/)
-- **Website**: [https://www.jeh.it](https://www.jeh.it)
-- **Immagine**: `/assets/speakers/5. Jekyll & Hyde.jpg`
+- **ID_SPEAKER:** jekyll-hyde
+- **Ruolo:** Studio of Graphic Design and Visual Communication
+- **Protagonisti:** Marco Molteni e Margherita Monguzzi (Founders)
+- **Sito Ufficiale:** [jeh.it](https://www.jeh.it)
+- **Instagram:** [@jeh_it](https://www.instagram.com/jeh_it/)
+- **Immagine:** `/assets/speakers/5. Jekyll & Hyde.jpg`
+
+### Bio Integrale
+Istituzione del graphic design milanese fondata nel 1996. Amalgamano rigore strategico-analitico e curiosità indisciplinata, teorizzando l'atto di "Andare fuori traccia" per superare la linearità dei brief e giungere a un impatto estetico memorabile.
+
+### Progetti Chiave
+- **Rebranding Missoni (2021):** Elevazione dello "zig zag" a icona standalone e razionalizzazione tipografica globale per la casa di moda.
+- **YAP (Nexi):** Identità visiva pop e cinetica per l'app fintech dedicata alla Generazione Z, vincitrice dell'Indigo Design Award.
+
+---
 
 ## Mauro Bubbico
-- **Ruolo**: Progettista grafico, insegnante e Membro AGI.
-- **Bio Integrale**: Mauro Bubbico vive e lavora a Montescaglioso come grafico professionista, privilegiando il design finalizzato all'educazione sociale e alla sostenibilità ambientale. Convinto che la cultura grafica sia capacità di costruire grandi narrazioni, ha definito un linguaggio contemporaneo per raccontare e valorizzare i luoghi e i loro abitanti. Membro AGI (Alliance Graphique Internationale), ha insegnato Progettazione Grafica in prestigiosi atenei come l’lsia di Urbino e l’Università di Bolzano. Attualmente insegna all'Abadir di Catania.
-- **Specializzazione**: Design dei territori e tradizioni popolari (rilettura di maschere e iconografie lucane).
-- **Instagram**: [https://www.instagram.com/mauro_bubbico/](https://www.instagram.com/mauro_bubbico/)
-- **Website**: [https://www.maurobubbico.it](https://www.maurobubbico.it)
-- **Immagine**: `/assets/speakers/4. Mauro Bubbico.jpg`
+- **ID_SPEAKER:** mauro-bubbico
+- **Ruolo:** Graphic Designer, Docente e Membro AGI
+- **Sito Ufficiale:** [maurobubbico.it](https://www.maurobubbico.it)
+- **Instagram:** [@mauro_bubbico](https://www.instagram.com/mauro_bubbico/)
+- **Behance:** [behance.net/maurobubbico](https://www.behance.net/maurobubbico)
+- **Immagine:** `/assets/speakers/4. Mauro Bubbico.jpg`
+
+### Bio Integrale
+Membro AGI e "sciamano" del design territoriale, Bubbico vive a Montescaglioso. La sua missione è antropologica: utilizzare il design per riscattare le comunità periferiche tramite il recupero di feticci, matrici e riti agricoli trasformati in grafiche vettoriali contemporanee.
+
+### Progetti Chiave
+- **Pasolini a Matera (2015):** Curatela e apparato grafico per la mostra sui 50 anni del film "Il Vangelo secondo Matteo", allestita a Palazzo Lanfranchi.
+- **La Teoria del Vuoto (2024):** Sperimentazione editoriale che impasta riti millenari e iconografie pagane in composizioni di attualità fiammante.
+
+---
 
 ## Mauro Mazzei
-- **Ruolo**: Global Head of Creative Technology at LePub.
-- **Bio Integrale**: Mauro Mazzei è un creative technologist con oltre 15 anni di experience. Ha costruito la sua carriera lavorando a stretto contatto con team creativi e strategici, sperimentando tecnologie emergenti e coniugando innovazione e storytelling. Attualmente è Global Head of Creative Technology in LePub, dove guida l’integrazione tra creatività e tecnologia. Nel corso della sua carriera ha contribuito allo sviluppo di numerose iniziative internazionali, trasformando intuizioni concettuali in esperienze digitali memorabili.
-- **Progetti Chiave**: **Heineken B.O.T.** (Beer Outdoor Transporter), **The Closer** (opener che chiude le app di lavoro) e **The Boring Phone** (collaboration con Bodega).
-- **Link Progetto**: [Heineken BOT - LePub](https://thegadgetflow.com)
-- **Instagram**: [https://www.instagram.com/mauromazzei/](https://www.instagram.com/mauromazzei/)
-- **Immagine**: `/assets/speakers/Mauro-Mazzei.jpg`
+- **ID_SPEAKER:** mauro-mazzei
+- **Ruolo:** Global Head of Creative Technology at LePub
+- **Sito Ufficiale:** [le.pub](https://www.le.pub/)
+- **Instagram:** [@mauromazzei](https://www.instagram.com/mauromazzei/)
+- **LinkedIn:** [in/mauromazzei](https://www.linkedin.com/in/mauromazzei)
+- **Immagine:** `/assets/speakers/Mauro-Mazzei.jpg`
+
+### Bio Integrale
+Vertice tecnologico di LePub (Publicis), Mazzei predica la teoria del **"Beautifully Useless"**: l'innovazione non nasce dall'accanimento tecnico, ma dall'ideazione di dispositivi apparentemente inutili che intercettano pulsioni subconsce.
+
+### Progetti Chiave
+- **The Closer:** Apribottiglie Bluetooth che invia scorciatoie di sistema (BLE HID) per chiudere app lavorative (Teams, Slack) e forzare il work-life balance.
+- **The Boring Phone:** Smartphone Nokia modificato (senza Wi-Fi né browser) con scocca trasparente, progettato con Bodega per incoraggiare la socializzazione analogica.
+- **Proiettori IR:** Tecnologia invisibile usata nei festival per mostrare messaggi di sensibilizzazione solo attraverso gli schermi degli smartphone.
+
+---
 
 ## PUG! Design Fest
-- **Ruolo**: Festival di cultura visiva e design (Bari).
-- **Bio Integrale**: PUG! Design Fest è il progetto curatoriale e la piattaforma di riferimento che connette la cultura del progetto al territorio pugliese. Attraverso una curatela attenta e una rete capillare di collaborazioni, il team ha costruito un ecosistema capace di far dialogare studi di fama globale, talenti emergenti e tessuto produttivo locale. Al LIFE Design Festival portano l'esperienza nella costruzione di community ad alto impatto e nella narrazione del design come strumento per generare valore sociale e identitario.
-- **Filosofia**: **"L'elogio del furto"**. Il design come riscrittura e assorbimento consapevole del contesto.
-- **Instagram**: [https://www.instagram.com/pugdesignfest/](https://www.instagram.com/pugdesignfest/)
-- **Website**: [https://www.pugdesignfest.com](https://www.pugdesignfest.com)
-- **Immagine**: `/assets/speakers/pug design fest.jpg`
+- **ID_SPEAKER:** pug-design-fest
+- **Ruolo:** Visual Culture and Design Festival
+- **Protagonisti:** Collettivo presso Officina degli Esordi (Bari)
+- **Sito Ufficiale:** [pugdesignfest.com](https://www.pugdesignfest.com)
+- **Instagram:** [@pugdesignfest](https://www.instagram.com/pugdesignfest/)
+- **Immagine:** `/assets/speakers/pug design fest.jpg`
+
+### Bio Integrale
+Piattaforma curatoriale militante basata a Bari. Il loro manifesto **"Ecosistema"** intende il design come ponte tra generazioni e strumento di risoluzione per sfide sociali come la parità di genere (progetto "Futura") e la rigenerazione territoriale.
+
+### Progetti Chiave
+- **PUG! 2025 - Ecosistema:** Summit immersivo focalizzato sulla congiunzione tra design visivo e antropologia mediterranea.
+- **L'elogio del furto:** Manifesto provocatorio che invita a smembrare e riassemblare il contesto urbano per creare un'estetica onesta.
+
+---
 
 ## Rocketpanda Studio
-- **Ruolo**: Animation studio specializzato in motion graphics.
-- **Protagonista**: Riccardo Albertini (Direttore Creativo).
-- **Bio Integrale**: Fondatore e Direttore Creativo di Rocketpanda, nutre una profonda passione per il design, l’animazione e la motion graphics. È un orgoglioso padre di tre figli, possiede un paio di sintetizzatori e nel tempo libero ama suonare e comporre musica. Imparare a semplificare non è una rinuncia, ma il traguardo di anni di sano caos.
-- **Focus**: Semplificazione dei workflow complessi per massimizzare il valore creativo.
-- **Instagram**: [https://www.instagram.com/rocketpanda/](https://www.instagram.com/rocketpanda/)
-- **Website**: [https://www.therocketpanda.com](https://www.therocketpanda.com)
-- **Immagine**: `/assets/speakers/rocketpanda.jpg`
+- **ID_SPEAKER:** rocketpanda-studio
+- **Ruolo:** Animation Studio specialized in Motion Graphics
+- **Protagonisti:** Riccardo Albertini (Creative Director)
+- **Sito Ufficiale:** [therocketpanda.com](https://www.therocketpanda.com)
+- **Instagram:** [@rocketpanda](https://www.instagram.com/rocketpanda/)
+- **Immagine:** `/assets/speakers/rocketpanda.jpg`
+
+### Bio Integrale
+Studio di Verona leader nell'animazione digitale d'alta gamma. Riccardo Albertini propugna la legge del **"Messy is Lore"**: abiura delle ridondanze per un ritorno al brutalismo minimalista e alla precisione ritmica derivata dalla sua passione per i sintetizzatori.
+
+### Progetti Chiave
+- **Discord "Apps Anywhere":** Campagna motion ad alta energia per la piattaforma globale di comunicazione.
+- **McDonald's "Enter the Winnerverse":** Sviluppo di elementi 3D e motion design dinamici.
+- **eBay Women's Serie A:** Animazioni celebrative per la lega calcistica femminile italiana.
+
+---
 
 ## Samuela Vaccari (Cromia Design)
-- **Ruolo**: Graphic designer - Host e Curatrice ufficiale.
-- **Bio Integrale**: Samuela Vaccari è graphic designer e fondatrice di Cromia Design. Si occupa di brand identity, sviluppando identità visive basate su ricerca, coerenza e attenzione alle scelte progettuali. Il suo lavoro è orientato a costruire sistemi chiari e riconoscibili nel tempo. In qualità di curatrice del LIFE 2026, guida la visione del festival selezionando i talenti che incarnano il concept "TRACCIA".
-- **Focus**: Responsabilità decisionale nel design e coerenza metodologica.
-- **Instagram**: [https://www.instagram.com/cromiadesign/](https://www.instagram.com/cromiadesign/)
-- **Website**: [https://cromiadesign.myportfolio.com](https://cromiadesign.myportfolio.com)
-- **Immagine**: `/assets/speakers/cromia.jpg`
+- **ID_SPEAKER:** cromia-design
+- **Ruolo:** Graphic Designer - Official Host and Curator
+- **Sito Ufficiale:** [cromiadesign.myportfolio.com](https://cromiadesign.myportfolio.com)
+- **Instagram:** [@cromiadesign](https://www.instagram.com/cromiadesign/)
+- **Immagine:** `/assets/speakers/cromia.jpg`
+
+### Bio Integrale
+Fondatrice di Cromia Design, è la sacerdotessa della consistenza metodologica e co-curatrice del LIFE 2026. Sostiene che ogni scelta di design debba basarsi su ricerca sociologica e intenzione etica. Il suo speech "Ogni vera decisione lascia una traccia" è il manifesto dell'edizione 2026.
+
+### Progetti Chiave
+- **Venere Suites:** Logo vincitore dell'Award of Excellence 2024 (Communication Arts), che reinterpreta la Venere di Botticelli in chiave moderna.
+- **Host LIFE 2026:** Cura l'architettura narrativa del festival assicurando l'allineamento semantico di tutti gli ospiti sul tema "TRACCIA".
+
+---
 
 ## Silvia Sguotti
-- **Ruolo**: Freelance Art Director, Designer & Illustrator.
-- **Bio Integrale**: Silvia Sguotti è un’art director, designer e illustratrice italiana. Da più di dieci anni lavora con brand e agenzie per trasformare concept in brand identity, illustrazioni e storyboard. Nel tempo ha collaborato con clienti come Apple, Samsung, Collistar, Aputure e Lamborghini, adattandosi a brief, obiettivi e stili diversi per ogni progetto.
-- **Progetti Chiave**: **Samsung Health Illustration System** (90+ assets digitali). Design di interfacce per Apple (iOS standards) e illustrazioni vintage per Nathaniel Drew.
-- **Link Progetto**: [Silvia Sguotti Portfolio](https://silviasguotti.design)
-- **Instagram**: [https://www.instagram.com/silviasguotti/](https://www.instagram.com/silviasguotti/)
-- **Website**: [https://www.behance.net/SilviaSguotti](https://www.behance.net/SilviaSguotti)
-- **Immagine**: `/assets/speakers/silvia ssguotti.jpg`
+- **ID_SPEAKER:** silvia-sguotti
+- **Ruolo:** Freelance Art Director, Designer & Illustrator
+- **Sito Ufficiale:** [silviasguotti.design](https://silviasguotti.design)
+- **Instagram:** [@silviasguotti](https://www.instagram.com/silviasguotti/)
+- **Behance:** [behance.net/SilviaSguotti](https://www.behance.net/SilviaSguotti)
+- **Immagine:** `/assets/speakers/silvia ssguotti.jpg`
+
+### Bio Integrale
+Art Director che serve i colossi della Silicon Valley. Promuove i "Side Projects" (speech "Playground to Portfolio") come unico modo per cristallizzare folgorazioni stilistiche libere dai brief. Ha collaborato con Apple, Samsung, Collistar e Lamborghini.
+
+### Progetti Chiave
+- **Samsung Health Illustration System:** Creazione di oltre 100 asset visivi e micro-reazioni (in collaborazione con illo.tv) per umanizzare l'app di salute globale.
+- **iOS UI Design per Apple:** Modellazione di architetture informative e transizioni in ossequio ai divini standard ergonomici di Cupertino.
+
+---
 
 ## Simone Checchia
-- **Ruolo**: Creative Director in Blueorange®.
-- **Bio Integrale**: Creative director in Blueorange®. Si occupa di branding e comunicazione, con focus sui progetti ad alto impatto sociale. Nel suo percorso ha sviluppato un’expertise specifica nella comunicazione della disabilità, curando progetti e collaborando a iniziative che hanno coinvolto Lega Serie A, FC Inter, AS Roma, Nazionale Italiana di Calcio e Università di Tor Vergata.
-- **Progetti Chiave**: Direttore di **Roba da Grafici**. Branding per la **Divisione Calcio a 5 (FIGC)** e comunicazione per *Real Eyes Sport*.
-- **Instagram**: [https://www.instagram.com/checchiadesign/](https://www.instagram.com/checchiadesign/)
-- **Website**: [https://www.checchiadesign.com](https://www.checchiadesign.com)
-- **Immagine**: `/assets/speakers/simone-checchia.jpg`
+- **ID_SPEAKER:** simone-checchia
+- **Ruolo:** Creative Director in Blueorange®
+- **Sito Ufficiale:** [checchiadesign.com](https://www.checchiadesign.com)
+- **Instagram:** [@checchiadesign](https://www.instagram.com/checchiadesign/)
+- **LinkedIn:** [in/simonechecchia](https://www.linkedin.com/in/simonechecchia)
+- **Immagine:** `/assets/speakers/simone-checchia.jpg`
+
+### Bio Integrale
+Creative Director specializzato in branding ad alto impatto sociale. Fondatore della community "Roba da Grafici", utilizza i codici del marketing sportivo per dare dignità eroica a temi marginalizzati come la disabilità fisica.
+
+### Progetti Chiave
+- **Real Eyes Sport:** Identità visiva per l'associazione di Daniele Cassioli e progetti di audio-descrizione per i tifosi non vedenti negli stadi di **Serie A** e della Nazionale Italiana (**FIGC**).
+- **Inter Special Teams:** Collaborazione con FC Inter per la gestione della comunicazione del team paralimpico.
+
+---
 
 ## The Wave Studio
-- **Ruolo**: Digital agency.
-- **Bio Integrale**: The Wave Studio nasce a Catania nel 2019 con un'idea semplice e ambiziosa: che il buon design e la tecnologia non siano un lusso, ma il modo più onesto di dare forma a un'idea. Lavorano su brand identity, UX/UI design, sviluppo web e mobile, strategia digitale, collaborando con brand come Lega Basket Serie A, Sky Cinema, Tot, Cosmico, Aeroporto di Catania.
-- **Progetti Chiave**: App UI/UX per **Tot (Fintech)** e modulo "Experience" per **Cosmico**.
-- **Instagram**: [https://www.instagram.com/thewavestudio.it/](https://www.instagram.com/thewavestudio.it/)
-- **Website**: [https://www.thewavestudio.it](https://www.thewavestudio.it)
-- **Immagine**: `/assets/speakers/2. The wave.jpg`
+- **ID_SPEAKER:** the-wave-studio
+- **Ruolo:** Digital Agency
+- **Protagonisti:** Loriana Consentino (Talent Manager)
+- **Sito Ufficiale:** [thewavestudio.it](https://www.thewavestudio.it)
+- **Instagram:** [@thewavestudio.it](https://www.instagram.com/thewavestudio.it/)
+- **Immagine:** `/assets/speakers/2. The wave.jpg`
+
+### Bio Integrale
+Agenzia catanese nata nel 2019, araldo della riscossa digitale del Mezzogiorno. Respingono le pretese elitarie per un dogma pratico: il design è l'unico tramite per rendere un'intuizione commerciale un prodotto tangibile. Esperti in "Team Scaling" remoto.
+
+### Progetti Chiave
+- **Fondo Repubblica Digitale (Progetto CODE):** Formazione accelerata di 150+ giovani siciliani come sviluppatori Java e Front-End.
+- **Fintech TOT:** Restyling e sviluppo immersivo dell'interfaccia per la banca digitale business (vincitrice Mastercard For Fintechs 2024).
+
+---
 
 ## Zetafonts
-- **Ruolo**: Independent type foundry.
-- **Protagonisti**: Cosimo Lorenzo Pancini e Dario Manzo.
-- **Bio Integrale**: Zetafonts è una fonderia di caratteri indipendenti con sede a Firenze, fondata nel 2001. Combinando lo studio della tradizione tipografica italiana con la ricerca sulle tendenze contemporanee del design e un approccio pop alla comunicazione, Zetafonts ha creato in poco più di vent’anni oltre duemila font. Zetafonts valorizza e promuove la cultura tipografica attraverso l'organizzazione di programmi educativi, conferenze e corsi.
-- **Progetto Chiave**: **Fight for Kindness**. Vetrina globale per il cambiamento sociale tramite la tipografia, premiata con l'*Indigo Gold Award*.
-- **Link Progetto**: [Fight for Kindness](https://www.zetafonts.com/fight-for-kindness)
-- **Instagram**: [https://www.instagram.com/zetafonts/](https://www.instagram.com/zetafonts/)
-- **Website**: [https://www.zetafonts.com](https://www.zetafonts.com)
-- **Immagine**: `/assets/speakers/Cosimo lorenzo pancini zeta fonts.jpg`
+- **ID_SPEAKER:** zetafonts
+- **Ruolo:** Independent Type Foundry
+- **Protagonisti:** Cosimo Lorenzo Pancini e Dario Manzo
+- **Sito Ufficiale:** [zetafonts.com](https://www.zetafonts.com)
+- **Instagram:** [@zetafonts](https://www.instagram.com/zetafonts/)
+- **Immagine:** `/assets/speakers/Cosimo lorenzo pancini zeta fonts.jpg`
+
+### Bio Integrale
+Fonderia fiorentina che manovra le leve psicologiche del design tipografico globale. Pancini e Manzo si oppongono al modernismo algoritmico rivendicando una dimensione autoriale umana. Il loro talk "We are not content" è un attacco al design vuoto di significato.
+
+### Progetti Chiave
+- **Fight for Kindness:** Mobilitazione globale che usa la tipografia sperimentale come megafono etico per la gentilezza.
+- **Workshop "Tracce d'inchiostro":** Sessione al LIFE sulla magia fisica del pennino e architetture OpenType.
+- **Zetafonts Gold Pack:** Biblioteca di oltre 1.000 pesi font donata ai partecipanti del festival.
