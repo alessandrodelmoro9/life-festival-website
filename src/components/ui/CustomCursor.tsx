@@ -115,7 +115,7 @@ const CustomCursor: React.FC = () => {
       
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[10003] will-change-transform"
+        className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[99999] will-change-transform"
       >
         <img 
           src="/Pointer.svg" 

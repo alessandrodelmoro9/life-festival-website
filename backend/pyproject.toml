@@ -1,22 +1,22 @@
 [tool.poetry]
-name = "life-chatbot-demo"
+name = "life-backend"
 version = "0.1.0"
-description = "RAG Chatbot for LIFE Design Festival"
-authors = ["User"]
-readme = "README.md"
+description = "RAG Chatbot Backend for LIFE Design Festival 2026"
+authors = ["Gemini CLI"]
 package-mode = false
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.14"
-streamlit = "^1.56.0"
-langchain = "^0.3.0"
-langchain-community = "^0.3.0"
-langchain-google-genai = "^2.0.0"
-faiss-cpu = "^1.8.0"
-pydantic = "^2.0.0"
-python-dotenv = "^1.0.0"
-markdown = "^3.0.0"
-google-generativeai = "^0.8.6"
+python = ">=3.10,<3.13"
+fastapi = "^0.110.0"
+uvicorn = {extras = ["standard"], version = "^0.27.0"}
+llama-index = "^0.10.0"
+llama-index-llms-gemini = "^0.1.0"
+llama-index-llms-openrouter = "^0.1.0"
+llama-index-embeddings-google = "^0.1.0"
+llama-index-vector-stores-qdrant = "^0.2.0"
+qdrant-client = "1.10.1"
+python-dotenv = "^1.0.1"
+pydantic = "^2.6.0"
 
 [build-system]
 requires = ["poetry-core"]
