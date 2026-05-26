@@ -127,7 +127,7 @@ export const speakersData: Speaker[] = [
     color: 'accent',
     image: "/assets/speakers/italo_sannino.jpg",
     instagram: "https://www.instagram.com/italosan/",
-    website: "https://www.italosan.com"
+    website: "https://italosannino.com/"
   },
   {
     id: 12,
