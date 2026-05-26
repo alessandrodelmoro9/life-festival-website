@@ -2,7 +2,7 @@ import os
 import re
 import logging
 from typing import List, Dict, Any
-from llama_index.core import VectorStoreIndex, StorageContext
+from llama_index.core import VectorStoreIndex, StorageContext, PromptTemplate
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 from llama_index.llms.gemini import Gemini
 from llama_index.llms.openrouter import OpenRouter
@@ -16,9 +16,8 @@ class LifeRagEngine:
         try:
             url = os.getenv("QDRANT_URL")
             api_key = os.getenv("QDRANT_API_KEY")
-            collection = os.getenv("QDRANT_COLLECTION", "life_design_2026")
+            collection = os.getenv("QDRANT_COLLECTION", "life_design_festival")
             
-            # Explicit client with compatible version (1.10.1)
             self.client = QdrantClient(
                 url=url,
                 api_key=api_key,
@@ -36,7 +35,7 @@ class LifeRagEngine:
             )
             
             self.primary_llm = Gemini(
-                model_name="models/gemini-2.0-flash", 
+                model_name="models/gemini-flash-latest", 
                 api_key=os.getenv("GOOGLE_API_KEY")
             )
             
@@ -52,12 +51,23 @@ class LifeRagEngine:
                 self.vector_store, 
                 embed_model=self.embed_model
             )
+
+            # Define a strict QA template
+            self.qa_prompt_tmpl = (
+                "Sei l'AI Curator del LIFE Design Festival 2026. Il tuo compito è rispondere alle domande degli utenti "
+                "basandoti ESCLUSIVAMENTE sul contesto fornito sotto. Se l'informazione non è nel contesto, non inventare "
+                "e invita l'utente a scrivere a info@lifedesignfestival.it.\n"
+                "REGOLE:\n"
+                "- Sii preciso su nomi, orari e ruoli.\n"
+                "- Se ti chiedono di una persona, verifica se è associata a uno studio o collettivo (es. Marco Oggian -> Brutto Studio).\n"
+                "- Mantieni uno stile professionale, narrativo ma conciso.\n\n"
+                "CONTESTO:\n"
+                "{context_str}\n\n"
+                "DOMANDA: {query_str}\n\n"
+                "RISPOSTA:"
+            )
+            self.qa_prompt = PromptTemplate(self.qa_prompt_tmpl)
             
-            self.system_prompt = """
-            Sei l'AI Curator ufficiale del LIFE Design Festival 2026.
-            STILE: Narrativo, fluido, colto ma accogliente. Rispondi in paragrafi.
-            REGOLE: Usa solo le info fornite. Se non sai, invita a scrivere a info@lifedesignfestival.it.
-            """
             logger.info("✨ LifeRagEngine initialized successfully")
             
         except Exception as e:
@@ -65,35 +75,53 @@ class LifeRagEngine:
             raise e
 
     def query(self, message: str) -> Dict[str, Any]:
-        query_text = f"{self.system_prompt}\n\nDomanda Utente: {message}"
-        
+        # Greeting handler (bypass RAG)
+        greetings = ['ciao', 'buongiorno', 'hey', 'hello', 'hi', 'salve']
+        if message.lower().strip() in greetings:
+            return {
+                "text": "Ciao! Sono l'AI Curator del LIFE 2026. Come posso aiutarti oggi? Posso darti info su speaker, programma o sponsor del festival.",
+                "images": [],
+                "links": [],
+                "source": "system"
+            }
+
         try:
+            # Create query engine with explicit prompts and higher top_k
             query_engine = self.index.as_query_engine(
                 llm=self.primary_llm, 
-                similarity_top_k=3
+                similarity_top_k=8,
+                text_qa_template=self.qa_prompt
             )
-            response = query_engine.query(query_text)
-            source = "google-gemini-2.0"
+            response = query_engine.query(message)
+            source = "google-gemini-flash"
         except Exception as e:
-            logger.error(f"Query Error: {e}")
+            logger.error(f"Primary Query Error: {e}")
             if self.fallback_llm:
-                query_engine = self.index.as_query_engine(
-                    llm=self.fallback_llm, 
-                    similarity_top_k=3
-                )
-                response = query_engine.query(query_text)
-                source = "openrouter-deepseek-free"
+                try:
+                    query_engine = self.index.as_query_engine(
+                        llm=self.fallback_llm, 
+                        similarity_top_k=8,
+                        text_qa_template=self.qa_prompt
+                    )
+                    response = query_engine.query(message)
+                    source = "openrouter-deepseek-free"
+                except Exception as e2:
+                    logger.error(f"Fallback Query Error: {e2}")
+                    raise Exception(f"Errore critico: {str(e2)}")
             else:
                 raise Exception(f"Errore di sistema: {str(e)}")
 
         images = []
         links = []
         
+        # Process source nodes to extract media and links
         for node in response.source_nodes:
             content = node.node.get_content()
-            img_matches = re.findall(r'\/assets\/(?:speakers|logos)\/.*?\.(?:jpg|jpeg|png|svg|webp|JPG)', content)
+            # Extract images
+            img_matches = re.findall(r'\/assets\/(?:speakers|logos|location)\/.*?\.(?:jpg|jpeg|png|svg|webp|JPG)', content)
             images.extend([img.strip() for img in img_matches])
             
+            # Extract markdown links
             link_matches = re.findall(r'\[.*?\]\((https?:\/\/.*?)\)', content)
             links.extend(link_matches)
 

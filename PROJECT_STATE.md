@@ -17,28 +17,27 @@ Implement a high-performance, production-grade RAG Chatbot for the Life Design F
 - [x] **Backend Logic**: Implementazione Failover (Gemini -> DeepSeek) e gestione connessione Qdrant.
 - [x] **Modelli**: Verificata disponibilità Gemini 2.0 Flash e Embedding-001.
 
-### Giorni 5-6: UI Development & Integration (IN CORSO)
+### Giorni 5-6: UI Development & Integration (COMPLETATO)
 - [x] **React Widget**: Sviluppo componente ChatWidget (Draggable Bar + Full Page Conversation).
 - [x] **Cursor Management**: Risolto conflitto z-index e sparizione cursore custom su elementi UI.
-- [ ] **DEBUG CRITICO**: Risoluzione `AttributeError: 'QdrantClient' object has no attribute 'search'`.
+- [x] **Backend Logic Refactor**: Implementato `PromptTemplate` rigido e aumentato `top_k=8` per maggiore precisione.
+- [x] **Entity Linking**: Creato `00_GLOBAL_SUMMARY.md` per mappare correttamente Relatori -> Studi -> Orari.
 
-### Giorni 7-8: Testing & Produzione (TODO)
-- [ ] **Validation**: Test risposte bot con recupero immagini `/assets/` e link.
+### Giorni 7-8: Testing & Produzione (IN CORSO)
+- [x] **Validation**: Test risposte bot (Verificato: estrazione immagini e orari funzionante).
+- [ ] **Quota Management**: Risoluzione blocchi 429/402 (In attesa di crediti OpenRouter o reset Google).
 - [ ] **Deployment**: Caricamento backend su Render.com e configurazione DNS.
 
 ## ✅ Task Completati
-- [x] **Knowledge Base Ingestion**: 164 nodi indicizzati con successo.
+- [x] **Knowledge Base Ingestion**: 164 nodi indicizzati su Qdrant Cloud.
 - [x] **Failover Strategy**: Implementazione fallback su OpenRouter/DeepSeek.
-- [x] **UI Prototype**: Widget funzionante con animazioni Framer Motion.
-- [x] **Cursor Fix**: Z-index 99999 e soppressione globale del cursore di sistema.
+- [x] **Backend Stability**: Downgrade `qdrant-client` a `1.12.0` (Risolto AttributeError).
+- [x] **RAG Precision**: Passaggio a sistema di Prompt Template e Summary Globale.
 
-## 🔴 Blocchi Attuali & Debug Necessario (Per la prossima sessione)
-1. **Qdrant Version Mismatch**: Nonostante il downgrade a `1.10.1`, il backend riporta ancora la mancanza del metodo `search`. 
-   - *Ipotesi*: Possibile conflitto con `llama-index-vector-stores-qdrant` che richiede una versione specifica o installazione di pacchetti "ombra".
-   - *Azione*: Pulire `.venv` e reinstallare le dipendenze in modo isolato.
-2. **Cursor Visibility**: Verificare se su alcuni browser il cursore sparisce ancora a causa di `iframe` o altri elementi fixed.
+## 🔴 Blocchi Attuali & Debug Necessario
+1. **API Quota (CRITICO)**: Le chiavi Google Free Tier raggiungono il limite dopo pochi messaggi.
+2. **OpenRouter Credits**: Richiesta ricarica crediti per attivare il fallback stabile su DeepSeek.
 
 ## 📝 Note per la Ripresa
-- Il backend è configurato per puntare a Qdrant Cloud (AWS Frankfurt).
-- Le chiavi sono in `backend/.env`.
-- Il frontend si aspetta il backend su `http://localhost:8000`.
+- Il file `backend/knowledge/00_GLOBAL_SUMMARY.md` deve essere re-indicizzato al prossimo avvio con chiavi cariche.
+- Il modello predefinito è ora `gemini-flash-latest` per massimizzare la quota disponibile.
