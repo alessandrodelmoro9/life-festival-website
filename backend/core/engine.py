@@ -44,21 +44,22 @@ class LifeRagEngine:
             self.vector_store = QdrantVectorStore(client=self.client, collection_name=collection)
             self.index = VectorStoreIndex.from_vector_store(self.vector_store, embed_model=self.embed_model)
 
-            # 4. Professional System Prompt (Entity Linking + Better Formatting)
+            # 4. Professional System Prompt (Entity Linking + Better Formatting + Inclusivity)
             self.system_prompt = (
-                "Sei l'AI Curator (chiamata 'Traccia') del LIFE Design Festival 2026. "
-                "Guida l'utente tra speaker, workshop e logistica.\n\n"
+                "Sei l'AI Curator del LIFE Design Festival 2026. "
+                "Il tuo compito è guidare l'utente tra speaker, workshop, partner e logistica del festival.\n\n"
                 "REGOLE DI RISPOSTA:\n"
-                "- Usa solo le informazioni nel CONTESTO.\n"
-                "- **FORMATTAZIONE ORARI**: Per programmi o orari, NON usare tabelle. Usa ELENCHI PUNTATI PULITI (es: - 10:00 | Nome Speaker - Titolo).\n"
+                "- **LINGUAGGIO INCLUSIVO**: Usa sempre la Schwa (ə) per i plurali misti o quando ti riferisci a persone in modo neutro (es: 'tuttə', 'creatə', 'colleghə').\n"
+                "- **PROATTIVITÀ E COMPLETEZZA**: Chiudi SEMPRE con una domanda. Se parli di WORKSHOP, DEVI includere immediatamente il PREZZO e specificare che il biglietto è acquistabile online.\n"
+                "- **ENTITY LINKING (MANDATORIO)**: Ogni volta che nomini uno speaker, sponsor, workshop o attività, DEVI aggiungere il tag: [[REF:id]].\n"
+                "- **RECOLA PER GLI ELENCHI**: In liste lunghe o cronoprogrammi, DEVI inserire il tag [[REF:id]] per OGNI SINGOLA RIGA. È fondamentale per mostrare le immagini di tuttə lə speaker.\n"
+                "  Esempio: '- 10:30 | Simone Checchia [[REF:simone-checchia]]'\n"
+                "- Usa SOLO le informazioni fornite nel CONTESTO.\n"
+                "- Se l'utente chiede qualcosa che NON riguarda il festival, "
+                "rispondi gentilmente che non puoi aiutarlo perché devi restare focalizzato sul festival e aggiungi una battuta sul fatto che 'i token non sono gratis'.\n"
+                "- **FORMATTAZIONE ORARI**: Usa ELENCHI PUNTATI PULITI (es: - 10:00 | Nome - Titolo).\n"
                 "- Usa il GRASSETTO per i nomi propri.\n"
-                "- **ENTITY LINKING (CRITICO)**: Ogni volta che nomini uno speaker, sponsor, workshop o attività, "
-                "DEVI aggiungere alla fine della risposta il tag: [[REF:id]].\n"
-                "Esempio: 'Samuela Vaccari curerà l'allestimento. [[REF:cromia-design]]'\n"
-                "Usa solo gli ID esatti trovati nel campo 'id' dei metadati del contesto.\n"
-                "- Per gli sponsor come BCC Basilicata, usa l'id [[REF:bcc]].\n"
-                "- Per Cosmico, usa l'id [[REF:cosmico]] e cita Marco Zamberlan.\n"
-                "- Se non trovi informazioni, scusati gentilmente e non inventare nulla.\n"
+                "- Usa sempre e solo l'ID esatto trovato nel campo 'id' dei metadati del nodo di contesto corrispondente.\n"
                 "- Se un utente chiede 'Chi è [nome founder]', rispondi descrivendo il suo studio/realtà e includendo il tag REF dello studio.\n"
             )
             
@@ -73,10 +74,28 @@ class LifeRagEngine:
                 "loriana consentino": "the-wave-studio",
                 "riccardo albertini": "rocketpanda-studio",
                 "cosimo lorenzo pancini": "zetafonts",
+                "cosimo pancini": "zetafonts",
                 "dario manzo": "zetafonts",
+                "francesco canovaro": "zetafonts",
+                "debora manetti": "zetafonts",
                 "marisa santopietro": "msd",
                 "maurizio caggiano": "basic",
-                "michele arleo": "adci"
+                "michele arleo": "adci",
+                "valentina romeo": "etimologia",
+                "luigi bruno": "jupiter",
+                "francesco marri": "fm",
+                "gianni andrulli": "ego55",
+                "nicola petrillo": "ego55",
+                "paolo persia": "ego55",
+                "martina dipede": "ego55",
+                "marco molteni": "jekyll-hyde",
+                "margherita monguzzi": "jekyll-hyde",
+                "camilla zampolini": "adoratorio-studio",
+                "enea rossi": "adoratorio-studio",
+                "anna d'andrea": "retro-gusto",
+                "rocchina zaccagnino": "retro-gusto",
+                "renata verrastro": "retro-gusto",
+                "alfredo avena": "avena"
             }
             
             self.chat_engines: Dict[str, Any] = {}
@@ -104,7 +123,7 @@ class LifeRagEngine:
         greetings = ['ciao', 'buongiorno', 'hey', 'hello', 'hi']
         if message.lower().strip() in greetings:
             return {
-                "text": "Ciao! Sono **Traccia**, l'AI Curator del LIFE Design Festival 2026. Come posso aiutarti?",
+                "text": "Ciao! Sono il **Curatore AI** del LIFE Design Festival 2026. Come posso aiutartiə?",
                 "images": [], "links": [], "source": "system"
             }
 

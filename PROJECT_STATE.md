@@ -1,29 +1,48 @@
-# LIFE Design Festival 2026 - Project State
+# Stato Progetto - LIFE Design Festival 2026 - FINAL SPRINT
 
-## 🟢 COMPLETATO (Backend & Knowledge Base)
-*   **Knowledge Base**: Rinominati i file in modo semantico. Inseriti blocchi JSON `> **METADATA**:` per un'estrazione precisa di link e foto per speaker e sponsor.
-*   **Gestione Dipendenze**: Risolti i conflitti tra le vecchie librerie LlamaIndex e OpenRouter. Siamo passati a una configurazione stabile usando `OpenAILike` con la versione 0.14+ di LlamaIndex.
-*   **Motore RAG (`engine.py`)**:
-    *   Integrato **Gemini 2.0 Flash** (LLM) e **text-embedding-3-small** (Embedding) tramite OpenRouter.
-    *   Aggiunta memoria conversazionale asincrona (`ChatMemoryBuffer` a 8000 token per evitare crash).
-    *   Aumentato il raggio di ricerca (`similarity_top_k=12`) per trovare i metadati dei sotto-nodi.
-*   **Database Vectoriale (Qdrant)**:
-    *   Risolto l'errore di timeout creando un sistema di Ingestion a "piccoli batch" (10 alla volta).
-    *   Ricreata la collezione per combaciare con le dimensioni corrette dei vettori (1536).
-*   **API & Sicurezza (`main.py`)**: 
-    *   Server FastAPI configurato con Rate Limiting (10 req/min) tramite `slowapi`.
-    *   CORS aggiornato per includere `http://localhost:8080` e i domini di produzione.
+## 🎯 Obiettivo Consegna
+Consegnare un sistema RAG professionale, visivamente integrato e documentato accademicamente per il master, pronto per il deploy su Render (Free Tier).
 
-## 🟡 DA FARE (Il Prossimo Step Logico)
-*   **Raffinamento Estrazione Metadati (`engine.py`)**: 
-    *   *Problema attuale*: Il RAG recupera correttamente i dati (testato con successo), ma la funzione `query` inserisce nella risposta *tutti* i link/immagini trovati nei 12 nodi sorgente, anche quelli non pertinenti alla domanda specifica.
-    *   *Soluzione pianificata*: Creare un filtro "intelligente" in `engine.py` che verifichi se il link/immagine è effettivamente menzionato nel testo della risposta finale prima di inviarlo al frontend.
-*   **Frontend UI (`ChatWidget.tsx`)**:
-    *   Garantire che il frontend legga correttamente gli array `images` e `links` provenienti dalla nuova API e li renderizzi come card interattive.
-*   **Deploy su Render & Vercel**:
-    *   Deploy del backend FastAPI su Render.
-    *   Deploy del frontend React aggiornato su Vercel.
+---
 
-## 📝 NOTE TECNICHE (Memo per il futuro)
-*   **Non modificare la Knowledge Base**: I test granulari hanno confermato che i dati ci sono e sono scritti bene. Il problema della location o dei troppi link è un problema di "tuning" del RAG, non dei documenti markdown.
-*   **Comando di test**: Usare `python test_system.py` per verificare il comportamento del bot simulando chiamate API reali con pause per il rate limiting.
+## 🎨 Design & Branding (Richieste inviate al Team LIFE)
+Abbiamo formalizzato le richieste al team grafico per finalizzare l'interfaccia:
+- [ ] **UI Chat Full-Page**: Revisione del design dell'interfaccia chat (bolle, gradienti, micro-interazioni, uso corretto dei pesi di Automat Grotesk di Zetafonts).
+- [ ] **Widget & Toggle Mobile**: Creazione design per il bottone flottante da mobile e validazione del widget desktop (forma a pillola).
+- [ ] **Asset Visivi "Collettivi"**: Creazione di 3 immagini "composite" per gestire le liste lunghe senza intasare la chat:
+    - 1 immagine con tutti i loghi dei Partner/Sponsor.
+    - 1 immagine con tutti gli Speaker della Mattina.
+    - 1 immagine con tutti gli Speaker del Pomeriggio.
+- [ ] **Knowledge Base Audit**: Revisione finale dei 4 file `.md` (`speaker-talk.md`, `partner-sponsor.md`, `programma-logistica.md`, `visione-concept.md`) per fact-checking.
+
+---
+
+## 🛠️ Hardening Tecnico (Logic & Deploy)
+- [ ] **RAG Logic Perfection**:
+    - Hardening parser `[[REF:id]]` per garantire l'estrazione di *tutti* i metadati nelle liste lunghe.
+    - Debug cliccabilità link (es. Eventbrite) nel widget React.
+- [ ] **Code Cleaning**: Rimozione log di debug, pulizia del codice e refactoring per renderlo professionale e pronto per la revisione dei docenti.
+- [ ] **Render.com Setup & DNS**:
+    - Configurazione del piano Free.
+    - Implementazione di uno script "Keep-Alive/Warm-up" per gestire il risveglio dal freeze dei 14 minuti di inattività di Render.
+    - Piano per DNS e futura scalabilità/espansione della Knowledge Base.
+
+---
+
+## 📚 Documentazione & Accademia
+- [ ] **README.md Professionale**: Stesura di una documentazione impeccabile con:
+    - Diagramma dell'architettura RAG.
+    - Setup environment.
+    - Dettaglio sul sistema di "Atomic Metadata Injection" e Entity Linking.
+- [ ] **Mail ai Professori**: Preparazione della mail tecnica per presentare il progetto e fornire il branch di prova del backend per una revisione last-minute.
+
+---
+
+## 🚀 Prossimi Passi (Domani)
+1. Esecuzione del **Code Cleaning** su backend e frontend.
+2. Fix dei bug UI (Link Eventbrite) e RAG (Parser immagini multiple).
+3. Stesura del `README.md` e della bozza per i professori.
+4. Attesa feedback dal team LIFE per l'integrazione degli asset grafici.
+
+---
+*Ultimo aggiornamento: Venerdì 29 Maggio 2026 - Fine Sessione*

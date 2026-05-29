@@ -64,21 +64,21 @@ Sezione dedicata ai laboratori pratici. Nota: È obbligatorio possedere un Daily
 ### Workshop 1: L'immagine coordinata per la cultura
 > **METADATA**: { "id": "workshop-enrica-daguanno", "name": "Workshop Enrica D'Aguanno", "type": "workshop", "speaker_id": "enrica-daguanno", "date": "2026-06-05", "time": "13:50", "price": "Gratuito", "img": "/assets/speakers/enrica.jpg" }
 - **Speaker:** Enrica D'Aguanno (ABA Napoli)
-- **Descrizione:** Come nasce l’immagine di una mostra? In che modo una copertina o un manifesto riescono a raccontare l’identità di un evento culturale? La Prof.ssa guida un'immersione nel processo creativo seguendo un approccio ibrido/analogico: si lavorerà sulla composizione manuale e sul layout (ritagli e carta) per stimolare la rapidità di pensiero visivo.
+- **Descrizione:** Come nasce l’immagine di una mostra? Il workshop propone un’immersione nel processo creativo che trasforma contenuti complessi in comunicazione visiva. Segue un approccio **ibrido/analogico**: si lavorerà sulla composizione manuale, sul ritaglio e sul layout per stimolare la rapidità di pensiero e la sperimentazione visiva immediata. Un'esperienza dove progettare significa tradurre idee e narrazioni in forma visiva.
 - **Link:** https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213
 
 ### Workshop 2: UI con Figma e Vibe Coding
 > **METADATA**: { "id": "workshop-italo-sannino", "name": "Workshop Italo Sannino", "type": "workshop", "speaker_id": "italo-sannino", "date": "2026-06-06", "time": "09:15", "price": "12,00 EUR + IVA", "img": "/assets/speakers/italo_sannino.jpg" }
 - **Speaker:** Italo Sannino
-- **Descrizione:** Dal file Figma a Claude: struttura, connessione e iterazione per un workflow AI-native. Sannino mostra come costruire file che "parlano chiaro" all'AI, connettere Figma a Claude via MCP e affinare il dialogo attraverso l'iterazione dei prompt. 
-- **Requisiti:** BYOD (Bring Your Own Device) - Porta il tuo PC con Figma installato.
+- **Descrizione:** Dal file Figma a Claude: struttura, connessione e iterazione per un workflow AI-native. Il workshop insegna a strutturare **autolayout, components e tokens** per costruire file che "parlano chiaro" all'AI, connettere Figma a Claude via MCP e affinare il dialogo attraverso l'iterazione dei prompt. Non solo teoria, ma una demo live per un flusso pronto all'uso.
+- **Requisiti:** BYOD (Bring Your Own Device). Connessione WiFi stabile indispensabile. I primi 10 minuti sono dedicati al setup assistito dai Teaching Assistant.
 - **Link:** https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213
 
 ### Workshop 3: Tracce d'inchiostro
 > **METADATA**: { "id": "workshop-zetafonts", "name": "Workshop Zetafonts", "type": "workshop", "speaker_id": "zetafonts", "date": "2026-06-06", "time": "13:30", "price": "12,00 EUR + IVA", "img": "/assets/speakers/Cosimo lorenzo pancini zeta fonts.jpg" }
 - **Speaker:** Cosimo Lorenzo Pancini e Dario Manzo (Zetafonts)
-- **Descrizione:** Un viaggio tra due anime del carattere serif: quella dinamica del pennino largo e quella meccanica del pennino flessibile. I fondatori mostreranno come diversi strumenti abbiano lasciato tracce profonde in cinque secoli di tipografia. 
-- **Bonus:** I partecipanti ricevono in regalo lo "Zetafonts Gold Pack" (oltre 1.000 font professionali).
+- **Descrizione:** Un affascinante viaggio tra due anime del carattere serif: quella dinamica del **pennino largo (traslazione)** e quella precisa del **pennino a punta flessibile (espansione)**. Il workshop permette di imparare a distinguere come strumenti diversi abbiano influenzato la percezione emotiva e il ritmo del testo negli ultimi cinque secoli. Condensa oltre 20 anni di ricerca tipografica.
+- **Bonus:** I partecipanti ricevono gadget esclusivi e lo **Zetafonts Gold Pack** (oltre 1.000 font professionali selezionati).
 - **Link:** https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213
 
 ---
@@ -104,9 +104,15 @@ Oltre ai talk e ai workshop, il festival offre esperienze interattive continuati
 ### 4. Torneo di BUSSO (Curato da: FM Visual Designer)
 > **METADATA**: { "id": "stand-busso", "name": "Torneo di BUSSO", "type": "activity", "parent_id": "fm", "img": "/assets/logos/fm.png" }
 - **Data:** 5-6 Giugno, durante le pause.
-- **Descrizione:** Torneo del gioco di carte cult BUSSO (evoluzione di Kaboo), con mazzo dedicato creato da Francesco Marri. Sfide rapide e colpi di scena tra designer.
+- **Descrizione:** Torneo del gioco di carte cult **BUSSO** (evoluzione di Kaboo), con mazzo dedicato creato da Francesco Marri. Sfide rapide per esorcizzare le nevrosi tra designer e committenti.
 
-### 5. Lines of Life (Curato da: COSYSTEM)
+### 5. Zetafonts TypeQuiz & TypeTinder
+> **METADATA**: { "id": "stand-zetafonts-activities", "name": "Attività Zetafonts", "type": "activity", "parent_id": "zetafonts", "img": "/assets/logos/zetafont.png" }
+- **Data:** Sessioni multiple (vedi programma).
+- **TypeQuiz:** Viaggio nel mondo della tipografia tra gossip da type designer, font storici e loghi che nascondono segreti inaspettati.
+- **TypeTinder:** Gioco dal vivo sul font pairing. Trovare il partner tipografico giusto è come trovare il partner nella vita: ci vuole feeling!
+
+### 6. Lines of Life (Curato da: COSYSTEM)
 > **METADATA**: { "id": "stand-lines-of-life", "name": "Lines of Life", "type": "activity" }
 - **Data:** 5-6 Giugno, tutto il giorno.
 - **Descrizione:** Un'indagine sull'unicità attraverso lo "scarabocchio" spontaneo. Un gesto grafico libero che rappresenta l'impronta di ogni individuo nel mondo.
