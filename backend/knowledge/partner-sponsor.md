@@ -1,164 +1,143 @@
 # 3. SPONSOR, PARTNER E RETE - LIFE DESIGN FESTIVAL 2026
 
-Il LIFE Design Festival 2026 è sostenuto da un'infrastruttura di eccellenza. Questa sezione cataloga i partner istituzionali, tecnologici e commerciali, essenziali per la realizzazione dell'evento.
+Il LIFE Design Festival 2026 è sostenuto da un ecosistema di 22 partner. Questo documento cataloga ogni entità secondo le categorie ufficiali del frontend per garantire coerenza totale tra l'IA e l'interfaccia utente.
 
 ---
 
-## SPONSOR PRINCIPALI
+## REGISTRO GLOBALE PARTNER (LISTA COMPLETA)
+> **METADATA**: { "id": "global-partners", "name": "Lista Completa Partner e Sponsor", "type": "registry" }
+
+Questa è la suddivisione ufficiale dei partner del LIFE Design Festival 2026:
+
+*   **MAIN SPONSOR**: La Gala Home.
+*   **CON IL SOSTEGNO DEL FONDO ETICO DI**: BCC Basilicata.
+*   **EXPERIENCE SPONSOR**: Ordine degli Architetti di Potenza, MSD Design.
+*   **ACTIVE SPONSOR**: AIPI, Grafica Metelliana.
+*   **PARTNER**: Zetafonts, Basic Records, Overclouds, Autoelite, Avena, Retro Gusto, BNB (B&B Al Convento).
+*   **COMMUNITY E CULTURAL PARTNER**: FM Visual Designer, Etimologia, Jupiter, Unidea.
+*   **PATROCINI ISTITUZIONALI E STRATEGICI**: ADCI, Comune di Potenza, Regione Basilicata, ADI, Basilicata Turistica (APT Basilicata).
+
+---
+
+## CATEGORIA: MAIN SPONSOR
+> **METADATA**: { "id": "cat-top", "name": "Main Sponsor", "type": "category" }
 
 ### La Gala Home
-> **METADATA**: { "id": "la-gala-home", "name": "La Gala Home", "type": "sponsor", "category": "Top Sponsor", "img": "/assets/logos/la-gala-home.png", "web": "https://www.lagalahome.com" }
+> **METADATA**: { "id": "la-gala-home", "name": "La Gala Home", "type": "sponsor", "category": "top", "img": "/assets/logos/la-gala-home.png", "web": "https://www.lagalahome.com" }
+Brand italiano d'eccellenza manifatturiera. Il loro vantaggio competitivo risiede nel **"Metaglass"**, un'innovativa tecnologia di stampa UV ad altissima definizione su cristallo che riproduce texture naturali complesse (marmo, onice), offrendo l'imponenza visiva della pietra e la leggerezza del vetro. 
+*   **Progetti**: Collezione "Kimèya Nature" (esplorazione alchemica dei 4 elementi), il monumentale tavolo ovale "Magna Grecia" e il tavolo a botte "Chaos".
 
-#### Descrizione
-Brand italiano d'eccellenza nel settore manifatturiero, specializzato in superfici decorative e complementi d'arredo in vetro artistico. Il fulcro del vantaggio competitivo è il "Metaglass", tecnologia proprietaria di stampa UV ad altissima definizione che trasferisce fedelmente texture naturali (marmo, onice) su cristallo. Questo permette di ottenere elementi architettonici con l'imponenza della pietra ma la leggerezza e trasparenza del vetro.
+---
 
-#### Impatto & Progetti
-1.  Collezione Kimèya Nature: Esplorazione alchemica dei quattro elementi tradotti in arredi funzionali.
-2.  Tavolo Magna Grecia: Un monumentale tavolo ovale che esalta il rigore geometrico senza eccessi decorativi.
-3.  Tavolo Chaos: Progetto a botte che esplora l'ibridazione materica tra cristallo e texture naturali.
+## CATEGORIA: CON IL SOSTEGNO DEL FONDO ETICO DI
+> **METADATA**: { "id": "cat-main", "name": "Con il sostegno del Fondo Etico di", "type": "category" }
 
 ### BCC Basilicata
-> **METADATA**: { "id": "bcc", "name": "BCC Basilicata", "type": "sponsor", "category": "Main Sponsor", "img": "/assets/logos/bcc.png", "web": "https://www.bccbasilicata.it" }
-
-#### Descrizione
-Il credito cooperativo più grande della regione (11 filiali). BCC Basilicata ha istituzionalizzato la responsabilità sociale reinvestendo i propri utili netti in un "Fondo Etico" dedicato a iniziative sociali, educative e culturali, posizionandosi come motore propulsivo per il welfare comunitario locale.
-
-#### Impatto & Progetti
-1.  Certificazione per la Parità di Genere: Ottenuta da Certitalia, a testimonianza dell'impegno per il welfare e la sostenibilità.
-2.  Progetto SHIELD: Iniziativa per il contrasto attivo del cyberbullismo tra i giovani.
-3.  Premio Letterario Basilicata: Supporto storico a una delle istituzioni culturali più prestigiose della regione.
+> **METADATA**: { "id": "bcc", "name": "BCC Basilicata", "type": "sponsor", "category": "main", "img": "/assets/logos/bcc.png", "web": "https://www.bccbasilicata.it" }
+Il più grande credito cooperativo lucano (11 filiali). BCC Basilicata ha istituzionalizzato la CSR reinvestendo parte degli utili in un **"Fondo Etico"** per sostenere welfare comunitario, educazione e cultura.
+*   **Impatto**: Ha ottenuto la Certificazione per la Parità di Genere (Certitalia), supporta il progetto "SHIELD" contro il cyberbullismo giovanile e lo storico Premio Letterario Basilicata.
 
 ---
 
-## PARTNER ISTITUZIONALI
+## CATEGORIA: EXPERIENCE SPONSOR
+> **METADATA**: { "id": "cat-experience", "name": "Experience Sponsor", "type": "category" }
 
-### ADCI (Art Directors Club Italiano)
-> **METADATA**: { "id": "adci", "name": "ADCI", "type": "sponsor", "category": "Institutional", "img": "/assets/logos/adci.png", "web": "https://www.adci.it" }
+### Ordine degli Architetti di Potenza
+> **METADATA**: { "id": "ordine-architetti", "name": "Ordine degli Architetti di Potenza", "type": "sponsor", "category": "experience", "img": "/assets/logos/ordine-architetti.png", "web": "https://www.ordinearchitetti.pz.it/" }
+Ente istituzionale di autogoverno preposto alla tenuta dell'albo, tutela e aggiornamento professionale di fronte alle mutevoli sfide urbanistiche.
 
-#### Descrizione
-La più influente associazione in Italia per i professionisti della comunicazione pubblicitaria. Opera come garante dell'eccellenza creativa, facilitando il dialogo tra agenzie multinazionali e poli creativi emergenti tramite la propria rete di ambasciatori.
+### MSD Design (Marisa Santopietro)
+> **METADATA**: { "id": "msd", "name": "MSD Design", "type": "sponsor", "category": "experience", "img": "/assets/logos/msd.png", "web": "https://www.msddesign.it/" }
+Eccellenza potentina guidata dall'architetto Marisa Santopietro (delegata AIPI). Esprime un "design al femminile" dove la geometria si fa portavoce di accoglienza e parità. Hanno curato integralmente l'allestimento del **Terminal FAL Gallitello**. Offrono fornitura di arredi di fascia alta, anche tramite e-commerce.
 
-#### Impatto & Progetti
-Il patrocinio al LIFE (supportato dal Local Ambassador Michele Arleo) certifica l'evento come hub strategico per il sud Italia, garantendo una connessione diretta tra i giovani professionisti lucani e i grandi circuiti agenziali milanesi e internazionali.
+---
 
-### ADI (Associazione per il Disegno Industriale)
-> **METADATA**: { "id": "adi", "name": "ADI", "type": "sponsor", "category": "Institutional", "img": "/assets/logos/ADI.png", "web": "https://www.adi-design.org" }
-
-#### Descrizione
-Fondata nel 1956, gestisce il prestigioso Premio Compasso d'Oro. Promuove il design come sistema di valore culturale ed economico.
-
-### Comune di Potenza e Regione Basilicata
-> **METADATA**: { "id": "istituzioni-locali", "name": "Istituzioni Locali", "type": "sponsor", "category": "Institutional", "img": "/assets/logos/comune.png", "web": "https://www.comune.potenza.it" }
-
-#### Descrizione & Strategia
-Le istituzioni supportano l'innesto creativo nel tessuto storico (Maggio Potentino) e il progetto europeo LIFE SeedNEB, innescando il turismo esperienziale attraverso il design e l'artigianato lucano. La cultura è concepita non come orpello, ma come infrastruttura primaria per l'attrattività territoriale.
-
-#### Milestones
-1.  Maggio Potentino 2026: Oltre 75 eventi e 100 appuntamenti al grido di "Tradizione e cultura viva".
-2.  Programma Triennale Politiche Culturali 2025-2027: Vasto stanziamento regionale (DGR 761/2025) per stabilizzare l'industria creativa lucana.
+## CATEGORIA: ACTIVE SPONSOR
+> **METADATA**: { "id": "cat-active", "name": "Active Sponsor", "type": "category" }
 
 ### AIPI (Associazione Italiana Professionisti Interior Designers)
-> **METADATA**: { "id": "aipi", "name": "AIPI", "type": "sponsor", "category": "Institutional", "img": "/assets/logos/aipi.png", "web": "https://www.aipi.it" }
-
-#### Descrizione
-Fondata nel 1969, garantisce la qualificazione delle competenze e funge da ponte tra formazione e pratica. Ha un ruolo centrale nella norma UNI 12001 che definisce i requisiti dei designer.
-
-#### Impatto & Progetti
-Partner attivo del "New European Bauhaus", l'iniziativa UE per connettere il Green Deal agli spazi di vita quotidiana.
-
----
-
-## EXPERIENCE PARTNER & LOGISTICA
-
-### APT Basilicata
-> **METADATA**: { "id": "apt", "name": "APT Basilicata", "type": "sponsor", "category": "Experience", "img": "/assets/logos/apt.png", "web": "https://www.aptbasilicata.it" }
-
-#### Descrizione
-Agenzia di Promozione Territoriale. Sostiene il festival per attrarre un turismo destagionalizzato, promuovendo il patrimonio paesaggistico e i borghi interni. L'intervento è inteso come "architettura di destinazione".
-
-#### Impatto & Progetti
-Pacchetti "Arti-Turismo" (TTG 2025): Sviluppati con CNA Turismo per legare le micro-manifatture locali ai flussi di visitatori internazionali nel segmento del lusso.
-
-### MSD Design
-> **METADATA**: { "id": "msd", "name": "MSD Design", "type": "sponsor", "category": "Experience & Logistica", "img": "/assets/logos/msd.png", "web": "https://www.msddesign.it/" }
-
-#### Descrizione
-Studio dell'arch. Marisa Santopietro (delegata AIPI). Converte narrazioni spaziali in volumi abitabili. Ha curato integralmente la progettazione e l'allestimento degli spazi industriali del Terminal FAL Gallitello per il festival. La sua visione esprime un vigoroso "design al femminile".
-
-### Basic Records
-> **METADATA**: { "id": "basic", "name": "Basic Records", "type": "sponsor", "category": "Experience & Logistica", "img": "/assets/logos/basic.png", "web": "https://basicrecords.it/" }
-
-#### Descrizione
-Social multimedia HUB e etichetta indipendente fondata nel 2015 da Maurizio Caggiano. Destrutturano la musica sperimentale per generare performance immersive. Agiscono come maestri del soundscape regionale.
-
-#### Impatto & Progetti
-1.  Lucus Fest (dal 2022): Evento nei boschi sacri lucani che ibrida design geodetico, trance psichedelica e natura.
-2.  Infrastruttura Sonora LIFE 2026: Cura dell'intero ecosistema acustico del festival.
-
-### B&B Al Convento
-> **METADATA**: { "id": "bb-al-convento", "name": "B&B Al Convento", "type": "sponsor", "category": "Experience (Hospitality)", "img": "/assets/logos/BNB.png", "web": "http://alconventopotenza.it/" }
-
-#### Descrizione
-Gioiello dell'hospitality di lusso situato in un ex convento dei Frati Minori del 1803 nel centro storico di Potenza. Recupero filologico della famiglia De Angelis, offre suite che intersecano antiquariato del '700 a design contemporaneo.
-
-#### Curiosità (Oasi Intellettuale)
-Le sue mura spesse (che sostituiscono l'aria condizionata) hanno ospitato l'intellighenzia italiana, tra cui Toni Servillo, Vinicio Capossela, Neri Marcorè e Giovanni Allevi.
-
-### Food & Beverage (Retro Gusto e Avena)
-> **METADATA**: { "id": "food-beverage", "name": "Retro Gusto e Avena", "type": "sponsor", "category": "Experience", "img": "/assets/logos/retrò-gusto.png", "web": "https://avenabibite.it/" }
-
-*   Retro Gusto: Trio femminile (D'Andrea, Zaccagnino, Verrastro). Food-truck anni '50 con panini gourmet a lievitazione lenta, premiati dal Gambero Rosso.
-*   Avena: Entità storica dal 1969. Distribuisce l'iconica Gassosa Avena lucana (produttori dal 1969).
-
-### Autoelite
-> **METADATA**: { "id": "autoelite", "name": "Autoelite", "type": "sponsor", "category": "Experience", "img": "/assets/logos/autoelite.png", "web": "https://www.autoelite.it/" }
-
-#### Descrizione
-Leader nella mobilità e pioniere del noleggio strategico. Fornisce la Flotta Green (E-Ducato, E-Scudo) per abbattere l'impronta carbonica della logistica del festival.
-
----
-
-## PARTNER TECNICI E DIGITALI
+> **METADATA**: { "id": "aipi", "name": "AIPI", "type": "sponsor", "category": "active", "img": "/assets/logos/aipi.png", "web": "https://www.aipi.it" }
+Fondata nel 1969, è la massima autorità in Italia per l'interior design. È stata cruciale nell'affermazione della norma UNI 12001 e opera come partner ufficiale del **"New European Bauhaus"**.
 
 ### Grafica Metelliana
-> **METADATA**: { "id": "grafica-metelliana", "name": "Grafica Metelliana", "type": "sponsor", "category": "Active Partner", "img": "/assets/logos/grafica-m.png", "web": "https://www.graficametelliana.it" }
-
-#### Descrizione
-Industria grafica integrata pioniera nella sostenibilità. Nel 2024 ha completato un massiccio rebranding, evolvendo da tipografia a hub tecnologico per l'economia circolare.
-
-#### Impatto & Progetti
-OneMorePack: Concorso nazionale (recentemente premiato alla Città della Scienza) per elevare il creative packaging design italiano. Hanno sviluppato packaging 100% biodegradabili per brand come Antica Marineria Gallo.
-
-### Overclouds
-> **METADATA**: { "id": "overclouds", "name": "Overclouds", "type": "sponsor", "category": "Partner Tecnico", "img": "/assets/logos/overclouds.png", "web": "https://www.overclouds.ai/it" }
-
-#### Descrizione
-Software boutique di Pavia specializzata in soluzioni sartoriali. Curano l'esperienza PHYGITAL del festival, dove minigame interattivi tra spazio fisico e digitale permettono agli utenti di lasciare la propria "traccia" permanente.
+> **METADATA**: { "id": "grafica-metelliana", "name": "Grafica Metelliana", "type": "sponsor", "category": "active", "img": "/assets/logos/grafica-m.png", "web": "https://www.graficametelliana.it" }
+Industria grafica integrata, pioniera nella sostenibilità. Fresca di un massiccio rebranding nel 2024, si distingue per progetti come il packaging 100% biodegradabile per Antica Marineria Gallo. Organizza il concorso nazionale **"OneMorePack"** (recentemente tenutosi a Città della Scienza a Napoli con 9 premi).
 
 ---
 
-## COMMUNITY PARTNER
+## CATEGORIA: PARTNER
+> **METADATA**: { "id": "cat-partner", "name": "Partner", "type": "category" }
 
-### FM Visual Designer
-> **METADATA**: { "id": "fm", "name": "FM Visual Designer", "type": "sponsor", "category": "Community", "img": "/assets/logos/fm.png", "web": "https://bussotoctoc.com/products/busso" }
+### Zetafonts
+> **METADATA**: { "id": "zetafonts-partner", "name": "Zetafonts", "type": "sponsor", "category": "partner", "img": "/assets/logos/zetafont.png", "web": "https://www.zetafonts.com" }
+Fondata a Firenze nel 2001 da Cosimo Lorenzo Pancini, Francesco Canovaro e Debora Manetti. Oltre a fornire 2 font proprietari per il festival e il **Gold Pack** ai corsisti, gestiscono il TypeCampus e promuovono la massiccia campagna sociale e inclusiva **"Fight for Kindness"**.
 
-#### Descrizione
-Alter ego di Francesco Marri. Fenomeno social dedicato alla demistificazione del design elitario. Sarà al festival per il torneo di BUSSO, gioco di carte da lui ideato per esorcizzare le nevrosi tra designer e committenti.
+### Basic Records
+> **METADATA**: { "id": "basic", "name": "Basic Records", "type": "sponsor", "category": "partner", "img": "/assets/logos/basic.png", "web": "https://basicrecords.it/" }
+Hub multiculturale nato nel 2015 grazie al bando "Nuovi Fermenti", fondato da Maurizio Caggiano. Propongono il modello del "Social multimedia HUB" e sono noti per il **Lucus Fest**, evento di trance psichedelica tra i boschi sacri della Basilicata.
+
+### Overclouds
+> **METADATA**: { "id": "overclouds", "name": "Overclouds", "type": "sponsor", "category": "partner", "img": "/assets/logos/overclouds.png", "web": "https://www.overclouds.ai/it" }
+Software boutique di Pavia (il cui nome richiama il motto "sopra le nuvole c'è sempre il sole"). Al festival curano l'esperienza **PHYGITAL**, una caccia al tesoro tramite marker e minigame distribuiti nella location.
+
+### Autoelite
+> **METADATA**: { "id": "autoelite", "name": "Autoelite", "type": "sponsor", "category": "partner", "img": "/assets/logos/autoelite.png", "web": "https://www.autoelite.it/" }
+Eccellenza della mobilità situata in Via Rifreddo 7 a Potenza. Supportano il festival e la logistica interurbana abbattendo le emissioni tramite una **Flotta Green** (es. Fiat E-Ducato ed E-Scudo).
+
+### Avena
+> **METADATA**: { "id": "avena", "name": "Avena", "type": "sponsor", "category": "partner", "img": "/assets/logos/avena.png", "web": "https://avenabibite.it/" }
+Storica entità manifatturiera lucana, nata dall'incartamento manuale di caramelle e ghiaccio in Corso Garibaldi. Spostatasi in Via del Gallitello nel 1969 sotto la guida di Alfredo Avena, l'azienda (oggi 14 dipendenti, con storiche maestranze femminili) produce l'iconica **Gassosa Avena**, simbolo di resistenza contro le multinazionali.
+
+### Retro Gusto
+> **METADATA**: { "id": "retro-gusto", "name": "Retro Gusto", "type": "sponsor", "category": "partner", "img": "/assets/logos/retrò-gusto.png", "web": "https://www.instagram.com/retrogusto_streetfood/" }
+Nata nel 2013 ad Avigliano come salumeria familiare, evolutasi in "ristobottega" e oggi brillante food-truck anni '50. Fondata dal formidabile **trio femminile** (Anna D'Andrea, Rocchina Zaccagnino, Renata Verrastro), offrono panini gourmet premiati dal Gambero Rosso con farine lucane.
+
+### BNB (B&B Al Convento)
+> **METADATA**: { "id": "bb-al-convento-partner", "name": "B&B Al Convento", "type": "sponsor", "category": "partner", "img": "/assets/logos/BNB.png", "web": "http://alconventopotenza.it/" }
+Rifugio concettuale in Piazza San Michele Arcangelo a Potenza. Nato su un convento del 1803, passato per la "trattoria di Peppe" e il sisma dell'80, è stato finemente recuperato dalla famiglia De Angelis. Le spesse mura in pietra annullano l'esigenza di aria condizionata. Ha ospitato Toni Servillo, Vinicio Capossela, Neri Marcorè e Giovanni Allevi.
+
+---
+
+## CATEGORIA: COMMUNITY E CULTURAL PARTNER
+> **METADATA**: { "id": "cat-community", "name": "Community Partner", "type": "category" }
+
+### FM Visual Designer (Francesco Marri)
+> **METADATA**: { "id": "fm", "name": "FM Visual Designer", "type": "sponsor", "category": "community", "img": "/assets/logos/fm.png", "web": "https://bussotoctoc.com/products/busso" }
+Fenomeno social (classe 1995 dal Friuli) che demistifica il "blindspot" dei creativi. Gestisce un e-commerce di successo di merchandising satirico (come le "Carte d'auguri per graphic designer") e organizza al festival i tornei del suo gioco di carte **BUSSO**.
+
+### Etimologia
+> **METADATA**: { "id": "etimologia", "name": "Etimologia Magazine", "type": "sponsor", "category": "community", "img": "/assets/logos/etmiologia.png", "web": "https://www.etimologiamagazine.com/" }
+Ideato dalla visual designer Valentina Romeo, è un'affascinante **ibridazione concettuale tra il libro d’artista e la fanzine**, nato per indagare l'origine dei linguaggi contemporanei.
+
+### Jupiter
+> **METADATA**: { "id": "jupiter", "name": "Jupiter Fotoproduzioni", "type": "sponsor", "category": "community", "img": "/assets/logos/jupiter.png", "web": "https://www.jupiterfoto.it/" }
+Studio di Satriano di Lucania fondato nel 2019 da Luigi Bruno. Specializzato in "Eventi" e "Branding", il progetto affonda le radici nella riscoperta di una fotocamera analogica di famiglia.
 
 ### Unidea
-> **METADATA**: { "id": "unidea", "name": "Unidea", "type": "sponsor", "category": "Community", "img": "/assets/logos/unidea.png", "web": "https://sites.google.com/view/associazioneunidea/home" }
+> **METADATA**: { "id": "unidea", "name": "Unidea", "type": "sponsor", "category": "community", "img": "/assets/logos/unidea.png", "web": "https://sites.google.com/view/associazioneunidea/home" }
+Nata nel 2015 presso il DiSU/DIUSS dell'Unibas, promuove informazione libera tramite il podcast **L'Alternativa** e **ArgoMenta**, dedicandosi all'aggregazione studentesca e a tematiche come immigrazione e tutela ambientale (es. progetto "Io leggo perché").
 
-#### Descrizione
-Associazione universitaria fondata nel 2015. Promuove solidarietà, uguaglianza e libera informazione tramite iniziative come "Io leggo perché", il giornale web "L'Alternativa" e il podcast "ArgoMenta".
+---
 
-### Etimologia Magazine
-> **METADATA**: { "id": "etimologia", "name": "Etimologia Magazine", "type": "sponsor", "category": "Community", "img": "/assets/logos/etmiologia.png", "web": "https://www.etimologiamagazine.com/" }
+## CATEGORIA: PATROCINI ISTITUZIONALI E STRATEGICI
+> **METADATA**: { "id": "cat-institutional", "name": "Patrocini Istituzionali", "type": "category" }
 
-#### Descrizione
-Magazine d'artista sperimentale ideato da Valentina Romeo. Un'ibridazione tra libro d'artista e fanzine per raccontare l'evoluzione sensibile della realtà.
+### ADCI (Art Directors Club Italiano)
+> **METADATA**: { "id": "adci-institutional", "name": "ADCI", "type": "sponsor", "category": "institutional", "img": "/assets/logos/adci.png", "web": "https://www.adci.it" }
+Garante dell'eccellenza creativa. Il legame vitale col festival è assicurato da **Michele Arleo**, co-founder del LIFE, Local Ambassador ADCI per la Basilicata e figura chiave dell’agenzia di marketing Fiiico, che connette il talento lucano ai grandi circuiti milanesi.
 
-### Jupiter Fotoproduzioni
-> **METADATA**: { "id": "jupiter", "name": "Jupiter Fotoproduzioni", "type": "sponsor", "category": "Community", "img": "/assets/logos/jupiter.png", "web": "https://www.jupiterfoto.it/" }
+### Comune di Potenza
+> **METADATA**: { "id": "comune-potenza", "name": "Comune di Potenza", "type": "sponsor", "category": "institutional", "img": "/assets/logos/comune.png", "web": "https://www.comune.potenza.it" }
+Sostiene il festival all'interno del programma **Maggio Potentino 2026** (oltre 75 eventi e 100 appuntamenti all'insegna di "Tradizione e cultura viva") e tramite il progetto europeo **LIFE SeedNEB**, collaborando con partner spagnoli e ungheresi per integrare il New European Bauhaus.
 
-#### Descrizione
-Studio di Luigi Bruno, nato dalla riscoperta di una fotocamera analogica di famiglia. Documentano i momenti significativi del festival con naturalezza ed eleganza.
+### Regione Basilicata
+> **METADATA**: { "id": "regione-basilicata", "name": "Regione Basilicata", "type": "sponsor", "category": "institutional", "img": "/assets/logos/regione.png", "web": "https://www.regione.basilicata.it" }
+Supporta l'industria creativa come moltiplicatore del PIL e dell'attrattività turistica, garantendo fondi stabili tramite il poderoso **Programma Triennale Politiche Culturali 2025-2027 (DGR n. 761/2025)**.
+
+### ADI (Associazione per il Disegno Industriale)
+> **METADATA**: { "id": "adi-institutional", "name": "ADI", "type": "sponsor", "category": "institutional", "img": "/assets/logos/ADI.png", "web": "https://www.adi-design.org" }
+L'ente storico italiano che gestisce il Premio **Compasso d'Oro**, tutelando e promuovendo il design su scala internazionale.
+
+### Basilicata Turistica (APT Basilicata)
+> **METADATA**: { "id": "apt-institutional", "name": "APT Basilicata", "type": "sponsor", "category": "institutional", "img": "/assets/logos/apt.png", "web": "https://www.aptbasilicata.it" }
+Agenzia promotrice di un'innovativa "Architettura di destinazione". Convertono l'offerta locale con pacchetti all'avanguardia (es. "Arti-Turismo" al TTG 2025) e partecipano all'Italian Bike Festival, spostando il focus dal turismo di massa al lusso esperienziale.

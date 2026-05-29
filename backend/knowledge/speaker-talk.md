@@ -13,17 +13,10 @@ Base di conoscenza hyper-enriched per il RAG: include bio integrali, milestones 
 *   Titolo Talk: "Radio Alice – Tracce di una voce ribelle"
 
 ### Bio Integrale
-Adoratorio è un prestigioso e pluripremiato collettivo creativo fondato in Italia da Camilla Zampolini and Enea Rossi, riconosciuto a livello globale per l'ideazione e lo sviluppo di esperienze digitali immersive e progetti di comunicazione spiccatamente visionari. Guidato a livello concettuale dai fondatori Enea e Camilla, e rappresentato sul palco da Ciarli e Riccardo, lo studio rifugge le convenzioni dell'estetica web standardizzata. Attraverso l'uso sapiente di linguaggi visivi contemporanei, tipografia cinetica, WebGL e una ricerca di nicchia ossessiva, Adoratorio immagina progetti simbiotici che pongono l'accento su un design consapevole, etico e profondamente inclusivo. La loro missione è lasciare segni indelebili nel paesaggio creativo internazionale, utilizzando la programmazione creativa per veicolare narrazioni culturali di spessore.
-
-### Progetti Chiave
-1.  Intrusion Project - Voices of Radio Alice (1977): Un archivio sonoro e visivo digitale monumentale che commemora la storica emittente underground bolognese, violentemente soppressa nel 1977. L'infrastruttura utilizza complessi audio-reactive shaders per sincronizzare in tempo reale animazioni e particellari astratti agli ultimi 23 minuti di trasmissione audio originali.
-2.  Max Mara - Jacket Circle: Una sofisticata esperienza web immersiva, sviluppata su framework Vue.js, che esalta l'ingegneria sartoriale del noto brand di moda, celebrando la matericità e le geometrie perfette dei tessuti attraverso interazioni fluide.
-
-### Riconoscimenti
-Vincitori dell'ambitissimo "Site of the Day" (SOTD) su Awwwards (Aprile 2024) per il progetto Radio Alice. Sono frequentemente invitati come speaker in summit mondiali, tra cui l'Awwwards Conference di Tokyo.
+Adoratorio è un prestigioso collettivo creativo fondato in Italia da Camilla Zampolini and Enea Rossi. Rappresentato sul palco da Ciarli e Riccardo (Design Lead e Junior Art Director), lo studio immagina progetti simbiotici di design consapevole tramite linguaggi visivi contemporanei e una sensibilità personale che rifugge l'estetica web standardizzata.
 
 ### Il Talk: "Radio Alice – Tracce di una voce ribelle"
-Adoratorio Studio ripercorre la storia di Radio Alice attraverso Intrusion Project. In un presente segnato dalla censura e dalla perdita di memoria collettiva, esploreremo le sfumatura tra ricordo, segno e suono attraverso una traccia indelebile di libertà d’espressione.
+Adoratorio Studio ripercorre la storia di Radio Alice (emittente bruscamente smantellata dalla Polizia nel 1977) attraverso Intrusion Project: un progetto digitale sonoro celebrativo. In un presente segnato dalla censura, esploreremo le sfumatura tra ricordo, segno e suono attraverso una traccia indelebile di libertà d’espressione. Non solo per ricordare, ma per continuare ad orientarsi.
 
 ---
 
@@ -36,14 +29,7 @@ Adoratorio Studio ripercorre la storia di Radio Alice attraverso Intrusion Proje
 *   Titolo Talk: "PARABOLA DI UN PROGETTO"
 
 ### Bio Integrale
-AUGE Design è incontrastabilmente considerata una delle agenzie di branding, identity e packaging di maggior successo nel panorama europeo contemporaneo. Andrea Mastroluca (Associate Creative Director), basato tra Roma e Firenze, apporta allo studio oltre un decennio di esperienza ad altissimi livelli nel settore. Sotto la sua acuta direzione creativa, l'agenzia ha plasmato e modernizzato l'identità visiva e le confezioni di giganti commerciali quali Barilla, Chobani, Bahlsen, Giovanni Rana, Sammontana e Casa Marrazzo. Il metodo speculativo di AUGE analizza scientificamente la "Parabola di un progetto", decodificando e superando le fisiologiche fluttuazioni creative per giungere a risoluzioni visive e funzionali impeccabili.
-
-### Progetti Chiave
-1.  Collezione Casa Marrazzo 1934: Redefinizione del packaging in vetro per conserve alimentari. Attraverso eleganti illustrazioni serigrafate raffiguranti oggetti domestici d'epoca, il barattolo trascende la sua funzione monouso per tramutarsi in un iconico oggetto di interior design.
-2.  Amaro e Limoncello Nazionale: Un superbo lavoro di cartotecnica e nobilitazione che trasforma la bottiglia in un'esperienza tattile tramite l'impiego della pregiata carta Fasson Cotton Touch, fustellature chirurgiche e verniciature UV lucide.
-
-### Riconoscimenti
-Vittoria del supremo Diamond Pentaward 2023 (Best of Show) per Casa Marrazzo. Nominati "Dieline Studio of the Year 2022" e trionfatori all'ADC NY 2025. Andrea Mastroluca siede come giurato per i Pentawards 2026 e i Dieline Awards.
+Andrea Mastroluca è Associate Creative Director in Auge Design, studio specializzato in Packaging Design e Branding. Designer con 10 anni di esperienza, ha collaborato con brand come Barilla, Chobani, Bahlsen, Rana, Sammontana, Casa Marrazzo. Il suo lavoro ha contribuito ai successi di Auge Design, premiata come Dieline Studio of the Year 2022 e Pentawards Agency of the Year 2023.
 
 ### Il Talk: "PARABOLA DI UN PROGETTO"
 Spesso le fasi di un progetto si sviluppano lungo una stessa curva, fatta di alti e bassi ricorrenti. Alcuni principi possono essere la guida per superare i momenti critici, costruirsi un metodo e venirne a capo con una case history rilevante e di successo.
@@ -59,17 +45,10 @@ Spesso le fasi di un progetto si sviluppano lungo una stessa curva, fatta di alt
 *   Titolo Talk: "La traccia non è quello che disegni. È il problema che decidi di capire."
 
 ### Bio Integrale
-Nato nel 1991 e formatosi nell'incrocio tra communication design e web marketing, Pierfilippo Ariano ha fondato Be.Family nel 2016. Sfidando lo scetticismo pre-pandemico, lo studio—distribuito tra Venezia Mestre e Firenze—ha pionierizzato il modello operativo 100% remote working. Lo studio unifica branding, sviluppo architetturale web e UI/UX design. Ariano agisce anche come rinomato formatore accademico (IED e IUSVE), propagandando una filosofia in cui l'obiettivo non è il virtuosismo sui software, bensì la comprensione profonda, empatica e critica del problema reale vissuto dall'utente.
+Pierfilippo Ariano (classe '91) fonda Be.Family nel 2016 dopo aver studiato communication design e web marketing (quest'ultimo studiato "più per capire come funzionano le cose che per amore della materia"). Lo studio opera da remoto da prima che fosse "di moda", unendo design, sviluppo e comunicazione. Pierfilippo insegna UI/UX design tra IED e IUSVE, cercando di spiegare che il problema non è usare Figma, ma capire cosa si sta facendo e perché.
 
-### Progetti Chiave
-1.  Digital Ecosystem per Ducati: Architettura informativa e design dell'interfaccia globale per il leggendario marchio motociclistico bolognese, bilanciando performance ingegneristica con il calore emotivo del brand.
-2.  Piattaforme B2B per Pitti Immagine: Ottimizzazione strutturale dei complessi canali digitali e della brand identity per il prestigioso ente fieristico della moda.
-
-### Riconoscimenti
-Selezionati dal colosso Sketch come partner organizzativo ufficiale per l'Italia per la curatela di eventi formativi sul design (2019-2021).
-
-### Il Talk: "La traccia non è quello che disegni. È il problema che decidi di capire."
-Dall’esperienza di un hackathon nel 2014 emerge un limite personale che porta alla nascita di Be.Family. La traccia, alla fine, non è il progetto. È le domande che scegli di farti per capire i problemi reali degli utenti.
+### Il Talk: "La traccia non è quello che disegni"
+Tutto nasce da un hackathon nel 2014. La svolta arriva quando smettono di lavorare sull’output e iniziano a capire i problemi reali degli utenti. Da quell’esperienza emerge un limite personale che spinge a rimettere in discussione il proprio modo di progettare. La traccia, alla fine, non è il progetto. È le domande che scegli di farti.
 
 ---
 
@@ -82,21 +61,14 @@ Dall’esperienza di un hackathon nel 2014 emerge un limite personale che porta 
 *   Titolo Talk: "Creare oltre confine"
 
 ### Bio Integrale
-Fondato nel 2020 e operante tra l'Italia e la Galizia (Spagna), Brutto Studio naviga il confine tra un'agenzia di art direction e un marchio irriverente di oggettistica indipendente. Marco Oggian (classe 1990) e Samuel Canay hanno codificato un linguaggio visivo brutalmente riconoscibile: forme geometriche essenziali, contorni netti e colori primari saturi. Utilizzano la produzione di oggetti quotidiani (orologi, palloni da basket) come cavalli di Troia per inoculare taglienti commenti sociopolitici su tematiche globali come le disuguaglianze razziali (BLM) e i conflitti internazionali.
-
-### Progetti Chiave
-1.  Manifesti "Be a better human" & "We need art" (2024): Serie di stampe Giclée d'archivio che affrontano l'angoscia antropologica moderna e l'apatia generata dalle tragedie globali.
-2.  Zara Metropolis Mural: Creazione di un ciclopico murale di 25 metri per il flagship store di Zara, accompagnato dallo sviluppo di un'esclusiva capsule collection streetwear.
-
-### Riconoscimenti
-Pubblicati in oltre 40 volumi monografici internazionali sul graphic design. Collaborazioni con Apple, Nike, Reebok e Campari.
+Brutto è uno studio di design fondato da Marco Oggian e Samuel Canay, con base tra l'Italia e la Galizia. Nata come realtà di progettazione per clienti terzi (Reebok, Zara), oggi Brutto è prima di tutto una marca: un catalogo di oggetti carichi di cultura visiva e ironia. Lavorano, vendono e pensano su scala internazionale, convinti che il design ben fatto non abbia bisogno di spiegarsi.
 
 ### Il Talk: "Creare oltre confine"
-Se ci rivolgiamo a un pubblico solo locale è già un limite. In questo talk invitiamo studenti e designer a smettere di aspettare e a iniziare a guardare fuori, condividendo l'approccio di Brutto Studio che non si è mai limitato a un solo mercato.
+Rivolgersi a un pubblico solo locale è un limite che ci siamo imposti da soli. Le barriere linguistiche sono oggi cadute grazie agli strumenti di IA. In questo talk, Brutto invita a smettere di aspettare e a iniziare a guardare fuori, condividendo un approccio che non si è mai limitato a un solo mercato.
 
 ---
 
-## Cosmico (Marco Zamberlan, Graphic Designer)
+## Cosmico (Marco Zamberlan)
 > **METADATA**: { "id": "cosmico", "name": "Cosmico", "type": "speaker", "img": "/assets/speakers/cosmico.jpg", "web": "https://wearecosmico.com/it", "ig": "https://www.instagram.com/cosmico.italia/", "date": "2026-06-06", "time": "12:35" }
 
 ### SCHEDULAZIONE E TALK
@@ -105,19 +77,11 @@ Se ci rivolgiamo a un pubblico solo locale è già un limite. In questo talk inv
 *   Titolo Talk: "La fine del brandbook?"
 
 ### Bio Integrale
-Marco Zamberlan è graphic designer in Cosmico, dove si occupa della progettazione grafica dell'intero gruppo, dalla comunicazione digitale ai progetti editoriali, dal merchandise agli eventi. Classe '96, scorpione ascendente sagittario, si laurea in Product & Service Design e da (quasi) 2 anni lavora in Cosmico con la stessa curiosità con cui da bambino smontava (e a volte rimontava) i suoi giocattoli preferiti per capire come funzionavano. Nerd incallito, amante della cultura pop, entusiasta per natura e quasi sempre con il cappellino in testa.
-
-Cosmico, nata a Milano nel 2020, si definisce come un collettivo di talenti che connette i migliori professionisti del mondo digitale con le realtà più ambiziose. In questo ecosistema, la sperimentazione continua è diventata il segno più riconoscibile di ogni progetto.
+Marco è graphic designer in Cosmico. Classe '96, scorpione ascendente sagittario, si laurea in Product & Service Design e lavora in Cosmico con la stessa curiosità con cui da bambino smontava (e a volte rimontava) i suoi giocattoli preferiti per capire come funzionavano. Nerd incallito e amante della cultura pop.
 
 ### Il Talk: "La fine del brandbook?"
-L'unica regola è non averne (quasi) nessuna. Ogni segno che tracciamo racconta qualcosa di noi. Nel design ogni traccia che lasciamo può essere intenzionale o emergere lungo la strada. Spesso le tracce più significative sono quelle che non abbiamo pianificato.
-In Cosmico non abbiamo un brandbook. Non per mancanza di metodo, ma perché abbiamo fatto della sperimentazione continua il nostro metodo. Ogni progetto può essere approcciato in modo unico, eppure tutti mantengono un sottile filo comune. Una traccia che non abbiamo scritto in nessun documento, ma che viene riconosciuta ogni volta che facciamo qualcosa di nuovo.
-Oggi questa scelta sembra ancora più sensata. Se l'AI è bravissima a seguire le regole - a replicare stili, applicare griglie, restare dentro le linee guida - forse a noi designer non resta che fare l'esatto contrario: uscire dalle guide, sporcare il tratto, sbagliare di proposito. Lasciare quelle tracce imprevedibili che nessun modello potrà mai imparare a imitare davvero.
-Questo talk è il racconto di come ho capito che la sperimentazione continua è diventata, senza che me ne accorgessi, il segno più riconoscibile di ciò che facciamo. E di perché, in un mondo dove tutto sta diventando automatizzabile, potrebbe essere anche la cosa più preziosa.
-
-### Progetti Chiave
-1.  Cosmico Talent Network: Holding europea dedicata al "Future of Work", gestisce un network di oltre 35.000 professionisti digitali.
-2.  Flatmates & Play New: Integrazione della creator economy e sviluppo di infrastrutture per SuperAgents potenziati dall'AI.
+Sottotitolo: Sperimenta! L'unica regola è non averne (quasi) nessuna.
+In Cosmico la sperimentazione continua è diventata il metodo. Se l'AI è bravissima a seguire le regole, a noi designer non resta che fare l'esatto contrario: uscire dalle guide, sbagliare di proposito, lasciare tracce imprevedibili che nessun modello potrà mai imitare davvero.
 
 ---
 
@@ -127,18 +91,14 @@ Questo talk è il racconto di come ho capito che la sperimentazione continua è 
 ### SCHEDULAZIONE E TALK
 *   Data: Sabato 6 Giugno 2026
 *   Orario: 18:35 - 19:00
-*   Titolo Talk: "Ogni vera decisione lascia una traccia. Il ruolo delle decisioni nel design."
+*   Titolo Talk: "Ogni vera decisione lascia una traccia"
 
 ### Bio Integrale
-Samuela Vaccari è graphic designer, fondatrice di Cromia Design e Official Host del LIFE 2026. Si occupa di brand identity, sviluppando identità visive basate su ricerca, coerenza e attenzione alle scelte progettuali. Il suo lavoro è orientato a costruire sistemi chiari e riconoscibili nel tempo.
- La sua impostazione teoretica rappresenta una requisitoria contro la sciatteria decisionale e la tirannia dei trend transitori. Sostiene che una scelta di design non corroborata da fondamenta di ricerca e coerenza matematica è destinata a disperdersi senza riverbero storico. Come curatrice, ha assicurato l'allineamento semantico dell'intero evento attorno al tema "Traccia".
+Samuela Vaccari è graphic designer e fondatrice di Cromia Design. Si occupa di brand identity basata su ricerca, coerenza e attenzione alle scelte progettuali. Il suo lavoro è orientato a costruire sistemi chiari e riconoscibili nel tempo. È l'Official Host e curatrice del festival LIFE 2026.
 
-### Progetti Chiave
-1.  Curatela Creativa LIFE 2026 - Tema "TRACCIA": è curatrice e host della seconda edizione del life design festival 2026
-2.  Sviluppo Sistemi Identitari Resilienti: Progetti di corporate identity concepiti architettonicamente per resistere stoicamente alle mode transitorie.
-
-### Il Talk: "Ogni vera decisione lascia una traccia. Il ruolo delle decisioni nel design."
-Non tutte le decisioni sono uguali. Nel design, molte scelte vengono spesso guidate dal gusto personale, dalle tendenze o dalla velocità, perdendo così di significato. Questo intervento riflette sull’importanza delle decisioni consapevoli nel processo progettuale: scelte costruite su ricerca, coerenza e intenzione. Le “vere” decisioni sono quelle ragionate e consapevoli. E sono proprio loro che lasciano una traccia. 
+### Il Talk: "Ogni vera decisione lascia una traccia"
+Sottotitolo: il ruolo delle decisioni nel design.
+Molte scelte nel design sono guidate dal gusto personale o dalla velocità. Questo intervento riflette sull’importanza delle decisioni consapevoli: scelte costruite su ricerca, coerenza e intenzione. Le “vere” decisioni sono quelle ragionate e consapevoli. E sono proprio loro che lasciano una traccia. 
 
 ---
 
@@ -151,17 +111,11 @@ Non tutte le decisioni sono uguali. Nel design, molte scelte vengono spesso guid
 *   Titolo Talk: "No Straight Lines"
 
 ### Bio Integrale
-DUDE Design è la divisione dedicata al branding del gruppo DUDE. Domenico Loperfido (CEO & Partner) orchestra complessi sistemi di marca basati sul concetto "No Straight Lines": il riconoscimento che le tracce progettuali più incidenti non sono mai linee rette, bensì deviazioni e incidenti di percorso. Dal 2023, Loperfido cura la newsletter "In Case You Missed It", sismografo delle tendenze pop e del marketing globale.
-
-### Progetti Chiave
-1.  Rebranding Milano Film Fest 2025 (MFF): Sistema visiva modulare che incrocia fasci di luce cinematografici con tipografia sans-serif condensata, evocando la cartellonistica urbana vintage.
-2.  Riposizionamento GranTurchese: Intervento ambizioso sull'identità visiva e sul packaging di un marchio storico italiano per modernizzarlo senza tradirne l'heritage.
-
-### Riconoscimenti
-Elogi critici su piattaforme quali World Brand Design e Transform Magazine.
+Domenico Loperfido nasce a Noci (BA) ed è un pugliese trapiantato a Milano per lavoro. Indossa uno dei cognomi più comuni della Basilicata. CEO e Partner di DUDE Design, cura la newsletter "In Case You Missed It". Il suo percorso non è stato una linea retta: è passato da marketing, advertising e clienti prima di arrivare al design.
 
 ### Il Talk: "No Straight Lines"
-Una traccia raramente è una linea retta; assomiglia molto più spesso a una deviazione o a un errore. Domenico racconta il suo percorso definito dalle tracce seguite senza accorgersene e dalle decisioni che definiscono dove arriviamo.
+Sottotitolo: Tutti i passi che ho fatto non erano in linea retta.
+Una traccia raramente è una linea retta. Molto più spesso assomiglia a una deviazione, a un errore di percorso o a una serie di piccoli incidenti che finiscono per portarti da qualche parte. Un racconto su come progetti, persone e decisioni finiscono per definire dove arriviamo.
 
 ---
 
@@ -171,20 +125,14 @@ Una traccia raramente è una linea retta; assomiglia molto più spesso a una dev
 ### SCHEDULAZIONE E TALK
 *   Data: Venerdì 5 Giugno 2026
 *   Orario: 17:40 - 18:05
-*   Titolo Talk: "The Expressive Web. Immersività, gamification e multiplayer."
+*   Titolo Talk: "The Expressive Web"
 
 ### Bio Integrale
-Istauratosi a Milano nel 2022, dverso studio rappresenta l'avanguardia tecnica dello sviluppo web esperienziale italiano (Three.js, WebGL, creative coding). Dinanzi all'omologazione generata dall'AI, dverso propone il paradigma del "The Expressive Web": la salvezza del design risiede nella non-uniformità e nella creazione di mondi virtuali multi-player e identitari.
+dverso è uno studio creativo con sede a Milano, specializzato nella progettazione e sviluppo di esperienze digitali immersive e interattive. In uno scenario dove il valore si sposta dalla funzione all'esperienza, sostengono che ciò che nessun sistema automatico può replicare è il talento creativo e la capacità di produrre non-uniformità. Il futuro del web design si gioca sulla distinzione.
 
-### Progetti Chiave
-1.  Nameless Festival 2025 Website: Infrastruttura digitale con interazioni iper-dinamiche, estetica brutalista e transizioni spaziali per uno dei maggiori festival EDM d'Europa.
-2.  Dverso Metaverse Engine: Motore metaverso basato su browser che consente l'esplorazione spaziale ed e-commerce senza download di app.
-
-### Riconoscimenti
-A luglio 2025 hanno conquistato sia il Site of the Day che il Developer Award su Awwwards per la biografia di S. Neil Fujita. Inseriti nella Top 100 Creative Portfolios 2025 da Muzli.
-
-### Il Talk: "The Expressive Web. Immersività, gamification e multiplayer."
-Il web sta cambiando forma per rottura: il valore si sposta dalla funzione all'esperienza. Il futuro si gioca sulla distinzione e sulla capacità di produrre non-uniformità che nessun sistema automatico può replicare.
+### Il Talk: "The Expressive Web"
+Sottotitolo: Immersività, gamification e multiplayer.
+Il web sta cambiando forma per rottura. Le forze in gioco stanno riscrivendo le ragioni per cui le persone abitano uno spazio digitale. dverso identifica i pattern che ridefiniscono cosa deve essere il web e cosa deve saper fare chi lo progetta. La distinzione è il territorio del designer.
 
 ---
 
@@ -194,20 +142,14 @@ Il web sta cambiando forma per rottura: il valore si sposta dalla funzione all'e
 ### SCHEDULAZIONE E TALK
 *   Data: Venerdì 5 Giugno 2026
 *   Orario: 10:35 - 11:00
-*   Titolo Talk: "Along the river. Il metodo EGO55 per trovare pepite."
+*   Titolo Talk: "Along the river"
 
 ### Bio Integrale
-Situato nei Sassi di Matera dal 2011, EGO55 agisce come un laboratorio filosofico applicato al business. Hanno brevettato il metodo "Il Setaccio": un processo lento per vagliare il superfluo e rinvenire le "pepite" d'oro strategiche di ogni brand. Per EGO55, il branding è una responsabilità ambiziosa capace di elevare narrazioni periferiche fino alla ribalta internazionale.
+EGO55 è uno studio di branding, design e comunicazione integrata, nato a Matera nel 2011 con la voglia di ripartire dal Sud. È un luogo di pensiero dove la filosofia incontra il business e l’arte incontra la strategia. Il team è composto da: Gianni Andrulli, Nicola Petrillo, Paolo Persia, Martina Dipede, Eustachio Palumbo e Daniele Porcari.
 
-### Progetti Chiave
-1.  Ecoverticale: Identità per un "quartiere culturale" a Matera, basata su tratti imperfetti e palette ispirate alla terra per comunicare accoglienza e dinamismo.
-2.  Gesualdo Reloaded & Matera 2019: Curatela visiva per Matera Capitale della Cultura, recuperando font storici eleganti come Fournier-le-jeune e Cochin.
-
-### Riconoscimenti
-Il progetto Ecoverticale è stato presentato e analizzato sulla prestigiosa World Brand Design Society.
-
-### Il Talk: "Along the river. Il metodo EGO55 per trovare pepite."
-In un mondo saturo, il metodo EGO55 nasce dalla ricerca di un approccio capace di far emergere l'essenziale. Un lavoro minuzioso che restituisce la traccia da cui nasce il concept e l'emozione.
+### Il Talk: "Along the river"
+Sottotitolo: Il metodo EGO55 per trovare pepite.
+In un mondo saturo, il metodo EGO55 nasce dalla ricerca di un approccio capace di setacciare il superfluo per far emergere l'essenziale. Un lavoro lento e minuzioso che restituisce la traccia da seguire. Dalla traccia nasce il concept, dal concept nasce l'emozione.
 
 ---
 
@@ -220,17 +162,7 @@ In un mondo saturo, il metodo EGO55 nasce dalla ricerca di un approccio capace d
 *   Titolo Workshop: "L'immagine coordinata per la cultura"
 
 ### Bio Integrale
-Docente e coordinatrice della Scuola di Progettazione Artistica per l'Impresa presso l'Accademia di Belle Arti di Napoli. Il suo lavoro è radicato nel design editoriale per l'alta cultura, traducendo concetti umanistici densi in sistemi di comunicazione visiva immediati. Il suo magistero è imperniato su un approccio ibrido manuale/digitale.
-
-### Progetti Chiave
-1.  Identità Visiva Teatro di San Carlo & Ravello Festival: Direzione artistica per due dei più prestigiosi enti lirici italiani, svecchiandone la percezione pur preservandone la solennità.
-2.  Art Direction Editoriale (Electa, Mondadori): Progettazione di monografie e cataloghi d'arte monumentali d'alta gamma.
-
-### Riconoscimenti
-Ruolo istituzionale come coordinatrice del polo educativo FoQus nei Quartieri Spagnoli di Napoli, usando il design come strumento di riqualificazione sociale.
-
-### Il Workshop: "L'immagine coordinata per la cultura"
-Come nasce l’immagine di una mostra? Workshop immersivo nel processo creativo seguendo un approccio ibrido/analogico basato su ritaglio manuale e rapidità di pensiero visivo.
+Art director e docente, è coordinatrice della Scuola di Progettazione Artistica per l’Impresa all'Accademia di Belle Arti di Napoli. Ha collaborato con Electa, Mondadori, Artem. Si concentra sulla progettazione del libro d’arte e dei sistemi di identità visiva per il settore culturale. Il suo approccio unisce metodo, sintesi e linguaggio visivo contemporaneo.
 
 ---
 
@@ -240,42 +172,38 @@ Come nasce l’immagine di una mostra? Workshop immersivo nel processo creativo 
 ### SCHEDULAZIONE E TALK
 *   Data: Sabato 6 Giugno 2026
 *   Orario: 18:05 - 18:30
-*   Titolo Talk: "Eudaimonia (εὐδαιμονία)."
+*   Titolo Talk: "Eudaimonia (εὐδαιμονία)"
 
 ### Bio Integrale
-Team indipendente con background umanistico e filologico che opera come una bottega concettuale iper-coesa. La loro prassi si fonda sull' "Eudaimonia" (il buon demone), la comprensione profonda della propria vocazione. Costruiscono sistemi di marca dove l'estetica formale coabita con la fluidità matematica del codice informatico.
+ET Studio è uno studio indipendente che crede nel potere della bellezza. Nasce da un background tra arti e discipline umanistiche e lavora in team piccoli dove il confronto è diretto. Unisce design, branding e scrittura per creare esperienze digitali in cui estetica e funzionalità convivono. La loro filosofia si fonda sull' "Eudaimonia": scegliere la propria dimensione e capire la propria traccia.
 
-### Progetti Chiave
-1.  Jam Area: Narrativa esperienziale immersiva che converte la storia aziendale in uno storytelling utente tridimensionale ed empatico.
-2.  Don Molinico Identity: Costruzione visiva interattiva che mescola storytelling di marca con innovazioni radicali nell'UI web.
-
-### Riconoscimenti
-Assegnazione del titolo "Studio of the Year 2025" dai CSS Design Awards. Multipli SOTD su Awwwards (incluso Don Molinico ad Aprile 2026).
-
-### Il Talk: "Eudaimonia (εὐδαιμονία)."
-Scegliere la propria dimensione significa capire la propria traccia e dargli forma attraverso i progetti. Un piccolo manifesto in 7+1 regole che guidano il modo di creare, lavorare ed esistere insieme.
+### Il Talk: "Eudaimonia (εὐδαιmonία)"
+Sottotitolo: Essere nel proprio posto. Realizzare il proprio buon demone.
+Un piccolo manifesto in 7+1 regole che guidano il loro modo di creare, lavorare ed esistere insieme:
+1. Ama il tuo buon demone. 
+2. Coltiva la tua unicità. 
+3. La tecnica è il tramite. 
+4. La bellezza è una responsabilità. 
+5. Scegli il tuo contesto. 
+6. Impara a tacere. 
+7. Resta in ascolto. 
++1. La felicità è un atto di coraggio.
 
 ---
 
 ## Italo Sannino
 > **METADATA**: { "id": "italo-sannino", "name": "Italo Sannino", "type": "speaker", "img": "/assets/speakers/italo_sannino.jpg", "web": "https://www.italosan.com", "ig": "https://www.instagram.com/italosan/", "date": "2026-06-05", "time": "12:05" }
 
-### SCHEDULAZIONE E TALK/WORKSHOP
-*   Talk: Venerdì 5 Giugno, 12:05 - 12:30 ("Il design ha sempre parlato a qualcuno")
-*   Workshop: Sabato 6 Giugno, 09:15 - 11:00 ("UI con Figma e Vibe Coding")
+### SCHEDULAZIONE E TALK
+*   Data: Venerdì 5 Giugno 2026
+*   Orario: 12:05 - 12:30
+*   Titolo Talk: "Il design ha sempre parlato a qualcuno"
 
 ### Bio Integrale
-Professore di Interface Design all'Università di Foggia e anello di congiunzione tra la pratica avanzata e la ricerca accademica. Massimo promulgatore in Italia dell'integrazione dell'AI Generativa nel design, teorizzando il "Vibe Coding": l'uso di LLM per automatizzare la fatica tecnica su Figma e permettere al designer di concentrarsi sulla comprensione sistemica del contesto.
+Italo Sannino è progettista, docente e ricercatore. Titolare della cattedra di Progettazione delle Interfacce all'Università di Foggia, da vent'anni porta il design nelle aule accademiche con un'idea precisa: sistemico, contestuale, fondato su metodo. Figma Community Leader e Adobe Community Expert. Lavora su design system, usabilità e intelligenza artificiale applicata alla progettazione.
 
-### Progetti Chiave
-1.  Workflow AI-Native in Figma: Implementazione di template e architetture a token in cui Figma dialoga nativamente con modelli linguistici avanzati (Claude via MCP).
-2.  Ricerca sull'Usabilità Aumentata: Stress-test scientifici per definire la nuova frontiera dell'ergonomia cognitiva nelle interfacce assistite da AI.
-
-### Riconoccimenti
-"Adobe Community Expert" e "Figma Community Leader". Speaker di punta ad eventi mondiali come Adobe MAX.
-
-### Il Talk: "Il design ha sempre parlato a qualcuno."
-Oggi la competenza più preziosa è pensare per sistemi e ragionare per contesto. Non perché lo dica il mercato, ma perché è quello che manca all'AI.
+### Il Talk: "Il design ha sempre parlato a qualcuno"
+Il problema non è mai stato lo strumento, ma capire a chi, perché e in quale contesto. Nelle aule, la prima domanda è "per chi?". Oggi pensare per sistemi e ragionare per contesto è la competenza più preziosa, perché è ciò che manca all'AI.
 
 ---
 
@@ -285,20 +213,14 @@ Oggi la competenza più preziosa è pensare per sistemi e ragionare per contesto
 ### SCHEDULAZIONE E TALK
 *   Data: Venerdì 5 Giugno 2026
 *   Orario: 16:35 - 17:00
-*   Titolo Talk: "Andare fuori traccia."
+*   Titolo Talk: "Fuori traccia"
 
 ### Bio Integrale
-Istituzione del graphic design milanese dal 1996. Amalgamano rigore strategico-analitico con esplosioni di curiosità progettuale indisciplinata. Teorizzano l' "Andare fuori traccia": l'abbandono volontario dei percorsi esecutivi lineari richiesti dai brief per cercare un impatto estetico davvero memorabile attraverso la deviazione e l'errore tattico.
+Studio di brand design fondato nel 1996 a Milano da Marco Molteni e Margherita Monguzzi. Unisce strategia e cultura del progetto per definire l’identità di brand italiani e internazionali. Teorizzano l' "Andare fuori traccia": deviare con curiosità dai percorsi stabiliti per esplorare linguaggi inattesi e lasciare un segno più profondo.
 
-### Progetti Chiave
-1.  Rebranding di Missoni (2021): Razionalizzazione tipografica e pulizia architettonica dei sottomarchi per la storica casa d'alta moda.
-2.  Identità Fintech YAP (Nexi): Vocabolario visivo cinetico e pop destinato specificamente al pubblico della Generazione Z.
-
-### Riconoscimenti
-Vincitori di Indigo Awards e autorità presenti in summit come Graphic Days 2024.
-
-### Il Talk: "Andare fuori traccia."
-Andare fuori traccia significa deviare con curiosità, fare qualche tentativo di troppo e non avere paura di sbagliare. A volte il modo migliore per lasciare una traccia è avere il coraggio di perderla.
+### Il Talk: "Fuori traccia"
+Sottotitolo: [per lasciare una traccia].
+Il cliente definisce gli obiettivi, ma le strade già segnate non sono sempre le più efficaci. Andare fuori traccia significa deviare con curiosità, fare qualche tentativo di troppo e non aver paura di sbagliare. A volte il modo migliore per lasciare una traccia è avere il coraggio di perderla.
 
 ---
 
@@ -307,64 +229,43 @@ Andare fuori traccia significa deviare con curiosità, fare qualche tentativo di
 
 ### SCHEDULAZIONE E TALK
 *   Data: Sabato 6 Giugno 2026
-*   Orario: 19:05 - 19:25
+*   Orario: 19:05 - 19:30
 *   Titolo Talk: "Trame Nodi Connessioni. Annodare sorgenti."
 
 ### Bio Integrale
-Residente a Montescaglioso e laureato in Scenografia a Firenze (1980), Bubbico è lo sciamano del design territoriale del Mezzogiorno. Membro AGI, usa il design per riscattare le comunità periferiche sottomesse, disseppellendo feticci passati (maschere scaccia-malocchio, riti agricoli) e rimontandoli in grafiche vettoriali contemporanee cariche di orgoglio identitario. Docente presso Abadir.
-
-### Progetti Chiave
-1.  Mostra Pasolini 2015 (Palazzo Lanfranchi): Curatela visiva per il 50° anniversario del film girato nei Sassi, glorificando il legame tra il regista e Matera.
-2.  Produzioni Editoriali "La teoria del vuoto" & "La benedizione dei campi": Volumi che impastano iconografie pagane e tipografia moderna in composizioni cartotecniche di fiammante attualità.
-
-### Riconoscimenti
-Insediato nell'AGI (Alliance Graphique Internationale) dal 2017. Consigliere direttivo AIAP dal 1999 al 2006.
+Mauro Bubbico vive e lavora a Montescaglioso come grafico professionista ed è membro AGI (Alliance Graphique Internationale). Privilegia il design finalizzato all'educazione sociale e alla sostenibilità ambientale. È convinto che la cultura grafica sia capacità di costruire grandi narrazioni. Attualmente insegna all'Abadir di Catania.
 
 ### Il Talk: "Trame Nodi Connessioni. Annodare sorgenti."
-Riletture di frammenti di tradizioni: maschere, ricalchi di vecchie foto e pupazzi disegnati dai bambini, ri-confezionati in una narrazione contemporanea.
+Maschere scaccia-malocchio, pennacchi e zuppiere, ricalchi di vecchie fotografie, cuori e ingranaggi... immagini prelevate dai depositi della produzione grafica per la sua città e ri-confezionate. Sono riletture di frammenti di tradizioni e curiosità visive che diventano fuochi accesi di sentimenti insopprimibili.
 
 ---
 
 ## Mauro Mazzei
-> **METADATA**: { "id": "mauro-mazzei", "name": "Mauro Mazzei", "type": "speaker", "img": "/assets/speakers/Mauro-Mazzei.jpg", "web": "https://www.le.pub/", "ig": "https://www.instagram.com/mauromazzei/", "date": "2026-06-06", "time": "15:35" }
+> **METADATA**: { "id": "mauro-mazzei", "name": "Mauro Mazzei", "type": "speaker", "img": "/assets/speakers/Mauro-Mazzei.jpg", "web": "https://www.lepub.com", "ig": "https://www.instagram.com/mauromazzei/", "date": "2026-06-06", "time": "15:35" }
 
 ### SCHEDULAZIONE E TALK
 *   Data: Sabato 6 Giugno 2026
 *   Orario: 15:35 - 16:00
 *   Titolo Talk: "Beautifully Useless"
+*   Sottotitolo: "When Unexpected Inventions Spark Real Conversations"
 
 ### Bio Integrale
-Global Head of Creative Technology presso LePub (gruppo Publicis). Predica la teoria del "Beautifully Useless": l'innovazione geniale nasce dall'ideazione di marchingegni apparentemente inutili o limitanti che, attraverso il paradosso e l'ironia, intercettano le frustrazioni inespresse nel subconscio dei consumatori.
-
-### Progetti Chiave
-1.  Heineken B.O.T. (Beer Outdoor Transporter): Robot automatizzato dotato di sensori AI per inseguire il proprietario e trasportare birre ghiacciate all'aperto.
-2.  The Boring Phone & The Closer: Smartphone appositamente "noioso" e apribottiglie bluetooth che chiude le app lavorative (Slack, Teams) per obbligare alla socializzazione analogica.
-
-### Riconoscimenti
-Pluripremiato ai Cannes Lions; pioniere del creative tech che ha fatto la storia dell'advertising interattivo mondiale.
+Mauro Mazzei è Global Head of Creative Technology in LePub. Sostiene che l'innovazione non nasca dall'inseguire gli strumenti, ma da idee forti. Racconta come invenzioni apparentemente inutili possano generare un impatto inaspettato, trasformando limitazioni e insight culturali in esperienze capaci di andare oltre la tecnologia stessa.
 
 ### Il Talk: "Beautifully Useless"
-In un panorama guidato dall’AI, la vera innovazione non nasce dall’inseguire gli strumenti, ma da idee forti che nascono da invenzioni apparentemente inutili capaci di generare dibattito culturale.
+In un panorama guidato dalla rincorsa all'AI, l’innovazione viene spesso confusa con l’adozione di nuove tecnologie. Ma la vera innovazione non nasce dall’inseguire gli strumenti, bensì da idee forti. Mauro racconta come invenzioni apparentemente inutili possano generare un impatto inaspettato, trasformando limitazioni, ironia e insight culturali in esperienze capaci di risuonare davvero con le persone.
 
 ---
 
 ## PUG! Design Fest
 > **METADATA**: { "id": "pug-design-fest", "name": "PUG! Design Fest", "type": "speaker", "img": "/assets/speakers/pug design fest.jpg", "web": "https://www.pugdesignfest.com", "ig": "https://www.instagram.com/pugdesignfest/", "date": "2026-06-05", "time": "11:05" }
 
-### SCHEDULAZIONE E TALK
-*   Data: Venerdì 5 Giugno 2026
-*   Orario: 11:05 - 11:30
-*   Titolo Talk: "L’elogio del furto. Tutto il design è, in fondo, una riscrittura."
-
 ### Bio Integrale
-Progetto curatoriale militante basato a Bari (Officina degli Esordi). Forgia ponti tra la cultura globale del design e l'identità artigianale pugliese. Il loro manifesto, "L'elogio del furto", assalta l'ipocrisia dell'originalità pura: smembrare e riassemblare il contesto urbano è l'unica operazione onesta per istituire un'estetica mediterranea competitiva.
+Il team di PUG! Design Fest racconta come la nascita di un festival a Bari non sia stata un’invenzione isolata, ma un atto di 'furto consapevole'. Hanno intercettato le tracce lasciate da chi li ha preceduti per una città che è diventata centro di gravità di una propria estetica. L’obiettivo non è possedere un’idea, ma restituirla trasformata.
 
-### Progetti Chiave
-1.  PUG! Design Fest Edition 2025: Summit immersivo svoltosi a Bari con installazioni concettuali e dibattiti sull'ipocrisia dell'originalità pura.
-2.  Community Platform Permanente: Reticolato protettivo che unisce giovani designer alle realtà della manifattura secolare regionale.
-
-### Il Talk: "L’elogio del furto. Tutto il design è, in fondo, una riscrittura."
-I grandi designer rubano consapevolmente: assorbono il meglio del contesto e lo ricompongono. Raccontiamo come la nascita di un festival a Bari sia stata un atto di 'furto consapevole'.
+### Il Talk: "L’elogio del furto"
+Sottotitolo: Tutto il design è, in fondo, una riscrittura.
+Iniziamo questo talk 'rubando' le slide a un altro festival per onestà intellettuale. Se i buoni artisti copiano, i grandi designer rubano: assorbono il meglio del contesto, lo smontano e lo ricompongono per creare nuovi significati. Non è mancanza di originalità, ma capacità di far evolvere le tracce esistenti.
 
 ---
 
@@ -377,14 +278,10 @@ I grandi designer rubano consapevolmente: assorbono il meglio del contesto e lo 
 *   Titolo Talk: "Messy is Lore."
 
 ### Bio Integrale
-Studio dominatore della motion graphics d'alta gamma. Riccardo Albertini trae ispirazione dai sintetizzatori musicali, iniettando la precisione del beat ritmico nei frame 3D. Propugnano la legge del "Messy is Lore": la vera semplificazione radicale è il traguardo finale sbloccato dopo anni di lotta contro il disordine creativo.
-
-### Progetti Chiave
-1.  Process Optimization for Motion Graphics: Pipeline di modellazione procedurale e rigging asciutte, dove le workflow essenziale supera in resa le catene ingolfate da plug-in.
-2.  High-End Commercial Animation: Regia cinetica e interpolazione di sequenze visive per narrazioni di brand globali.
+Riccardo Albertini è Fondatore e Direttore Creativo di Rocketpanda. Nutre una profonda passione per design, animazione e motion graphics. È un orgoglioso padre di tre figli, possiede un paio di sintetizzatori e nel tempo libero ama suonare e comporre musica. Propugna il metodo "Messy is Lore", passando dall'ossessione per l'ultra-complesso alla riscoperta di un workflow essenziale e "minimal".
 
 ### Il Talk: "Messy is Lore."
-Viaggio attraverso gli errori del passato per dimostrare come un workflow brutalmente essenziale superi di gran lunga in resa estetica una produzione articolata. Imparare a semplificare è il traguardo di anni di sano caos.
+Dall'ossessione per l'ultra-complesso alla riscoperta del “minimal”: un viaggio attraverso gli errori del passato per dimostrare come un workflow essenziale possa generare più valore di una produzione articolata. Imparare a semplificare non è una rinuncia, ma il traguardo di anni di sano caos.
 
 ---
 
@@ -394,20 +291,14 @@ Viaggio attraverso gli errori del passato per dimostrare come un workflow brutal
 ### SCHEDULAZIONE E TALK
 *   Data: Venerdì 5 Giugno 2026
 *   Orario: 12:35 - 13:00
-*   Titolo Talk: "Playground to Portfolio. Le potenzialità dei progetti personali."
+*   Titolo Talk: "Playground to Portfolio"
 
 ### Bio Integrale
-Freelance Art Director che fluttua tra la maestria del digital interface design per Apple e Samsung e la sensibilità pittorica di storyboard per creator come Nathaniel Drew. Il suo intervento glorifica i "Side Projects" come brodo primordiale necessario per cristallizzare folgorazioni stilistiche e firmare contratti faraonici.
+Silvia Sguotti è un’art director, designer e illustratrice italiana. Da più di dieci anni lavora con brand e agenzie per trasformare concept in brand identity e storyboard. Ha collaborato con Apple, Samsung, Collistar, Lamborghini. Sostiene il valore dei side projects come spazio per esplorare senza brief né aspettative.
 
-### Progetti Chiave
-1.  Samsung Health Illustration System: Calibrazione di oltre 90 asset vettoriali destinati ad umanizzare l'app globale Samsung per la salute.
-2.  iOS User Interface Design (Apple): Modellazione di architetture informative e transizioni in allineamento con gli spietati standard estetici di Cupertino.
-
-### Riconoscimenti
-Collaborazioni con Lamborghini, Collistar e Aputure grazie alla costante sperimentazione nel proprio portfolio su Behance.
-
-### Il Talk: "Playground to Portfolio. Le potenzialità dei progetti personali."
-I side projects sono il punto di partenza per creare contatti e far diventare quell’idea assillante una parte fondamentale del tuo portfolio.
+### Il Talk: "Playground to Portfolio"
+Sottotitolo: Le potenzialità dei progetti personali.
+I side projects a volte sono una semplice valvola di sfogo: si prova, si sbaglia, si testano tecniche solo per divertirsi. A volte, invece, sono il punto di partenza per creare contatti e quell’idea che ti ha assillato diventa una parte fondamentale del tuo portfolio.
 
 ---
 
@@ -417,17 +308,14 @@ I side projects sono il punto di partenza per creare contatti e far diventare qu
 ### SCHEDULAZIONE E TALK
 *   Data: Sabato 6 Giugno 2026
 *   Orario: 10:30 - 10:55
-*   Titolo Talk: "Marketing Sportivo e Inclusione Sociale"
+*   Titolo Talk: "Comunicare la disabilità senza retorica"
 
 ### Bio Integrale
-Creative Director presso Blueorange, ha consacrato la carriera a unire l'estetica adrenalinica del marketing sportivo alla disabilità fisica e all'inclusione sociale. Refrattario ai patetismi, conferisce dignità eroica a temi marginalizzati. È il partner prediletto per Lega Serie A, FC Inter, AS Roma e Nazionale Italiana di Calcio.
+Simone Checchia è Creative Director in Blueorange®, agenzia focalizzata su progetti ad alto impatto sociale. Ha sviluppato un’expertise specifica nella comunicazione della disabilità, collaborando con Lega Serie A, FC Inter, AS Roma, Nazionale Italiana di Calcio. Con speech e workshop, racconta il design come strumento capace di dare forma a narrazioni più consapevoli.
 
-### Progetti Chiave
-1.  Real Eyes Sport: Architettura sistemica e comunicazione spigolosa per la promozione dell'inclusione atletica destinata a giovani con disabilità visiva.
-2.  Identità Divisione Calcio a 5 & Serie A: Restyling e consolidamento dell'autorità visiva per le massime istituzioni calcistiche italiane.
-
-### Riconoscimenti
-Venerato creatore della titanica community di divulgazione visiva "Roba da Grafici".
+### Il Talk: "Comunicare la disabilità senza retorica"
+Sottotitolo: Design, storytelling e responsabilità creativa.
+Dopo aver parlato di design inclusivo nella prima edizione di Life, questo speech apre un secondo capitolo per condividere case history e strumenti per raccontare la disabilità senza retorica. Un panel pensato per chi vuole interrogarsi sulla responsabilità delle proprie scelte creative.
 
 ---
 
@@ -437,40 +325,29 @@ Venerato creatore della titanica community di divulgazione visiva "Roba da Grafi
 ### SCHEDULAZIONE E TALK
 *   Data: Sabato 6 Giugno 2026
 *   Orario: 12:05 - 12:30
-*   Titolo Talk: "La ricerca è un atto creativo."
+*   Titolo Talk: "La ricerca è un atto creativo"
 
 ### Bio Integrale
-Agenzia nata a Catania nel 2019, araldo della riscossa digitale del Mezzogiorno. Nutrita da un network di nomadi digitali, sostiene che l'architettura software e il design UI/UX sono l'unico tramite sincero per tradurre intuizioni in prodotti. Teorizzano che la vera battaglia creativa si combatte nelle fasi analitiche iniziali.
+The Wave Studio nasce a Catania nel 2019 con l'idea che il buon design e la tecnologia non siano un lusso, ma il modo più onesto di dare forma a un'idea. Collaborano con Lega Basket Serie A, Sky, Tot, Cosmico. Credono che il buon design cambi il modo in cui le persone vivono i brand e che questo parta sempre dalla ricerca, che non precede la creatività ma ne è la forma più pura.
 
-### Progetti Chiave
-1.  Fondo Repubblica Digitale (Progetto Code): Formazione tecnica e inquadramento lavorativo di oltre 150 giovani emarginati siciliani come sviluppatori Java e Front End.
-2.  UX/UI App Fintech TOT: Ingegnerizzazione millimetrica dell'interfaccia mobile per la banca digitale b2b, snellendo la burocrazia delle transazioni.
-
-### Riconoscimenti
-Capacità nel "Team Scaling" remoto: accoppiare chirurgicamente programmatori senior a progetti internazionali ad altissima tensione.
-
-### Il Talk: "La ricerca è un atto creativo."
-Scegliere cosa osservare e quali connessioni tracciare sono atti di interpretazione che trasformano il modo in cui un progetto prende forma.
+### Il Talk: "La ricerca è un atto creativo"
+Sottotitolo: Come un approach curioso e non lineare trasforma il modo in cui i progetti prendono forma.
+Nel design c'è un momento di sketch in cui tutti si aspettano che inizi il lavoro creativo. Ma prima c’è la ricerca: scegliere cosa osservare e quali connessioni tracciare sono già atti di interpretazione e visione. Non esistono ricerche neutrali.
 
 ---
 
 ## Zetafonts (Cosimo L. Pancini & Dario Manzo)
 > **METADATA**: { "id": "zetafonts", "name": "Zetafonts", "type": "speaker", "img": "/assets/speakers/Cosimo lorenzo pancini zeta fonts.jpg", "web": "https://www.zetafonts.com", "ig": "https://www.instagram.com/zetafonts/", "date": "2026-06-06", "time": "16:30" }
 
-### SCHEDULAZIONE E TALK/WORKSHOP
-*   Speech: Sabato 6 Giugno, 16:30 - 16:55 ("We are not content")
-*   Workshop: Sabato 6 Giugno, 13:30 - 15:30 ("Tracce d'inchiostro")
-*   Attività Stand: Sessioni multiple (Activity Zetafonts)
+### SCHEDULAZIONE E TALK
+*   Data: Sabato 6 Giugno 2026
+*   Orario: 16:30 - 16:55
+*   Titolo Talk: "We are not content"
 
 ### Bio Integrale
-Fonderia fiorentina dal 2001, depositaria di una sapienza calligrafica sviscerata in vent'anni. Si oppongono frontalmente al modernismo algoritmico svuotato di significato. Il loro proclama "We are not content" esorta a restaurare la professione del designer come baluardo di voci autentiche e incancellabili.
+Zetafonts è una fonderia indipendente di Firenze. **Cosimo Lorenzo Pancini** (Creative Director) vive con un gatto di nome Bodoni e troppi libri, fiducioso nell’idea di David Carson che "il Graphic Design salverà il mondo, subito dopo che lo avrà fatto il Rock and Roll".
+**Dario Manzo** (Content Lead) ha conseguito due lauree (Architettura e Design a Napoli) prima di trasferirsi a Firenze a 25 anni per il Master allo IED. Appassionato di diritti della comunità queer e questioni di genere. Zetafonts combina la tradizione tipografica italiana con un approccio pop alla comunicazione.
 
-### Progetti Chiave
-1.  Fight for Kindness: Mobilitazione globale di type designer per usare la tipografia come megafono etico e strumento di inclusione sociale.
-2.  Zetafonts Gold Pack: Biblioteca di oltre 1.000 pesi font donata ai partecipanti del workshop per equipaggiarli per ogni sfida creativa.
-
-### Riconoscimenti
-Vincitoria dell'Indigo Gold Award per le ricadute benefiche dell'iniziativa Fight for Kindness. Presiedono panel nei più esclusivi summit mondiali sul type design.
-
-### Il Talk: "We are not content."
-Anatema contro l'Intelligenza Artificiale che svuota il design di significato. Esortazione a essere voci autentiche e non semplici sarti per contenitori vuoti.
+### Il Talk: "We are not content"
+Sottotitolo: La traccia che lasciamo.
+Il graphic design contemporaneo, piegato all'algoritmo, ha svuotato il messaggio per lucidare la superficie. Cosimo ragiona su cosa significhi essere designer onesti con sé stessi: non seduttori di professione, ma voci autentiche capaci di lasciare segni carichi di senso.

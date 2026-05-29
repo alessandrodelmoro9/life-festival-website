@@ -54,7 +54,7 @@ const ChatWidget: React.FC = () => {
     } catch (error) {
       setMessages((prev) => [...prev, { 
         role: 'bot', 
-        text: "Traccia non trovata. Sto ripristinando la connessione, riprova tra poco!" 
+        text: "Curatore AI momentaneamente offline. Sto ripristinando la connessione, riprova tra poco!" 
       }]);
     } finally {
       setIsLoading(false);
@@ -66,29 +66,29 @@ const ChatWidget: React.FC = () => {
       {/* --- DESKTOP: DRAGGABLE BAR --- */}
       <AnimatePresence>
         {!isFullPage && (
-          <div className="hidden md:block fixed bottom-8 right-8 z-[10005]">
+          <div className="hidden md:block fixed bottom-40 left-1/2 -translate-x-1/2 z-[10005] w-[95%] md:w-auto pointer-events-auto">
             <motion.div
               drag
               dragMomentum={false}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, x: 100 }}
-              className="bg-life-cream/95 backdrop-blur-md border border-life-blue/20 shadow-2xl rounded-xl p-2 flex items-center gap-3 w-[400px] pointer-events-auto group"
+              className="bg-life-cream/95 backdrop-blur-md border border-life-blue/10 shadow-2xl rounded-full px-4 md:px-6 py-2 md:py-3 flex items-center gap-4 md:gap-8 w-full md:w-auto group"
             >
-              <div className="cursor-grab active:cursor-grabbing p-1 text-life-blue/30 group-hover:text-life-blue transition-colors">
-                <GripHorizontal className="w-5 h-5" />
+              <div className="cursor-grab active:cursor-grabbing text-life-blue/30 group-hover:text-life-blue transition-colors border-r border-life-blue/10 pr-4 md:pr-6">
+                <GripHorizontal className="w-4 h-4 md:w-[18px] md:h-[18px]" />
               </div>
               
-              <form onSubmit={handleSendMessage} className="flex-1 flex items-center gap-2">
+              <form onSubmit={handleSendMessage} className="flex-1 flex items-center gap-2 md:gap-4 min-w-[300px] md:min-w-[400px]">
                 <input
                   type="text"
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
-                  placeholder="Chiedimi della 'Traccia'..."
-                  className="bg-transparent border-none outline-none font-body text-sm flex-1 placeholder:text-life-blue/40 text-life-blue"
+                  placeholder="Chiedimi qualunque cosa sul life design festival..."
+                  className="bg-transparent border-none outline-none font-body text-sm md:text-base flex-1 placeholder:text-life-blue/40 text-life-blue tracking-[-0.04em]"
                 />
-                <button type="submit" className="bg-life-blue text-white p-2 rounded-lg hover:scale-105 transition-transform">
-                  <Send className="w-4 h-4" />
+                <button type="submit" className="bg-life-blue text-white p-2 md:p-3 rounded-full hover:bg-life-pink hover:scale-110 active:scale-95 transition-all shadow-lg">
+                  <Send className="w-4 h-4 md:w-[18px] md:h-[18px]" />
                 </button>
               </form>
             </motion.div>
@@ -98,7 +98,7 @@ const ChatWidget: React.FC = () => {
 
       {/* --- MOBILE: FLOATING BUTTON --- */}
       {!isFullPage && (
-        <div className="md:hidden fixed bottom-24 right-6 z-[10005]">
+        <div className="md:hidden fixed bottom-28 right-6 z-[10005]">
           <button
             onClick={() => setIsFullPage(true)}
             className="bg-life-blue text-white p-4 rounded-2xl shadow-2xl active:scale-90 transition-transform"
@@ -132,7 +132,7 @@ const ChatWidget: React.FC = () => {
                 <h2 className="font-display text-xs tracking-[0.2em] uppercase text-life-blue">AI Curator</h2>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="w-1 h-1 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-[8px] font-body italic opacity-50 tracking-widest uppercase">Traccia 2026</span>
+                  <span className="text-[8px] font-body italic opacity-50 tracking-widest uppercase">Edizione 2026</span>
                 </div>
               </div>
 
