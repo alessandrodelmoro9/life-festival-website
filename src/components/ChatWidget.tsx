@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Send, ExternalLink, GripHorizontal, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   role: 'user' | 'bot';
@@ -153,7 +154,19 @@ const ChatWidget: React.FC = () => {
                       ? "bg-life-blue text-white rounded-3xl rounded-tr-none shadow-xl" 
                       : "bg-white text-life-blue border border-life-blue/5 rounded-3xl rounded-tl-none shadow-sm"
                   )}>
-                    {msg.text}
+                    {msg.role === 'user' ? (
+                      msg.text
+                    ) : (
+                      <div className="prose prose-sm md:prose-base max-w-none prose-p:leading-relaxed prose-headings:text-life-blue prose-strong:text-life-blue prose-strong:font-bold prose-table:border-collapse prose-table:w-full prose-td:border prose-td:border-life-blue/10 prose-td:p-2 prose-th:bg-life-blue/5 prose-th:p-2 prose-a:text-life-blue prose-a:underline">
+                        <ReactMarkdown 
+                          components={{
+                            a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />
+                          }}
+                        >
+                          {msg.text}
+                        </ReactMarkdown>
+                      </div>
+                    )}
                   </div>
 
                   {msg.role === 'bot' && (
@@ -164,7 +177,7 @@ const ChatWidget: React.FC = () => {
                             <img 
                               key={idx} 
                               src={img} 
-                              className="h-56 md:h-80 rounded-2xl border border-life-blue/10 bg-white object-cover shadow-lg snap-center"
+                              className="h-56 md:h-80 rounded-2xl border border-life-blue/10 bg-life-black object-contain p-2 shadow-lg snap-center"
                               onError={(e) => (e.currentTarget.style.display = 'none')}
                             />
                           ))}
@@ -179,10 +192,16 @@ const ChatWidget: React.FC = () => {
                               href={link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-3 bg-white border border-life-blue/10 text-[10px] text-life-blue px-6 py-4 rounded-xl hover:bg-life-blue hover:text-white transition-all uppercase tracking-widest font-body shadow-md"
+                              className="inline-flex items-center gap-3 bg-white border border-life-blue/10 text-[10px] text-life-blue px-6 py-4 rounded-xl hover:bg-life-blue hover:text-white transition-all uppercase tracking-widest font-body shadow-md group"
                             >
-                              <ExternalLink className="w-4 h-4" />
-                              Dettagli
+                              <img 
+                                src={`https://www.google.com/s2/favicons?domain=${new URL(link).hostname}&sz=32`} 
+                                alt="" 
+                                className="w-4 h-4 grayscale group-hover:grayscale-0 transition-all"
+                                onError={(e) => (e.currentTarget.style.display = 'none')}
+                              />
+                              <ExternalLink className="w-4 h-4 opacity-30 group-hover:opacity-100" />
+                              {link.includes('eventbrite') ? 'Acquista Ticket' : 'Visita Sito'}
                             </a>
                           ))}
                         </div>
