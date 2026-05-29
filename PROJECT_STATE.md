@@ -1,43 +1,29 @@
-# Project State - Life Design Festival 2026
+# LIFE Design Festival 2026 - Project State
 
-## 🎯 Overall Goal
-Implement a high-performance, production-grade RAG Chatbot for the Life Design Festival 2026, using LlamaIndex/Qdrant Cloud, featuring an "AI Curator" persona and a draggable-to-fullscreen React interface.
+## 🟢 COMPLETATO (Backend & Knowledge Base)
+*   **Knowledge Base**: Rinominati i file in modo semantico. Inseriti blocchi JSON `> **METADATA**:` per un'estrazione precisa di link e foto per speaker e sponsor.
+*   **Gestione Dipendenze**: Risolti i conflitti tra le vecchie librerie LlamaIndex e OpenRouter. Siamo passati a una configurazione stabile usando `OpenAILike` con la versione 0.14+ di LlamaIndex.
+*   **Motore RAG (`engine.py`)**:
+    *   Integrato **Gemini 2.0 Flash** (LLM) e **text-embedding-3-small** (Embedding) tramite OpenRouter.
+    *   Aggiunta memoria conversazionale asincrona (`ChatMemoryBuffer` a 8000 token per evitare crash).
+    *   Aumentato il raggio di ricerca (`similarity_top_k=12`) per trovare i metadati dei sotto-nodi.
+*   **Database Vectoriale (Qdrant)**:
+    *   Risolto l'errore di timeout creando un sistema di Ingestion a "piccoli batch" (10 alla volta).
+    *   Ricreata la collezione per combaciare con le dimensioni corrette dei vettori (1536).
+*   **API & Sicurezza (`main.py`)**: 
+    *   Server FastAPI configurato con Rate Limiting (10 req/min) tramite `slowapi`.
+    *   CORS aggiornato per includere `http://localhost:8080` e i domini di produzione.
 
-## 🛠️ Active Constraints & Standards
-- **UI Desktop Flow**: Draggable input bar at `bottom-8 right-8` (z-index 10005). On submit, transitions to fixed fullscreen portal (z-index 10010).
-- **UI Mobile Flow**: Floating button at `bottom-24 right-6`.
-- **Backend Stability**: Requires `prefer_grpc=False` and explicit version alignment for `qdrant-client`.
-- **Visuals**: Custom cursor must remain visible (z-index 99999) and system cursor must be hidden via global CSS (`!important`).
-- **Data**: Ingestion is complete (164 nodes indexed in Qdrant Cloud).
+## 🟡 DA FARE (Il Prossimo Step Logico)
+*   **Raffinamento Estrazione Metadati (`engine.py`)**: 
+    *   *Problema attuale*: Il RAG recupera correttamente i dati (testato con successo), ma la funzione `query` inserisce nella risposta *tutti* i link/immagini trovati nei 12 nodi sorgente, anche quelli non pertinenti alla domanda specifica.
+    *   *Soluzione pianificata*: Creare un filtro "intelligente" in `engine.py` che verifichi se il link/immagine è effettivamente menzionato nel testo della risposta finale prima di inviarlo al frontend.
+*   **Frontend UI (`ChatWidget.tsx`)**:
+    *   Garantire che il frontend legga correttamente gli array `images` e `links` provenienti dalla nuova API e li renderizzi come card interattive.
+*   **Deploy su Render & Vercel**:
+    *   Deploy del backend FastAPI su Render.
+    *   Deploy del frontend React aggiornato su Vercel.
 
-## 🚀 Roadmap Operativa
-
-### Giorni 1-4: KB, Ingestion & Backend Core (COMPLETATO)
-- [x] **Data Ingestion**: Caricamento di 164 nodi su Qdrant Cloud con metadati e link.
-- [x] **Backend Logic**: Implementazione Failover (Gemini -> DeepSeek) e gestione connessione Qdrant.
-- [x] **Modelli**: Verificata disponibilità Gemini 2.0 Flash e Embedding-001.
-
-### Giorni 5-6: UI Development & Integration (COMPLETATO)
-- [x] **React Widget**: Sviluppo componente ChatWidget (Draggable Bar + Full Page Conversation).
-- [x] **Cursor Management**: Risolto conflitto z-index e sparizione cursore custom su elementi UI.
-- [x] **Backend Logic Refactor**: Implementato `PromptTemplate` rigido e aumentato `top_k=8` per maggiore precisione.
-- [x] **Entity Linking**: Creato `00_GLOBAL_SUMMARY.md` per mappare correttamente Relatori -> Studi -> Orari.
-
-### Giorni 7-8: Testing & Produzione (IN CORSO)
-- [x] **Validation**: Test risposte bot (Verificato: estrazione immagini e orari funzionante).
-- [ ] **Quota Management**: Risoluzione blocchi 429/402 (In attesa di crediti OpenRouter o reset Google).
-- [ ] **Deployment**: Caricamento backend su Render.com e configurazione DNS.
-
-## ✅ Task Completati
-- [x] **Knowledge Base Ingestion**: 164 nodi indicizzati su Qdrant Cloud.
-- [x] **Failover Strategy**: Implementazione fallback su OpenRouter/DeepSeek.
-- [x] **Backend Stability**: Downgrade `qdrant-client` a `1.12.0` (Risolto AttributeError).
-- [x] **RAG Precision**: Passaggio a sistema di Prompt Template e Summary Globale.
-
-## 🔴 Blocchi Attuali & Debug Necessario
-1. **API Quota (CRITICO)**: Le chiavi Google Free Tier raggiungono il limite dopo pochi messaggi.
-2. **OpenRouter Credits**: Richiesta ricarica crediti per attivare il fallback stabile su DeepSeek.
-
-## 📝 Note per la Ripresa
-- Il file `backend/knowledge/00_GLOBAL_SUMMARY.md` deve essere re-indicizzato al prossimo avvio con chiavi cariche.
-- Il modello predefinito è ora `gemini-flash-latest` per massimizzare la quota disponibile.
+## 📝 NOTE TECNICHE (Memo per il futuro)
+*   **Non modificare la Knowledge Base**: I test granulari hanno confermato che i dati ci sono e sono scritti bene. Il problema della location o dei troppi link è un problema di "tuning" del RAG, non dei documenti markdown.
+*   **Comando di test**: Usare `python test_system.py` per verificare il comportamento del bot simulando chiamate API reali con pause per il rate limiting.
