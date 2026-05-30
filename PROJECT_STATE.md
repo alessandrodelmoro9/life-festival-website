@@ -1,48 +1,44 @@
-# Stato Progetto - LIFE Design Festival 2026 - FINAL SPRINT
+﻿# Stato Progetto - LIFE Design Festival 2026 - FINAL SPRINT
 
 ## 🎯 Obiettivo Consegna
 Consegnare un sistema RAG professionale, visivamente integrato e documentato accademicamente per il master, pronto per il deploy su Render (Free Tier).
 
 ---
 
-## 🎨 Design & Branding (Richieste inviate al Team LIFE)
-Abbiamo formalizzato le richieste al team grafico per finalizzare l'interfaccia:
-- [ ] **UI Chat Full-Page**: Revisione del design dell'interfaccia chat (bolle, gradienti, micro-interazioni, uso corretto dei pesi di Automat Grotesk di Zetafonts).
-- [ ] **Widget & Toggle Mobile**: Creazione design per il bottone flottante da mobile e validazione del widget desktop (forma a pillola).
-- [ ] **Asset Visivi "Collettivi"**: Creazione di 3 immagini "composite" per gestire le liste lunghe senza intasare la chat:
-    - 1 immagine con tutti i loghi dei Partner/Sponsor.
-    - 1 immagine con tutti gli Speaker della Mattina.
-    - 1 immagine con tutti gli Speaker del Pomeriggio.
-- [ ] **Knowledge Base Audit**: Revisione finale dei 4 file `.md` (`speaker-talk.md`, `partner-sponsor.md`, `programma-logistica.md`, `visione-concept.md`) per fact-checking.
+## 🎨 Design & Branding (In attesa di Asset Finali)
+Abbiamo formalizzato le richieste al team grafico e siamo in attesa di:
+- [ ] **UI Chat Figma**: Design definitivo per l'interfaccia (bolle, gradienti, micro-interazioni).
+- [x] **Widget & Toggle**: Validato il widget desktop (pillola trascinabile) e risolto il problema del "doppio scroll" tramite **Body Lock**.
+- [ ] **Asset Visivi "Collettivi"**: In attesa di 5 immagini composite (1 Sponsor Wall, 2 Speaker Venerdì, 2 Speaker Sabato).
+- [x] **Knowledge Base Audit**: Revisione effettuata. Link Mauro Mazzei corretto (le.pub).
 
 ---
 
-## 🛠️ Hardening Tecnico (Logic & Deploy)
-- [ ] **RAG Logic Perfection**:
-    - Hardening parser `[[REF:id]]` per garantire l'estrazione di *tutti* i metadati nelle liste lunghe.
-    - Debug cliccabilità link (es. Eventbrite) nel widget React.
-- [ ] **Code Cleaning**: Rimozione log di debug, pulizia del codice e refactoring per renderlo professionale e pronto per la revisione dei docenti.
-- [ ] **Render.com Setup & DNS**:
-    - Configurazione del piano Free.
-    - Implementazione di uno script "Keep-Alive/Warm-up" per gestire il risveglio dal freeze dei 14 minuti di inattività di Render.
-    - Piano per DNS e futura scalabilità/espansione della Knowledge Base.
+## 🛠️ Hardening Tecnico (Logic & Deploy) - [COMPLETATO]
+- [x] **RAG Logic Perfection**:
+    - [x] Hardening parser [[REF:id]] per estrazione multipla.
+    - [x] **Extreme Stress Test**: Superato con successo (Logica temporale, Anti-allucinazione, Mapping Founder).
+    - [x] **Image Type Filtering**: Implementato filtro lato backend per mostrare solo immagini pertinenti (no sfondi/logistica).
+- [x] **UI Fixes**:
+    - [x] Debug cliccabilità link (Eventbrite standardizzati come pulsanti high-z-index).
+    - [x] **Body Scroll Lock**: Implementato per eliminare il doppio scroll in modalità full-page.
+- [ ] **Render.com Setup**:
+    - [ ] Configurazione pianificata come ultima fase (per mantenere velocità di test locale).
+    - [ ] Endpoint /ping e gestione spin-down pronti per l'implementazione.
 
 ---
 
 ## 📚 Documentazione & Accademia
-- [ ] **README.md Professionale**: Stesura di una documentazione impeccabile con:
-    - Diagramma dell'architettura RAG.
-    - Setup environment.
-    - Dettaglio sul sistema di "Atomic Metadata Injection" e Entity Linking.
-- [ ] **Mail ai Professori**: Preparazione della mail tecnica per presentare il progetto e fornire il branch di prova del backend per una revisione last-minute.
+- [x] **README.md Professionale**: Aggiornato con architettura tecnica, diagrammi e specifiche RAG.
+- [ ] **Mail ai Professori**: Da inviare dopo il deploy finale su Render.
 
 ---
 
-## 🚀 Prossimi Passi (Domani)
-1. Esecuzione del **Code Cleaning** su backend e frontend.
-2. Fix dei bug UI (Link Eventbrite) e RAG (Parser immagini multiple).
-3. Stesura del `README.md` e della bozza per i professori.
-4. Attesa feedback dal team LIFE per l'integrazione degli asset grafici.
+## 🚀 Prossimi Passi
+1. Ricezione **Figma Design** -> Refactoring estetico finale del ChatWidget.
+2. Ricezione **Asset Immagini** -> Caricamento in public/assets/ e aggiornamento knowledge/.
+3. **Ultima Ingestion**: Esecuzione ingest.py per sincronizzare i nuovi asset con Qdrant Cloud.
+4. **Deploy su Render**: Passaggio finale al cloud e test di produzione.
 
 ---
-*Ultimo aggiornamento: Venerdì 29 Maggio 2026 - Fine Sessione*
+*Ultimo aggiornamento: Sabato 30 Maggio 2026 - Status: Motore RAG Certificato*

@@ -241,7 +241,7 @@ Maschere scaccia-malocchio, pennacchi e zuppiere, ricalchi di vecchie fotografie
 ---
 
 ## Mauro Mazzei
-> **METADATA**: { "id": "mauro-mazzei", "name": "Mauro Mazzei", "type": "speaker", "img": "/assets/speakers/Mauro-Mazzei.jpg", "web": "https://www.lepub.com", "ig": "https://www.instagram.com/mauromazzei/", "date": "2026-06-06", "time": "15:35" }
+> **METADATA**: { "id": "mauro-mazzei", "name": "Mauro Mazzei", "type": "speaker", "img": "/assets/speakers/Mauro-Mazzei.jpg", "web": "https://www.le.pub", "ig": "https://www.instagram.com/mauromazzei/", "date": "2026-06-06", "time": "15:35" }
 
 ### SCHEDULAZIONE E TALK
 *   Data: Sabato 6 Giugno 2026
