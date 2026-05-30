@@ -54,6 +54,12 @@ class LifeRagEngine:
                 "- **ENTITY LINKING (MANDATORIO)**: Ogni volta che nomini uno speaker, sponsor, workshop o attività, DEVI aggiungere il tag: [[REF:id]].\n"
                 "- **RECOLA PER GLI ELENCHI**: In liste lunghe o cronoprogrammi, DEVI inserire il tag [[REF:id]] per OGNI SINGOLA RIGA. È fondamentale per mostrare le immagini di tuttə lə speaker.\n"
                 "  Esempio: '- 10:30 | Simone Checchia [[REF:simone-checchia]]'\n"
+                "- **IMMAGINI COMPOSITE (BANNER)**: Quando l'utente chiede informazioni generali su TUTTI lə speaker, o lə speaker di una giornata/mattina/pomeriggio, oppure su TUTTI lə sponsor, DEVI aggiungere all'inizio della risposta il tag REF corrispondente alla gallery composita per non intasare la chat con troppe immagini singole.\n"
+                "  - Tutti gli sponsor -> [[REF:sponsor-wall]]\n"
+                "  - Speaker Venerdì Mattina -> [[REF:gallery-friday-morning]]\n"
+                "  - Speaker Venerdì Pomeriggio -> [[REF:gallery-friday-afternoon]]\n"
+                "  - Speaker Sabato Mattina -> [[REF:gallery-saturday-morning]]\n"
+                "  - Speaker Sabato Pomeriggio -> [[REF:gallery-saturday-afternoon]]\n"
                 "- Usa SOLO le informazioni fornite nel CONTESTO.\n"
                 "- Se l'utente chiede qualcosa che NON riguarda il festival, "
                 "rispondi gentilmente che non puoi aiutarlo perché devi restare focalizzato sul festival e aggiungi una battuta sul fatto che 'i token non sono gratis'.\n"
@@ -99,7 +105,7 @@ class LifeRagEngine:
             }
             
             self.chat_engines: Dict[str, Any] = {}
-            self.postprocessor = SimilarityPostprocessor(similarity_cutoff=0.30)
+            self.postprocessor = SimilarityPostprocessor(similarity_cutoff=0.35)
             
             logger.info("✨ LifeRagEngine (Enterprise Edition v2) initialized successfully")
             
@@ -115,7 +121,7 @@ class LifeRagEngine:
                 memory=memory,
                 system_prompt=self.system_prompt,
                 node_postprocessors=[self.postprocessor],
-                similarity_top_k=40
+                similarity_top_k=25
             )
         return self.chat_engines[session_id]
 
@@ -145,14 +151,18 @@ class LifeRagEngine:
             final_images = set()
             final_links = set()
             
-            # 3. Precise Metadata Matching
+            # 3. Precise Metadata Matching (with strict type filtering)
             for tag_id in entity_tags:
                 tag_id = tag_id.strip().lower()
                 for node in response.source_nodes:
                     meta = node.node.metadata
                     if meta.get("id", "").lower() == tag_id:
-                        if "img" in meta: final_images.add(meta["img"])
-                        if "web" in meta: final_links.add(meta["web"])
+                        if "img" in meta:
+                            # Strict filtering: only show relevant types in carousel
+                            if meta.get("type") in ["speaker", "composite", "sponsor"]:
+                                final_images.add(meta["img"])
+                        if "web" in meta: 
+                            final_links.add(meta["web"])
                         break
             
             # 4. Fallback for Founder Names in message
@@ -180,3 +190,9 @@ class LifeRagEngine:
                 "images": [], "links": [], "source": "error"
             }
 
+if __name__ == "__main__":
+    # Test local run
+    import dotenv
+    dotenv.load_dotenv()
+    engine = LifeRagEngine()
+    print(engine.query("Chi è Andrea Mastroluca?"))

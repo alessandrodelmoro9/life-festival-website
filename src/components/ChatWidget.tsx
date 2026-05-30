@@ -18,6 +18,18 @@ const ChatWidget: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Lock body scroll when in full page mode
+  useEffect(() => {
+    if (isFullPage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isFullPage]);
+
   // Handle scrolling when messages or fullpage mode changes
   useEffect(() => {
     if (scrollRef.current) {
@@ -185,23 +197,27 @@ const ChatWidget: React.FC = () => {
                       )}
                       
                       {msg.links && msg.links.length > 0 && (
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-3 relative z-[10011] pointer-events-auto">
                           {msg.links.map((link, idx) => (
                             <a 
                               key={idx}
                               href={link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-3 bg-white border border-life-blue/10 text-[10px] text-life-blue px-6 py-4 rounded-xl hover:bg-life-blue hover:text-white transition-all uppercase tracking-widest font-body shadow-md group"
+                              className="inline-flex items-center gap-3 bg-white border border-life-blue/10 text-[10px] text-life-blue px-6 py-5 rounded-xl hover:bg-life-blue hover:text-white transition-all uppercase tracking-widest font-body shadow-lg group cursor-pointer active:scale-95"
                             >
-                              <img 
-                                src={`https://www.google.com/s2/favicons?domain=${new URL(link).hostname}&sz=32`} 
-                                alt="" 
-                                className="w-4 h-4 grayscale group-hover:grayscale-0 transition-all"
-                                onError={(e) => (e.currentTarget.style.display = 'none')}
-                              />
-                              <ExternalLink className="w-4 h-4 opacity-30 group-hover:opacity-100" />
-                              {link.includes('eventbrite') ? 'Acquista Ticket' : 'Visita Sito'}
+                              <div className="w-4 h-4 flex items-center justify-center">
+                                <img 
+                                  src={`https://www.google.com/s2/favicons?domain=${new URL(link).hostname}&sz=32`} 
+                                  alt="" 
+                                  className="w-full h-full grayscale group-hover:grayscale-0 transition-all"
+                                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                                />
+                              </div>
+                              <span className="font-bold tracking-[0.1em]">
+                                {link.includes('eventbrite') ? 'Acquista Ticket Online' : 'Visita Sito Ufficiale'}
+                              </span>
+                              <ExternalLink className="w-3.5 h-3.5 opacity-30 group-hover:opacity-100 transition-opacity" />
                             </a>
                           ))}
                         </div>
