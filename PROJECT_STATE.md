@@ -1,44 +1,37 @@
-﻿# Stato Progetto - LIFE Design Festival 2026 - FINAL SPRINT
+# Stato Progetto - LIFE Design Festival 2026 - FINAL SPRINT
 
 ## 🎯 Obiettivo Consegna
-Consegnare un sistema RAG professionale, visivamente integrato e documentato accademicamente per il master, pronto per il deploy su Render (Free Tier).
+Sistema RAG professionale pronto per il deploy finale. Interfaccia "Magazine Style" certificata e logica deterministica per gli asset.
 
 ---
 
-## 🎨 Design & Branding (In attesa di Asset Finali)
-Abbiamo formalizzato le richieste al team grafico e siamo in attesa di:
-- [ ] **UI Chat Figma**: Design definitivo per l'interfaccia (bolle, gradienti, micro-interazioni).
-- [x] **Widget & Toggle**: Validato il widget desktop (pillola trascinabile) e risolto il problema del "doppio scroll" tramite **Body Lock**.
-- [ ] **Asset Visivi "Collettivi"**: In attesa di 5 immagini composite (1 Sponsor Wall, 2 Speaker Venerdì, 2 Speaker Sabato).
-- [x] **Knowledge Base Audit**: Revisione effettuata. Link Mauro Mazzei corretto (le.pub).
+## ✅ Milestone Raggiunte
+1.  **Logica Asset Deterministica**: Controller Python finale che garantisce 100% precisione su Gallery e Speaker.
+2.  **Editorial UI Transformation**: Passaggio da scroll orizzontale a layout verticale a scorrimento fluido "Full-Page".
+3.  **Typographic Excellence**: Integrazione nativa di **Automat Grotesk** (AI Body) e **Aquawax Fx** (User & Headers) per un look magazine professionale.
+4.  **Smart Grid System**: Rendering differenziato tra Banner full-width (composite) e Speaker fotos (sharp boxes w-fit).
+5.  **Inclusività (Schwa)**: Linguaggio inclusivo (ə) integrato in ogni risposta e nella knowledge base.
+6.  **Commercial Accuracy**: Prezzi e link Eventbrite certificati per ogni workshop/ticket.
 
 ---
 
-## 🛠️ Hardening Tecnico (Logic & Deploy) - [COMPLETATO]
-- [x] **RAG Logic Perfection**:
-    - [x] Hardening parser [[REF:id]] per estrazione multipla.
-    - [x] **Extreme Stress Test**: Superato con successo (Logica temporale, Anti-allucinazione, Mapping Founder).
-    - [x] **Image Type Filtering**: Implementato filtro lato backend per mostrare solo immagini pertinenti (no sfondi/logistica).
-- [x] **UI Fixes**:
-    - [x] Debug cliccabilità link (Eventbrite standardizzati come pulsanti high-z-index).
-    - [x] **Body Scroll Lock**: Implementato per eliminare il doppio scroll in modalità full-page.
-- [ ] **Render.com Setup**:
-    - [ ] Configurazione pianificata come ultima fase (per mantenere velocità di test locale).
-    - [ ] Endpoint /ping e gestione spin-down pronti per l'implementazione.
+## 🎨 Editorial UI & UX Specs
+- **Header/Footer**: Sticky con effetto `blur` trasparente, integrati sul background del sito.
+- **Scrollbar**: Ergonomia migliorata, occupa l'intera altezza del browser.
+- **Chat Bubbles**: Domande utente in Aquawax (normal-case) su fondo LIFE Pink; Risposte AI in Automat Grotesk su fondo bianco.
+- **Asset Grid**: Box scuri per speaker con bordo rimpicciolito (`p-0`) e angoli netti (`rounded-none`) per evitare tagli grafici.
 
 ---
 
-## 📚 Documentazione & Accademia
-- [x] **README.md Professionale**: Aggiornato con architettura tecnica, diagrammi e specifiche RAG.
-- [ ] **Mail ai Professori**: Da inviare dopo il deploy finale su Render.
+## 🛠️ Task Critici Post-Demo
+- [ ] **Sponsor Wall Logic**: Verificare il rendering della gallery "Sponsor & Partner" (attualmente risulta meno rifinita rispetto agli speaker).
+- [ ] **Asset Scaling**: Ottimizzare ulteriormente le dimensioni dei box speaker se necessario dopo il test video.
+- [ ] **Security Audit**: Sanificare variabili d'ambiente e preparare il repository per la pubblicazione (rimozione commenti debug, script obsoleti).
+- [ ] **Performance Check**: Ottimizzazione caricamento asset pesanti (WebP 2k).
 
 ---
 
-## 🚀 Prossimi Passi
-1. Ricezione **Figma Design** -> Refactoring estetico finale del ChatWidget.
-2. Ricezione **Asset Immagini** -> Caricamento in public/assets/ e aggiornamento knowledge/.
-3. **Ultima Ingestion**: Esecuzione ingest.py per sincronizzare i nuovi asset con Qdrant Cloud.
-4. **Deploy su Render**: Passaggio finale al cloud e test di produzione.
+## 📈 Valutazione Architetturale
+Il sistema è ora un **Hybrid RAG + Deterministic UI Controller**. L'AI funge da motore di senso, mentre il codice Python garantisce l'integrità del brand e degli asset. Il frontend agisce come un contenitore editoriale dinamico, trasformando le stringhe dell'LLM in un'esperienza visiva coerente con un festival di design di alto livello.
 
----
-*Ultimo aggiornamento: Sabato 30 Maggio 2026 - Status: Motore RAG Certificato*
+*Ultimo aggiornamento: Domenica 31 Maggio 2026 - Status: UI/UX Refinement & Logic Certification*
