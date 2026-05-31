@@ -120,7 +120,7 @@ def run_ingestion():
     reader = SimpleDirectoryReader(input_dir=knowledge_path, required_exts=[".md"])
     documents = reader.load_data()
     
-    # NEW: Atomic Entity-based processing with full metadata inheritance
+    # Atomic Entity-based processing with full metadata inheritance
     nodes = process_document_by_entities(documents)
     
     logger.info(f"Uploading {len(nodes)} nodes with atomic metadata injection...")

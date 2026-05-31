@@ -1,130 +1,99 @@
-# Life Design Festival 2026
+# LIFE Design Festival 2026 - AI-Driven Ecosystem
 
-Il sito ufficiale della seconda edizione del Life Design Festival a Potenza (5-6 Giugno 2026). Una piattaforma interattiva che unisce design sistemico, interattività AI e un'esperienza utente fluida.
+> **Professional RAG Implementation for systemic design events.**
 
-## 🚀 Quick Start
+[Vite](https://vitejs.dev/)
+[FastAPI](https://fastapi.tiangolo.com/)
+[LlamaIndex](https://www.llamaindex.ai/)
+[Qdrant](https://qdrant.tech/)
 
-### Frontend (React/Vite)
-
-1. Installa le dipendenze: `npm install`
-2. Avvia in sviluppo: `npm run dev`
-3. Build per produzione: `npm run build`
-
-### Backend (AI Curator - RAG)
-
-Il backend gestisce l'AI Curator basato su LlamaIndex.
-
-1. Assicurati di avere Python 3.10+ e [Poetry](https://python-poetry.org/) installati.
-2. Entra nella cartella: `cd backend`
-3. Installa le dipendenze: `poetry install`
-4. Configura il file `.env` con le chiavi: `OPENROUTER_API_KEY`, `QDRANT_URL`, `QDRANT_API_KEY`.
-5. (Opzionale) Esegui l'ingestione dei dati se hai modificato la knowledge base: `poetry run python core/ingest.py`
-6. Avvia il server: `poetry run python main.py` (disponibile su `http://localhost:8000`)
+Questo repository ospita la piattaforma digitale ufficiale del **LIFE Design Festival 2026**. Non è solo un sito web, ma un ecosistema informativo potenziato da un'architettura **RAG (Retrieval-Augmented Generation)** progettata per ridefinire l'interazione tra partecipantə e festival.
 
 ---
 
-## 🧠 Architettura del Backend 
+## 👁️ Project Vision
 
-Il festival integra un chatbot **RAG (Retrieval-Augmented Generation)** avanzato:
-
-### Componenti Core
-
-- **Motore AI**: LlamaIndex per l'orchestrazione del contesto.
-- **Modello**: Google Gemini 2.0 Flash via OpenRouter per risposte rapide e precise.
-- **Vector DB**: Qdrant Cloud per la ricerca semantica.
-- **Knowledge Base**: Moduli Markdown in `backend/knowledge/` che coprono:
-  - `visione-concept.md`: L'anima del festival.
-  - `programma-logistica.md`: Orari, ticket e info pratiche.
-  - `speaker-talk.md`: Bio complete e abstract dei talk.
-  - `partner-sponsor.md`: Ecosistema dei sostenitori.
-
-### Logica di "Entity Linking"
-
-L'AI Curator non si limita a rispondere, ma "collega" le entità. Ogni volta che nomina uno speaker o uno sponsor, estrae i metadati (immagini, link social, siti web) dal Vector DB e li invia al frontend per una visualizzazione ricca.
+In un'epoca di sovraccarico informativo, il LIFE 2026 introduce l'**AI Curator**: un assistente virtuale che non si limita a rispondere, ma agisce come un ponte semantico tra la visione del festival e le necessità dell'utente. Il sistema è progettato seguendo i principi del **Design Sistemico**, dove ogni pezzo di informazione (Talk, Speaker, Partner) è un'entità interconnessa in un grafo di conoscenza.
 
 ---
 
-## 🎨 Frontend & Design
+## 🧠 Architettura RAG (Deep Dive)
 
-- **Styling**: Tailwind CSS per il layout, Framer Motion per le micro-interazioni e GSAP per le animazioni di scroll.
-- **User Experience**: Scroll fluido tramite Lenis, cursore personalizzato e sistema di pittura interattiva (`PaintCanvas`).
-- **SEO Semantica**: Utilizzo rigoroso della gerarchia H1-H6 scollegata dallo stile visivo per massimizzare l'indicizzazione senza compromettere il design.
+L'AI Curator utilizza una pipeline RAG altamente ingegnerizzata per garantire risposte empiriche, eliminando quasi totalmente il rischio di allucinazioni.
+
+### 1. Ingestion & Atomic Metadata Injection
+
+A differenza delle implementazioni standard, il nostro sistema di caricamento dati (`core/ingest.py`) utilizza una tecnica proprietaria di **Atomic Metadata Injection**:
+
+- **Chunking Semantico**: Il testo non viene diviso per numero di caratteri, ma per unità logiche (Markdown headers).
+- **Propagazione Metadati**: ID, percorsi immagini e link esterni vengono "iniettati" in ogni singolo frammento di testo. Questo garantisce che il contesto non vada mai perduto, indipendentemente dal punto in cui l'algoritmo di ricerca effettua il "retrieval".
+
+### 2. Retrieval Strategy (Qdrant + HNSW)
+
+Utilizziamo **Qdrant Cloud** come database vettoriale. La ricerca utilizza l'indice **HNSW (Hierarchical Navigable Small World)** per garantire:
+
+- **Latenza Ultra-bassa**: Ricerca su migliaia di chunk in meno di 50ms.
+- **Similarity Threshold**: Abbiamo implementato un `SimilarityPostprocessor` con un cutoff a **0.35**. Se l'informazione trovata non è pertinente almeno al 35% con la domanda, il sistema preferisce ammettere ignoranza piuttosto che inventare (Anti-Hallucination Guard).
+
+### 3. Prompt Engineering & Identity
+
+L'LLM (**Gemini 2.0 Flash**) è istruito tramite un system prompt complesso che gestisce:
+
+- **Linguaggio Inclusivo**: Applicazione sistematica della Schwa (ə) in conformità con l'identità del festival.
+- **Entity Linking**: Obbligo per il modello di generare tag `[[REF:id]]` che il backend intercetta per estrarre rich-media (immagini e link) in tempo reale.
 
 ---
 
-## 🛠️ Struttura SEO & AI-Ready
+## 🛠️ Tech Stack
 
-Il progetto segue standard moderni per la visibilità:
+### Frontend
 
-- `**llms.txt`**: Fornisce un contesto strutturato per gli agenti AI (ChatGPT, Claude, Perplexity) che scansionano il sito.
-- **Iubenda Prior Blocking**: Gestione cookie conforme al GDPR con blocco preventivo dei cookie di profilazione.
-- **JSON-LD**: Dati strutturati per eventi Google per far apparire i talk nei risultati di ricerca.
+- **Framework**: React 18 con TypeScript.
+- **Routing**: React Router per una navigazione fluida.
+- **Animations**: GSAP (ScrollTrigger) e Framer Motion per micro-interazioni di alto livello.
+- **Experience**: Lenis Scroll per un'esperienza di navigazione "boutique".
 
-## 🌍 Deploy
+### Backend
 
-- **Frontend**: Vercel (connessione automatica al branch `main`).
-- **Backend**: Render.com (configurato per auto-deploy via GitHub).
+- **Core**: FastAPI (Asynchronous Python).
+- **RAG Framework**: LlamaIndex (scelto per la superiore gestione dei metadati rispetto a LangChain).
+- **Embedding**: `text-embedding-3-small` di OpenAI per una precisione vettoriale d'eccellenza.
+- **LLM**: Google Gemini 2.0 Flash via OpenRouter.
 
 ---
 
-## 📂 Struttura del Progetto (Monorepo)
+## 📂 Struttura del Progetto
 
 ```text
-life-design-scroll/
-├── frontend/ (Root directory)
-│   ├── public/           # Asset statici (Immagini, Font, llms.txt)
-│   ├── src/              # React Components, Hooks, Data
-│   └── index.html        # Entry point con script Iubenda
-│
-└── backend/              # AI Curator Engine
-    ├── pyproject.toml    # Gestione dipendenze (Poetry)
-    ├── main.py           # FastAPI Server Entry Point
-    ├── core/
-    │   ├── engine.py     # LlamaIndex RAG Pipeline & Prompting
-    │   └── ingest.py     # Qdrant Vectorization & Metadata Injection
-    └── knowledge/        # Markdown Knowledge Base
+├── src/                  # Frontend React
+│   ├── components/       # Componenti atomici e molecolari
+│   │   ├── ChatWidget.tsx # Il cuore dell'interazione AI
+│   │   └── paint/        # Modulo interattivo PaintCanvas
+│   └── data/             # JSON statici per il sito vetrina
+├── backend/              # AI Curator Engine
+│   ├── core/
+│   │   ├── engine.py     # Pipeline di Query e Entity Linking
+│   │   └── ingest.py     # Logica di vettorializzazione
+│   ├── knowledge/        # Il dataset Markdown (Single Source of Truth)
+│   └── main.py           # Endpoint API FastAPI
+└── public/               # Asset statici (Font, Immagini, llms.txt)
 ```
 
 ---
 
-## 🧠 Deep Dive Tecnico (Architettura RAG)
+## 🚀 Deployment & Maintenance
 
-Il backend non è un semplice wrapper di ChatGPT, ma un sistema di **Retrieval-Augmented Generation (RAG)** altamente ingegnerizzato, progettato per superare i limiti di contesto e fornire risposte empiriche.
+### Backend (Render.com)
 
-### 1. Ingestion (`core/ingest.py`) e "Atomic Metadata"
+Il backend è configurato per il deploy continuo su Render. Include una logica di **Keep-Alive** per gestire lo spin-down del piano gratuito, garantendo reattività costante.
 
-Durante la fase di build, lo script di ingestione analizza i file markdown nella cartella `knowledge/`. Non esegue uno split del testo casuale (come avviene nei tutorial standard), ma utilizza una logica di **Atomic Metadata Injection**:
+### Frontend (Vercel)
 
-- Cerca specifici blocchi semantici identificati da un titolo e da un JSON `> **METADATA`**.
-- Propaga le informazioni del JSON (ID, path dell'immagine, url) a *tutti* i chunk (frammenti) generati da quel blocco di testo.
-- In questo modo, anche se l'LLM pesca una frase isolata a metà di una biografia, il database vettoriale sa esattamente a quale "Entità" appartiene.
+Deploy automatico con ottimizzazione degli asset e gestione dei certificati SSL.
 
-### 2. Perché Qdrant Cloud?
+### AI-Ready Compliance
 
-Abbiamo scelto **Qdrant** come Vector Database per tre motivi accademici/tecnici:
-
-- **Prestazioni HNSW**: Qdrant utilizza un algoritmo Hierarchical Navigable Small World (HNSW) scritto in Rust, garantendo latenze di ricerca sotto i 50ms anche su dataset enormi.
-- **Payload Filtering**: A differenza di Pinecone (nella sua versione free), Qdrant permette un filtraggio severo sui metadati (`Payload`), essenziale per isolare "Speaker" da "Sponsor" durante le query incrociate.
-- **Gestione in memoria**: Si integra nativamente in ambienti serverless come Render senza sovraccaricare la RAM del container FastAPI.
-
-### 3. Perché LlamaIndex (e non LangChain)?
-
-Nel panorama dei framework AI, la scelta è ricaduta su **LlamaIndex** rispetto a LangChain per una precisa esigenza architetturale:
-
-- **Focus sul Retrieval**: LangChain è un framework "general-purpose" (ottimo per agenti autonomi multimodali), mentre LlamaIndex è iper-ottimizzato per la connessione tra dati proprietari e LLM.
-- **Post-Processing**: LlamaIndex ci ha permesso di implementare nativamente un `SimilarityPostprocessor` che taglia via (cutoff) i risultati con pertinenza inferiore al 35%, eliminando matematicamente le allucinazioni causate da "rumore" nel database.
-
-### 4. Engine (`core/engine.py`) ed "Entity Linking"
-
-Il ciclo di vita di una query:
-
-1. L'utente invia una domanda tramite il `ChatWidget` React.
-2. `engine.py` (tramite FastAPI) vettorializza la query e interroga Qdrant.
-3. Il contesto recuperato viene iniettato nel System Prompt di **Gemini 2.0 Flash**.
-4. Il System Prompt obbliga il modello a inserire dei **Tag di Riferimento** (es: `[[REF:auge-design]]`) ogniqualvolta cita un'entità.
-5. Un'espressione regolare (Regex) in Python intercetta questi tag prima di inviare la risposta al frontend, li usa per recuperare in frazioni di secondo le immagini e i link dal database vettoriale, e ripulisce il testo.
-6. Il Frontend riceve un JSON strutturato con testo pulito, array di immagini e array di link.
+Il sito espone un file `public/llms.txt` seguendo i nuovi standard di "AI Crawling", permettendo ad agenti esterni (ChatGPT, Claude, Perplexity) di comprendere la struttura del festival in modo organico.
 
 ---
 
-© 2026 Life Design Festival. Made with love, code & design.

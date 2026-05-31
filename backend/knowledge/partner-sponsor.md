@@ -9,13 +9,41 @@ Il LIFE Design Festival 2026 è sostenuto da un ecosistema di 22 partner. Questo
 
 Questa è la suddivisione ufficiale dei partner del LIFE Design Festival 2026:
 
-*   **MAIN SPONSOR**: La Gala Home.
-*   **CON IL SOSTEGNO DEL FONDO ETICO DI**: BCC Basilicata.
-*   **EXPERIENCE SPONSOR**: Ordine degli Architetti di Potenza, MSD Design.
-*   **ACTIVE SPONSOR**: AIPI, Grafica Metelliana.
-*   **PARTNER**: Zetafonts, Basic Records, Overclouds, Autoelite, Avena, Retro Gusto, BNB (B&B Al Convento).
-*   **COMMUNITY E CULTURAL PARTNER**: FM Visual Designer, Etimologia, Jupiter, Unidea.
-*   **PATROCINI ISTITUZIONALI E STRATEGICI**: ADCI, Comune di Potenza, Regione Basilicata, ADI, Basilicata Turistica (APT Basilicata).
+*   **MAIN SPONSOR**: 
+    - La Gala Home [[REF:la-gala-home]]
+*   **CON IL SOSTEGNO DEL FONDO ETICO DI**: 
+    - BCC Basilicata [[REF:bcc]]
+*   **EXPERIENCE SPONSOR**: 
+    - Ordine degli Architetti di Potenza [[REF:ordine-architetti]]
+    - MSD Design [[REF:msd]]
+*   **ACTIVE SPONSOR**: 
+    - AIPI [[REF:aipi]]
+    - Grafica Metelliana [[REF:grafica-metelliana]]
+*   **PARTNER**: 
+    - Zetafonts [[REF:zetafonts-partner]]
+    - Basic Records [[REF:basic]]
+    - Overclouds [[REF:overclouds]]
+    - Autoelite [[REF:autoelite]]
+    - Avena [[REF:avena]]
+    - Retro Gusto [[REF:retro-gusto]]
+    - B&B Al Convento [[REF:bb-al-convento-partner]]
+*   **COMMUNITY E CULTURAL PARTNER**: 
+    - FM Visual Designer [[REF:fm]]
+    - Etimologia [[REF:etimologia]]
+    - Jupiter [[REF:jupiter]]
+    - Unidea [[REF:unidea]]
+*   **PATROCINI ISTITUZIONALI E STRATEGICI**: 
+    - ADCI [[REF:adci-institutional]]
+    - Comune di Potenza [[REF:comune-potenza]]
+    - Regione Basilicata [[REF:regione-basilicata]]
+    - ADI [[REF:adi-institutional]]
+    - Basilicata Turistica (APT Basilicata) [[REF:apt-institutional]]
+
+---
+
+## ASSET COMPOSITI PARTNER
+> **METADATA**: { "id": "sponsor-wall", "name": "Sponsor Wall Gallery", "type": "composite", "img": "/assets/logos/Partner & Sponsor.webp" }
+Immagine composita che raccoglie tutti i loghi dei partner e sponsor del festival.
 
 ---
 
@@ -102,8 +130,9 @@ Rifugio concettuale in Piazza San Michele Arcangelo a Potenza. Nato su un conven
 > **METADATA**: { "id": "cat-community", "name": "Community Partner", "type": "category" }
 
 ### FM Visual Designer (Francesco Marri)
-> **METADATA**: { "id": "fm", "name": "FM Visual Designer", "type": "sponsor", "category": "community", "img": "/assets/logos/fm.png", "web": "https://bussotoctoc.com/products/busso" }
+> **METADATA**: { "id": "fm", "name": "FM Visual Designer", "type": "sponsor", "category": "community", "img": "/assets/logos/fm.png", "web": "https://fmvisualdesigner.teetaly.com/IT/" }
 Fenomeno social (classe 1995 dal Friuli) che demistifica il "blindspot" dei creativi. Gestisce un e-commerce di successo di merchandising satirico (come le "Carte d'auguri per graphic designer") e organizza al festival i tornei del suo gioco di carte **BUSSO**.
+*   **Link Progetti**: [Busso TocToc](https://bussotoctoc.com/products/busso) e [Shop Teetaly](https://fmvisualdesigner.teetaly.com/IT/).
 
 ### Etimologia
 > **METADATA**: { "id": "etimologia", "name": "Etimologia Magazine", "type": "sponsor", "category": "community", "img": "/assets/logos/etmiologia.png", "web": "https://www.etimologiamagazine.com/" }

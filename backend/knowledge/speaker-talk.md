@@ -4,6 +4,35 @@ Base di conoscenza hyper-enriched per il RAG: include bio integrali, milestones 
 
 ---
 
+## REGISTRO GLOBALE SPEAKER
+> **METADATA**: { "id": "registry-speakers", "name": "Lista Completa Speaker", "type": "registry" }
+
+Questa è la lista ufficiale di tuttə lə speaker e studi creativi che interverranno al festival:
+
+*   **Adoratorio Studio** [[REF:adoratorio-studio]] - [Sito Web](https://www.adoratorio.studio)
+*   **AUGE Design** (Andrea Mastroluca) [[REF:auge-design]] - [Sito Web](https://www.auge-design.com)
+*   **Be.Family** (Pierfilippo Ariano) [[REF:be-family]] - [Sito Web](https://www.befamily.it)
+*   **Brutto Studio** (Marco Oggian & Samuel Canay) [[REF:brutto-studio]] - [Sito Web](https://www.brutto.shop)
+*   **Cosmico** (Marco Zamberlan) [[REF:cosmico]] - [Sito Web](https://wearecosmico.com/it)
+*   **Cromia Design** (Samuela Vaccari) [[REF:cromia-design]] - [Sito Web](https://cromiadesign.myportfolio.com)
+*   **DUDE Design** (Domenico Loperfido) [[REF:dude-design]] - [Sito Web](https://www.dude.it)
+*   **dverso studio** [[REF:dverso-studio]] - [Sito Web](https://www.dversostudio.io)
+*   **EGO55** [[REF:ego55]] - [Sito Web](https://www.ego55.com)
+*   **Enrica D'Aguanno** [[REF:enrica-daguanno]] - [Instagram](https://www.instagram.com/enricadaguanno/)
+*   **ET Studio** [[REF:et-studio]] - [Sito Web](https://www.e-t.studio)
+*   **Italo Sannino** [[REF:italo-sannino]] - [Sito Web](https://www.italosan.com)
+*   **Jekyll & Hyde** [[REF:jekyll-hyde]] - [Sito Web](https://www.jeh.it)
+*   **Mauro Bubbico** [[REF:mauro-bubbico]] - [Sito Web](https://www.maurobubbico.it)
+*   **Mauro Mazzei** [[REF:mauro-mazzei]] - [Sito Web](https://www.le.pub)
+*   **PUG! Design Fest** [[REF:pug-design-fest]] - [Sito Web](https://www.pugdesignfest.com)
+*   **Rocketpanda Studio** (Riccardo Albertini) [[REF:rocketpanda-studio]] - [Sito Web](https://www.therocketpanda.com)
+*   **Silvia Sguotti** [[REF:silvia-sguotti]] - [Sito Web](https://www.behance.net/SilviaSguotti)
+*   **Simone Checchia** [[REF:simone-checchia]] - [Sito Web](https://www.checchiadesign.com)
+*   **The Wave Studio** (Loriana Consentino) [[REF:the-wave-studio]] - [Sito Web](https://www.thewavestudio.it)
+*   **Zetafonts** (Cosimo L. Pancini & Dario Manzo) [[REF:zetafonts]] - [Sito Web](https://www.zetafonts.com)
+
+---
+
 ## Adoratorio Studio (Ciarli e Riccardo)
 > **METADATA**: { "id": "adoratorio-studio", "name": "Adoratorio Studio", "type": "speaker", "img": "/assets/speakers/adoratorio studio.jpg", "web": "https://www.adoratorio.studio", "ig": "https://www.instagram.com/adoratorio.studio", "date": "2026-06-05", "time": "18:10" }
 

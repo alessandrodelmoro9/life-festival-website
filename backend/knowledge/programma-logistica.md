@@ -4,8 +4,60 @@ Questo documento contiene tutte le informazioni operative, gli orari, le regole 
 
 ---
 
+## REGISTRO GLOBALE CRONOPROGRAMMA (BANNER COMPOSITI)
+> **METADATA**: { "id": "registry-program-cards", "name": "Grafiche Cronoprogramma", "type": "registry" }
+
+Utilizza questi tag per mostrare le grafiche riassuntive del programma:
+*   **Venerdì Mattina** [[REF:gallery-friday-morning]]
+*   **Venerdì Pomeriggio** [[REF:gallery-friday-afternoon]]
+*   **Sabato Mattina** [[REF:gallery-saturday-morning]]
+*   **Sabato Pomeriggio** [[REF:gallery-saturday-afternoon]]
+
+---
+
+## REGISTRO GLOBALE WORKSHOP
+> **METADATA**: { "id": "registry-workshops", "name": "Elenco Workshop", "type": "registry" }
+
+Tutti i workshop richiedono l'acquisto di un pass su Eventbrite: [Acquista Qui](https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213)
+
+*   **L'immagine coordinata per la cultura** [[REF:workshop-enrica-daguanno]] (Enrica D'Aguanno)
+*   **UI con Figma e Vibe Coding** [[REF:workshop-italo-sannino]] (Italo Sannino)
+*   **Tracce d'inchiostro** [[REF:workshop-zetafonts]] (Cosimo L. Pancini & Dario Manzo)
+
+---
+
+## REGISTRO GLOBALE ATTIVITÀ E STAND
+> **METADATA**: { "id": "registry-activities", "name": "Elenco Attività Stand", "type": "registry" }
+
+Attività interattive sempre presenti al festival:
+
+*   **Junk Journal Club** [[REF:stand-junk-journal]] (Curato da TAM)
+*   **PHYGITAL** [[REF:stand-phygital]] (Curato da Overclouds)
+*   **Archivio Materico Express** [[REF:stand-archivio-materico]] (Curato da Progetto 131)
+*   **Torneo di BUSSO** [[REF:stand-busso]] (Curato da FM Visual Designer)
+*   **Zetafonts TypeQuiz & TypeTinder** [[REF:stand-zetafonts-activities]]
+*   **Lines of Life** [[REF:stand-lines-of-life]] (Curato da COSYSTEM)
+
+---
+
 ## PROGRAMMA DEL FESTIVAL
 Il festival si svolge in due giornate: 5 e 6 Giugno 2026. I Talk si tengono sul Main Stage (durata media 25-30 min), i Workshop nelle aule dedicate (durata circa 2 ore).
+
+### Gallery Programma Venerdì Mattina
+> **METADATA**: { "id": "gallery-friday-morning", "name": "Gallery Venerdì Mattina", "type": "composite", "img": "/assets/composite/5_giugno_mattina.webp" }
+Questa immagine contiene il cronoprogramma di Venerdì 5 Giugno mattina. Include i talk di: Ego55, PUG! Design Fest, Italo Sannino, Silvia Sguotti e Be.Family.
+
+### Gallery Programma Venerdì Pomeriggio
+> **METADATA**: { "id": "gallery-friday-afternoon", "name": "Gallery Venerdì Pomeriggio", "type": "composite", "img": "/assets/composite/5_giugno_pomeriggio.webp" }
+Questa immagine contiene il cronoprogramma di Venerdì 5 Giugno pomeriggio. Include il workshop di Enrica D’Aguanno e i talk di: Brutto Studio, Jekyll & Hyde, dverso studio, Adoratorio Studio e l'attività di Zetafonts.
+
+### Gallery Programma Sabato Mattina
+> **METADATA**: { "id": "gallery-saturday-morning", "name": "Gallery Sabato Mattina", "type": "composite", "img": "/assets/composite/6_giugno_mattina.webp" }
+Questa immagine contiene il cronoprogramma di Sabato 6 Giugno mattina. Include il workshop di Italo Sannino, il talk di Simone Checchia, l'attività di Zetafonts e i talk di AUGE Design, The Wave Studio e Cosmico.
+
+### Gallery Programma Sabato Pomeriggio
+> **METADATA**: { "id": "gallery-saturday-afternoon", "name": "Gallery Sabato Pomeriggio", "type": "composite", "img": "/assets/composite/6_giugno_pomeriggio.webp" }
+Questa immagine contiene il cronoprogramma di Sabato 6 Giugno pomeriggio. Include le attività Junk Journal Club e il workshop di Zetafonts, e i talk di Mauro Mazzei, Rocketpanda Studio, Zetafonts, DUDE Design, ET Studio, Cromia Design (Samuela Vaccari) e Mauro Bubbico.
 
 ### Venerdì 5 Giugno (Mattina)
 > **METADATA**: { "id": "program-friday-morning", "name": "Programma Venerdì Mattina", "type": "program", "date": "2026-06-05", "session": "morning" }
