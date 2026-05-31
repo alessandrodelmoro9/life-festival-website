@@ -95,9 +95,10 @@ const ChatWidget: React.FC = () => {
                   type="text"
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
-                  placeholder="Fai una domanda"
-                  className="bg-transparent border-none outline-none font-body text-sm flex-1 placeholder:text-life-brown/30 text-life-black"
+                  placeholder="Fai una domanda sul festival"
+                  className="bg-transparent border-none outline-none font-display text-sm flex-1 placeholder:text-life-brown/30 text-life-black tracking-tight"
                 />
+
                 <button 
                   type="submit" 
                   className="relative w-10 h-10 shrink-0 transition-all active:scale-95 group/btn"
@@ -179,7 +180,7 @@ const ChatWidget: React.FC = () => {
                       alt="Welcome to Life 2026" 
                       className="w-full max-w-[400px] h-auto"
                     />
-                    <p className="font-display text-life-brown text-xl md:text-2xl uppercase tracking-[0.4em]">
+                    <p className="hidden md:block font-display text-life-brown text-xl md:text-2xl uppercase tracking-[0.4em]">
                       Curatore AI del Festival
                     </p>
                   </motion.div>
@@ -193,19 +194,23 @@ const ChatWidget: React.FC = () => {
                     className={cn("flex flex-col w-full", msg.role === 'user' ? "items-end" : "items-start")}
                   >
                     {msg.role === 'user' ? (
-                      <div className="bg-life-pink text-life-black p-5 px-8 rounded-[28px] shadow-xl max-w-[90%] md:max-w-[60%] font-display font-medium text-base md:text-lg tracking-tight normal-case">
+                      <div className="bg-life-pink text-life-black p-5 px-8 rounded-[28px] shadow-xl max-w-[90%] md:max-w-[60%] font-display font-medium text-base md:text-lg tracking-tight normal-case leading-snug">
                         {msg.text}
                       </div>
                     ) : (
                       <div className="w-full space-y-12">
                         {/* AI Text Body */}
-                        <div className="font-body text-life-black text-xl md:text-[24px] leading-[1.6] tracking-tight prose-headings:font-display prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-life-brown prose-p:mb-6">
+                        <div className="font-body text-life-black text-lg md:text-[20px] leading-[1.6] tracking-tight prose-headings:font-display prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-life-brown">
                           <ReactMarkdown 
                             components={{
                               a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" className="text-life-brown underline decoration-life-pink underline-offset-4 hover:text-life-pink transition-colors" />,
-                              h1: ({ node, ...props }) => <h1 {...props} className="text-3xl md:text-5xl mb-8 mt-12 font-display font-bold" />,
-                              h2: ({ node, ...props }) => <h2 {...props} className="text-2xl md:text-3xl mb-6 mt-10 font-display font-bold" />,
-                              p: ({ node, ...props }) => <p {...props} style={{ fontFamily: "'Automat Grotesk', sans-serif" }} />
+                              h1: ({ node, ...props }) => <h1 {...props} className="text-3xl md:text-5xl mb-8 mt-12 font-display font-bold tracking-tighter" />,
+                              h2: ({ node, ...props }) => <h2 {...props} className="text-2xl md:text-3xl mb-6 mt-10 font-display font-bold tracking-tighter" />,
+                              h3: ({ node, ...props }) => <h3 {...props} className="text-xl md:text-2xl mb-4 mt-8 font-display font-bold tracking-tight" />,
+                              p: ({ node, ...props }) => <p {...props} style={{ fontFamily: "'Automat Grotesk', sans-serif", letterSpacing: '-0.02em' }} className="mb-6" />,
+                              ul: ({ node, ...props }) => <ul {...props} className="mb-10 space-y-2 list-none" />,
+                              ol: ({ node, ...props }) => <ol {...props} className="mb-10 space-y-2 list-decimal ml-6" />,
+                              li: ({ node, ...props }) => <li {...props} className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-2 before:bg-life-pink before:rounded-none" />
                             }}
                           >
                             {msg.text}
@@ -216,28 +221,31 @@ const ChatWidget: React.FC = () => {
                         {msg.images && msg.images.length > 0 && (
                           <div className={cn(
                             "flex flex-wrap gap-4 md:gap-6 w-full",
-                            msg.images.some(img => img.includes('composite')) 
+                            msg.images.some(img => img.includes('composite') || img.includes('Partner')) 
                               ? "flex-col" 
                               : "flex-row"
                           )}>
-                            {msg.images.map((img, idx) => (
-                              <div
-                                key={idx}
-                                className={cn(
-                                  "relative overflow-hidden border border-life-brown/10 bg-life-black shadow-2xl flex items-center justify-center",
-                                  img.includes('composite') ? "w-full rounded-[24px]" : "w-fit rounded-none"
-                                )}
-                              >
-                                <img 
-                                  src={img} 
+                            {msg.images.map((img, idx) => {
+                              const isComposite = img.includes('composite') || img.includes('Partner');
+                              return (
+                                <div
+                                  key={idx}
                                   className={cn(
-                                    "object-contain transition-transform duration-700",
-                                    img.includes('composite') ? "w-full h-auto max-h-[450px] p-2" : "h-48 md:h-56 w-auto p-0"
+                                    "relative overflow-hidden border border-life-brown/10 bg-life-black shadow-2xl flex items-center justify-center",
+                                    isComposite ? "w-full rounded-[24px]" : "w-fit rounded-none"
                                   )}
-                                  onError={(e) => (e.currentTarget.style.display = 'none')}
-                                />
-                              </div>
-                            ))}
+                                >
+                                  <img 
+                                    src={img} 
+                                    className={cn(
+                                      "object-contain transition-transform duration-700",
+                                      isComposite ? "w-full h-auto max-h-[600px] p-2" : "h-56 md:h-64 w-auto p-0"
+                                    )}
+                                    onError={(e) => (e.currentTarget.style.display = 'none')}
+                                  />
+                                </div>
+                              );
+                            })}
                           </div>
                         )}
                         
@@ -270,9 +278,9 @@ const ChatWidget: React.FC = () => {
                 
                 {isLoading && (
                   <div className="flex gap-3 p-6 pb-24">
-                    <div className="w-3 h-3 bg-life-pink rounded-full animate-bounce" />
-                    <div className="w-3 h-3 bg-life-pink rounded-full animate-bounce [animation-delay:0.2s]" />
-                    <div className="w-3 h-3 bg-life-pink rounded-full animate-bounce [animation-delay:0.4s]" />
+                    <div className="w-3 h-3 bg-life-pink rounded-none animate-bounce" />
+                    <div className="w-3 h-3 bg-life-pink rounded-none animate-bounce [animation-delay:0.2s]" />
+                    <div className="w-3 h-3 bg-life-pink rounded-none animate-bounce [animation-delay:0.4s]" />
                   </div>
                 )}
 
@@ -287,9 +295,10 @@ const ChatWidget: React.FC = () => {
                       type="text"
                       value={prompt}
                       onChange={(e) => setPrompt(e.target.value)}
-                      placeholder="Chiedi al Curatore..."
-                      className="w-full bg-white/90 backdrop-blur-md border border-life-brown/20 rounded-full px-10 py-5 pr-20 text-lg md:text-xl font-body outline-none text-life-black placeholder:text-life-brown/30 focus:border-life-brown transition-all shadow-2xl"
+                      placeholder="Fai una domanda sul festival"
+                      className="w-full bg-white/90 backdrop-blur-md border border-life-brown/20 rounded-full px-10 py-5 pr-20 text-lg md:text-xl font-display outline-none text-life-black placeholder:text-life-brown/30 focus:border-life-brown transition-all shadow-2xl tracking-tight"
                     />
+
                     <button 
                       type="submit" 
                       className="absolute right-3.5 w-12 h-12 shrink-0 transition-all active:scale-95 group/btn"
