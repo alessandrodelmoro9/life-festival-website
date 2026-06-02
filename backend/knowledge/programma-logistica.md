@@ -172,7 +172,7 @@ Oltre ai talk e ai workshop, il festival offre esperienze interattive continuati
 ---
 
 ## TICKET E ACCESSI
-> **METADATA**: { "id": "logistica-ticket", "name": "Ticket e Accessi", "type": "logistics", "img": "/src/assets/backg ticket.svg" }
+> **METADATA**: { "id": "logistica-ticket", "name": "Ticket e Accessi", "type": "logistics" }
 I biglietti sono acquistabili esclusivamente su Eventbrite: https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213
 
 ### Pass Generali (Obbligatori per l'ingresso)
