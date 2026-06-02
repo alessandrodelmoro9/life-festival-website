@@ -149,16 +149,16 @@ const ChatWidget: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[10010] bg-white flex flex-col overflow-hidden"
+            className="fixed inset-0 z-[10010] bg-life-cream flex flex-col overflow-hidden"
           >
             {/* Scroll Container */}
             <div ref={scrollRef} className="flex-1 overflow-y-auto scroll-smooth">
               
               {/* Floating Header */}
-              <div className="sticky top-0 p-4 md:p-6 flex items-center justify-between z-20 bg-white/40 backdrop-blur-sm pointer-events-none">
+              <div className="sticky top-0 p-4 md:p-6 flex items-center justify-between z-20 bg-life-cream/40 backdrop-blur-sm pointer-events-none">
                 <button 
                   onClick={() => setIsFullPage(false)}
-                  className="pointer-events-auto flex items-center gap-4 text-life-black font-display font-bold text-[11px] uppercase tracking-[0.3em] hover:opacity-70 transition-opacity"
+                  className="pointer-events-auto flex items-center gap-4 text-life-black font-display font-bold text-[11px] uppercase tracking-[-0.02em] hover:opacity-70 transition-opacity"
                 >
                   <img src="/assets/chatbot/Freccia pulita.svg" alt="" className="w-5 h-5" />
                   TORNA AL SITO
@@ -178,7 +178,7 @@ const ChatWidget: React.FC = () => {
                     <img 
                       src="/assets/chatbot/Welcome.svg" 
                       alt="Welcome to Life 2026" 
-                      className="w-full max-w-[400px] h-auto"
+                      className="w-[60%] md:w-full max-w-[400px] h-auto"
                     />
                     <p className="hidden md:block font-display text-life-brown text-xl md:text-2xl uppercase tracking-[0.4em]">
                       Curatore AI del Festival
@@ -200,13 +200,13 @@ const ChatWidget: React.FC = () => {
                     ) : (
                       <div className="w-full space-y-12">
                         {/* AI Text Body */}
-                        <div className="font-body text-life-black text-lg md:text-[20px] leading-[1.6] tracking-tight prose-headings:font-display prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-life-brown">
+                        <div className="font-body text-life-black text-lg md:text-[20px] leading-[1.6] tracking-tight prose-headings:font-display prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-life-black">
                           <ReactMarkdown 
                             components={{
                               a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" className="text-life-brown underline decoration-life-pink underline-offset-4 hover:text-life-pink transition-colors" />,
-                              h1: ({ node, ...props }) => <h1 {...props} className="text-3xl md:text-5xl mb-8 mt-12 font-display font-bold tracking-tighter" />,
-                              h2: ({ node, ...props }) => <h2 {...props} className="text-2xl md:text-3xl mb-6 mt-10 font-display font-bold tracking-tighter" />,
-                              h3: ({ node, ...props }) => <h3 {...props} className="text-xl md:text-2xl mb-4 mt-8 font-display font-bold tracking-tight" />,
+                              h1: ({ node, ...props }) => <h1 {...props} style={{ letterSpacing: '-0.02em' }} className="text-3xl md:text-5xl mb-8 mt-12 font-display font-bold text-life-black" />,
+                              h2: ({ node, ...props }) => <h2 {...props} style={{ letterSpacing: '-0.02em' }} className="text-2xl md:text-3xl mb-6 mt-10 font-display font-bold text-life-black" />,
+                              h3: ({ node, ...props }) => <h3 {...props} style={{ letterSpacing: '-0.02em' }} className="text-xl md:text-2xl mb-4 mt-8 font-display font-bold text-life-black" />,
                               p: ({ node, ...props }) => <p {...props} style={{ fontFamily: "'Automat Grotesk', sans-serif", letterSpacing: '-0.02em' }} className="mb-6" />,
                               ul: ({ node, ...props }) => <ul {...props} className="mb-10 space-y-2 list-none" />,
                               ol: ({ node, ...props }) => <ol {...props} className="mb-10 space-y-2 list-decimal ml-6" />,
@@ -258,12 +258,12 @@ const ChatWidget: React.FC = () => {
                                 href={link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-4 bg-white border border-life-brown/20 text-[11px] text-life-black px-6 py-2.5 md:py-3.5 rounded-xl hover:bg-life-brown hover:text-white transition-all uppercase tracking-[0.2em] font-display font-bold shadow-xl active:scale-95 group"
+                                className="inline-flex items-center gap-4 bg-white border border-life-brown/20 text-[11px] text-life-black px-6 py-2.5 md:py-3.5 rounded-xl hover:bg-life-pink hover:text-life-black transition-all uppercase tracking-[-0.02em] font-display font-bold shadow-xl active:scale-95 group"
                               >
                                 <img 
                                   src={`https://www.google.com/s2/favicons?domain=${new URL(link).hostname}&sz=64`} 
                                   alt="" 
-                                  className="w-4 h-4 rounded-sm grayscale group-hover:grayscale-0 transition-all"
+                                  className="w-4 h-4 rounded-sm transition-all"
                                 />
                                 {link.includes('eventbrite') ? 'Tickets' : 'Website'}
                                 <ArrowUp className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-all" />
@@ -288,7 +288,7 @@ const ChatWidget: React.FC = () => {
               </div>
 
               {/* Floating Footer */}
-              <div className="sticky bottom-0 p-4 md:p-8 flex justify-center items-center z-20 pointer-events-none">
+              <div className="sticky bottom-0 p-4 pb-12 md:p-8 flex justify-center items-center z-20 pointer-events-none">
                 <div className="w-full max-w-4xl relative pointer-events-auto">
                   <form onSubmit={handleSendMessage} className="relative flex items-center group">
                     <input
@@ -296,7 +296,7 @@ const ChatWidget: React.FC = () => {
                       value={prompt}
                       onChange={(e) => setPrompt(e.target.value)}
                       placeholder="Fai una domanda sul festival"
-                      className="w-full bg-white/90 backdrop-blur-md border border-life-brown/20 rounded-full px-10 py-5 pr-20 text-lg md:text-xl font-display outline-none text-life-black placeholder:text-life-brown/30 focus:border-life-brown transition-all shadow-2xl tracking-tight"
+                      className="w-full bg-white/90 backdrop-blur-md border border-life-brown/20 rounded-full px-10 py-5 pr-20 text-lg md:text-xl font-display outline-none text-life-black placeholder:text-life-brown/30 focus:border-life-brown transition-all shadow-none tracking-tight"
                     />
 
                     <button 

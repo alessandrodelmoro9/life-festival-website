@@ -1,53 +1,34 @@
-# Stato Progetto - LIFE Design Festival 2026 - FINAL SPRINT & RELEASE
+# PROJECT STATE - LIFE Design Festival 2026 Chatbot
 
-## 🎯 Obiettivo Consegna
-Sistema RAG professionale pronto per il deploy finale. Interfaccia "Magazine Style" certificata, logica deterministica per gli asset e backend blindato per la produzione su Render (Free Tier).
+## 🚀 Architettura RAG: ID-Centric & Registry-First
+Abbiamo implementato una logica deterministica per garantire precisione chirurgica nel recupero di asset e link, superando i limiti della sola ricerca semantica.
 
----
+### 1. Il "Bussola" (Registry Nodes)
+Ogni categoria (Sponsor, Speaker, Programma) ha un nodo **Registry** (`id: global-partners`, `id: registry-speakers`, ecc.).
+- **Injection Mandatoria**: Quando il sistema rileva un intento, inietta il riferimento al registro nel prompt dell'LLM.
+- **Link Harvesting**: Il sistema scansiona il testo del registro per estrarre tutti i link URL, garantendo che i bottoni appaiano anche se l'LLM non li scrive.
 
-## 🔐 Protocollo Sicurezza & Git Hygiene
+### 2. Il "Mappa" (Entity Chunks)
+I singoli speaker e sponsor hanno chunk dedicati con metadati ricchi (`id`, `type`, `web`, `img`, `date`, `time`).
+- **Ponte via ID**: Il sistema usa gli ID `[[REF:id]]` citati dall'LLM per pescare l'immagine e il link esatto dal chunk corrispondente.
 
-### 1. Gestione Branch & Pulizia
-- **Stato attuale:** `backend-setup` è 13 commit avanti rispetto al `main`.
-- **Azione:** Creare `production-ready`, completare i fix, mergiarlo in `main`.
-- **Git Hygiene:** Identificazione e cancellazione di tutti i branch obsoleti/superflui (10+) per mantenere solo `main` come sorgente di produzione.
+### 3. Logica di Visualizzazione (Magazine Style)
+- **Broad Queries (Tutti gli sponsor, Programma totale, Singola mattina)**:
+  - Visualizza **SOLO** le immagini composite (Gallery / Sponsor Wall).
+  - Nasconde le immagini singole per mantenere il design pulito.
+- **Specific Queries (Workshop, Biglietti, "Chi è X")**:
+  - Visualizza le **Immagini Singole** delle persone coinvolte.
+  - Priorità ai link specifici dell'entità.
+- **Timeframe Match**: Per richieste come "Venerdì mattina", il sistema incrocia i metadati temporali dei chunk per raccogliere tutti i link degli speaker di quella fascia oraria.
 
-### 2. Audit dei Segreti & Sanificazione
-- **Zero Leak:** Verifica rigorosa che `.env` sia in `.gitignore` prima del push di `backend/` su origin.
-- **Frontend Cleanup:** Rimozione di tutti i `console.log` e logiche di debug.
-- **Backend Protection:** Disabilitazione `/docs` e `/redoc` in produzione.
+### 4. Constraints Visivi & Branding
+- **Colori**: Sfondo crema (`#F4EEE4`), testo nero (`#1A1A1A`), hover rosa (`#FF66CC`).
+- **No Emoji / No Tabelle**: Formattazione pulita stile editoriale.
+- **Link Bottoni**: Tutti i link web sono estratti e mostrati come bottoni sotto la chat, mai nel testo.
 
----
-
-## 🛠 Piano di Produzione (Roadmap Domani)
-
-### 1. Refactoring Architetturale
-- Spostamento componenti in `sections/`, `features/`, `ui/`.
-- Centralizzazione hooks e rimozione duplicati (`use-toast.ts`).
-
-### 2. Ottimizzazione Backend (Produzione)
-- **P.I.I. Stripping:** Mascheramento dati sensibili.
-- **Semantic Cache:** Layer in-memory per velocità e risparmio token.
-- **Keep-Alive logic:** Ping automatico dal frontend per eliminare il "cold start" di Render Free Tier.
-
-### 3. Last Minute Content & Assets
-- **Expected Tomorrow:** Sostituzione immagine speaker (refuso segnalato).
-- **New Sections:** Strutturazione dati per "Organizzatori" e "Afterparty".
-- **Asset Normalization:** Ridenominazione globale in `kebab-case`.
-
----
-
-## 🚀 Strategia di Deploy & Validazione Team
-1. **First Backend Push:** Caricamento della cartella `backend/` su GitHub.
-2. **Render Setup:** Configurazione Web Service e Environment Variables.
-3. **Team Testing Protocol:**
-   - Generazione **Vercel Preview Link** dal branch `production-ready`.
-   - **Manual Wake-up:** Eseguire una query di test per svegliare il backend prima di condividere il link al team.
-   - Raccolta feedback su estetica e fluidità RAG.
-
----
-
-## 📄 Documentazione (README.md)
-Il README dovrà includere il `/tree f` aggiornato e la guida operativa al sistema RAG (Markdown + JSON Metadata).
-
-*Ultimo aggiornamento: Domenica 31 Maggio 2026, ore 02:00 - Status: Maximum Context Locked & Ready for Final Sprint*
+## 🛠️ Stato attuale
+- [DONE] Logica ID-Centric implementata in `engine.py`.
+- [DONE] Asset composite aggiornati per correggere refusi.
+- [DONE] Filtro esclusivo per Gallery vs Immagini singole.
+- [DONE] Recupero link massivo da registri.
+- [IN PROGRESS] Testing finale su casi limite di intenti misti.

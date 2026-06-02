@@ -10,34 +10,34 @@ Il LIFE Design Festival 2026 è sostenuto da un ecosistema di 22 partner. Questo
 Questa è la suddivisione ufficiale dei partner del LIFE Design Festival 2026:
 
 *   **MAIN SPONSOR**: 
-    - La Gala Home [[REF:la-gala-home]]
+    - La Gala Home [[REF:la-gala-home]] - [Sito Web](https://www.lagalahome.com)
 *   **CON IL SOSTEGNO DEL FONDO ETICO DI**: 
-    - BCC Basilicata [[REF:bcc]]
+    - BCC Basilicata [[REF:bcc]] - [Sito Web](https://www.bccbasilicata.it)
 *   **EXPERIENCE SPONSOR**: 
-    - Ordine degli Architetti di Potenza [[REF:ordine-architetti]]
-    - MSD Design [[REF:msd]]
+    - Ordine degli Architetti di Potenza [[REF:ordine-architetti]] - [Sito Web](https://www.ordinearchitetti.pz.it/)
+    - MSD Design [[REF:msd]] - [Sito Web](https://www.msddesign.it/)
 *   **ACTIVE SPONSOR**: 
-    - AIPI [[REF:aipi]]
-    - Grafica Metelliana [[REF:grafica-metelliana]]
+    - AIPI [[REF:aipi]] - [Sito Web](https://www.aipi.it)
+    - Grafica Metelliana [[REF:grafica-metelliana]] - [Sito Web](https://www.graficametelliana.it)
 *   **PARTNER**: 
-    - Zetafonts [[REF:zetafonts-partner]]
-    - Basic Records [[REF:basic]]
-    - Overclouds [[REF:overclouds]]
-    - Autoelite [[REF:autoelite]]
-    - Avena [[REF:avena]]
-    - Retro Gusto [[REF:retro-gusto]]
-    - B&B Al Convento [[REF:bb-al-convento-partner]]
+    - Zetafonts [[REF:zetafonts-partner]] - [Sito Web](https://www.zetafonts.com)
+    - Basic Records [[REF:basic]] - [Sito Web](https://basicrecords.it/)
+    - Overclouds [[REF:overclouds]] - [Sito Web](https://www.overclouds.ai/it)
+    - Autoelite [[REF:autoelite]] - [Sito Web](https://www.autoelite.it/)
+    - Avena [[REF:avena]] - [Sito Web](https://avenabibite.it/)
+    - Retro Gusto [[REF:retro-gusto]] - [Sito Web](https://www.instagram.com/retrogusto_streetfood/)
+    - B&B Al Convento [[REF:bb-al-convento-partner]] - [Sito Web](http://alconventopotenza.it/)
 *   **COMMUNITY E CULTURAL PARTNER**: 
-    - FM Visual Designer [[REF:fm]]
-    - Etimologia [[REF:etimologia]]
-    - Jupiter [[REF:jupiter]]
-    - Unidea [[REF:unidea]]
+    - FM Visual Designer [[REF:fm]] - [Sito Web](https://fmvisualdesigner.teetaly.com/IT/)
+    - Etimologia [[REF:etimologia]] - [Sito Web](https://www.etimologiamagazine.com/)
+    - Jupiter [[REF:jupiter]] - [Sito Web](https://www.jupiterfoto.it/)
+    - Unidea [[REF:unidea]] - [Sito Web](https://sites.google.com/view/associazioneunidea/home)
 *   **PATROCINI ISTITUZIONALI E STRATEGICI**: 
-    - ADCI [[REF:adci-institutional]]
-    - Comune di Potenza [[REF:comune-potenza]]
-    - Regione Basilicata [[REF:regione-basilicata]]
-    - ADI [[REF:adi-institutional]]
-    - Basilicata Turistica (APT Basilicata) [[REF:apt-institutional]]
+    - ADCI [[REF:adci-institutional]] - [Sito Web](https://www.adci.it)
+    - Comune di Potenza [[REF:comune-potenza]] - [Sito Web](https://www.comune.potenza.it)
+    - Regione Basilicata [[REF:regione-basilicata]] - [Sito Web](https://www.regione.basilicata.it)
+    - ADI [[REF:adi-institutional]] - [Sito Web](https://www.adi-design.org)
+    - Basilicata Turistica (APT Basilicata) [[REF:apt-institutional]] - [Sito Web](https://www.aptbasilicata.it)
 
 ---
 

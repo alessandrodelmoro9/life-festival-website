@@ -19,6 +19,7 @@ slowapi = "^0.1.9"
 cachetools = "^7.1.4"
 llama-index-readers-file = "^0.6.0"
 llama-index-llms-openai-like = "^0.7.2"
+pydantic-settings = "^2.14.1"
 
 [build-system]
 requires = ["poetry-core"]
