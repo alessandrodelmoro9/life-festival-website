@@ -1,34 +1,38 @@
 # PROJECT STATE - LIFE Design Festival 2026 Chatbot
 
-## 🚀 Architettura RAG: ID-Centric & Registry-First
-Abbiamo implementato una logica deterministica per garantire precisione chirurgica nel recupero di asset e link, superando i limiti della sola ricerca semantica.
+## 🚀 Status: PRODUCTION READY
+L'ecosistema AI è stato consolidato, testato e messo in sicurezza per il rilascio pubblico. La logica di recupero è passata da una ricerca puramente semantica a un'architettura **Registry-First** deterministica.
 
-### 1. Il "Bussola" (Registry Nodes)
-Ogni categoria (Sponsor, Speaker, Programma) ha un nodo **Registry** (`id: global-partners`, `id: registry-speakers`, ecc.).
-- **Injection Mandatoria**: Quando il sistema rileva un intento, inietta il riferimento al registro nel prompt dell'LLM.
-- **Link Harvesting**: Il sistema scansiona il testo del registro per estrarre tutti i link URL, garantendo che i bottoni appaiano anche se l'LLM non li scrive.
+### 1. Traguardi Raggiunti (Maggio-Giugno 2026)
+- **Stabilità Titanium**: Il motore RAG gestisce query nulle o fallimenti del database senza crash (NoneType-safe).
+- **Link Harvesting 100%**: I link di Speaker, Sponsor e Social sono estratti dai registri statici caricati in memoria all'avvio.
+- **Visual Intelligence**: Gestione intelligente di Composite Gallery (per date/orari) e Single Portraits (per workshop/speaker).
+- **Inclusività**: Implementazione sistematica della Schwa (ə) in tutte le risposte del Curatore.
 
-### 2. Il "Mappa" (Entity Chunks)
-I singoli speaker e sponsor hanno chunk dedicati con metadati ricchi (`id`, `type`, `web`, `img`, `date`, `time`).
-- **Ponte via ID**: Il sistema usa gli ID `[[REF:id]]` citati dall'LLM per pescare l'immagine e il link esatto dal chunk corrispondente.
+### 2. Hardening Tecnico
+- **Backend**: FastAPI con Rate Limiting (SlowAPI) e supporto per Linux (Render compatibile).
+- **Frontend**: URL API dinamico tramite `VITE_API_URL` per switch istantaneo Locale -> Produzione.
+- **Sicurezza**: Protezione totale delle chiavi API tramite `.gitignore` e iniezione ambientale.
 
-### 3. Logica di Visualizzazione (Magazine Style)
-- **Broad Queries (Tutti gli sponsor, Programma totale, Singola mattina)**:
-  - Visualizza **SOLO** le immagini composite (Gallery / Sponsor Wall).
-  - Nasconde le immagini singole per mantenere il design pulito.
-- **Specific Queries (Workshop, Biglietti, "Chi è X")**:
-  - Visualizza le **Immagini Singole** delle persone coinvolte.
-  - Priorità ai link specifici dell'entità.
-- **Timeframe Match**: Per richieste come "Venerdì mattina", il sistema incrocia i metadati temporali dei chunk per raccogliere tutti i link degli speaker di quella fascia oraria.
+## 🚀 Pipeline di Deployment Online
 
-### 4. Constraints Visivi & Branding
-- **Colori**: Sfondo crema (`#F4EEE4`), testo nero (`#1A1A1A`), hover rosa (`#FF66CC`).
-- **No Emoji / No Tabelle**: Formattazione pulita stile editoriale.
-- **Link Bottoni**: Tutti i link web sono estratti e mostrati come bottoni sotto la chat, mai nel testo.
+### Fase 1: RENDER (Backend)
+1.  **Web Service**: Creare un nuovo Web Service collegato al repo GitHub.
+2.  **Configurazione**: 
+    - Root: `backend`
+    - Build: `pip install -r requirements.txt`
+    - Start: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+3.  **Environment**: Inserire `QDRANT_URL`, `QDRANT_API_KEY`, `OPENROUTER_API_KEY`.
 
-## 🛠️ Stato attuale
-- [DONE] Logica ID-Centric implementata in `engine.py`.
-- [DONE] Asset composite aggiornati per correggere refusi.
-- [DONE] Filtro esclusivo per Gallery vs Immagini singole.
-- [DONE] Recupero link massivo da registri.
-- [IN PROGRESS] Testing finale su casi limite di intenti misti.
+### Fase 2: VERCEL (Frontend)
+1.  **Project Import**: Importare il repository principale.
+2.  **Environment**: Aggiungere `VITE_API_URL` con l'URL fornito da Render.
+3.  **Build**: Preset `Vite`.
+
+### Fase 3: KEEP-ALIVE
+- Configurare un Job esterno su **Cron-job.org** ogni 14 minuti verso l'URL di Render per prevenire lo sleep del piano free.
+
+---
+
+## 📝 Note per il Cliente
+Il sistema è progettato per auto-aggiornarsi: ogni modifica ai file Markdown nella cartella `/knowledge` viene recepita al prossimo riavvio del server o re-ingestione, garantendo una manutenzione minima e un'alta affidabilità delle informazioni.
