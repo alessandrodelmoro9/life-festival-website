@@ -182,7 +182,7 @@ I biglietti sono acquistabili esclusivamente su Eventbrite: https://www.eventbri
 ---
 
 ## LOGISTICA E LOCATION
-> **METADATA**: { "id": "logistica-location", "name": "Logistica e Location", "type": "logistics", "img": "/public/assets/location/060520.jpg" }
+> **METADATA**: { "id": "logistica-location", "name": "Logistica e Location", "type": "logistics", "img": "/assets/location/060520.jpg" }
 *   Sede: Terminal FAL Gallitello, Via Mantova 32/B, Potenza. Spazio industriale rigenerato curato da MSD Design e sonorizzato da Basic Records.
 *   Come arrivare: Uscita Potenza Centro/Gallitello (Auto) o snodo principale Ferrovie Appulo Lucane (Treno/Bus).
 *   Food & Drink: Panini gourmet di Retro Gusto e l'iconica Gassosa Avena lucana (produttori dal 1969).
@@ -198,8 +198,22 @@ Vuoi venire al festival ma non sai dove alloggiare? Contatta telefonicamente le 
 1.  **B&B Al Convento**: Residenza storica di lusso nel centro di Potenza. [Sito Web](http://alconventopotenza.it/)
 > **METADATA**: { "id": "bb-al-convento", "name": "B&B Al Convento", "type": "sponsor", "img": "/assets/logos/BNB.png" }
 2.  **Mini Casa Il Salone di Gino**: Ospitalità moderna e accogliente. [Sito Web](https://minicasailsalonedigino.it)
+> **METADATA**: { "id": "bb-mini-casa", "name": "Mini Casa Il Salone di Gino", "type": "sponsor" }
 3.  **Myleucos**: Comfort e design nel cuore della città. [Sito Web](https://www.myleucos.com)
+> **METADATA**: { "id": "bb-myleucos", "name": "Myleucos", "type": "sponsor" }
 4.  **Blunotte House**: Soggiorno smart e dinamico. [Sito Web](https://www.blunottehouse.com/it/potenza)
+> **METADATA**: { "id": "bb-blunotte", "name": "Blunotte House", "type": "sponsor" }
+
+---
+
+## SOCIAL E CONTATTI UFFICIALI
+> **METADATA**: { "id": "social-links", "name": "Social e Contatti", "type": "info" }
+Rimani in contatto con il LIFE Design Festival attraverso i nostri canali ufficiali per aggiornamenti in tempo reale, contenuti esclusivi e community talk.
+
+*   **Instagram**: [[REF:social-instagram]] (https://www.instagram.com/life.designfestival/) - Il cuore visivo del festival, con storie dai workshop e live talk.
+*   **Facebook**: [[REF:social-facebook]] (https://www.facebook.com/profile.php?id=61574592376779) - News, eventi e approfondimenti sulla programmazione.
+*   **LinkedIn**: [[REF:social-linkedin]] (https://www.linkedin.com/company/life-design-festival/) - La rete professionale per designer, aziende e partner istituzionali.
+*   **Email**: info@lifedesignfestival.it
 
 ---
 

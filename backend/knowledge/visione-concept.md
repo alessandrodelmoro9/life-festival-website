@@ -13,3 +13,10 @@ Il cuore pulsante del festival è il Terminal FAL Gallitello di Potenza, una sed
 
 ## Impatto e Responsabilità del Design
 Il festival promuove una riflessione profonda sulla responsabilità del creativo. Attraverso il tema della traccia, ogni ospite e partecipante è chiamato a indagare il ruolo del progetto come strumento di trasformazione reale. Il design non è inteso come pura estetica, ma come una traiettoria dell'innovazione che deve produrre un impatto tangibile sui territori, valorizzando le competenze locali e ponendole in costante dialogo con le visioni internazionali. Questo percorso di crescita comune mira a definire nuove identità professionali e collettive, lasciando segni riconoscibili nel tempo.
+
+## Il Team di LIFE Design Festival
+> **METADATA**: { "id": "team-life", "name": "Team LIFE Design Festival", "type": "info" }
+L'ecosistema del festival è curato da un team multidisciplinare che unisce visione strategica e sensibilità creativa:
+*   **Michele Arleo** e **Maurizio (Max) Caggiano**: Co-fondatori e Direttori Creativi del festival.
+*   **Rossana Zaccagnino** e **Federico Luciani**: Art Director di LIFE.
+Questo team coordina l'intera traccia progettuale, garantendo la coerenza tra visione territoriale e innovazione digitale.

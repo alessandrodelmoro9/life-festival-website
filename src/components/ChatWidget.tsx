@@ -46,7 +46,8 @@ const ChatWidget: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/chat', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiUrl}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userText }),
@@ -64,7 +65,7 @@ const ChatWidget: React.FC = () => {
     } catch (error) {
       setMessages((prev) => [...prev, { 
         role: 'bot', 
-        text: "Curatore AI momentaneamente offline. Sto ripristinando la connessione, riprova tra poco!" 
+        text: "Il Curatore AI si sta collegando... La prima richiesta potrebbe richiedere un minuto di attesa. Grazie per la pazienzaə." 
       }]);
     } finally {
       setIsLoading(false);
@@ -207,10 +208,10 @@ const ChatWidget: React.FC = () => {
                               h1: ({ node, ...props }) => <h1 {...props} style={{ letterSpacing: '-0.02em' }} className="text-3xl md:text-5xl mb-8 mt-12 font-display font-bold text-life-black" />,
                               h2: ({ node, ...props }) => <h2 {...props} style={{ letterSpacing: '-0.02em' }} className="text-2xl md:text-3xl mb-6 mt-10 font-display font-bold text-life-black" />,
                               h3: ({ node, ...props }) => <h3 {...props} style={{ letterSpacing: '-0.02em' }} className="text-xl md:text-2xl mb-4 mt-8 font-display font-bold text-life-black" />,
-                              p: ({ node, ...props }) => <p {...props} style={{ fontFamily: "'Automat Grotesk', sans-serif", letterSpacing: '-0.02em' }} className="mb-6" />,
-                              ul: ({ node, ...props }) => <ul {...props} className="mb-10 space-y-2 list-none" />,
-                              ol: ({ node, ...props }) => <ol {...props} className="mb-10 space-y-2 list-decimal ml-6" />,
-                              li: ({ node, ...props }) => <li {...props} className="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-2 before:bg-life-pink before:rounded-none" />
+                              p: ({ node, ...props }) => <p {...props} style={{ fontFamily: "'Automat Grotesk', sans-serif", letterSpacing: '-0.02em' }} className="mb-6 text-lg md:text-[20px]" />,
+                              ul: ({ node, ...props }) => <ul {...props} className="mb-10 space-y-4 list-none" />,
+                              ol: ({ node, ...props }) => <ol {...props} className="mb-10 space-y-4 list-decimal ml-6" />,
+                              li: ({ node, ...props }) => <li {...props} style={{ fontFamily: "'Automat Grotesk', sans-serif", letterSpacing: '-0.02em' }} className="relative pl-6 text-lg md:text-[20px] before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-2 before:bg-life-pink before:rounded-none" />
                             }}
                           >
                             {msg.text}
