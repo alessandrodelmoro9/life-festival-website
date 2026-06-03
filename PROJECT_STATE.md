@@ -1,38 +1,27 @@
 # PROJECT STATE - LIFE Design Festival 2026 Chatbot
 
-## 🚀 Status: PRODUCTION READY
-L'ecosistema AI è stato consolidato, testato e messo in sicurezza per il rilascio pubblico. La logica di recupero è passata da una ricerca puramente semantica a un'architettura **Registry-First** deterministica.
+## 🚀 Status: PRODUCTION READY & CONNECTED
+L'ecosistema è ora interamente collegato tra Frontend (Vercel) e Backend (Render). I dati sono stati allineati e la pipeline di aggiornamento è automatizzata.
 
-### 1. Traguardi Raggiunti (Maggio-Giugno 2026)
-- **Stabilità Titanium**: Il motore RAG gestisce query nulle o fallimenti del database senza crash (NoneType-safe).
-- **Link Harvesting 100%**: I link di Speaker, Sponsor e Social sono estratti dai registri statici caricati in memoria all'avvio.
-- **Visual Intelligence**: Gestione intelligente di Composite Gallery (per date/orari) e Single Portraits (per workshop/speaker).
-- **Inclusività**: Implementazione sistematica della Schwa (ə) in tutte le risposte del Curatore.
+### 1. Traguardi Raggiunti (Giugno 2026)
+- **Connessione Live**: Frontend e Backend comunicano correttamente tramite `VITE_API_URL`.
+- **CORS Hardening**: Autorizzati i domini di produzione e i link preview specifici di Vercel.
+- **Granular Team Metadata**: Il team di **FIIICO CREATIVE** (Rossana, Federico, Michele, Massimiliano) è mappato individualmente per fornire link LinkedIn mirati.
+- **Automated Ingestion**: Il database Qdrant si sincronizza automaticamente ad ogni push tramite il comando di build.
 
-### 2. Hardening Tecnico
-- **Backend**: FastAPI con Rate Limiting (SlowAPI) e supporto per Linux (Render compatibile).
-- **Frontend**: URL API dinamico tramite `VITE_API_URL` per switch istantaneo Locale -> Produzione.
-- **Sicurezza**: Protezione totale delle chiavi API tramite `.gitignore` e iniezione ambientale.
+### 2. Checklist Operativa Finale (Cosa fare ora)
+- [ ] **Render Build Command**: Impostare `pip install -r requirements.txt && python core/ingest.py` nella dashboard di Render.
+- [ ] **Git Push**: Caricare l'ultimo commit con i metadati del team e le correzioni CORS.
+- [ ] **Cron-Job**: Attivare il ping su `cron-job.org` verso l'endpoint `/health` (ogni 10-14 min) per evitare lo sleep del server.
+- [ ] **Validation Test**: Verificare le risposte specifiche (es. "Chi è Federico Luciani?") sui link di produzione.
 
-## 🚀 Pipeline di Deployment Online
-
-### Fase 1: RENDER (Backend)
-1.  **Web Service**: Creare un nuovo Web Service collegato al repo GitHub.
-2.  **Configurazione**: 
-    - Root: `backend`
-    - Build: `pip install -r requirements.txt`
-    - Start: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-3.  **Environment**: Inserire `QDRANT_URL`, `QDRANT_API_KEY`, `OPENROUTER_API_KEY`.
-
-### Fase 2: VERCEL (Frontend)
-1.  **Project Import**: Importare il repository principale.
-2.  **Environment**: Aggiungere `VITE_API_URL` con l'URL fornito da Render.
-3.  **Build**: Preset `Vite`.
-
-### Fase 3: KEEP-ALIVE
-- Configurare un Job esterno su **Cron-job.org** ogni 14 minuti verso l'URL di Render per prevenire lo sleep del piano free.
+### 3. Note per la Manutenzione
+Per aggiornare i contenuti del chatbot, basta modificare i file in `/backend/knowledge` e fare un `git push`. Il sistema si occuperà di svuotare e ricaricare il database Cloud automaticamente.
 
 ---
 
-## 📝 Note per il Cliente
-Il sistema è progettato per auto-aggiornarsi: ogni modifica ai file Markdown nella cartella `/knowledge` viene recepita al prossimo riavvio del server o re-ingestione, garantendo una manutenzione minima e un'alta affidabilità delle informazioni.
+## 📝 Lista Cose da Fare (Prossima Sessione)
+1. Eseguire il push finale del branch `production-ready`.
+2. Verificare l'avvio della build su Render con il comando di ingestione.
+3. Testare le risposte individuali dei membri del team sul sito live.
+4. Configurare il Keep-alive per garantire risposte istantanee agli utenti.

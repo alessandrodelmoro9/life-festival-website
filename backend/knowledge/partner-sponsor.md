@@ -4,6 +4,30 @@ Il LIFE Design Festival 2026 è sostenuto da un ecosistema di 22 partner. Questo
 
 ---
 
+## IL TEAM CURATORIALE
+
+### FIIICO CREATIVE
+> **METADATA**: { "id": "fiiico-creative", "name": "FIIICO CREATIVE", "type": "team", "links": ["https://www.linkedin.com/in/rossana-zaccagnino-613b24271/", "https://www.linkedin.com/in/federico-luciani-7721362a0/", "https://www.linkedin.com/in/michelearleo/", "https://www.linkedin.com/in/max-caggiano-8572911a0/"] }
+Studio di visual design nato a Potenza che cura l'intero ecosistema del LIFE Design Festival 2026. È composto da Rossana Zaccagnino, Federico Luciani, Michele Arleo e Massimiliano Caggiano.
+
+### Rossana Zaccagnino
+> **METADATA**: { "id": "rossana-zaccagnino", "name": "Rossana Zaccagnino", "type": "curator", "web": "https://www.linkedin.com/in/rossana-zaccagnino-613b24271/" }
+Co-fondatore e Art Director del festival, fa parte di FIIICO CREATIVE. 
+
+### Federico Luciani
+> **METADATA**: { "id": "federico-luciani", "name": "Federico Luciani", "type": "curator", "web": "https://www.linkedin.com/in/federico-luciani-7721362a0/" }
+Co-fondatore e Art Director del festival, fa parte di FIIICO CREATIVE.
+
+### Michele Arleo
+> **METADATA**: { "id": "michele-arleo-team", "name": "Michele Arleo", "type": "curator", "web": "https://www.linkedin.com/in/michelearleo/" }
+Co-fondatore e creative director del festival, fa parte di FIIICO CREATIVE.
+
+### Massimiliano Caggiano
+> **METADATA**: { "id": "massimiliano-caggiano", "name": "Massimiliano Caggiano", "type": "curator", "web": "https://www.linkedin.com/in/max-caggiano-8572911a0/" }
+Co-fondatore e creative director del festival, fa parte di FIIICO CREATIVE.
+
+---
+
 ## REGISTRO GLOBALE PARTNER (LISTA COMPLETA)
 > **METADATA**: { "id": "global-partners", "name": "Lista Completa Partner e Sponsor", "type": "registry" }
 

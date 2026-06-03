@@ -15,8 +15,23 @@ Il cuore pulsante del festival è il Terminal FAL Gallitello di Potenza, una sed
 Il festival promuove una riflessione profonda sulla responsabilità del creativo. Attraverso il tema della traccia, ogni ospite e partecipante è chiamato a indagare il ruolo del progetto come strumento di trasformazione reale. Il design non è inteso come pura estetica, ma come una traiettoria dell'innovazione che deve produrre un impatto tangibile sui territori, valorizzando le competenze locali e ponendole in costante dialogo con le visioni internazionali. Questo percorso di crescita comune mira a definire nuove identità professionali e collettive, lasciando segni riconoscibili nel tempo.
 
 ## Il Team di LIFE Design Festival
-> **METADATA**: { "id": "team-life", "name": "Team LIFE Design Festival", "type": "info" }
-L'ecosistema del festival è curato da un team multidisciplinare che unisce visione strategica e sensibilità creativa:
-*   **Michele Arleo** e **Maurizio (Max) Caggiano**: Co-fondatori e Direttori Creativi del festival.
-*   **Rossana Zaccagnino** e **Federico Luciani**: Art Director di LIFE.
-Questo team coordina l'intera traccia progettuale, garantendo la coerenza tra visione territoriale e innovazione digitale.
+
+### FIIICO CREATIVE
+> **METADATA**: { "id": "fiiico-creative-vision", "name": "FIIICO CREATIVE", "type": "team", "links": ["https://www.linkedin.com/in/rossana-zaccagnino-613b24271/", "https://www.linkedin.com/in/federico-luciani-7721362a0/", "https://www.linkedin.com/in/michelearleo/", "https://www.linkedin.com/in/max-caggiano-8572911a0/"] }
+L’ecosistema del festival è curato da **Rossana Zaccagnino**, **Federico Luciani**, **Michele Arleo** e **Massimiliano Caggiano**. Insieme sono **FIIICO CREATIVE**, uno studio di visual design nato a Potenza che coordina l'intera traccia progettuale, garantendo la coerenza tra visione territoriale e innovazione digitale.
+
+### Rossana Zaccagnino
+> **METADATA**: { "id": "rossana-zaccagnino-vision", "name": "Rossana Zaccagnino", "type": "curator", "web": "https://www.linkedin.com/in/rossana-zaccagnino-613b24271/" }
+Co-fondatore  e Art Director del festival, fa parte di FIIICO CREATIVE.
+
+### Federico Luciani
+> **METADATA**: { "id": "federico-luciani-vision", "name": "Federico Luciani", "type": "curator", "web": "https://www.linkedin.com/in/federico-luciani-7721362a0/" }
+Co-fondatore  e Art Director del festival, fa parte di FIIICO CREATIVE.
+
+### Michele Arleo
+> **METADATA**: { "id": "michele-arleo-vision", "name": "Michele Arleo", "type": "curator", "web": "https://www.linkedin.com/in/michelearleo/" }
+Co-fondatore e creative directo del festival, fa parte di FIIICO CREATIVE.
+
+### Massimiliano Caggiano
+> **METADATA**: { "id": "massimiliano-caggiano-vision", "name": "Massimiliano Caggiano", "type": "curator", "web": "https://www.linkedin.com/in/max-caggiano-8572911a0/" }
+Co-fondatore e creative director del festival, fa parte di FIIICO CREATIVE.
