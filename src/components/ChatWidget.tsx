@@ -12,6 +12,7 @@ interface Message {
 }
 
 const ChatWidget: React.FC = () => {
+  const [sessionId] = useState(() => Math.random().toString(36).substring(7));
   const [isFullPage, setIsFullPage] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
@@ -50,7 +51,10 @@ const ChatWidget: React.FC = () => {
       const response = await fetch(`${apiUrl}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userText }),
+        body: JSON.stringify({ 
+          message: userText,
+          session_id: sessionId
+        }),
       });
 
       if (!response.ok) throw new Error('Backend offline');
