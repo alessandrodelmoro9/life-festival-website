@@ -15,6 +15,7 @@ import FooterSection from '@/components/FooterSection';
 import { PaintProvider } from '@/context/PaintContext';
 import PaintCanvas from '@/components/paint/PaintCanvas';
 import PaintToolbar from '@/components/paint/PaintToolbar';
+import ChatWidget from '@/components/ChatWidget';
 import CustomCursor from '@/components/ui/CustomCursor';
 import bgSite from '@/assets/bg-site.svg';
 
@@ -59,6 +60,7 @@ const Index = () => {
         <FooterSection />
         <PaintCanvas />
         <PaintToolbar />
+        <ChatWidget />
       </main>
     </PaintProvider>
   );
