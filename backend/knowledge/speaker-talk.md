@@ -26,7 +26,7 @@ Questa è la lista ufficiale di tuttə lə speaker e studi creativi che interver
 *   **Mauro Mazzei** [[REF:mauro-mazzei]] - [Sito Web](https://www.le.pub)
 *   **PUG! Design Fest** [[REF:pug-design-fest]] - [Sito Web](https://www.pugdesignfest.com)
 *   **Rocketpanda Studio** (Riccardo Albertini) [[REF:rocketpanda-studio]] - [Sito Web](https://www.therocketpanda.com)
-*   **Silvia Sguotti** [[REF:silvia-sguotti]] - [Sito Web](https://www.behance.net/SilviaSguotti)
+*   **Silvia Sguotti** [[REF:silvia-sguotti]] - [Sito Web](https://silviasguotti.design/)
 *   **Simone Checchia** [[REF:simone-checchia]] - [Sito Web](https://www.checchiadesign.com)
 *   **The Wave Studio** (Loriana Consentino) [[REF:the-wave-studio]] - [Sito Web](https://www.thewavestudio.it)
 *   **Zetafonts** (Cosimo L. Pancini & Dario Manzo) [[REF:zetafonts]] - [Sito Web](https://www.zetafonts.com)
@@ -315,7 +315,7 @@ Dall'ossessione per l'ultra-complesso alla riscoperta del “minimal”: un viag
 ---
 
 ## Silvia Sguotti
-> **METADATA**: { "id": "silvia-sguotti", "name": "Silvia Sguotti", "type": "speaker", "img": "/assets/speakers/silvia ssguotti.jpg", "web": "https://www.behance.net/SilviaSguotti", "ig": "https://www.instagram.com/silviasguotti/", "date": "2026-06-05", "time": "12:35" }
+> **METADATA**: { "id": "silvia-sguotti", "name": "Silvia Sguotti", "type": "speaker", "img": "/assets/speakers/silvia ssguotti.jpg", "web": "https://silviasguotti.design/", "ig": "https://www.instagram.com/silviasguotti/", "date": "2026-06-05", "time": "12:35" }
 
 ### SCHEDULAZIONE E TALK
 *   Data: Venerdì 5 Giugno 2026
