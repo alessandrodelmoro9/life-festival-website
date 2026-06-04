@@ -1,27 +1,32 @@
 # PROJECT STATE - LIFE Design Festival 2026 Chatbot
 
-## 🚀 Status: PRODUCTION READY & CONNECTED
-L'ecosistema è ora interamente collegato tra Frontend (Vercel) e Backend (Render). I dati sono stati allineati e la pipeline di aggiornamento è automatizzata.
+## 🚀 Status: LIVE & FULLY AUTOMATED
+Il sistema è operativo, testato e sincronizzato. La connessione Vercel-Render è stabile e il database Qdrant è stato ripulito e allineato ai contenuti finali.
 
-### 1. Traguardi Raggiunti (Giugno 2026)
-- **Connessione Live**: Frontend e Backend comunicano correttamente tramite `VITE_API_URL`.
-- **CORS Hardening**: Autorizzati i domini di produzione e i link preview specifici di Vercel.
-- **Granular Team Metadata**: Il team di **FIIICO CREATIVE** (Rossana, Federico, Michele, Massimiliano) è mappato individualmente per fornire link LinkedIn mirati.
-- **Automated Ingestion**: Il database Qdrant si sincronizza automaticamente ad ogni push tramite il comando di build.
+### 1. Traguardi Raggiunti (GIUGNO 2026)
+- **Automazione Totale**: Ingestione automatica dei dati ad ogni push tramite il comando di build su Render.
+- **Granularità Team**: Risposte mirate per i singoli membri di **FIIICO CREATIVE** con bottoni LinkedIn individuali.
+- **Zero Latency**: Configurato Cron-job esterno per prevenire lo sleep del server Render.
+- **CORS Hardening**: Accesso sicuro garantito per i domini ufficiali e preview.
 
-### 2. Checklist Operativa Finale (Cosa fare ora)
-- [ ] **Render Build Command**: Impostare `pip install -r requirements.txt && python core/ingest.py` nella dashboard di Render.
-- [ ] **Git Push**: Caricare l'ultimo commit con i metadati del team e le correzioni CORS.
-- [ ] **Cron-Job**: Attivare il ping su `cron-job.org` verso l'endpoint `/health` (ogni 10-14 min) per evitare lo sleep del server.
-- [ ] **Validation Test**: Verificare le risposte specifiche (es. "Chi è Federico Luciani?") sui link di produzione.
+### 2. 🏁 ROADMAP PER IL LANCIO UFFICIALE (GO-LIVE)
+Quando sarete pronti per il lancio pubblico sul dominio principale, seguite questi step:
 
-### 3. Note per la Manutenzione
-Per aggiornare i contenuti del chatbot, basta modificare i file in `/backend/knowledge` e fare un `git push`. Il sistema si occuperà di svuotare e ricaricare il database Cloud automaticamente.
+1. **Merge su `main`**: Unire il branch `production-ready` nel branch `main` di GitHub.
+2. **Switch Render/Vercel**: 
+   - Su Render: Cambiare il branch di monitoraggio da `production-ready` a `main`.
+   - Su Vercel: Assicurarsi che il dominio ufficiale punti al branch `main`.
+3. **OpenRouter Credits**: 
+   - Attualmente l'API Key ha un limite di 20€ (con circa 2.50€ già consumati).
+   - Per il festival, si consiglia di ricaricare il credito su OpenRouter per evitare interruzioni durante i giorni di picco.
+4. **Nuova API Key (Opzionale)**: Creare una chiave dedicata esclusivamente alla produzione per monitorare i costi separatamente dai test.
+
+### 3. ISTRUZIONI PER LA MANUTENZIONE
+- **Aggiornamento Testi**: Modificare i file in `backend/knowledge/` -> `git push`. L'AI imparerà tutto in 3 minuti.
+- **Monitoraggio**: Controllare periodicamente la dashboard di `cron-job.org` per assicurarsi che il server sia sempre attivo.
 
 ---
 
-## 📝 Lista Cose da Fare (Prossima Sessione)
-1. Eseguire il push finale del branch `production-ready`.
-2. Verificare l'avvio della build su Render con il comando di ingestione.
-3. Testare le risposte individuali dei membri del team sul sito live.
-4. Configurare il Keep-alive per garantire risposte istantanee agli utenti.
+## 📝 Note Finali
+Il progetto è stato consegnato con un'architettura **Registry-First** che garantisce risposte deterministiche e link sempre corretti, eliminando le allucinazioni tipiche delle AI standard.
+
