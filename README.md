@@ -50,7 +50,7 @@ Located in the `/backend` directory, this service manages the intelligence and d
 
 ### 2.2 Technical Features
 - **Adaptive Top-K**: Retrieval depth dynamically scales (from 20 to 40 nodes) based on query complexity (e.g., full program requests).
-- **Similarity Post-Processing**: Cutoff threshold of 0.30 to ensure context relevance.
+- **Similarity Post-Processing**: Cutoff threshold of 0.25 to ensure optimal context relevance while maintaining coverage.
 - **Titanium Link Logic**: Pre-loaded static link mapping to ensure 100% button reliability regardless of LLM tokenization.
 - **Security**: CORS-protected origins and environmental credential management.
 
