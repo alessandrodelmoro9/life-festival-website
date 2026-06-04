@@ -118,10 +118,18 @@ class LifeRagEngine:
         }
 
     def query(self, message: str, session_id: str = "default") -> Dict[str, Any]:
+        """
+        Executes a RAG query with intent enrichment, entity matching, and asset resolution.
+        """
         if message.lower().strip() in ['ciao', 'buongiorno', 'hey']:
-            return {"text": "Ciao! Sono il **Curatore AI** del LIFE Design Festival 2026. Come posso aiutartiə?", "images": [], "links": [], "source": "system"}
+            return {
+                "text": "Ciao! Sono il **Curatore AI** del LIFE Design Festival 2026. Come posso aiutartiə?",
+                "images": [],
+                "links": [],
+                "source": "system"
+            }
 
-        # Inizializzazione sicura di tutte le variabili di output
+        # Contextual state initialization
         final_links = []
         final_images = []
         active_ids = set()
@@ -134,56 +142,54 @@ class LifeRagEngine:
             lower_msg = message.lower()
             intents = self._detect_intents(lower_msg)
             
-            # 1. ENHANCEMENT & QUERY
+            # 1. Query Augmentation & Intent Enforcement
             enhanced_message = message
             top_k = 20
             
-            # Gestione Programma/Speaker con obbligo di tag
             if intents.get("program") or intents.get("total") or intents.get("speaker"):
                 top_k = 40
-                enhanced_message += "\n(MANDATORIO: Usa [[REF:registry-speakers]] e usa SEMPRE i tag [[REF:id]] per ogni speaker citato per attivare i bottoni.)"
+                enhanced_message += "\n(MANDATORIO: Usa [[REF:registry-speakers]] e usa sempre i tag [[REF:id]] per ogni speaker citato.)"
             
-            if intents.get("sponsor"): enhanced_message += "\n(MANDATORIO: Usa [[REF:global-partners]])"
-            if intents.get("lodging"): enhanced_message += "\n(MANDATORIO: Usa [[REF:ospitalita-convenzionata]])"
+            if intents.get("sponsor"):
+                enhanced_message += "\n(MANDATORIO: Usa [[REF:global-partners]])"
             
-            # Gestione Team vs Singolo Membro
+            if intents.get("lodging"):
+                enhanced_message += "\n(MANDATORIO: Usa [[REF:ospitalita-convenzionata]])"
+            
+            # Specific Team Member vs Collective Logic
             is_specific_member = any(name in lower_msg for name in ["rossana", "federico", "michele", "massimiliano", "caggiano", "arleo", "luciani", "zaccagnino"])
             if intents.get("team"):
                 if is_specific_member:
-                    enhanced_message += "\n(MANDATORIO: Usa il tag [[REF:nome-cognome-vision]] specifico per la persona richiesta (es. [[REF:rossana-zaccagnino-vision]]), NON usare il tag fiiico-creative generale.)"
+                    enhanced_message += "\n(MANDATORIO: Usa il tag [[REF:nome-cognome-vision]] specifico richiesto.)"
                 else:
                     enhanced_message += "\n(MANDATORIO: Usa [[REF:fiiico-creative]])"
 
+            # 2. LLM Execution
             chat_engine = self.get_chat_engine(session_id, top_k=top_k)
             response = chat_engine.chat(enhanced_message)
             
-            # Estrazione sicura del testo e dei tag
             response_text = str(response) if response else response_text
             found_tags = [t.lower().strip() for t in re.findall(r'\[\[REF:(.*?)\]\]', response_text)]
             active_ids.update(found_tags)
 
-            # Safety Net: Se il testo cita nomi in grassetto ma mancano i tag, proviamo a recuperarli
+            # Safety Net: Recover missing tags from bolded names
             for slug, url in STATIC_REGISTRY_LINKS.items():
-                # Pulizia slug per matching (es. 'rossana-zaccagnino-vision' -> 'rossana zaccagnino')
                 clean_name = slug.replace('-studio', '').replace('-design', '').replace('-creative', '').replace('-vision', '').replace('-', ' ')
                 
-                # Se è un membro del team, facciamo un check più stretto
                 if slug.endswith('-vision') and is_specific_member:
-                    # Carichiamo SOLO lo slug se il nome è esplicitamente nel messaggio originale
                     if clean_name in lower_msg:
                         active_ids.add(slug)
-                    continue # Non passiamo al check del testo della risposta per i membri del team
+                    continue
 
                 if f"**{clean_name}" in response_text.lower():
                     active_ids.add(slug)
 
-            # 2. PRE-MATCHING (DATE DETECTION)
-            # Riconosciamo il giorno anche se espresso come "primo" o "secondo"
+            # 3. Timeframe Detection
             is_friday = intents.get("friday") or "primo giorno" in lower_msg or " 5 " in lower_msg
             is_saturday = intents.get("saturday") or "secondo giorno" in lower_msg or " 6 " in lower_msg
             intent_date = "2026-06-05" if is_friday else "2026-06-06" if is_saturday else None
 
-            # 3. SOURCE NODES PROCESSING (NULL-SAFE)
+            # 4. Source Node Processing & Registry Harvesting
             source_nodes = getattr(response, 'source_nodes', []) or []
             for n in source_nodes:
                 if not n or not hasattr(n, 'node') or n.node is None: continue
@@ -191,12 +197,11 @@ class LifeRagEngine:
                 tid = str(meta.get("id") or "").lower().strip()
                 if tid: node_map[tid] = meta
                 
-                # Harvesting link dai registri (Escludiamo registry-speakers se c'è un filtro temporale)
-                is_registry = any(k in tid for k in ["registry", "global-partners", "ospitalita", "social-links", "fiiico-creative", "fiiico-creative-vision"])
-                
-                # Se c'è una data/orario, NON leggiamo i link dal registro degli speaker per evitare i 21 link
-                if intent_date and tid == "registry-speakers": continue
+                # Prevent link leakage for timeframe-specific queries
+                if intent_date and tid == "registry-speakers":
+                    continue
 
+                is_registry = any(k in tid for k in ["registry", "global-partners", "ospitalita", "social-links", "fiiico", "vision"])
                 if is_registry:
                     content = n.node.get_content() or ""
                     registry_content_map[tid] = content
@@ -207,7 +212,7 @@ class LifeRagEngine:
                         rid_clean = rid.lower().strip()
                         if rid_clean not in registry_link_map: registry_link_map[rid_clean] = url.strip()
 
-            # 4. ENTITY MATCHING (ID-CENTRIC)
+            # 5. Entity Filtering (ID-Centric)
             if intent_date:
                 for tid, meta in node_map.items():
                     if isinstance(meta, dict) and meta.get("date") == intent_date:
@@ -217,7 +222,7 @@ class LifeRagEngine:
                         if (intents.get("morning") and is_morn) or (intents.get("afternoon") and is_aft) or (not intents.get("morning") and not intents.get("afternoon")):
                             active_ids.add(tid)
 
-            # 4. LINK HARVESTING (CATEGORIZED)
+            # 6. Global Link Collection
             if intents.get("ticket") or "ticket" in response_text.lower():
                 final_links.append("https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213")
 
@@ -233,23 +238,19 @@ class LifeRagEngine:
                     u_c = u.strip('.,')
                     if u_c not in final_links: final_links.append(u_c)
             
-            # Link Organizzatori (FIIICO) - Solo per query generali sul team
-            # Se è un membro specifico, NON aggiungiamo MAI i link collettivi del team
+            # Collective Team Links
             if intents.get("team") and not is_specific_member:
-                # Proviamo a prendere i link sia dal nodo vision che dal nodo generale se presenti
                 for f_id in ["fiiico-creative", "fiiico-creative-vision"]:
                     m = node_map.get(f_id) or {}
                     if "links" in m and isinstance(m["links"], list):
                         for l in m["links"]:
                             if l not in final_links: final_links.append(l)
 
+            # 7. Dynamic Link Harvesting
             if not intents.get("social"):
-                # Programma generale (senza date o filtri orari)
                 is_gen = (intents.get("program") or intents.get("speaker")) and not intent_date and not intents.get("morning") and not intents.get("afternoon")
                 
-                # MASS HARVEST: Solo se è una richiesta totale o una richiesta generica che ha prodotto molti risultati (lista)
-                # Impediamo il mass harvest se abbiamo pochi ID attivi (es. 1 o 2 speaker specifici come Mauro o Silvia)
-                # Se len(active_ids) <= 3, consideriamo la query specifica e non carichiamo il registro intero.
+                # Mass Harvest Logic: Distinguish between list requests and specific person queries
                 is_mass_request = intents.get("total") or (is_gen and len(active_ids) > 3)
                 
                 if is_mass_request and not intent_date and not is_specific_member and "registry-speakers" in registry_content_map:
@@ -258,24 +259,21 @@ class LifeRagEngine:
                         u_c = u.strip('.,')
                         if u_c not in final_links: final_links.append(u_c)
                 
-                # ID attivi (Filtrati chirurgicamente per timeframe nel punto 3 della logica)
                 for aid in active_ids:
-                    # Se stiamo cercando un membro specifico del team, non carichiamo per sbaglio lo studio o il team
+                    # Filter collective IDs when specific member is requested
                     if is_specific_member and aid in ["fiiico-creative", "fiiico-creative-vision", "retro-gusto"]:
-                        # Ma carichiamo il membro specifico
-                        is_current_member = any(name in aid for name in ["rossana", "federico", "michele", "massimiliano"])
-                        if not is_current_member: continue
+                        if not any(name in aid for name in ["rossana", "federico", "michele", "massimiliano"]):
+                            continue
 
                     m = node_map.get(aid) or {}
                     
-                    # Se è un workshop, prova a recuperare il link dello speaker associato
+                    # Workshop-Speaker association
                     if aid.startswith("workshop-") and m.get("speaker_id"):
                         spk_id = str(m["speaker_id"]).lower().strip()
                         spk_meta = node_map.get(spk_id) or {}
                         spk_link = registry_link_map.get(spk_id) or STATIC_REGISTRY_LINKS.get(spk_id) or spk_meta.get("web")
                         if spk_link and spk_link not in final_links: final_links.append(spk_link)
 
-                    # Supporto per link multipli o singolo web (Solo se l'ID è attivo/filtrato per tempo)
                     if "links" in m and isinstance(m["links"], list):
                         for l in m["links"]:
                             if l not in final_links: final_links.append(l)
@@ -283,48 +281,63 @@ class LifeRagEngine:
                     l = registry_link_map.get(aid) or STATIC_REGISTRY_LINKS.get(aid) or m.get("web")
                     if l and l not in final_links: final_links.append(l)
 
-            # Rimuoviamo duplicati mantenendo l'ordine
+            # Deduplication
             seen = set()
             final_links = [x for x in final_links if not (x in seen or seen.add(x))]
 
-            # 5. ASSET RESOLUTION
+            # 8. Asset Resolution
             composite_ids = []
-            if intents.get("social"): pass
-            elif intents.get("sponsor"): composite_ids.append("sponsor-wall")
+            if intents.get("social"):
+                pass
+            elif intents.get("sponsor"):
+                composite_ids.append("sponsor-wall")
             elif (intents.get("total") or intents.get("program") or intent_date) and not (intents.get("workshop") or intents.get("ticket")):
                 day = "friday" if is_friday else "saturday" if is_saturday else None
                 if day:
-                    if intents.get("morning"): composite_ids.append(f"gallery-{day}-morning")
-                    elif intents.get("afternoon"): composite_ids.append(f"gallery-{day}-afternoon")
-                    else: composite_ids.extend([f"gallery-{day}-morning", f"gallery-{day}-afternoon"])
+                    if intents.get("morning"):
+                        composite_ids.append(f"gallery-{day}-morning")
+                    elif intents.get("afternoon"):
+                        composite_ids.append(f"gallery-{day}-afternoon")
+                    else:
+                        composite_ids.extend([f"gallery-{day}-morning", f"gallery-{day}-afternoon"])
                 else:
                     composite_ids.extend(["gallery-friday-morning", "gallery-friday-afternoon", "gallery-saturday-morning", "gallery-saturday-afternoon"])
 
-            # Logica di esclusione: se abbiamo grafiche composite, NON mostriamo le singole immagini degli speaker
-            # a meno che l'utente non abbia chiesto esplicitamente di uno solo (active_ids <= 2).
+            # Resolve Assets (Composite vs Individual)
             if composite_ids:
-                # Se è stata trovata almeno una grafica composita, mostriamo solo quelle
                 unique_composites = []
                 for cid in composite_ids:
                     img = ASSET_REGISTRY.get(cid)
-                    if img and img not in unique_composites: unique_composites.append(img)
+                    if img and img not in unique_composites:
+                        unique_composites.append(img)
                 final_images = unique_composites
             elif intents.get("workshop") or intents.get("ticket") or len(active_ids) <= 2:
                 for aid in active_ids:
                     m = node_map.get(aid) or {}
                     img = ASSET_REGISTRY.get(aid) or m.get("img")
-                    if img and img not in final_images: final_images.append(img)
+                    if img and img not in final_images:
+                        final_images.append(img)
                 final_images = final_images[:5]
             else:
                 for aid in active_ids:
                     m = node_map.get(aid) or {}
                     img = ASSET_REGISTRY.get(aid) or m.get("img")
-                    if img and img not in final_images: final_images.append(img)
+                    if img and img not in final_images:
+                        final_images.append(img)
                 final_images = final_images[:10]
 
-            return {"text": re.sub(r'\[\[REF:.*?\]\]', '', response_text).strip(), "images": final_images, "links": final_links, "source": settings.MODEL_NAME}
+            return {
+                "text": re.sub(r'\[\[REF:.*?\]\]', '', response_text).strip(),
+                "images": final_images,
+                "links": final_links,
+                "source": settings.MODEL_NAME
+            }
 
         except Exception as e:
-            logger.error(f"Query Error: {e}")
-            # Ritorno di emergenza: non crasha mai
-            return {"text": "Ho riscontrato un'incertezza tecnica, ma ecco i nostri canali ufficiali.", "images": [], "links": ["https://www.instagram.com/life.designfestival/"], "source": "error"}
+            logger.error(f"Query Execution Error: {e}")
+            return {
+                "text": "Ho riscontrato un'incertezza tecnica, ma ecco i nostri canali ufficiali.",
+                "images": [],
+                "links": ["https://www.instagram.com/life.designfestival/"],
+                "source": "error"
+            }
