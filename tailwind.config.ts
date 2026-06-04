@@ -61,8 +61,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        aquawax: ["Aquawax-Fx", "sans-serif"],
-        automat: ["Automat-Grotesk", "sans-serif"],
+        display: ["'Aquawax Fx'", "sans-serif"],
+        body: ["'Automat Grotesk'", "sans-serif"],
+        aquawax: ["'Aquawax Fx'", "sans-serif"],
+        automat: ["'Automat Grotesk'", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
