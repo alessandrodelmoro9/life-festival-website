@@ -106,6 +106,10 @@ FOUNDER_MAP = {
     "enea rossi": "adoratorio-studio",
     "anna d'andrea": "retro-gusto",
     "rocchina zaccagnino": "retro-gusto",
+    "rossana zaccagnino": "rossana-zaccagnino",
+    "federico luciani": "federico-luciani",
+    "michele arleo": "michele-arleo-team",
+    "massimiliano caggiano": "massimiliano-caggiano",
     "renata verrastro": "retro-gusto",
     "alfredo avena": "avena",
     "zetafonts": "zetafonts"

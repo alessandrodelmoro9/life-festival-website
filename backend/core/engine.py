@@ -149,6 +149,14 @@ class LifeRagEngine:
             if intents.get("sponsor"): enhanced_message += "\n(MANDATORIO: Usa [[REF:global-partners]])"
             if intents.get("lodging"): enhanced_message += "\n(MANDATORIO: Usa [[REF:ospitalita-convenzionata]])"
 
+            # Specific Team Member vs Collective Logic
+            is_specific_member = any(name in lower_msg for name in ["rossana", "federico", "michele", "massimiliano", "caggiano", "arleo", "luciani", "zaccagnino"])
+            if intents.get("team"):
+                if is_specific_member:
+                    enhanced_message += "\n(MANDATORIO: Usa il tag [[REF:nome-cognome-vision]] specifico richiesto.)"
+                else:
+                    enhanced_message += "\n(MANDATORIO: Usa [[REF:fiiico-creative]])"
+
             # 2. RAG Execution
             chat_engine = self.get_chat_engine(session_id, top_k=top_k)
             response = chat_engine.chat(enhanced_message)
@@ -161,6 +169,13 @@ class LifeRagEngine:
             # Safety Net: Heuristic identifier recovery
             for slug, url in STATIC_REGISTRY_LINKS.items():
                 clean_name = slug.replace('-studio', '').replace('-design', '').replace('-creative', '').replace('-vision', '').replace('-', ' ')
+                
+                # Special handling for team members to avoid collective link leakage
+                if slug.endswith('-vision') and is_specific_member:
+                    if clean_name in lower_msg:
+                        active_ids.add(slug)
+                    continue
+
                 if re.search(rf'\b{re.escape(clean_name)}\b', response_text.lower()):
                     active_ids.add(slug)
 
@@ -204,6 +219,11 @@ class LifeRagEngine:
 
             # Link Harvesting: Precision mapping based on explicitly cited or detected IDs
             for aid in active_ids:
+                # Filter collective IDs when specific member is requested
+                if is_specific_member and aid in ["fiiico-creative", "fiiico-creative-vision", "retro-gusto"]:
+                    if not any(name in aid for name in ["rossana", "federico", "michele", "massimiliano"]):
+                        continue
+
                 l = registry_link_map.get(aid) or STATIC_REGISTRY_LINKS.get(aid) or node_map.get(aid, {}).get("web")
                 if l and l not in final_links: final_links.append(l)
 
