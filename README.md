@@ -108,3 +108,19 @@ The system requires the following variables for production stability:
 - **Backend**: Render.com (Web Service - Linux).
 - **Frontend**: Vercel (Production and Preview pipelines).
 - **Reliability**: External ping intervals are configured to prevent cold-start latency on free-tier infrastructure.
+
+---
+
+## 6. Security & Infrastructure Hardening
+
+To ensure production stability and cost control, the following security layers are implemented:
+
+### 6.1 API Protection
+- **CORS Whitelisting**: Restricted to official domains and verified local development environments.
+- **Documentation Shielding**: Swagger UI (`/docs`) and ReDoc are programmatically disabled in production to prevent information leakage.
+- **Rate Limiting**: Integrated `slowapi` to prevent brute-force attacks on LLM endpoints.
+
+### 6.2 Data Integrity & Privacy
+- **Referrer-Policy**: Configured to `strict-origin-when-cross-origin` to protect internal routing paths from external exposure.
+- **Input Validation**: Strict character limits on AI queries to optimize token usage and prevent cost spikes.
+- **Deterministic Registry**: Eliminates LLM hallucinations by mapping responses to a verified static asset registry.
