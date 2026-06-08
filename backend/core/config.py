@@ -27,9 +27,11 @@ class Settings(BaseSettings):
         "http://localhost:8080",
         "https://lifedesignfestival.it",
         "https://www.lifedesignfestival.it",
-        "https://life-design-scroll.vercel.app",
-        "https://life-festiva-git-0dedf1-delmoroalessandro850-gmailcoms-projects.vercel.app"
+        "https://life-design-scroll.vercel.app"
     ]
+
+    # Security Limits
+    MAX_MESSAGE_LENGTH: int = 500
 
     model_config = SettingsConfigDict(
         env_file=".env",

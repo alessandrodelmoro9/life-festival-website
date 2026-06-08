@@ -1,7 +1,7 @@
 import logging
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -21,7 +21,10 @@ limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(
     title="LIFE Design Festival AI - API",
     version="1.0.0",
-    debug=settings.DEBUG
+    debug=settings.DEBUG,
+    docs_url="/docs" if settings.DEBUG else None,
+    redoc_url="/redoc" if settings.DEBUG else None,
+    openapi_url="/openapi.json" if settings.DEBUG else None
 )
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -44,7 +47,7 @@ except Exception as e:
     rag_engine = None
 
 class ChatRequest(BaseModel):
-    message: str
+    message: str = Field(..., max_length=settings.MAX_MESSAGE_LENGTH)
     session_id: str = "default"
 
 class ChatResponse(BaseModel):
