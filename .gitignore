@@ -34,3 +34,11 @@ venv/
 
 # Vercel
 .vercel
+
+# Local Telemetry & Storage (Private / Thesis)
+commit_history.csv
+telemetry/
+telemetry_report_tesi.md
+backend/storage/
+backend/commit_history.csv
+

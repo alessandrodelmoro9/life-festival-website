@@ -2,12 +2,13 @@ import re
 import os
 import logging
 from typing import List, Dict, Any
-from llama_index.core import VectorStoreIndex, Settings
-from llama_index.vector_stores.qdrant import QdrantVectorStore
+from llama_index.core import VectorStoreIndex, StorageContext, load_index_from_storage, Settings
+from llama_index.core.retrievers import QueryFusionRetriever
+from llama_index.retrievers.bm25 import BM25Retriever
+from llama_index.core.chat_engine import ContextChatEngine
 from llama_index.llms.openai_like import OpenAILike
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core.memory import ChatMemoryBuffer
-from qdrant_client import QdrantClient
 from llama_index.core.postprocessor import SimilarityPostprocessor
 
 from core.config import settings, SYSTEM_PROMPT, ASSET_REGISTRY
@@ -69,12 +70,21 @@ class LifeRagEngine:
             )
             Settings.llm = self.llm
             Settings.embed_model = self.embed_model
-            self.client = QdrantClient(url=settings.QDRANT_URL, api_key=settings.QDRANT_API_KEY, prefer_grpc=False)
-            self.vector_store = QdrantVectorStore(client=self.client, collection_name=settings.QDRANT_COLLECTION)
-            self.index = VectorStoreIndex.from_vector_store(self.vector_store, embed_model=self.embed_model)
+
+            # Local Storage Context Persistence (Zero-Cost & Offline-Capable)
+            storage_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "storage"))
+            if not os.path.exists(storage_dir) or not os.listdir(storage_dir):
+                logger.info("Local storage missing or empty. Executing auto-ingestion...")
+                from core.ingest import run_ingestion
+                run_ingestion()
+
+            storage_context = StorageContext.from_defaults(persist_dir=storage_dir)
+            self.index = load_index_from_storage(storage_context, embed_model=self.embed_model)
+            self.nodes = list(self.index.docstore.docs.values())
+
             self.chat_engines: Dict[str, Any] = {}
-            self.postprocessor = SimilarityPostprocessor(similarity_cutoff=0.25)
-            logger.info(f"Engine synchronized with {len(STATIC_REGISTRY_LINKS)} identifiers.")
+            self.postprocessor = SimilarityPostprocessor(similarity_cutoff=0.0)
+            logger.info(f"Engine synchronized locally with {len(STATIC_REGISTRY_LINKS)} identifiers and {len(self.nodes)} nodes.")
         except Exception as e:
             logger.error(f"Engine Initialization Error: {e}")
             raise e
@@ -83,9 +93,25 @@ class LifeRagEngine:
         engine_key = f"{session_id}_{top_k}"
         if engine_key not in self.chat_engines:
             memory = ChatMemoryBuffer.from_defaults(token_limit=3000)
-            self.chat_engines[engine_key] = self.index.as_chat_engine(
-                chat_mode="condense_plus_context", memory=memory, system_prompt=SYSTEM_PROMPT,
-                node_postprocessors=[self.postprocessor], similarity_top_k=top_k
+
+            # Local Hybrid Search: Vector Similarity + BM25 Keyword Search
+            vector_retriever = self.index.as_retriever(similarity_top_k=top_k)
+            bm25_retriever = BM25Retriever.from_defaults(nodes=self.nodes, similarity_top_k=top_k)
+            
+            hybrid_retriever = QueryFusionRetriever(
+                retrievers=[vector_retriever, bm25_retriever],
+                similarity_top_k=top_k,
+                num_queries=1,
+                mode="reciprocal_rerank",
+                use_async=False
+            )
+
+            self.chat_engines[engine_key] = ContextChatEngine.from_defaults(
+                retriever=hybrid_retriever,
+                memory=memory,
+                system_prompt=SYSTEM_PROMPT,
+                node_postprocessors=[self.postprocessor],
+                llm=self.llm
             )
         return self.chat_engines[engine_key]
 
