@@ -15,11 +15,18 @@ graph TD
     User([User Query]) --> Frontend[React ChatWidget]
     Frontend --> API[FastAPI Gateway]
     
-    subgraph Backend Engine
+    subgraph Backend Local Hybrid Engine
         API --> Intent[Deterministic Intent Detection]
         Intent --> Query[Context-Enhanced Query]
-        Query --> Qdrant[Qdrant Vector Store]
-        Qdrant --> Retrieval[Node Retrieval & Post-Processing]
+        
+        subgraph Hybrid Search Engine
+            Query --> VectorSearch[Local Vector Search]
+            Query --> BM25Search[Local BM25 Keyword Search]
+            VectorSearch --> RRF[Reciprocal Rank Fusion - RRF]
+            BM25Search --> RRF
+        end
+        
+        RRF --> Retrieval[Node Retrieval & Context Post-Processing]
         Retrieval --> LLM[Gemini 2.5 Flash Synthesis]
         LLM --> Harvesting[Post-Gen Link & Asset Harvesting]
     end
@@ -33,7 +40,7 @@ graph TD
 ### 1.2 How It Works
 The system bypasses traditional RAG hallucinations through three layers of validation:
 1.  **Intent Classification**: Every message is analyzed for specific intents (e.g., social, lodging, program, sponsor). This classification triggers mandatory metadata injections.
-2.  **Registry-First Retrieval**: If an intent is detected, the engine forces the inclusion of "Registry Nodes" (Metadata blocks) into the LLM context, overriding standard vector proximity.
+2.  **Hybrid Search (Vector + BM25)**: Combines semantic vector similarity with BM25 keyword matching via Reciprocal Rank Fusion (RRF), ensuring 100% precision on proper names, studio names, and exact keywords.
 3.  **Deterministic Harvesting**: A specialized post-processor intercepts the LLM output, extracting unique [[REF:id]] tags to fetch validated URLs and high-resolution assets from a protected internal registry.
 
 ---
@@ -44,14 +51,15 @@ Located in the `/backend` directory, this service manages the intelligence and d
 
 ### 2.1 Core Technologies
 - **Framework**: FastAPI (Asynchronous API gateway).
-- **RAG Orchestrator**: LlamaIndex (CondensePlusContext mode).
-- **Vector Database**: Qdrant Cloud (HNSW indexing for sub-second retrieval).
+- **RAG Orchestrator**: LlamaIndex (ContextChatEngine mode).
+- **Search Engine**: Local Hybrid Search (In-Memory Vector Store + BM25 Reciprocal Rank Fusion).
 - **Inference Model**: Google Gemini 2.5 Flash (via OpenRouter).
 
 ### 2.2 Technical Features
 - **Adaptive Top-K**: Retrieval depth dynamically scales (from 20 to 40 nodes) based on query complexity (e.g., full program requests).
-- **Similarity Post-Processing**: Cutoff threshold of 0.25 to ensure optimal context relevance while maintaining coverage.
+- **Zero SaaS OpEx**: Eliminates remote vector database costs and downtime risks by running in-memory vector and keyword persistence (`backend/storage/`).
 - **Titanium Link Logic**: Pre-loaded static link mapping to ensure 100% button reliability regardless of LLM tokenization.
+- **Past-Tense Festival Framing**: Concluded event awareness ensuring all responses describe festival activities in the past tense.
 - **Security**: CORS-protected origins and environmental credential management.
 
 ---
@@ -80,6 +88,7 @@ The frontend is a high-performance Single Page Application (SPA) designed for ed
 ├── backend/                  # Python Infrastructure
 │   ├── core/                 # RAG Engine, Logic & Configuration
 │   ├── knowledge/            # Markdown Registries (Source of Truth)
+│   ├── storage/              # Local Vector & BM25 Persisted Storage
 │   ├── main.py               # API Entrypoint
 │   └── requirements.txt      # Linux-optimized dependencies
 ├── src/                      # Frontend Application
@@ -99,8 +108,6 @@ The frontend is a high-performance Single Page Application (SPA) designed for ed
 
 ### 5.1 Environment Configuration
 The system requires the following variables for production stability:
-- `QDRANT_URL`: Vector database endpoint.
-- `QDRANT_API_KEY`: Vector store authentication.
 - `OPENROUTER_API_KEY`: LLM inference gateway.
 - `VITE_API_URL`: Target production backend URL (Injected at build time).
 

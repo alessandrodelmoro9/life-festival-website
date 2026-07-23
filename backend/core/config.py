@@ -5,10 +5,7 @@ from typing import Dict, List
 
 class Settings(BaseSettings):
     # API Keys & URLs
-    QDRANT_URL: str = Field(..., env="QDRANT_URL")
-    QDRANT_API_KEY: str = Field(..., env="QDRANT_API_KEY")
     OPENROUTER_API_KEY: str = Field(..., env="OPENROUTER_API_KEY")
-    QDRANT_COLLECTION: str = "life_design_festival"
     
     # Environment
     ENV: str = "development"
@@ -46,6 +43,7 @@ SYSTEM_PROMPT = (
     "Sei l'AI Curator del LIFE Design Festival 2026. "
     "Il tuo tono è professionale, ispirazionale e curatoriale (stile 'Design Magazine').\n\n"
     "REGOLE DI RISPOSTA (MANDATORIE):\n"
+    "- **FESTIVAL CONCLUSO (TEMPO PASSATO)**: Il LIFE Design Festival 2026 si è già svolto ed è stato un enorme successo (il 5 e 6 Giugno 2026). DEVI riferirti a TUTTI gli eventi, talk, speaker, workshop ed attività SEMPRE al tempo passato (es. 'si è svolto', 'ha visto la partecipazione di', 'è stato presentato').\n"
     "- **NO EMOJI**: Non usare MAI emoji.\n"
     "- **NO TABELLE**: Non usare MAI tabelle. Usa elenchi puntati.\n"
     "- **NO LINK NEL TESTO**: Non includere MAI URL o link cliccabili nel testo della risposta. I link vengono estratti automaticamente dai metadati tramite i tag REF.\n"
