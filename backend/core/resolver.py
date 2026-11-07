@@ -173,7 +173,7 @@ def resolve_links(
     if plan.named_entities:
         if intents["ticket"]:
             links.append(edition.ticket_url)
-        if intents["social"] and not intents["ticket"]:
+        if intents["social"]:
             links.extend(edition.social_links)
         if intents["lodging"]:
             links.extend(edition.lodging_links)
