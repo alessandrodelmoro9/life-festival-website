@@ -23,6 +23,10 @@ Valutazione quantitativa del sottosistema di recupero (`QueryFusionRetriever`: *
 
 - **Domande con nome (`N=30`)**: il chunking entity-centric consente al solo BM25 di raggiungere **`96.7%` Hit@5** (`MRR 0.921`), mentre l'ibrido arriva a **`100.0%` Hit@5** (`MRR 0.950`) recuperando in Top-5 anche la query sugli alloggi (`q29_logistics_lodging`) dove i termini *"hotel"* e *"dormire"* non compaiono letteralmente nel Markdown.
 - **Domande parafrasate senza nome (`N=10`)**: in assenza del nome proprio dell'entità nella domanda, il solo BM25 scende a **`80.0%` Hit@5** e **`MRR 0.608`**, mentre la fusione ibrida `BM25 + Vector` (`text-embedding-3-small`) sale a **`90.0%` Hit@5** e **`MRR 0.753`** (**`+0.145` MRR**), dimostrando il contributo degli embedding densi sulle parafrasi concettuali.
+- **Unico caso mancato a Top-20 (`q31_unnamed_ar`, sia in Hybrid sia in BM25)**:
+  - **Domanda**: *"Chi tiene un intervento sulla realtà aumentata?"* — **ID atteso**: `["silvia-sguotti"]`.
+  - **Nodi recuperati al suo posto (Top-5)**: `["workshop-enrica-daguanno", "dverso-studio", "brutto-studio", "italo-sannino", "simone-checchia"]` (ibrido) e `["simone-checchia", "brutto-studio", "dverso-studio", "italo-sannino", "workshop-enrica-daguanno"]` (BM25).
+  - **Causa**: nella scheda di Silvia Sguotti in `backend/knowledge/speaker-talk.md` compare esclusivamente l'acronimo inglese *"AR"* (*"Spatial Computing e AR"*) e mai la forma estesa italiana *"realtà aumentata"*, mentre i termini comuni *"intervento"* e *"realtà"* spingono in alto le schede di altri speaker che usano la parola *"realtà"* (nel senso di *"realtà progettuale"*).
 
 ---
 
