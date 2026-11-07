@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 import re
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Tuple
 
 from core.edition import Edition
 from core.intents import detect_intents, mentions_specific_member, requested_day
-from core.registry import extract_ref_links
+from core.registry import EntityMeta, extract_ref_links, normalize_text
 
 REF_TAG_RE = re.compile(r"\[\[REF:(.*?)\]\]")
 _CLEAN_SUFFIXES = ("-studio", "-design", "-creative", "-vision")
@@ -18,12 +18,49 @@ class QueryPlan:
     specific_member: bool
     day: Optional[str]
     day_date: Optional[str]
+    named_entities: Tuple[str, ...] = ()
 
 
-def plan_query(message: str, edition: Edition) -> QueryPlan:
+def find_named_entities(
+    message: str, intents: Dict[str, bool], catalog: Mapping[str, EntityMeta]
+) -> Tuple[str, ...]:
+    if not catalog or intents.get("workshop"):
+        return ()
+    norm_msg = normalize_text(message)
+    candidates: List[Tuple[int, int, str]] = []
+    for eid, meta in catalog.items():
+        if eid == "zetafonts" and intents.get("sponsor"):
+            continue
+        if eid == "zetafonts-partner" and not intents.get("sponsor"):
+            continue
+        for alias in meta.aliases:
+            pattern = rf"(?<!\w){re.escape(alias)}(?!\w)"
+            for match in re.finditer(pattern, norm_msg):
+                candidates.append((match.start(), match.end(), eid))
+
+    candidates.sort(key=lambda item: (-(item[1] - item[0]), item[0]))
+    accepted: List[Tuple[int, int, str]] = []
+    for start, end, eid in candidates:
+        if any(not (end <= a_start or start >= a_end) for a_start, a_end, _ in accepted):
+            continue
+        accepted.append((start, end, eid))
+
+    accepted.sort(key=lambda item: item[0])
+    ordered: Dict[str, None] = {}
+    for _, _, eid in accepted:
+        ordered[eid] = None
+    return tuple(ordered)
+
+
+def plan_query(
+    message: str,
+    edition: Edition,
+    catalog: Optional[Mapping[str, EntityMeta]] = None,
+) -> QueryPlan:
     intents = detect_intents(message, edition)
     specific_member = mentions_specific_member(message, edition)
     day = requested_day(message, intents, edition)
+    named_entities = find_named_entities(message, intents, catalog or {})
 
     top_k = 20
     hints: List[str] = []
@@ -48,6 +85,7 @@ def plan_query(message: str, edition: Edition) -> QueryPlan:
         specific_member=specific_member,
         day=day.key if day else None,
         day_date=day.date if day else None,
+        named_entities=named_entities,
     )
 
 
@@ -77,6 +115,9 @@ def collect_active_ids(
     static_links: Dict[str, str],
     edition: Edition,
 ) -> List[str]:
+    if plan.named_entities:
+        return list(plan.named_entities)
+
     active: Dict[str, None] = {}
     lower_msg = message.lower()
 
@@ -124,9 +165,30 @@ def resolve_links(
     registry_links: Dict[str, str],
     static_links: Dict[str, str],
     edition: Edition,
+    catalog: Optional[Mapping[str, EntityMeta]] = None,
 ) -> List[str]:
     links: List[str] = []
     intents = plan.intents
+
+    if plan.named_entities:
+        if intents["ticket"]:
+            links.append(edition.ticket_url)
+        if intents["social"] and not intents["ticket"]:
+            links.extend(edition.social_links)
+        if intents["lodging"]:
+            links.extend(edition.lodging_links)
+        for eid in plan.named_entities:
+            meta_entry = (catalog or {}).get(eid)
+            url = (
+                (meta_entry.web if meta_entry else None)
+                or static_links.get(eid)
+                or registry_links.get(eid)
+                or (node_map.get(eid) or {}).get("web")
+            )
+            if url and url not in links:
+                links.append(url)
+        return links
+
     if intents["ticket"] or "ticket" in response_text.lower():
         links.append(edition.ticket_url)
     if intents["social"]:
@@ -144,12 +206,7 @@ def resolve_links(
     return list(dict.fromkeys(links))
 
 
-def resolve_images(
-    plan: QueryPlan,
-    active_ids: List[str],
-    node_map: Dict[str, Dict[str, Any]],
-    edition: Edition,
-) -> List[str]:
+def _composite_ids(plan: QueryPlan, edition: Edition) -> List[str]:
     intents = plan.intents
     composite: List[str] = []
     if intents["sponsor"]:
@@ -163,8 +220,37 @@ def resolve_images(
                 composite.append(f"gallery-{day}-afternoon")
             else:
                 composite.extend([f"gallery-{day}-morning", f"gallery-{day}-afternoon"])
+    return composite
 
+
+def resolve_images(
+    plan: QueryPlan,
+    active_ids: List[str],
+    node_map: Dict[str, Dict[str, Any]],
+    edition: Edition,
+    catalog: Optional[Mapping[str, EntityMeta]] = None,
+) -> List[str]:
+    intents = plan.intents
     images: List[str] = []
+
+    if plan.named_entities:
+        if intents.get("explicit_list"):
+            for cid in _composite_ids(plan, edition):
+                img = edition.assets.get(cid)
+                if img and img not in images:
+                    images.append(img)
+        for eid in plan.named_entities:
+            meta_entry = (catalog or {}).get(eid)
+            img = (
+                (meta_entry.img if meta_entry else None)
+                or edition.assets.get(eid)
+                or (node_map.get(eid) or {}).get("img")
+            )
+            if img and img not in images:
+                images.append(img)
+        return images
+
+    composite = _composite_ids(plan, edition)
     if composite:
         for cid in composite:
             img = edition.assets.get(cid)

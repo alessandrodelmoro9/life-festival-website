@@ -9,7 +9,8 @@ SPEAKER_KEYWORDS = ("speaker", "protagonisti", "chi parla", "nomi", "ospiti", "c
 PROGRAM_KEYWORDS = ("programma", "calendario", "cosa succede", "cosa c'è", "attività")
 SOCIAL_KEYWORDS = ("social", "instagram", "facebook", "linkedin", "ig", "fb", "segui")
 LODGING_KEYWORDS = ("hotel", "dormire", "alloggio", "alloggiare", "b&b", "convento", "convenzionati", "dove stare")
-TOTAL_KEYWORDS = ("tutti", "tutto", "completo", "elenco", "lista", "quali sono", "chi sono i", "chi sono gli")
+EXPLICIT_LIST_KEYWORDS = ("tutti", "tutto", "completo", "elenco", "lista")
+TOTAL_KEYWORDS = EXPLICIT_LIST_KEYWORDS + ("quali sono", "chi sono i", "chi sono gli")
 TICKET_EXPLICIT_KEYWORDS = ("bigliett", "ticket", "pass", "eventbrite", "iscriv")
 TICKET_PRICE_KEYWORDS = ("quanto costa", "costo", "prezzo")
 TEAM_BASE_KEYWORDS = ("organizz", "chi siete", "fiiico", "chi ha fatto", "chi cura", "curatori")
@@ -27,6 +28,7 @@ def detect_intents(message: str, edition: Edition) -> Dict[str, bool]:
     lower = message.lower()
     social = any(k in lower for k in SOCIAL_KEYWORDS)
     lodging = any(k in lower for k in LODGING_KEYWORDS)
+    explicit_list = any(k in lower for k in EXPLICIT_LIST_KEYWORDS) and not (social or lodging)
     total = any(k in lower for k in TOTAL_KEYWORDS) and not (social or lodging)
     workshop = "workshop" in lower
     ticket = any(k in lower for k in TICKET_EXPLICIT_KEYWORDS) or (
@@ -43,6 +45,7 @@ def detect_intents(message: str, edition: Edition) -> Dict[str, bool]:
         "morning": bool(MORNING_RE.search(lower)),
         "afternoon": bool(AFTERNOON_RE.search(lower)),
         "total": total,
+        "explicit_list": explicit_list,
         "workshop": workshop,
         "ticket": ticket,
         "social": social,

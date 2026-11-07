@@ -15,7 +15,7 @@ from llama_index.retrievers.bm25 import BM25Retriever
 from core.config import STORAGE_DIR, settings
 from core.edition import Edition, load_edition
 from core.intents import is_greeting
-from core.registry import load_static_links
+from core.registry import load_entity_catalog, load_static_links
 from core.resolver import (
     collect_active_ids,
     plan_query,
@@ -32,6 +32,7 @@ class LifeRagEngine:
     def __init__(self, edition: Optional[Edition] = None):
         self.edition = edition or load_edition()
         self.static_links = load_static_links()
+        self.catalog = load_entity_catalog()
 
         self.embed_model = OpenAIEmbedding(
             model=settings.EMBED_MODEL_NAME,
@@ -113,7 +114,7 @@ class LifeRagEngine:
             }
 
         try:
-            plan = plan_query(message, self.edition)
+            plan = plan_query(message, self.edition, self.catalog)
             chat_engine = self.get_chat_engine(session_id, top_k=plan.top_k)
             response = chat_engine.chat(plan.enhanced_message)
             response_text = str(response) if response else self.edition.fallback_text
@@ -125,9 +126,9 @@ class LifeRagEngine:
                 message, response_text, plan, node_map, self.static_links, self.edition
             )
             links = resolve_links(
-                response_text, plan, active_ids, node_map, registry_links, self.static_links, self.edition
+                response_text, plan, active_ids, node_map, registry_links, self.static_links, self.edition, self.catalog
             )
-            images = resolve_images(plan, active_ids, node_map, self.edition)
+            images = resolve_images(plan, active_ids, node_map, self.edition, self.catalog)
 
             return {
                 "text": strip_ref_tags(response_text),
