@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "life-backend"
-version = "0.1.0"
+version = "1.1.0"
 description = "RAG Chatbot Backend for LIFE Design Festival 2026"
-authors = ["Gemini CLI"]
+authors = ["Alessandro Del Moro"]
 package-mode = false
 
 [tool.poetry.dependencies]
