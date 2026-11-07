@@ -1,0 +1,65 @@
+{
+  "edition": 2026,
+  "greeting": "Ciao! Sono il **Curatore AI** del LIFE Design Festival 2026. Come posso aiutartiə?",
+  "fallback_text": "Mi dispiace, non ho trovato informazioni specifiche. Posso aiutartiə con il programma o i canali social?",
+  "error_text": "Ho riscontrato un'incertezza tecnica, ma ecco i nostri canali ufficiali.",
+  "error_links": [
+    "https://www.instagram.com/life.designfestival/"
+  ],
+  "time_slots": {
+    "morning_start": "09:00",
+    "morning_end": "13:30"
+  },
+  "days": [
+    {
+      "key": "friday",
+      "date": "2026-06-05",
+      "keywords": ["venerdì", "venerdi", "5 giugno", "05/06", "5/6", "day 1", "primo giorno"],
+      "loose_match": " 5 "
+    },
+    {
+      "key": "saturday",
+      "date": "2026-06-06",
+      "keywords": ["sabato", "6 giugno", "06/06", "6/6", "day 2", "secondo giorno"],
+      "loose_match": " 6 "
+    }
+  ],
+  "team": {
+    "collective_id": "fiiico-creative",
+    "collective_ids": ["fiiico-creative", "fiiico-creative-vision", "retro-gusto"],
+    "members": [
+      {"first_name": "rossana", "last_name": "zaccagnino", "id": "rossana-zaccagnino-vision"},
+      {"first_name": "federico", "last_name": "luciani", "id": "federico-luciani-vision"},
+      {"first_name": "michele", "last_name": "arleo", "id": "michele-arleo-vision"},
+      {"first_name": "massimiliano", "last_name": "caggiano", "id": "massimiliano-caggiano-vision"}
+    ]
+  },
+  "links": {
+    "ticket": "https://www.eventbrite.it/e/biglietti-life-design-festival-2026-1985936059213",
+    "social": [
+      "https://www.instagram.com/life.designfestival/",
+      "https://www.facebook.com/profile.php?id=61574592376779",
+      "https://www.linkedin.com/company/life-design-festival/"
+    ],
+    "lodging": [
+      "http://alconventopotenza.it/",
+      "https://minicasailsalonedigino.it",
+      "https://www.myleucos.com",
+      "https://www.blunottehouse.com/it/potenza"
+    ]
+  },
+  "registry_id_markers": [
+    "registry",
+    "global-partners",
+    "ospitalita",
+    "social-links",
+    "fiiico"
+  ],
+  "assets": {
+    "gallery-friday-morning": "/assets/composite/5_giugno_mattina.webp",
+    "gallery-friday-afternoon": "/assets/composite/5_giugno_pomeriggio.webp",
+    "gallery-saturday-morning": "/assets/composite/6_giugno_mattina.webp",
+    "gallery-saturday-afternoon": "/assets/composite/6_giugno_pomeriggio.webp",
+    "sponsor-wall": "/assets/logos/Partner & Sponsor.webp"
+  }
+}
