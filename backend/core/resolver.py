@@ -208,4 +208,4 @@ def resolve_images(
 
 
 def strip_ref_tags(text: str) -> str:
-    return REF_TAG_RE.sub("", text).strip()
+    return re.sub(r" ?\[\[REF:.*?\]\]", "", text).strip()
