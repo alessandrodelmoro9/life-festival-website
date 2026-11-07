@@ -11,7 +11,6 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 from core.config import KNOWLEDGE_DIR, STORAGE_DIR, settings
 from core.registry import ENTITY_BLOCK_RE
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 CHUNK_SIZE = 1024
@@ -108,4 +107,5 @@ def run_ingestion() -> None:
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     run_ingestion()
