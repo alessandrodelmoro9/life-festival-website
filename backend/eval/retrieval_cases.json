@@ -1,0 +1,182 @@
+[
+  {
+    "id": "q01_speaker_cosmico",
+    "category": "speaker",
+    "query": "Chi è Cosmico e di cosa parla il suo talk?",
+    "expected_ids": ["cosmico"]
+  },
+  {
+    "id": "q02_speaker_brutto",
+    "category": "speaker",
+    "query": "A che ora parla Brutto Studio venerdì?",
+    "expected_ids": ["brutto-studio", "program-friday-afternoon"]
+  },
+  {
+    "id": "q03_speaker_adoratorio",
+    "category": "speaker",
+    "query": "Parlami di Adoratorio Studio",
+    "expected_ids": ["adoratorio-studio"]
+  },
+  {
+    "id": "q04_speaker_zetafonts",
+    "category": "speaker",
+    "query": "Chi sono i fondatori di Zetafonts che tengono il talk?",
+    "expected_ids": ["zetafonts"]
+  },
+  {
+    "id": "q05_speaker_auge",
+    "category": "speaker",
+    "query": "Di cosa si occupa AUGE Design?",
+    "expected_ids": ["auge-design"]
+  },
+  {
+    "id": "q06_speaker_bubbico",
+    "category": "speaker",
+    "query": "Cosa fa Mauro Bubbico al festival?",
+    "expected_ids": ["mauro-bubbico"]
+  },
+  {
+    "id": "q07_speaker_cromia",
+    "category": "speaker",
+    "query": "Chi è Samuela Vaccari di Cromia Design?",
+    "expected_ids": ["cromia-design"]
+  },
+  {
+    "id": "q08_speaker_dude",
+    "category": "speaker",
+    "query": "Qual è il talk di DUDE Design sabato pomeriggio?",
+    "expected_ids": ["dude-design", "program-saturday-afternoon"]
+  },
+  {
+    "id": "q09_speaker_sguotti",
+    "category": "speaker",
+    "query": "Parlami di Silvia Sguotti e della realtà aumentata",
+    "expected_ids": ["silvia-sguotti"]
+  },
+  {
+    "id": "q10_speaker_checchia",
+    "category": "speaker",
+    "query": "Chi è Simone Checchia?",
+    "expected_ids": ["simone-checchia"]
+  },
+  {
+    "id": "q11_sponsor_autoelite",
+    "category": "sponsor",
+    "query": "Qual è il ruolo dello sponsor Autoelite al festival?",
+    "expected_ids": ["autoelite"]
+  },
+  {
+    "id": "q12_sponsor_bcc",
+    "category": "sponsor",
+    "query": "Come supporta il festival BCC Basilicata?",
+    "expected_ids": ["bcc"]
+  },
+  {
+    "id": "q13_sponsor_overclouds",
+    "category": "sponsor",
+    "query": "Chi è il partner tecnologico Overclouds?",
+    "expected_ids": ["overclouds", "stand-phygital"]
+  },
+  {
+    "id": "q14_sponsor_lagala",
+    "category": "sponsor",
+    "query": "Qual è la tecnologia Metaglass del Main Sponsor La Gala Home?",
+    "expected_ids": ["la-gala-home"]
+  },
+  {
+    "id": "q15_sponsor_avena",
+    "category": "sponsor",
+    "query": "Chi fornisce la Gassosa Avena nell'area food?",
+    "expected_ids": ["avena", "logistica-location"]
+  },
+  {
+    "id": "q16_sponsor_basic_records",
+    "category": "sponsor",
+    "query": "Chi ha curato il sound design con Basic Records?",
+    "expected_ids": ["basic", "logistica-location"]
+  },
+  {
+    "id": "q17_program_friday_morning",
+    "category": "program",
+    "query": "Qual è il programma di venerdì 5 giugno mattina?",
+    "expected_ids": ["program-friday-morning", "gallery-friday-morning"]
+  },
+  {
+    "id": "q18_program_friday_afternoon",
+    "category": "program",
+    "query": "Cosa succede venerdì pomeriggio sul Main Stage?",
+    "expected_ids": ["program-friday-afternoon", "gallery-friday-afternoon"]
+  },
+  {
+    "id": "q19_program_saturday_morning",
+    "category": "program",
+    "query": "Quali talk ci sono sabato 6 giugno mattina?",
+    "expected_ids": ["program-saturday-morning", "gallery-saturday-morning"]
+  },
+  {
+    "id": "q20_program_saturday_afternoon",
+    "category": "program",
+    "query": "Programma completo di sabato pomeriggio",
+    "expected_ids": ["program-saturday-afternoon", "gallery-saturday-afternoon"]
+  },
+  {
+    "id": "q21_workshop_sannino",
+    "category": "workshop",
+    "query": "Come funziona il workshop di Italo Sannino su Figma e Claude?",
+    "expected_ids": ["workshop-italo-sannino", "italo-sannino"]
+  },
+  {
+    "id": "q22_workshop_zetafonts",
+    "category": "workshop",
+    "query": "Quanto costa e cosa include il workshop Tracce d'inchiostro di Zetafonts?",
+    "expected_ids": ["workshop-zetafonts"]
+  },
+  {
+    "id": "q23_workshop_daguanno",
+    "category": "workshop",
+    "query": "Il workshop di Enrica D'Aguanno sull'immagine coordinata è gratuito?",
+    "expected_ids": ["workshop-enrica-daguanno", "enrica-daguanno"]
+  },
+  {
+    "id": "q24_activity_busso",
+    "category": "activity",
+    "query": "Cos'è il Torneo di BUSSO negli stand?",
+    "expected_ids": ["stand-busso"]
+  },
+  {
+    "id": "q25_activity_junk_journal",
+    "category": "activity",
+    "query": "Come funziona il laboratorio Junk Journal Club di TAM?",
+    "expected_ids": ["stand-junk-journal"]
+  },
+  {
+    "id": "q26_activity_archivio_materico",
+    "category": "activity",
+    "query": "Cos'è l'Archivio Materico Express con DAS Printing?",
+    "expected_ids": ["stand-archivio-materico"]
+  },
+  {
+    "id": "q27_logistics_tickets",
+    "category": "logistics",
+    "query": "Quanto costano il Life Pass e il Daily Pass su Eventbrite?",
+    "expected_ids": ["logistica-ticket"]
+  },
+  {
+    "id": "q28_logistics_location",
+    "category": "logistics",
+    "query": "Dove si trova il Terminal FAL Gallitello e c'è parcheggio?",
+    "expected_ids": ["logistica-location"]
+  },
+  {
+    "id": "q29_logistics_lodging",
+    "category": "logistics",
+    "query": "Quali sono i B&B e gli hotel convenzionati per dormire a Potenza?",
+    "expected_ids": ["ospitalita-convenzionata", "bb-al-convento", "bb-mini-casa", "bb-myleucos", "bb-blunotte"]
+  },
+  {
+    "id": "q30_team_curators",
+    "category": "team",
+    "query": "Chi sono i curatori di FIIICO CREATIVE che organizzano il festival?",
+    "expected_ids": ["fiiico-creative-vision", "fiiico-creative"]
+  }
+]
