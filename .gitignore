@@ -2,15 +2,23 @@
 .env
 .env.*
 !.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
 
 # Project Management (Private)
 MEMORY.md
+ROADMAP_TEMP.txt
+.agents/
 pixel-script.txt
 
 # Build and Dependencies
 node_modules/
+frontend/node_modules/
 dist/
+frontend/dist/
 dist-ssr/
+frontend/dist-ssr/
 *.local
 
 # Python / Backend (Double Protection)
