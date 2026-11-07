@@ -15,7 +15,7 @@ TICKET_PRICE_KEYWORDS = ("quanto costa", "costo", "prezzo")
 TEAM_BASE_KEYWORDS = ("organizz", "chi siete", "fiiico", "chi ha fatto", "chi cura", "curatori")
 
 _PUNCT_RE = re.compile(r"[^\w\s]")
-SOCIAL_RE = re.compile(r"\b(?:social\w*|instagram|facebook|linkedin|ig|fb|segui(?:re|rvi|rti|ci|te|teci)?)\b")
+SOCIAL_RE = re.compile(r"\b(?:social\w*|instagram|facebook|linkedin|ig|fb|segui(?:rvi|rti|ci|teci)?)\b")
 MORNING_RE = re.compile(r"\bmattina\b|\bmattino\b|\bore 09\b|\bore 10\b|\bore 11\b|\bore 12\b")
 AFTERNOON_RE = re.compile(r"pomeriggio|pomeirggio|pomerigio|\bore 14\b|\bore 15\b|\bore 16\b|\bore 17\b|\bore 18\b")
 

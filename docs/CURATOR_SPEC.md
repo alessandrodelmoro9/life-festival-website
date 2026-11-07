@@ -28,7 +28,7 @@ La funzione `detect_intents(message, edition)` analizza il messaggio utente in m
 | `afternoon` | Espressione regolare: `pomeriggio` (inclusi i refusi `pomeirggio`, `pomerigio`), `\bore 14\b`, `\bore 15\b`, `\bore 16\b`, `\bore 17\b`, `\bore 18\b`. |
 | `workshop` | Sottostringa: `workshop`. |
 | `ticket` | Sottostringhe esplicite (`bigliett`, `ticket`, `eventbrite`, `iscriv`) oppure espressioni di prezzo (`quanto costa`, `costo`, `prezzo`). Se `workshop` è attivo, le sole espressioni di prezzo (es. *"quanto costa il workshop di Zetafonts?"*) non attivano `ticket` a meno che non sia presente anche una parola esplicita di biglietteria. |
-| `social` | Espressione regolare a parola intera: `\b(?:social\w*|instagram|facebook|linkedin|ig|fb|segui(?:re|rvi|rti|ci|te|teci)?)\b` (evitando falsi positivi su sottostringhe come *"b**ig**lietto"*, *"m**ig**liore"*, *"fam**ig**lia"*, *"pomer**ig**gio"* o *"in **segui**to"*). |
+| `social` | Espressione regolare a parola intera: `\b(?:social\w*|instagram|facebook|linkedin|ig|fb|segui(?:rvi|rti|ci|teci)?)\b` (evitando falsi positivi su sottostringhe come *"b**ig**lietto"*, *"m**ig**liore"*, *"fam**ig**lia"*, *"pomer**ig**gio"*, *"in **segui**to"* o *"dove posso **seguire** i talk"*). |
 | `lodging` | Sottostringhe: `hotel`, `dormire`, `alloggio`, `alloggiare`, `b&b`, `convento`, `convenzionati`, `dove stare`. |
 | `team` | Sottostringhe base (`organizz`, `chi siete`, `fiiico`, `chi ha fatto`, `chi cura`, `curatori`) più i nomi propri dei membri in `edition.json` (`rossana`, `federico`, `michele`, `massimiliano`). |
 | `specific_member` | Presenza di un nome o cognome di un membro del team (`rossana`, `federico`, `michele`, `massimiliano`, `caggiano`, `arleo`, `luciani`, `zaccagnino`). |
