@@ -1,0 +1,11 @@
+{
+  "embed_model": "text-embedding-3-small",
+  "chunk_size": 1024,
+  "chunk_overlap": 100,
+  "files": {
+    "partner-sponsor.md": "1ae68e8bddbf24447444e777e052d4fa5340b8ece60ffe6e0387685f495ee591",
+    "programma-logistica.md": "7cbabd71d08a200ae0a66d60b29065393d0f9dc85d291a3717e0a98200c1d15c",
+    "speaker-talk.md": "fab2d53d78d780c76c03ad9cc090ea2f7c75845ff9f608e1b534592a5560c341",
+    "visione-concept.md": "3f6cfaf98710fc236623b1bbec3be7c1dea2f484ee50ddad161426ad1df6331d"
+  }
+}

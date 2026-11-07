@@ -14,6 +14,7 @@ from llama_index.retrievers.bm25 import BM25Retriever
 
 from core.config import STORAGE_DIR, settings
 from core.edition import Edition, load_edition
+from core.ingest import is_storage_current, run_ingestion
 from core.intents import is_greeting
 from core.registry import load_entity_catalog, load_static_links
 from core.resolver import (
@@ -52,9 +53,14 @@ class LifeRagEngine:
 
         if not STORAGE_DIR.exists() or not any(STORAGE_DIR.iterdir()):
             logger.info("Local storage missing or empty. Executing auto-ingestion...")
-            from core.ingest import run_ingestion
-
             run_ingestion()
+        elif not is_storage_current():
+            logger.warning(
+                "Storage manifest mismatch or missing. Re-ingesting knowledge base..."
+            )
+            run_ingestion()
+        else:
+            logger.info("Storage manifest OK; loading existing index.")
 
         storage_context = StorageContext.from_defaults(persist_dir=str(STORAGE_DIR))
         self.index = load_index_from_storage(
