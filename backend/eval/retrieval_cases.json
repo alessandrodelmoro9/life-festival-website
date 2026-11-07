@@ -59,7 +59,7 @@
     "id": "q09_speaker_sguotti",
     "category": "speaker",
     "named": true,
-    "query": "Parlami di Silvia Sguotti e della realtà aumentata",
+    "query": "Parlami di Silvia Sguotti e del suo talk",
     "expected_ids": ["silvia-sguotti"]
   },
   {
@@ -210,10 +210,10 @@
     "expected_ids": ["fiiico-creative-vision", "fiiico-creative"]
   },
   {
-    "id": "q31_unnamed_ar",
+    "id": "q31_unnamed_side_projects",
     "category": "speaker",
     "named": false,
-    "query": "Chi tiene un intervento sulla realtà aumentata?",
+    "query": "Quale talk racconta come i progetti fatti per gioco possono diventare lavoro?",
     "expected_ids": ["silvia-sguotti"]
   },
   {
