@@ -3,9 +3,9 @@
   "chunk_size": 1024,
   "chunk_overlap": 100,
   "files": {
-    "partner-sponsor.md": "1ae68e8bddbf24447444e777e052d4fa5340b8ece60ffe6e0387685f495ee591",
-    "programma-logistica.md": "7cbabd71d08a200ae0a66d60b29065393d0f9dc85d291a3717e0a98200c1d15c",
-    "speaker-talk.md": "fab2d53d78d780c76c03ad9cc090ea2f7c75845ff9f608e1b534592a5560c341",
-    "visione-concept.md": "3f6cfaf98710fc236623b1bbec3be7c1dea2f484ee50ddad161426ad1df6331d"
+    "partner-sponsor.md": "d7d6ad820a1f496eb488aa884fb0c92d5d60535d12012c9f0cdff73605397d14",
+    "programma-logistica.md": "85f63c00007ef9afdca6bb64e75fd008827415d3b747d9cd80bac0c4e5349fe2",
+    "speaker-talk.md": "7b099b7fb38f6e0ca0ff351fce2298fcf8874910726867ab22c5e9e9e315bcb4",
+    "visione-concept.md": "fb176002de97f5245bc9a62a17e50391b5439c1750768161a94e55cbf5c2716f"
   }
 }

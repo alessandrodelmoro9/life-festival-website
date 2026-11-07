@@ -21,7 +21,7 @@ MANIFEST_FILE = STORAGE_DIR / "manifest.json"
 
 def compute_manifest() -> Dict[str, Any]:
     files = {
-        p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+        p.name: hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
         for p in sorted(KNOWLEDGE_DIR.glob("*.md"))
     }
     return {
