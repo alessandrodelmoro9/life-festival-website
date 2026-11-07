@@ -33,9 +33,12 @@ const Countdown = () => {
   };
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
-        trigger: sectionRef.current,
+        trigger: section,
         start: 'top 85%',
         onEnter: () => {
           if (hasAnimated.current) return;
@@ -66,7 +69,7 @@ const Countdown = () => {
         },
         once: true
       });
-    }, sectionRef.current);
+    }, section);
 
     const timer = setInterval(() => {
       if (hasAnimated.current) {
