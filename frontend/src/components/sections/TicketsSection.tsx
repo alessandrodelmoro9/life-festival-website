@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import bgTicket from '@/assets/backg ticket.svg';
-import iconTwo from '@/assets/2 aquawax.svg';
+import bgTicket from '@/assets/bg-ticket.svg';
+import iconTwo from '@/assets/badge-2-days.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 

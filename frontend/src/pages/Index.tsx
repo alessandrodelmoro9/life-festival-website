@@ -1,22 +1,22 @@
 import { useLenis } from '@/hooks/useLenis';
 import { useImagePreloader } from '@/hooks/useImagePreloader';
-import Navbar from '@/components/Navbar';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import Countdown from '@/components/Countdown';
-import SpeakersSection from '@/components/SpeakersSection';
-import ProgramSection from '@/components/ProgramSection';
-import LocationSection from '@/components/LocationSection';
-import TicketsSection from '@/components/TicketsSection';
-import AccommodationSection from '@/components/AccommodationSection';
-import Life25 from '@/components/Life25';
-import SponsorSection from '@/components/SponsorSection';
-import FooterSection from '@/components/FooterSection';
+import Navbar from '@/components/layout/Navbar';
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import Countdown from '@/components/widgets/Countdown';
+import SpeakersSection from '@/components/sections/SpeakersSection';
+import ProgramSection from '@/components/sections/ProgramSection';
+import LocationSection from '@/components/sections/LocationSection';
+import TicketsSection from '@/components/sections/TicketsSection';
+import AccommodationSection from '@/components/sections/AccommodationSection';
+import Life25 from '@/components/sections/Life25';
+import SponsorSection from '@/components/sections/SponsorSection';
+import FooterSection from '@/components/sections/FooterSection';
 import { PaintProvider } from '@/context/PaintContext';
 import PaintCanvas from '@/components/paint/PaintCanvas';
 import PaintToolbar from '@/components/paint/PaintToolbar';
-import ChatWidget from '@/components/ChatWidget';
-import CustomCursor from '@/components/ui/CustomCursor';
+import ChatWidget from '@/components/widgets/ChatWidget';
+import CustomCursor from '@/components/layout/CustomCursor';
 import bgSite from '@/assets/bg-site.svg';
 
 const Index = () => {

@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon5 from '@/assets/5-dark.svg';
 import Icon6 from '@/assets/6-dark.svg';
-import Group46 from '@/assets/Group 46.svg';
+import Group46 from '@/assets/hero-scroll-cta.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 

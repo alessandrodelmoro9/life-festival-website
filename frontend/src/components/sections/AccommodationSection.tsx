@@ -1,7 +1,7 @@
 import React from 'react';
-import group61 from '@/assets/Group 61.svg';
-import group58 from '@/assets/Group 58.svg';
-import group59 from '@/assets/Group 59.svg';
+import group61 from '@/assets/logo-salone-di-gino.svg';
+import group58 from '@/assets/logo-leucos.svg';
+import group59 from '@/assets/logo-blunotte.svg';
 
 const AccommodationSection = () => {
   const accommodations = [
