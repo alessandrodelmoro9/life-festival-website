@@ -1,5 +1,15 @@
 /// <reference types="vite/client" />
 
+interface EventbriteWidgetOptions {
+  widgetType: string;
+  eventId: string;
+  modal?: boolean;
+  modalTriggerElementId?: string;
+  onOrderComplete?: () => void;
+}
+
 interface Window {
-  EBWidgets: unknown;
+  EBWidgets?: {
+    createWidget: (options: EventbriteWidgetOptions) => void;
+  };
 }

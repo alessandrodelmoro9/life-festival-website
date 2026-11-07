@@ -44,7 +44,6 @@ export const useImagePreloader = () => {
 
     // Preload everything quietly in the background
     Promise.all(imagesToPreload.map(preloadImage))
-      .then(() => console.log('All critical images preloaded'))
       .catch(err => console.warn('Some images failed to preload', err));
   }, []);
 };

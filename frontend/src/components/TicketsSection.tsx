@@ -37,7 +37,7 @@ const TicketsSection = () => {
           eventId: '1985936059213',
           modal: true,
           modalTriggerElementId: 'eventbrite-widget-modal-trigger-1985936059213',
-          onOrderComplete: () => console.log('Ordine completato.')
+          onOrderComplete: () => {}
         });
         return true;
       }
