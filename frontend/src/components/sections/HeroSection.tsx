@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Icon5 from '@/assets/5-dark.svg';
 import Icon6 from '@/assets/6-dark.svg';
-import Group46 from '@/assets/hero-scroll-cta.svg';
+import heroScrollCta from '@/assets/hero-scroll-cta.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,7 +69,7 @@ const HeroSection = () => {
             }}
             className="w-[79px] h-[79px] flex items-center justify-center transform transition-all duration-300 hover:scale-105 active:scale-95 shrink-0"
           >
-            <img src={Group46} alt="Go to About" className="w-full h-full object-contain" />
+            <img src={heroScrollCta} alt="Go to About" className="w-full h-full object-contain" />
           </button>
           <img src={Icon6} alt="6" className="w-[82px] h-[82px] object-contain shrink-0" />
         </div>
@@ -146,7 +146,7 @@ const HeroSection = () => {
               }}
               className="w-24 h-24 flex items-center justify-center transform transition-all duration-300 hover:scale-110 active:scale-95 group"
             >
-              <img src={Group46} alt="Go to About" className="w-full h-full object-contain" />
+              <img src={heroScrollCta} alt="Go to About" className="w-full h-full object-contain" />
             </button>
             <img src={Icon6} alt="6" className="w-40 h-40 object-contain" />
           </div>

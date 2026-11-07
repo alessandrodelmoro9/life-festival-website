@@ -1,25 +1,25 @@
 import React from 'react';
-import group61 from '@/assets/logo-salone-di-gino.svg';
-import group58 from '@/assets/logo-leucos.svg';
-import group59 from '@/assets/logo-blunotte.svg';
+import logoSaloneDiGino from '@/assets/logo-salone-di-gino.svg';
+import logoLeucos from '@/assets/logo-leucos.svg';
+import logoBlunotte from '@/assets/logo-blunotte.svg';
 
 const AccommodationSection = () => {
   const accommodations = [
     {
       name: "Il Salone di Gino",
-      logo: group61,
+      logo: logoSaloneDiGino,
       link: "https://minicasailsalonedigino.it",
       className: "h-20 md:h-28"
     },
     {
       name: "Leucos",
-      logo: group58,
+      logo: logoLeucos,
       link: "https://www.myleucos.com",
       className: "h-16 md:h-24"
     },
     {
       name: "Blunotte",
-      logo: group59,
+      logo: logoBlunotte,
       link: "https://www.blunottehouse.com/it/potenza",
       className: "h-8 md:h-12"
     }
