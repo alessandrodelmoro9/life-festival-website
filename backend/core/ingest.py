@@ -21,13 +21,13 @@ def process_document_by_entities(documents: List[Any]) -> List[BaseNode]:
     """
     all_nodes = []
     text_splitter = SentenceSplitter(chunk_size=1024, chunk_overlap=100)
-
-    entity_pattern = r"(#+ .*?)\n> \*\*METADATA\*\*: (\{.*?\})"
-
+    
+    entity_pattern = r'(#+ .*?)\n> \*\*METADATA\*\*: (\{.*?\})'
+    
     for doc in documents:
         text = doc.text
         matches = list(re.finditer(entity_pattern, text))
-
+        
         if not matches:
             chunks = text_splitter.split_text(text)
             for chunk in chunks:
@@ -38,13 +38,13 @@ def process_document_by_entities(documents: List[Any]) -> List[BaseNode]:
             start_match = matches[i]
             header = start_match.group(1)
             metadata_json = start_match.group(2)
-
-            end_pos = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+            
+            end_pos = matches[i+1].start() if i+1 < len(matches) else len(text)
             content_start = start_match.end()
             entity_content = text[content_start:end_pos].strip()
-
+            
             full_entity_text = f"{header}\n{entity_content}"
-
+            
             try:
                 entity_metadata = json.loads(metadata_json)
             except Exception as e:
@@ -53,12 +53,15 @@ def process_document_by_entities(documents: List[Any]) -> List[BaseNode]:
 
             final_metadata = doc.metadata.copy()
             final_metadata.update(entity_metadata)
-
+            
             chunks = text_splitter.split_text(full_entity_text)
             for chunk in chunks:
-                node = TextNode(text=chunk, metadata=final_metadata)
+                node = TextNode(
+                    text=chunk,
+                    metadata=final_metadata
+                )
                 all_nodes.append(node)
-
+                
     return all_nodes
 
 
@@ -69,9 +72,7 @@ def run_ingestion() -> None:
         api_base=settings.OPENROUTER_BASE_URL,
     )
 
-    reader = SimpleDirectoryReader(
-        input_dir=str(KNOWLEDGE_DIR), required_exts=[".md"]
-    )
+    reader = SimpleDirectoryReader(input_dir=str(KNOWLEDGE_DIR), required_exts=[".md"])
     documents = reader.load_data()
 
     nodes = process_document_by_entities(documents)
