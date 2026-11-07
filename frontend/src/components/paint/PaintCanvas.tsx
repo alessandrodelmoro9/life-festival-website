@@ -87,7 +87,7 @@ const PaintCanvas: React.FC = () => {
         drawSmoothedLine(ctx, stroke.points, stroke.color, stroke.width, currentScrollY, stroke.isModal);
       }
     });
-  }, [strokes, activeSpeakerId, scrollPos]);
+  }, [strokes, activeSpeakerId]);
 
   const draw = useCallback(() => {
     if (!isDrawingRef.current) return;

@@ -72,6 +72,7 @@ export const PaintProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const usePaint = () => {
   const context = useContext(PaintContext);
   if (!context) throw new Error('usePaint must be used within a PaintProvider');
