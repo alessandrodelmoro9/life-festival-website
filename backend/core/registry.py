@@ -30,16 +30,21 @@ class EntityMeta:
     web: Optional[str]
 
 
+def strip_accents(text: str) -> str:
+    return "".join(
+        ch for ch in unicodedata.normalize("NFKD", text) if not unicodedata.combining(ch)
+    )
+
+
 def normalize_text(text: str) -> str:
-    decomposed = unicodedata.normalize("NFKD", text)
-    return "".join(ch for ch in decomposed if not unicodedata.combining(ch)).lower()
+    return strip_accents(text).lower()
 
 
 def _clean_alias(raw: str) -> str:
     return re.sub(r"\s+", " ", normalize_text(raw)).strip(" .,-")
 
 
-def _build_aliases(header: str, name: str) -> Tuple[str, ...]:
+def _build_aliases(header: str, name: str, eid: str = "") -> Tuple[str, ...]:
     aliases: Dict[str, None] = {}
 
     def add(candidate: str) -> None:
@@ -48,6 +53,8 @@ def _build_aliases(header: str, name: str) -> Tuple[str, ...]:
             aliases[cleaned] = None
 
     add(name)
+    if "-" not in eid:
+        add(eid)
     norm_name = _clean_alias(name)
     for suffix in _GENERIC_SUFFIXES:
         if norm_name.endswith(suffix):
@@ -120,7 +127,7 @@ def load_entity_catalog(knowledge_dir: Path = DEFAULT_KNOWLEDGE_DIR) -> Dict[str
                     continue
                 eid = str(meta["id"]).lower().strip()
                 name = str(meta.get("name") or eid)
-                aliases = _build_aliases(header, name)
+                aliases = _build_aliases(header, name, eid)
                 web = meta.get("web") or static_links.get(eid)
                 catalog[eid] = EntityMeta(
                     id=eid,

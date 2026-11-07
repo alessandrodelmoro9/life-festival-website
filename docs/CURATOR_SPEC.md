@@ -27,8 +27,8 @@ La funzione `detect_intents(message, edition)` analizza il messaggio utente in m
 | `morning` | Espressione regolare a parola intera: `\bmattina\b`, `\bmattino\b`, `\bore 09\b`, `\bore 10\b`, `\bore 11\b`, `\bore 12\b`. |
 | `afternoon` | Espressione regolare: `pomeriggio` (inclusi i refusi `pomeirggio`, `pomerigio`), `\bore 14\b`, `\bore 15\b`, `\bore 16\b`, `\bore 17\b`, `\bore 18\b`. |
 | `workshop` | Sottostringa: `workshop`. |
-| `ticket` | Parole esplicite (`bigliett`, `ticket`, `pass`, `eventbrite`, `iscriv`) oppure espressioni di prezzo (`quanto costa`, `costo`, `prezzo`). Se `workshop` è attivo, le sole espressioni di prezzo (es. *"quanto costa il workshop di Zetafonts?"*) non attivano `ticket` a meno che non sia presente anche una parola esplicita di biglietteria. |
-| `social` | Sottostringhe: `social`, `instagram`, `facebook`, `linkedin`, `ig`, `fb`, `segui`. |
+| `ticket` | Sottostringhe esplicite (`bigliett`, `ticket`, `eventbrite`, `iscriv`) oppure espressioni di prezzo (`quanto costa`, `costo`, `prezzo`). Se `workshop` è attivo, le sole espressioni di prezzo (es. *"quanto costa il workshop di Zetafonts?"*) non attivano `ticket` a meno che non sia presente anche una parola esplicita di biglietteria. |
+| `social` | Espressione regolare a parola intera: `\b(?:social\w*|instagram|facebook|linkedin|ig|fb|segui(?:re|rvi|rti|ci|te|teci)?)\b` (evitando falsi positivi su sottostringhe come *"b**ig**lietto"*, *"m**ig**liore"*, *"fam**ig**lia"*, *"pomer**ig**gio"* o *"in **segui**to"*). |
 | `lodging` | Sottostringhe: `hotel`, `dormire`, `alloggio`, `alloggiare`, `b&b`, `convento`, `convenzionati`, `dove stare`. |
 | `team` | Sottostringhe base (`organizz`, `chi siete`, `fiiico`, `chi ha fatto`, `chi cura`, `curatori`) più i nomi propri dei membri in `edition.json` (`rossana`, `federico`, `michele`, `massimiliano`). |
 | `specific_member` | Presenza di un nome o cognome di un membro del team (`rossana`, `federico`, `michele`, `massimiliano`, `caggiano`, `arleo`, `luciani`, `zaccagnino`). |
@@ -40,11 +40,12 @@ La funzione `detect_intents(message, edition)` analizza il messaggio utente in m
 All'avvio (o tramite funzione pura in `core/registry.py`), il sistema costruisce un catalogo delle entità con `"type": "speaker"` o `"type": "sponsor"` dai blocchi `METADATA` di `backend/knowledge/*.md`:
 
 1. **Generazione degli alias per entità**:
-   - Nome ufficiale (`metadata["name"]`).
-   - Nome privo di suffissi generici finali (`studio`, `design`, `magazine`, `records`, `fotoproduzioni`).
-   - Nomi propri di persone (di almeno 2 parole) indicati tra parentesi nell'intestazione Markdown (es. `## Cromia Design (Samuela Vaccari)` -> `samuela vaccari`; `## Zetafonts (Cosimo L. Pancini & Dario Manzo)` -> `cosimo l. pancini`, `dario manzo`).
+   - Nome ufficiale (`metadata["name"]`) e `id` del catalogo se privo di trattino (`>= 3` caratteri, es. `bcc`, `msd`, `aipi`).
+   - Nome e titolo dell'intestazione privi di suffissi generici finali (`studio`, `design`, `magazine`, `records`, `fotoproduzioni`).
+   - Nomi propri di persone (di almeno 2 parole) indicati tra parentesi nell'intestazione Markdown (es. `## Cromia Design (Samuela Vaccari)` -> `samuela vaccari`; `## Zetafonts (Cosimo L. Pancini & Dario Manzo)` -> `cosimo l. pancini`, `cosimo pancini`, `dario manzo`).
 2. **Matching nella domanda utente**:
-   - Confronto case-insensitive e normalizzato senza accenti, a parola intera (`>= 3` caratteri).
+   - Confronto normalizzato senza accenti, a parola intera (`>= 3` caratteri).
+   - **Regola della maiuscola per alias a parola singola**: gli alias composti da **2 o più parole** (es. `brutto studio`, `dario manzo`, `bcc basilicata`) sono riconosciuti in qualsiasi forma (maiuscola o minuscola); gli alias di **una sola parola** (es. `Brutto`, `Cosmico`, `Zetafonts`, `BCC`, `ADI`) sono validi solo se nel testo originale della domanda iniziano con lettera **maiuscola**, evitando che aggettivi comuni minuscoli nella domanda (es. *"Il programma è brutto?"*) attivino `S5`.
    - In caso di alias sovrapposti vince l'alias più lungo; le entità riconosciute vengono ordinate per **posizione di prima apparizione nella domanda** e deduplicate.
 3. **Disambiguazione `Zetafonts`**:
    - Poiché Zetafonts è presente sia come speaker (`zetafonts`) sia come partner (`zetafonts-partner`), se nella domanda è attivo l'intento `sponsor` viene risolto come `zetafonts-partner`; in tutti gli altri casi come `zetafonts`.
@@ -126,5 +127,7 @@ Quando la domanda dell'utente nomina esplicitamente **1 o più speaker o sponsor
 1. **Fascia oraria senza giorno (*"Cosa c'è la mattina?"*)**: in assenza di un giorno specifico nella domanda, `S4.2` restituisce tutte le 4 gallerie del programma anziché filtrare le sole 2 gallerie mattutine.
 2. **Domande di follow-up sul turno successivo (*"E il pomeriggio?"*)**: mentre il testo generato dall'LLM mantiene il contesto conversazionale tramite la memoria condivisa per `session_id` (`S3.6`), la risoluzione deterministica delle immagini `S4.2` valuta gli intenti sul singolo messaggio corrente e non eredita automaticamente il giorno dal turno precedente.
 3. **Entrambi i giorni nella stessa domanda (*"Programma venerdì e sabato"*)**: `requested_day()` restituisce il primo giorno configurato che fa match (`friday`), mostrando le 2 gallerie di venerdì anziché tutte e 4.
-4. **Safety-net su parole a inizio frase o nomi minuscoli (`S4.1`)**: la safety-net basata sull'iniziale maiuscola può attivarsi se una parola omonima compare come prima parola assoluta di una frase (dopo un punto); viceversa, lo studio scritto in minuscolo nei dati (`dverso studio`) viene risolto tramite il tag `[[REF:dverso-studio]]` o quando citato nella domanda (`S5`), ma non dalla sola safety-net se scritto in minuscolo senza tag nella risposta.
+4. **Safety-net su parole a inizio frase o nomi di una sola parola scritti in minuscolo (`S2`, `S4.1`)**:
+   - Un nome di entità composto da una sola parola scritto interamente in minuscolo nella domanda (es. *"parlami di zetafonts"*) non attiva `S5` e ricade sulla risoluzione standard `S4` (dove viene comunque risolto tramite il tag `[[REF:zetafonts]]` emesso dall'LLM).
+   - La safety-net basata sull'iniziale maiuscola può attivarsi se una parola omonima compare come prima parola assoluta di una frase; viceversa, lo studio scritto in minuscolo nei dati (`dverso studio`) viene risolto tramite il tag `[[REF:dverso-studio]]` o quando citato per intero nella domanda (`dverso studio`, 2 parole), ma non dalla sola safety-net se scritto in minuscolo senza tag nella risposta.
 5. **Immagini collettive su domanda di un singolo curatore (*"Chi è Rossana?"*)**: la soppressione degli ID collettivi (`fiiico-creative`, `fiiico-creative-vision`, `retro-gusto`) quando `specific_member` è attivo si applica ai `links` ma non filtra un'eventuale immagine associata a `retro-gusto` se l'LLM emette esplicitamente `[[REF:retro-gusto]]`.

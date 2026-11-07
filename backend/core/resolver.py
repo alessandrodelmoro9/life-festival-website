@@ -4,7 +4,7 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Tuple
 
 from core.edition import Edition
 from core.intents import detect_intents, mentions_specific_member, requested_day
-from core.registry import EntityMeta, extract_ref_links, normalize_text
+from core.registry import EntityMeta, extract_ref_links, strip_accents
 
 REF_TAG_RE = re.compile(r"\[\[REF:(.*?)\]\]")
 _CLEAN_SUFFIXES = ("-studio", "-design", "-creative", "-vision")
@@ -26,7 +26,7 @@ def find_named_entities(
 ) -> Tuple[str, ...]:
     if not catalog or intents.get("workshop"):
         return ()
-    norm_msg = normalize_text(message)
+    plain_msg = strip_accents(message)
     candidates: List[Tuple[int, int, str]] = []
     for eid, meta in catalog.items():
         if eid == "zetafonts" and intents.get("sponsor"):
@@ -35,7 +35,9 @@ def find_named_entities(
             continue
         for alias in meta.aliases:
             pattern = rf"(?<!\w){re.escape(alias)}(?!\w)"
-            for match in re.finditer(pattern, norm_msg):
+            for match in re.finditer(pattern, plain_msg, re.IGNORECASE):
+                if " " not in alias and not match.group(0)[0].isupper():
+                    continue
                 candidates.append((match.start(), match.end(), eid))
 
     candidates.sort(key=lambda item: (-(item[1] - item[0]), item[0]))
