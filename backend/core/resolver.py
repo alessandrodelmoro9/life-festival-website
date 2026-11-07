@@ -27,9 +27,10 @@ def find_named_entities(
     if not catalog or intents.get("workshop"):
         return ()
     plain_msg = strip_accents(message)
+    skip = "zetafonts" if intents.get("sponsor") else "zetafonts-partner"
     candidates: List[Tuple[int, int, str]] = []
     for eid, meta in catalog.items():
-        if (eid == "zetafonts") == bool(intents.get("sponsor")) and eid.startswith("zetafonts"):
+        if eid == skip:
             continue
         for alias in meta.aliases:
             for m in re.finditer(rf"(?<!\w){re.escape(alias)}(?!\w)", plain_msg, re.IGNORECASE):
@@ -41,8 +42,7 @@ def find_named_entities(
         if all(end <= a_start or start >= a_end for a_start, a_end, _ in accepted):
             accepted.append((start, end, eid))
 
-    seen = {eid: catalog[eid] for _, _, eid in sorted(accepted)}
-    return tuple(seen.values())
+    return tuple({eid: catalog[eid] for _, _, eid in sorted(accepted)}.values())
 
 
 def plan_query(
