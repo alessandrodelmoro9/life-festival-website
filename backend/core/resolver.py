@@ -79,7 +79,6 @@ def collect_active_ids(
 ) -> List[str]:
     active: Dict[str, None] = {}
     lower_msg = message.lower()
-    lower_resp = response_text.lower()
 
     for tag in REF_TAG_RE.findall(response_text):
         active[tag.lower().strip()] = None
@@ -94,8 +93,10 @@ def collect_active_ids(
             if clean_name in lower_msg:
                 active[slug] = None
             continue
-        if re.search(rf"\b{re.escape(clean_name)}\b", lower_resp):
-            active[slug] = None
+        for match in re.finditer(rf"\b{re.escape(clean_name)}\b", response_text, re.IGNORECASE):
+            if match.group(0)[0].isupper():
+                active[slug] = None
+                break
 
     if plan.day_date:
         intents = plan.intents

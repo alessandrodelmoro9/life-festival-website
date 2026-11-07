@@ -12,7 +12,6 @@ class FestivalDay:
     key: str
     date: str
     keywords: Tuple[str, ...]
-    loose_match: str = ""
 
 
 @dataclass(frozen=True)
@@ -61,7 +60,7 @@ def load_edition(data_dir: Path = DEFAULT_DATA_DIR) -> Edition:
     system_prompt = (data_dir / "system_prompt.md").read_text(encoding="utf-8").replace("\r\n", "\n").strip()
     slots = raw["time_slots"]
     days = tuple(
-        FestivalDay(key=d["key"], date=d["date"], keywords=tuple(d["keywords"]), loose_match=d.get("loose_match", ""))
+        FestivalDay(key=d["key"], date=d["date"], keywords=tuple(d["keywords"]))
         for d in raw["days"]
     )
     team_raw = raw["team"]
