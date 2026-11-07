@@ -27,9 +27,6 @@ class Settings(BaseSettings):
     OPENROUTER_BASE_URL: str = "https://openrouter.ai/api/v1"
 
     ALLOWED_ORIGINS: List[str] = [
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "http://localhost:8080",
         "https://lifedesignfestival.it",
         "https://www.lifedesignfestival.it",
         "https://life-design-scroll.vercel.app",
