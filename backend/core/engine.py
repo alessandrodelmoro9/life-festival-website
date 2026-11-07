@@ -63,7 +63,7 @@ class LifeRagEngine:
 
         self.postprocessor = SimilarityPostprocessor(similarity_cutoff=0.0)
         self._retrievers: Dict[int, QueryFusionRetriever] = {}
-        self._chat_engines: TTLCache = TTLCache(
+        self._memories: TTLCache = TTLCache(
             maxsize=settings.MAX_SESSIONS, ttl=settings.SESSION_TTL_SECONDS
         )
         self._lock = threading.Lock()
@@ -89,20 +89,19 @@ class LifeRagEngine:
         return self._retrievers[top_k]
 
     def get_chat_engine(self, session_id: str, top_k: int = 20) -> ContextChatEngine:
-        engine_key = f"{session_id}_{top_k}"
         with self._lock:
-            engine = self._chat_engines.get(engine_key)
-            if engine is None:
+            memory = self._memories.get(session_id)
+            if memory is None:
                 memory = ChatMemoryBuffer.from_defaults(token_limit=3000)
-                engine = ContextChatEngine.from_defaults(
-                    retriever=self._get_retriever(top_k),
-                    memory=memory,
-                    system_prompt=self.edition.system_prompt,
-                    node_postprocessors=[self.postprocessor],
-                    llm=self.llm,
-                )
-                self._chat_engines[engine_key] = engine
-            return engine
+                self._memories[session_id] = memory
+            retriever = self._get_retriever(top_k)
+        return ContextChatEngine.from_defaults(
+            retriever=retriever,
+            memory=memory,
+            system_prompt=self.edition.system_prompt,
+            node_postprocessors=[self.postprocessor],
+            llm=self.llm,
+        )
 
     def query(self, message: str, session_id: str = "default") -> Dict[str, Any]:
         if is_greeting(message):
