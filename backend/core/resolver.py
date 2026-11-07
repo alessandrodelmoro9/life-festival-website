@@ -22,7 +22,7 @@ class QueryPlan:
 
 
 def find_named_entities(
-    message: str, intents: Dict[str, bool], catalog: Mapping[str, EntityMeta]
+    message: str, intents: Dict[str, bool], catalog: Mapping[str, EntityMeta], ambiguous: Iterable[str] = ()
 ) -> Tuple[EntityMeta, ...]:
     if not catalog or intents.get("workshop"):
         return ()
@@ -34,7 +34,7 @@ def find_named_entities(
             continue
         for alias in meta.aliases:
             for m in re.finditer(rf"(?<!\w){re.escape(alias)}(?!\w)", plain_msg, re.IGNORECASE):
-                if " " in alias or m.group(0)[0].isupper():
+                if alias not in ambiguous or m.group(0)[0].isupper():
                     candidates.append((m.start(), m.end(), eid))
 
     accepted: List[Tuple[int, int, str]] = []
@@ -51,7 +51,7 @@ def plan_query(
     intents = detect_intents(message, edition)
     specific_member = mentions_specific_member(message, edition)
     day = requested_day(message, intents, edition)
-    named = find_named_entities(message, intents, catalog or {})
+    named = find_named_entities(message, intents, catalog or {}, edition.ambiguous_aliases)
 
     top_k = 20
     hints: List[str] = []

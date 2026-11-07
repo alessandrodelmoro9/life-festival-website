@@ -46,6 +46,7 @@
       "https://www.blunottehouse.com/it/potenza"
     ]
   },
+  "ambiguous_aliases": ["auge", "avena", "basic", "bnb", "brutto", "cosmico", "cromia", "dude", "etimologia", "jupiter"],
   "registry_id_markers": [
     "registry",
     "global-partners",

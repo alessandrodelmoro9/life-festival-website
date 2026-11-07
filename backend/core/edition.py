@@ -53,6 +53,7 @@ class Edition:
     lodging_links: Tuple[str, ...]
     registry_id_markers: Tuple[str, ...]
     assets: Mapping[str, Optional[str]]
+    ambiguous_aliases: Tuple[str, ...]
 
 
 def load_edition(data_dir: Path = DEFAULT_DATA_DIR) -> Edition:
@@ -87,4 +88,5 @@ def load_edition(data_dir: Path = DEFAULT_DATA_DIR) -> Edition:
         lodging_links=tuple(links["lodging"]),
         registry_id_markers=tuple(raw["registry_id_markers"]),
         assets=MappingProxyType(dict(raw["assets"])),
+        ambiguous_aliases=tuple(raw["ambiguous_aliases"]),
     )
