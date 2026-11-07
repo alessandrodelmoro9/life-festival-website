@@ -3,7 +3,7 @@ import json
 import logging
 from pathlib import Path
 import re
-from typing import Dict, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 import unicodedata
 
 logger = logging.getLogger(__name__)
@@ -80,26 +80,34 @@ def extract_links(content: str, links: Dict[str, str]) -> Dict[str, str]:
     return links
 
 
+def _read_knowledge_docs(knowledge_dir: Path) -> List[Tuple[str, str]]:
+    docs: List[Tuple[str, str]] = []
+    for name in KNOWLEDGE_FILES:
+        path = knowledge_dir / name
+        if path.exists():
+            docs.append((name, path.read_text(encoding="utf-8")))
+    return docs
+
+
 def load_static_links(knowledge_dir: Path = DEFAULT_KNOWLEDGE_DIR) -> Dict[str, str]:
     links: Dict[str, str] = {}
     try:
-        for name in KNOWLEDGE_FILES:
-            path = knowledge_dir / name
-            if path.exists():
-                extract_links(path.read_text(encoding="utf-8"), links)
+        for _, content in _read_knowledge_docs(knowledge_dir):
+            extract_links(content, links)
     except Exception as exc:
         logger.error("Static Link Synchronization Error: %s", exc)
     return links
 
 
 def load_entity_catalog(knowledge_dir: Path = DEFAULT_KNOWLEDGE_DIR) -> Dict[str, EntityMeta]:
-    static_links = load_static_links(knowledge_dir)
+    docs = _read_knowledge_docs(knowledge_dir)
+    static_links: Dict[str, str] = {}
+    for _, content in docs:
+        extract_links(content, static_links)
+
     catalog: Dict[str, EntityMeta] = {}
-    for name in KNOWLEDGE_FILES:
-        path = knowledge_dir / name
-        if not path.exists():
-            continue
-        for header, meta_raw in ENTITY_BLOCK_RE.findall(path.read_text(encoding="utf-8")):
+    for _, content in docs:
+        for header, meta_raw in ENTITY_BLOCK_RE.findall(content):
             meta = json.loads(meta_raw)
             if meta.get("type") in ("speaker", "sponsor"):
                 eid = str(meta["id"]).lower().strip()
