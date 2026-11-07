@@ -51,10 +51,7 @@ class LifeRagEngine:
         Settings.llm = self.llm
         Settings.embed_model = self.embed_model
 
-        if not STORAGE_DIR.exists() or not any(STORAGE_DIR.iterdir()):
-            logger.info("Local storage missing or empty. Executing auto-ingestion...")
-            run_ingestion()
-        elif not is_storage_current():
+        if not is_storage_current():
             logger.warning(
                 "Storage manifest mismatch or missing. Re-ingesting knowledge base..."
             )
@@ -132,9 +129,9 @@ class LifeRagEngine:
                 message, response_text, plan, node_map, self.static_links, self.edition
             )
             links = resolve_links(
-                response_text, plan, active_ids, node_map, registry_links, self.static_links, self.edition, self.catalog
+                response_text, plan, active_ids, node_map, registry_links, self.static_links, self.edition
             )
-            images = resolve_images(plan, active_ids, node_map, self.edition, self.catalog)
+            images = resolve_images(plan, active_ids, node_map, self.edition)
 
             return {
                 "text": strip_ref_tags(response_text),

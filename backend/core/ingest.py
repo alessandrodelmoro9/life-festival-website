@@ -1,7 +1,6 @@
 import hashlib
 import json
 import logging
-import re
 from typing import Any, Dict, List
 
 from llama_index.core import SimpleDirectoryReader, VectorStoreIndex
@@ -10,6 +9,7 @@ from llama_index.core.schema import BaseNode, TextNode
 from llama_index.embeddings.openai import OpenAIEmbedding
 
 from core.config import KNOWLEDGE_DIR, STORAGE_DIR, settings
+from core.registry import ENTITY_BLOCK_RE
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -50,11 +50,10 @@ def process_document_by_entities(documents: List[Any]) -> List[BaseNode]:
     """
     all_nodes = []
     text_splitter = SentenceSplitter(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
-    entity_pattern = r"(#+ .*?)\n> \*\*METADATA\*\*: (\{.*?\})"
 
     for doc in documents:
         text = doc.text
-        matches = list(re.finditer(entity_pattern, text))
+        matches = list(ENTITY_BLOCK_RE.finditer(text))
 
         if not matches:
             for chunk in text_splitter.split_text(text):
