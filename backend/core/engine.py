@@ -123,21 +123,10 @@ class LifeRagEngine:
                 getattr(response, "source_nodes", None), self.edition
             )
             active_ids = collect_active_ids(
-                message,
-                response_text,
-                plan,
-                node_map,
-                self.static_links,
-                self.edition,
+                message, response_text, plan, node_map, self.static_links, self.edition
             )
             links = resolve_links(
-                response_text,
-                plan,
-                active_ids,
-                node_map,
-                registry_links,
-                self.static_links,
-                self.edition,
+                response_text, plan, active_ids, node_map, registry_links, self.static_links, self.edition
             )
             images = resolve_images(plan, active_ids, node_map, self.edition)
 

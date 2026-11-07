@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 import re
-from typing import Dict, Iterable, Optional
+from typing import Dict
 
 logger = logging.getLogger(__name__)
 
@@ -14,15 +14,7 @@ _META_LINK_RE = re.compile(r'"id":\s*"(.*?)".*?"(?:web|links)":\s*(?:"(.*?)"|\[(
 _FIRST_QUOTED_URL_RE = re.compile(r'"(https?://.*?)"')
 
 
-def knowledge_files(knowledge_dir: Path = DEFAULT_KNOWLEDGE_DIR) -> Iterable[Path]:
-    for filename in KNOWLEDGE_FILES:
-        path = knowledge_dir / filename
-        if path.exists():
-            yield path
-
-
-def extract_links(content: str, target: Optional[Dict[str, str]] = None) -> Dict[str, str]:
-    links: Dict[str, str] = target if target is not None else {}
+def extract_links(content: str, links: Dict[str, str]) -> Dict[str, str]:
     for rid, url in _MARKDOWN_REF_RE.findall(content):
         links[rid.lower().strip()] = url.strip()
     for rid, url in _RAW_REF_RE.findall(content):
@@ -43,8 +35,9 @@ def extract_links(content: str, target: Optional[Dict[str, str]] = None) -> Dict
 def load_static_links(knowledge_dir: Path = DEFAULT_KNOWLEDGE_DIR) -> Dict[str, str]:
     links: Dict[str, str] = {}
     try:
-        for path in knowledge_files(knowledge_dir):
-            extract_links(path.read_text(encoding="utf-8"), target=links)
+        for path in (knowledge_dir / name for name in KNOWLEDGE_FILES):
+            if path.exists():
+                extract_links(path.read_text(encoding="utf-8"), links)
     except Exception as exc:
         logger.error("Static Link Synchronization Error: %s", exc)
     return links
