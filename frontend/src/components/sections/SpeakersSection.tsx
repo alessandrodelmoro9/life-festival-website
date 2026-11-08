@@ -2,11 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { speakersData, Speaker } from '@/data/speakersData';
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
-import { X, ArrowUpRight, Plus } from "lucide-react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { usePaint } from '@/context/PaintContext';
@@ -169,69 +166,72 @@ const SpeakersSection: React.FC = () => {
         </motion.div>
       </div>
 
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent 
-          onInteractOutside={(e) => e.preventDefault()}
-          className="fixed inset-0 z-[9999] max-w-none w-screen h-screen m-0 p-0 border-none bg-primary rounded-none translate-x-0 translate-y-0 left-0 top-0 overflow-hidden [&>button]:hidden"
-        >
-          {selectedSpeaker && (
-            <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-start md:justify-center p-6 md:p-12 lg:p-20 gap-8 md:gap-12 lg:gap-20 overflow-y-auto md:overflow-hidden">
-              <button 
-                onClick={() => setIsDialogOpen(false)}
-                className="fixed top-6 right-6 md:absolute md:top-10 md:right-10 z-[10000] text-foreground/60 hover:text-foreground transition-colors"
-              >
-                <X size={window.innerWidth < 768 ? 32 : 48} strokeWidth={1.5} />
-              </button>
+      <DialogPrimitive.Root open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogPrimitive.Portal>
+          <DialogPrimitive.Overlay className="fixed inset-0 z-[9998] bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+          <DialogPrimitive.Content 
+            onInteractOutside={(e) => e.preventDefault()}
+            className="fixed inset-0 z-[9999] w-screen h-screen m-0 p-0 border-none bg-primary overflow-hidden focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+          >
+            {selectedSpeaker && (
+              <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-start md:justify-center p-6 md:p-12 lg:p-20 gap-8 md:gap-12 lg:gap-20 overflow-y-auto md:overflow-hidden">
+                <button 
+                  onClick={() => setIsDialogOpen(false)}
+                  className="fixed top-6 right-6 md:absolute md:top-10 md:right-10 z-[10000] text-foreground/60 hover:text-foreground transition-colors"
+                >
+                  <X size={window.innerWidth < 768 ? 32 : 48} strokeWidth={1.5} />
+                </button>
 
-              <div className="w-full md:w-[55%] lg:w-[60%] order-2 md:order-1 flex flex-col justify-start md:justify-center mb-8 md:mb-0">
-                <h2 className="text-foreground text-h2 mb-4 md:mb-6">
-                  {formatSpeakerName(selectedSpeaker.name)}
-                </h2>
-                <div className="max-w-2xl">
-                  <h5 className="text-foreground/70 font-body uppercase mb-4 md:mb-6">
-                    {selectedSpeaker.role}
-                  </h5>
-                  <p className="text-foreground/90 leading-[1.4] mb-8 md:mb-10 whitespace-pre-wrap">
-                    {selectedSpeaker.description}
-                  </p>
-                  <div className="flex flex-wrap gap-6 md:gap-10 pb-10 md:pb-0">
-                    {selectedSpeaker.instagram && (
-                      <a 
-                        href={selectedSpeaker.instagram} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-foreground/40 hover:text-foreground uppercase text-h6 font-body pb-1 transition-all"
-                      >
-                        Instagram ↗
-                      </a>
-                    )}
-                    {selectedSpeaker.website && (
-                      <a 
-                        href={selectedSpeaker.website} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-foreground/40 hover:text-foreground uppercase text-h6 font-body pb-1 transition-all"
-                      >
-                        Website ↗
-                      </a>
+                <div className="w-full md:w-[55%] lg:w-[60%] order-2 md:order-1 flex flex-col justify-start md:justify-center mb-8 md:mb-0">
+                  <h2 className="text-foreground text-h2 mb-4 md:mb-6">
+                    {formatSpeakerName(selectedSpeaker.name)}
+                  </h2>
+                  <div className="max-w-2xl">
+                    <h5 className="text-foreground/70 font-body uppercase mb-4 md:mb-6">
+                      {selectedSpeaker.role}
+                    </h5>
+                    <p className="text-foreground/90 leading-[1.4] mb-8 md:mb-10 whitespace-pre-wrap">
+                      {selectedSpeaker.description}
+                    </p>
+                    <div className="flex flex-wrap gap-6 md:gap-10 pb-10 md:pb-0">
+                      {selectedSpeaker.instagram && (
+                        <a 
+                          href={selectedSpeaker.instagram} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-foreground/40 hover:text-foreground uppercase text-h6 font-body pb-1 transition-all"
+                        >
+                          Instagram ↗
+                        </a>
+                      )}
+                      {selectedSpeaker.website && (
+                        <a 
+                          href={selectedSpeaker.website} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-foreground/40 hover:text-foreground uppercase text-h6 font-body pb-1 transition-all"
+                        >
+                          Website ↗
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="w-[70vw] md:w-[28vw] lg:w-[24vw] aspect-square order-1 md:order-2 flex items-center justify-center shrink-0 mt-12 md:mt-0">
+                  <div className="w-full h-full rounded-none overflow-hidden border border-foreground/10 bg-background/20 shadow-2xl">
+                    {selectedSpeaker.image ? (
+                      <img src={selectedSpeaker.image} className="w-full h-full object-cover" alt={selectedSpeaker.name} />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-foreground/5 text-6xl md:text-8xl font-black font-display">LIFE</div>
                     )}
                   </div>
                 </div>
               </div>
-
-              <div className="w-[70vw] md:w-[28vw] lg:w-[24vw] aspect-square order-1 md:order-2 flex items-center justify-center shrink-0 mt-12 md:mt-0">
-                <div className="w-full h-full rounded-none overflow-hidden border border-foreground/10 bg-background/20 shadow-2xl">
-                  {selectedSpeaker.image ? (
-                    <img src={selectedSpeaker.image} className="w-full h-full object-cover" alt={selectedSpeaker.name} />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-foreground/5 text-6xl md:text-8xl font-black font-display">LIFE</div>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+            )}
+          </DialogPrimitive.Content>
+        </DialogPrimitive.Portal>
+      </DialogPrimitive.Root>
     </section>
   );
 };
