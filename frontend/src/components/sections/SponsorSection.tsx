@@ -6,10 +6,27 @@ import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const SPONSOR_ROWS = [
+  [
+    { label: "MAIN SPONSOR", category: 'top' as const },
+    null
+  ],
+  [
+    { label: "CON IL SOSTEGNO DEL FONDO ETICO DI", category: 'main' as const },
+    { label: "EXPERIENCE SPONSOR", category: 'experience' as const }
+  ],
+  [
+    { label: "ACTIVE SPONSOR", category: 'active' as const },
+    { label: "PARTNER", category: 'partner' as const }
+  ],
+  [
+    { label: "COMMUNITY E CULTURAL PARTNER", category: 'community' as const },
+    { label: "CON IL PATROCINIO DI", category: 'institutional' as const }
+  ]
+];
+
 const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[] }) => {
   if (sponsors.length === 0) return null;
-
-  // Detect if this block has few items to make them larger
   const isSmallSet = sponsors.length <= 2;
 
   return (
@@ -18,7 +35,6 @@ const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[]
         {label}
       </span>
       
-      {/* Grid container to enforce max 4 logos per row */}
       <div className={cn(
         "grid items-center justify-items-start gap-4 md:gap-8 w-full min-h-[4rem] md:min-h-[8rem]",
         isSmallSet ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-4"
@@ -45,9 +61,7 @@ const CategoryBlock = ({ label, sponsors }: { label: string, sponsors: Sponsor[]
                   isMainSponsor && "scale-[1.2] origin-left",
                   (isSmallSet && !isBCC && !isMainSponsor) && "scale-[1.1] md:scale-[1.2] origin-left"
                 )}
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
             </div>
           );
@@ -92,21 +106,6 @@ const SponsorSection = () => {
     return () => ctx.revert();
   }, []);
 
-  const rows = [
-    {
-      left: { label: "CON IL SOSTEGNO DEL FONDO ETICO DI", category: 'main' as const },
-      right: { label: "EXPERIENCE SPONSOR", category: 'experience' as const }
-    },
-    {
-      left: { label: "ACTIVE SPONSOR", category: 'active' as const },
-      right: { label: "PARTNER", category: 'partner' as const }
-    },
-    {
-      left: { label: "COMMUNITY E CULTURAL PARTNER", category: 'community' as const },
-      right: { label: "CON IL PATROCINIO DI", category: 'institutional' as const }
-    }
-  ];
-
   return (
     <section id="sponsors" ref={sectionRef} className="bg-life-black py-24 md:py-32 overflow-hidden flex items-center justify-center">
       <div className="w-full max-w-[1441px] flex items-center justify-center">
@@ -122,31 +121,18 @@ const SponsorSection = () => {
           </div>
 
           <div className="flex flex-col w-full max-w-[1011px] gap-y-8 md:gap-y-10">
-            {/* Main Sponsor Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20">
-              <div className="flex flex-col min-w-0">
-                <CategoryBlock 
-                  label="MAIN SPONSOR" 
-                  sponsors={sponsorsData.filter(s => s.category === 'top')} 
-                />
-              </div>
-              <div className="hidden md:block" />
-            </div>
-
-            {rows.map((row, idx) => (
+            {SPONSOR_ROWS.map((row, idx) => (
               <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20">
-                <div className="flex flex-col min-w-0">
-                  <CategoryBlock 
-                    label={row.left.label} 
-                    sponsors={sponsorsData.filter(s => s.category === row.left.category)} 
-                  />
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <CategoryBlock 
-                    label={row.right.label} 
-                    sponsors={sponsorsData.filter(s => s.category === row.right.category)} 
-                  />
-                </div>
+                {row.map((col, cIdx) => (
+                  <div key={cIdx} className={cn("flex flex-col min-w-0", !col && "hidden md:block")}>
+                    {col && (
+                      <CategoryBlock 
+                        label={col.label} 
+                        sponsors={sponsorsData.filter(s => s.category === col.category)} 
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
             ))}
           </div>
