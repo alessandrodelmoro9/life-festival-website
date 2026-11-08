@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, ComponentPropsWithoutRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp, GripHorizontal } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -11,6 +11,47 @@ interface Message {
   links?: string[];
 }
 
+const isCompositeImage = (img: string) => img.includes('composite') || img.includes('Partner');
+
+const textStyle = { fontFamily: "'Automat Grotesk', sans-serif", letterSpacing: '-0.02em' };
+const headingStyle = { letterSpacing: '-0.02em' };
+
+const markdownComponents = {
+  a: ({ node, ...props }: ComponentPropsWithoutRef<'a'> & { node?: unknown }) => (
+    <a {...props} target="_blank" rel="noopener noreferrer" className="text-life-brown underline decoration-life-pink underline-offset-4 hover:text-life-pink transition-colors" />
+  ),
+  h1: ({ node, ...props }: ComponentPropsWithoutRef<'h1'> & { node?: unknown }) => <h1 {...props} style={headingStyle} className="text-3xl md:text-5xl mb-8 mt-12 font-display font-bold text-life-black" />,
+  h2: ({ node, ...props }: ComponentPropsWithoutRef<'h2'> & { node?: unknown }) => <h2 {...props} style={headingStyle} className="text-2xl md:text-3xl mb-6 mt-10 font-display font-bold text-life-black" />,
+  h3: ({ node, ...props }: ComponentPropsWithoutRef<'h3'> & { node?: unknown }) => <h3 {...props} style={headingStyle} className="text-xl md:text-2xl mb-4 mt-8 font-display font-bold text-life-black" />,
+  p: ({ node, ...props }: ComponentPropsWithoutRef<'p'> & { node?: unknown }) => <p {...props} style={textStyle} className="mb-6 text-lg md:text-[20px]" />,
+  ul: ({ node, ...props }: ComponentPropsWithoutRef<'ul'> & { node?: unknown }) => <ul {...props} className="mb-10 space-y-4 list-none" />,
+  ol: ({ node, ...props }: ComponentPropsWithoutRef<'ol'> & { node?: unknown }) => <ol {...props} className="mb-10 space-y-4 list-decimal ml-6" />,
+  li: ({ node, ...props }: ComponentPropsWithoutRef<'li'> & { node?: unknown }) => (
+    <li {...props} style={textStyle} className="relative pl-6 text-lg md:text-[20px] before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-2 before:bg-life-pink before:rounded-none" />
+  ),
+};
+
+const SendButton: React.FC<{ hasText: boolean; className?: string }> = ({ hasText, className }) => (
+  <button type="submit" className={cn("relative shrink-0 transition-all active:scale-95 group/btn", className)}>
+    <img 
+      src="/assets/chatbot/Freccia Disable.svg" 
+      alt="" 
+      className={cn(
+        "absolute inset-0 w-full h-full object-contain transition-all duration-300",
+        hasText ? "opacity-0 scale-90" : "opacity-100 scale-100 group-hover/btn:opacity-0 group-hover/btn:scale-90"
+      )}
+    />
+    <img 
+      src="/assets/chatbot/Freccia Active state.svg" 
+      alt="Invia" 
+      className={cn(
+        "absolute inset-0 w-full h-full object-contain transition-all duration-300",
+        hasText ? "opacity-100 scale-[1.4]" : "opacity-0 scale-90 group-hover/btn:opacity-100 group-hover/btn:scale-[1.4]"
+      )}
+    />
+  </button>
+);
+
 const ChatWidget: React.FC = () => {
   const [sessionId] = useState(() => Math.random().toString(36).substring(7));
   const [isFullPage, setIsFullPage] = useState(false);
@@ -20,14 +61,8 @@ const ChatWidget: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isFullPage) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = isFullPage ? 'hidden' : 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isFullPage]);
 
   useEffect(() => {
@@ -51,22 +86,14 @@ const ChatWidget: React.FC = () => {
       const response = await fetch(`${apiUrl}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          message: userText,
-          session_id: sessionId
-        }),
+        body: JSON.stringify({ message: userText, session_id: sessionId }),
       });
 
       if (!response.ok) throw new Error('Backend offline');
 
       const data = await response.json();
-      setMessages((prev) => [...prev, {
-        role: 'bot',
-        text: data.text,
-        images: data.images,
-        links: data.links
-      }]);
-    } catch (error) {
+      setMessages((prev) => [...prev, { role: 'bot', text: data.text, images: data.images, links: data.links }]);
+    } catch {
       setMessages((prev) => [...prev, { 
         role: 'bot', 
         text: "Il Curatore AI si sta collegando... La prima richiesta potrebbe richiedere un minuto di attesa. Grazie per la pazienzaə." 
@@ -75,6 +102,8 @@ const ChatWidget: React.FC = () => {
       setIsLoading(false);
     }
   };
+
+  const hasText = Boolean(prompt.trim());
 
   return (
     <>
@@ -103,28 +132,7 @@ const ChatWidget: React.FC = () => {
                   placeholder="Fai una domanda sul festival"
                   className="bg-transparent border-none outline-none font-display text-sm flex-1 placeholder:text-life-brown/30 text-life-black tracking-tight"
                 />
-
-                <button 
-                  type="submit" 
-                  className="relative w-10 h-10 shrink-0 transition-all active:scale-95 group/btn"
-                >
-                  <img 
-                    src="/assets/chatbot/Freccia Disable.svg" 
-                    alt="" 
-                    className={cn(
-                      "absolute inset-0 w-full h-full object-contain transition-all duration-300",
-                      prompt.trim() ? "opacity-0 scale-90" : "opacity-100 scale-100 group-hover/btn:opacity-0 group-hover/btn:scale-90"
-                    )}
-                  />
-                  <img 
-                    src="/assets/chatbot/Freccia Active state.svg" 
-                    alt="Invia" 
-                    className={cn(
-                      "absolute inset-0 w-full h-full object-contain transition-all duration-300",
-                      prompt.trim() ? "opacity-100 scale-[1.4]" : "opacity-0 scale-90 group-hover/btn:opacity-100 group-hover/btn:scale-[1.4]"
-                    )}
-                  />
-                </button>
+                <SendButton hasText={hasText} className="w-10 h-10" />
               </form>
             </motion.div>
           </div>
@@ -134,15 +142,8 @@ const ChatWidget: React.FC = () => {
       {/* --- MOBILE: FLOATING BUTTON --- */}
       {!isFullPage && (
         <div className="md:hidden fixed bottom-28 right-6 z-[10005]">
-          <button
-            onClick={() => setIsFullPage(true)}
-            className="active:scale-90 transition-all"
-          >
-            <img 
-              src="/assets/chatbot/Chatbot Blu.svg" 
-              alt="Chat" 
-              className="w-16 h-16 object-contain" 
-            />
+          <button onClick={() => setIsFullPage(true)} className="active:scale-90 transition-all">
+            <img src="/assets/chatbot/Chatbot Blu.svg" alt="Chat" className="w-16 h-16 object-contain" />
           </button>
         </div>
       )}
@@ -206,18 +207,7 @@ const ChatWidget: React.FC = () => {
                       <div className="w-full space-y-12">
                         {/* AI Text Body */}
                         <div className="font-body text-life-black text-lg md:text-[20px] leading-[1.6] tracking-tight prose-headings:font-display prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-life-black">
-                          <ReactMarkdown 
-                            components={{
-                              a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" className="text-life-brown underline decoration-life-pink underline-offset-4 hover:text-life-pink transition-colors" />,
-                              h1: ({ node, ...props }) => <h1 {...props} style={{ letterSpacing: '-0.02em' }} className="text-3xl md:text-5xl mb-8 mt-12 font-display font-bold text-life-black" />,
-                              h2: ({ node, ...props }) => <h2 {...props} style={{ letterSpacing: '-0.02em' }} className="text-2xl md:text-3xl mb-6 mt-10 font-display font-bold text-life-black" />,
-                              h3: ({ node, ...props }) => <h3 {...props} style={{ letterSpacing: '-0.02em' }} className="text-xl md:text-2xl mb-4 mt-8 font-display font-bold text-life-black" />,
-                              p: ({ node, ...props }) => <p {...props} style={{ fontFamily: "'Automat Grotesk', sans-serif", letterSpacing: '-0.02em' }} className="mb-6 text-lg md:text-[20px]" />,
-                              ul: ({ node, ...props }) => <ul {...props} className="mb-10 space-y-4 list-none" />,
-                              ol: ({ node, ...props }) => <ol {...props} className="mb-10 space-y-4 list-decimal ml-6" />,
-                              li: ({ node, ...props }) => <li {...props} style={{ fontFamily: "'Automat Grotesk', sans-serif", letterSpacing: '-0.02em' }} className="relative pl-6 text-lg md:text-[20px] before:content-[''] before:absolute before:left-0 before:top-[0.6em] before:w-2 before:h-2 before:bg-life-pink before:rounded-none" />
-                            }}
-                          >
+                          <ReactMarkdown components={markdownComponents}>
                             {msg.text}
                           </ReactMarkdown>
                         </div>
@@ -226,12 +216,10 @@ const ChatWidget: React.FC = () => {
                         {msg.images && msg.images.length > 0 && (
                           <div className={cn(
                             "flex flex-wrap gap-4 md:gap-6 w-full",
-                            msg.images.some(img => img.includes('composite') || img.includes('Partner')) 
-                              ? "flex-col" 
-                              : "flex-row"
+                            msg.images.some(isCompositeImage) ? "flex-col" : "flex-row"
                           )}>
                             {msg.images.map((img, idx) => {
-                              const isComposite = img.includes('composite') || img.includes('Partner');
+                              const isComposite = isCompositeImage(img);
                               return (
                                 <div
                                   key={idx}
@@ -283,9 +271,13 @@ const ChatWidget: React.FC = () => {
                 
                 {isLoading && (
                   <div className="flex gap-3 p-6 pb-24">
-                    <div className="w-3 h-3 bg-life-pink rounded-none animate-bounce" />
-                    <div className="w-3 h-3 bg-life-pink rounded-none animate-bounce [animation-delay:0.2s]" />
-                    <div className="w-3 h-3 bg-life-pink rounded-none animate-bounce [animation-delay:0.4s]" />
+                    {[0, 0.2, 0.4].map((delay, idx) => (
+                      <div 
+                        key={idx} 
+                        className="w-3 h-3 bg-life-pink rounded-none animate-bounce" 
+                        style={delay ? { animationDelay: `${delay}s` } : undefined} 
+                      />
+                    ))}
                   </div>
                 )}
 
@@ -303,28 +295,7 @@ const ChatWidget: React.FC = () => {
                       placeholder="Fai una domanda sul festival"
                       className="w-full bg-white/90 backdrop-blur-md border border-life-brown/20 rounded-full px-10 py-5 pr-20 text-lg md:text-xl font-display outline-none text-life-black placeholder:text-life-brown/30 focus:border-life-brown transition-all shadow-none tracking-tight"
                     />
-
-                    <button 
-                      type="submit" 
-                      className="absolute right-3.5 w-12 h-12 shrink-0 transition-all active:scale-95 group/btn"
-                    >
-                      <img 
-                        src="/assets/chatbot/Freccia Disable.svg" 
-                        alt="" 
-                        className={cn(
-                          "absolute inset-0 w-full h-full object-contain transition-all duration-300",
-                          prompt.trim() ? "opacity-0 scale-90" : "opacity-100 scale-100 group-hover/btn:opacity-0 group-hover/btn:scale-90"
-                        )}
-                      />
-                      <img 
-                        src="/assets/chatbot/Freccia Active state.svg" 
-                        alt="Invia" 
-                        className={cn(
-                          "absolute inset-0 w-full h-full object-contain transition-all duration-300",
-                          prompt.trim() ? "opacity-100 scale-[1.4]" : "opacity-0 scale-90 group-hover/btn:opacity-100 group-hover/btn:scale-[1.4]"
-                        )}
-                      />
-                    </button>
+                    <SendButton hasText={hasText} className="absolute right-3.5 w-12 h-12" />
                   </form>
                 </div>
               </div>
