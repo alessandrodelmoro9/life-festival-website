@@ -2,23 +2,37 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { usePaint, Point, Stroke } from '@/context/PaintContext';
 import { cn } from '@/lib/utils';
 
+const clearCanvasContext = (canvas: HTMLCanvasElement | null) => {
+  if (!canvas) return null;
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) return null;
+  const dpr = window.devicePixelRatio || 1;
+  ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+  return { ctx, dpr };
+};
+
 const PaintCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const tempCanvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { isActive, mode, color, strokes, setStrokes, activeSpeakerId } = usePaint();
-  const [isDrawingState, setIsDrawingState] = useState(false);
+  const [, setIsDrawingState] = useState(false);
   const isDrawingRef = useRef(false);
   const currentStroke = useRef<Point[]>([]);
   const requestRef = useRef<number>();
 
+  const cancelFrame = () => {
+    if (requestRef.current) {
+      cancelAnimationFrame(requestRef.current);
+      requestRef.current = undefined;
+    }
+  };
+
   const getCanvasPoint = useCallback((e: React.PointerEvent | PointerEvent): Point => {
-    // Se siamo in un modale, salviamo le coordinate relative al viewport
     if (activeSpeakerId !== null) {
       return { x: e.clientX, y: e.clientY };
     }
-    // Altrimenti coordinate assolute (documento)
     return {
       x: e.clientX + window.scrollX,
       y: e.clientY + window.scrollY
@@ -34,7 +48,6 @@ const PaintCanvas: React.FC = () => {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
 
-    // Se è un tratto modale, non sottraiamo lo scroll perché è già in coordinate viewport
     const offset = isModal ? 0 : scrollY;
     const firstPoint = { x: points[0].x, y: points[0].y - offset };
     ctx.moveTo(firstPoint.x, firstPoint.y);
@@ -53,13 +66,8 @@ const PaintCanvas: React.FC = () => {
   };
 
   const renderStatic = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d', { alpha: true });
-    if (!ctx) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+    const res = clearCanvasContext(canvasRef.current);
+    if (!res) return;
 
     const filteredStrokes = strokes.filter(s => 
       activeSpeakerId === null ? s.speakerId === undefined : s.speakerId === activeSpeakerId
@@ -69,29 +77,22 @@ const PaintCanvas: React.FC = () => {
     const currentScrollY = window.scrollY;
 
     filteredStrokes.forEach(stroke => {
-      // Per i tratti modali la visibilità è sempre vera se il modale è aperto
       const isVisible = stroke.isModal || stroke.points.some(p => 
         p.y > currentScrollY - 200 && p.y < currentScrollY + viewHeight + 200
       );
       if (isVisible) {
-        drawSmoothedLine(ctx, stroke.points, stroke.color, stroke.width, currentScrollY, stroke.isModal);
+        drawSmoothedLine(res.ctx, stroke.points, stroke.color, stroke.width, currentScrollY, stroke.isModal);
       }
     });
   }, [strokes, activeSpeakerId]);
 
   const draw = useCallback(() => {
     if (!isDrawingRef.current) return;
-
-    const canvas = tempCanvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d', { alpha: true });
-    if (!ctx) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+    const res = clearCanvasContext(tempCanvasRef.current);
+    if (!res) return;
     
     if (currentStroke.current.length >= 2) {
-      drawSmoothedLine(ctx, currentStroke.current, color, 3, window.scrollY, activeSpeakerId !== null);
+      drawSmoothedLine(res.ctx, currentStroke.current, color, 3, window.scrollY, activeSpeakerId !== null);
     }
     
     requestRef.current = requestAnimationFrame(draw);
@@ -102,18 +103,15 @@ const PaintCanvas: React.FC = () => {
     
     isDrawingRef.current = true;
     setIsDrawingState(true);
+    currentStroke.current = [getCanvasPoint(e)];
     
-    const point = getCanvasPoint(e);
-    currentStroke.current = [point];
-    
-    if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    cancelFrame();
     requestRef.current = requestAnimationFrame(draw);
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!isDrawingRef.current) return;
-    const point = getCanvasPoint(e);
-    currentStroke.current.push(point);
+    currentStroke.current.push(getCanvasPoint(e));
   };
 
   const handlePointerUp = () => {
@@ -121,28 +119,21 @@ const PaintCanvas: React.FC = () => {
     
     isDrawingRef.current = false;
     setIsDrawingState(false);
-    
-    if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    cancelFrame();
     
     if (currentStroke.current.length > 1) {
-      const newStroke: Stroke = {
+      setStrokes([...strokes, {
         points: [...currentStroke.current],
         color,
         width: 3,
         timestamp: Date.now(),
         speakerId: activeSpeakerId ?? undefined,
         isModal: activeSpeakerId !== null
-      };
-      setStrokes([...strokes, newStroke]);
+      }]);
     }
     
     currentStroke.current = [];
-    const tempCanvas = tempCanvasRef.current;
-    if (tempCanvas) {
-      const ctx = tempCanvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      ctx?.clearRect(0, 0, tempCanvas.width / dpr, tempCanvas.height / dpr);
-    }
+    clearCanvasContext(tempCanvasRef.current);
   };
 
   useEffect(() => {
@@ -153,11 +144,12 @@ const PaintCanvas: React.FC = () => {
 
   useEffect(() => {
     const updateCanvasSize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
       [canvasRef.current, tempCanvasRef.current].forEach(canvas => {
         if (canvas) {
-          const dpr = window.devicePixelRatio || 1;
-          const width = window.innerWidth;
-          const height = window.innerHeight; // Solo l'altezza del viewport!
           canvas.width = width * dpr;
           canvas.height = height * dpr;
           canvas.style.width = `${width}px`;
@@ -176,7 +168,7 @@ const PaintCanvas: React.FC = () => {
     window.addEventListener('resize', updateCanvasSize);
     return () => {
       window.removeEventListener('resize', updateCanvasSize);
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      cancelFrame();
     };
   }, [renderStatic]);
 
