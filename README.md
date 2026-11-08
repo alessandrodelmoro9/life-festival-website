@@ -6,8 +6,6 @@ logistics using retrieval-augmented generation (RAG).
 
 **Live site:** [lifedesignfestival.it](https://lifedesignfestival.it)
 
-![LIFE Design Festival 2026 — Website and AI Curator](media/hero-desktop.jpg)
-
 The repository is a monorepo with two independent applications:
 
 | | Stack | Hosting |
@@ -20,6 +18,8 @@ The repository is a monorepo with two independent applications:
 ## Frontend
 
 A single-page website built with **React 18 + TypeScript + Vite** deployed on **Vercel** and styled with **Tailwind CSS**. Animations use **GSAP** and **framer-motion**; smooth scrolling uses **Lenis**.
+
+![LIFE Design Festival 2026 — Website](media/hero-desktop.jpg)
 
 ```
 frontend/
@@ -47,6 +47,8 @@ frontend/
 ## Backend
 
 A **FastAPI** service that wraps a RAG engine built with **LlamaIndex**. The language model is **Gemini 2.5 Flash** and the embeddings are **text-embedding-3-small**, both served through **OpenRouter**.
+
+![LIFE Design Festival 2026 — AI Curator](media/chat-desktop.jpg)
 
 ```
 backend/

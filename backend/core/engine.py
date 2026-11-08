@@ -55,7 +55,12 @@ class LifeRagEngine:
             logger.warning(
                 "Storage manifest mismatch or missing. Re-ingesting knowledge base..."
             )
-            run_ingestion()
+            try:
+                run_ingestion()
+            except Exception:
+                if not (STORAGE_DIR / "docstore.json").exists():
+                    raise
+                logger.exception("Re-ingestion failed; loading the existing index.")
         else:
             logger.info("Storage manifest OK; loading existing index.")
 
@@ -140,8 +145,8 @@ class LifeRagEngine:
                 "source": settings.MODEL_NAME,
             }
 
-        except Exception as exc:
-            logger.error("Query Execution Error: %s", exc)
+        except Exception:
+            logger.exception("Query execution failed")
             return {
                 "text": self.edition.error_text,
                 "images": [],
