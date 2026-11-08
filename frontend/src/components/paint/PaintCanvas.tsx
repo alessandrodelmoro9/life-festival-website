@@ -12,16 +12,6 @@ const PaintCanvas: React.FC = () => {
   const isDrawingRef = useRef(false);
   const currentStroke = useRef<Point[]>([]);
   const requestRef = useRef<number>();
-  const [scrollPos, setScrollPos] = useState({ x: 0, y: 0 });
-
-  // Monitoriamo lo scroll per ridisegnare i tratti nella posizione corretta
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPos({ x: window.scrollX, y: window.scrollY });
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const getCanvasPoint = useCallback((e: React.PointerEvent | PointerEvent): Point => {
     // Se siamo in un modale, salviamo le coordinate relative al viewport
@@ -157,6 +147,8 @@ const PaintCanvas: React.FC = () => {
 
   useEffect(() => {
     renderStatic();
+    window.addEventListener('scroll', renderStatic, { passive: true });
+    return () => window.removeEventListener('scroll', renderStatic);
   }, [renderStatic]);
 
   useEffect(() => {
