@@ -4,9 +4,6 @@ import { usePaint } from '@/context/PaintContext';
 
 const CustomCursor: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const follower1Ref = useRef<HTMLDivElement>(null);
-  const follower2Ref = useRef<HTMLDivElement>(null);
-  const follower3Ref = useRef<HTMLDivElement>(null);
   const { mode, isActive } = usePaint();
   const [isMobile, setIsMobile] = useState(true); 
   const [isOverToolbar, setIsOverToolbar] = useState(false);
@@ -14,8 +11,7 @@ const CustomCursor: React.FC = () => {
   useEffect(() => {
     const checkMobile = () => {
       const touchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      const smallScreen = window.innerWidth < 1024;
-      setIsMobile(smallScreen || touchCapable);
+      setIsMobile(window.innerWidth < 1024 || touchCapable);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -28,82 +24,38 @@ const CustomCursor: React.FC = () => {
       return;
     }
 
-    // Aggiungiamo la classe solo se non siamo in modalità disegno
-    // o se siamo sopra la toolbar
     const shouldHideNative = !isActive || mode !== 'draw' || isOverToolbar;
-    
-    if (shouldHideNative) {
-      document.body.classList.add('hide-cursor');
-    } else {
-      document.body.classList.remove('hide-cursor');
-    }
+    document.body.classList.toggle('hide-cursor', shouldHideNative);
 
     const moveCursor = (e: MouseEvent) => {
       if (cursorRef.current) {
-        gsap.set(cursorRef.current, {
-          x: e.clientX,
-          y: e.clientY,
-        });
-      }
-
-      if (follower1Ref.current) {
-        gsap.to(follower1Ref.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.15,
-          ease: 'power2.out',
-        });
-      }
-      if (follower2Ref.current) {
-        gsap.to(follower2Ref.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.25,
-          ease: 'power2.out',
-        });
-      }
-      if (follower3Ref.current) {
-        gsap.to(follower3Ref.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.4,
-          ease: 'power3.out',
-        });
+        gsap.set(cursorRef.current, { x: e.clientX, y: e.clientY });
       }
     };
+
+    const handleToolbarCheck = (e: MouseEvent, over: boolean) => {
+      if ((e.target as HTMLElement).closest('.paint-toolbar-container')) {
+        setIsOverToolbar(over);
+      }
+    };
+
+    const onMouseOver = (e: MouseEvent) => handleToolbarCheck(e, true);
+    const onMouseOut = (e: MouseEvent) => handleToolbarCheck(e, false);
 
     window.addEventListener('mousemove', moveCursor);
-
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('.paint-toolbar-container')) {
-        setIsOverToolbar(true);
-      }
-    };
-
-    const handleMouseOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('.paint-toolbar-container')) {
-        setIsOverToolbar(false);
-      }
-    };
-
-    window.addEventListener('mouseover', handleMouseOver);
-    window.addEventListener('mouseout', handleMouseOut);
+    window.addEventListener('mouseover', onMouseOver);
+    window.addEventListener('mouseout', onMouseOut);
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
-      window.removeEventListener('mouseover', handleMouseOver);
-      window.removeEventListener('mouseout', handleMouseOut);
+      window.removeEventListener('mouseover', onMouseOver);
+      window.removeEventListener('mouseout', onMouseOut);
       document.body.classList.remove('hide-cursor');
     };
   }, [isMobile, isActive, mode, isOverToolbar]);
 
   if (isMobile) return null;
-  
-  // In draw mode, hide custom cursor ONLY if NOT over the toolbar
-  const isCursorHidden = isActive && mode === 'draw' && !isOverToolbar;
-  if (isCursorHidden) return null;
+  if (isActive && mode === 'draw' && !isOverToolbar) return null;
 
   return (
     <>
