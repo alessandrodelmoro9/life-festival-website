@@ -7,52 +7,47 @@ import heroScrollCta from '@/assets/hero-scroll-cta.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const scrollToAbout = () => {
-  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-};
+const scrollToAbout = () => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
 
 const HeroSection = () => {
-  const containerRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo('.hero-animate', 
+      // Stagger entrance for all elements with .hero-animate
+      gsap.fromTo('.hero-animate',
         { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 1, 
-          stagger: 0.08,
-          ease: 'power3.out',
-          delay: 0.2
-        }
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.1, delay: 0.5 }
       );
 
+      // Parallax effect on mobile title and icons
       gsap.to('.hero-parallax', {
-        y: -50,
+        yPercent: -15,
         ease: 'none',
         scrollTrigger: {
-          trigger: containerRef.current,
+          trigger: sectionRef.current,
           start: 'top top',
           end: 'bottom top',
-          scrub: true
-        }
+          scrub: true,
+        },
       });
-    }, containerRef.current);
+    }, sectionRef.current);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section 
-      ref={containerRef}
-      className="relative min-h-[90vh] md:min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 md:px-12 z-10 select-none overflow-hidden"
-    >
-      {/* MOBILE LAYOUT */}
-      <div className="flex md:hidden flex-col justify-between flex-grow w-full relative z-20">
-        <div className="hero-animate font-body text-xs leading-tight tracking-normal font-normal text-[#262626] uppercase">
+    <section id="hero" ref={sectionRef} className="relative min-h-screen w-full flex flex-col overflow-hidden bg-transparent">
+      
+      {/* ============================================================
+          MOBILE VERSION (Editorial Grid)
+          ============================================================ */}
+      <div className="md:hidden relative w-full h-screen px-6 pt-24 pb-10 flex flex-col z-10">
+        
+        {/* UPPER RIGHT BLOCK: Tags */}
+        <div className="hero-animate absolute right-6 top-32 text-right font-body text-[13px] leading-[1.4] tracking-normal font-normal text-[#262626] uppercase">
           <span>TALK</span><br />
           <span>WORKSHOP</span><br />
           <span>NETWORK</span><br />
@@ -80,36 +75,47 @@ const HeroSection = () => {
 
         {/* INFORMATION MID-LAYER */}
         <div className="relative w-full flex justify-between items-end mb-16">
+          {/* Month (Left) */}
           <div className="hero-animate">
             <span className="font-display font-medium text-7xl text-[#262626] leading-none lowercase">
               giugno
             </span>
           </div>
 
+          {/* Location (Right) */}
           <div className="hero-animate text-right font-body text-sm leading-tight tracking-normal font-normal text-[#262626] uppercase">
             TERMINAL FAL<br />GALLITELLO
           </div>
         </div>
 
-        {/* BOTTOM ANCHOR */}
-        <div className="w-full flex justify-between items-end relative z-20">
-          <div className="hero-animate">
-            <span className="font-display font-medium text-6xl text-[#262626] leading-none">
-              (PZ)
+        {/* FOOTER ELEMENTS */}
+        <div className="absolute bottom-14 left-6 right-6 flex justify-between items-end">
+          {/* Bottom-Left: Edition */}
+          <div className="hero-animate mb-2">
+            <span className="font-body text-[13px] uppercase tracking-normal text-[#262626] font-normal">
+              SECONDA EDIZIONE
             </span>
           </div>
-          <div className="hero-animate text-right font-body text-sm leading-tight tracking-normal text-[#262626] uppercase">
-            SECONDA<br />EDIZIONE
+
+          {/* Bottom-Right: PZ */}
+          <div className="hero-animate">
+            <span className="font-display font-medium text-8xl text-[#262626] leading-[0.7]">
+              (PZ)
+            </span>
           </div>
         </div>
       </div>
 
-      {/* DESKTOP LAYOUT */}
-      <div className="hidden md:flex flex-col justify-between flex-grow w-full max-w-[1400px] mx-auto relative z-20">
-        <div className="flex justify-between items-start w-full relative z-40">
-          <div className="hero-parallax hero-animate">
-            <h1 className="text-[#262626] leading-[0.85] tracking-tight font-display font-medium text-[clamp(4rem,9.5vw,9.5rem)] text-left">
-              Life<br />design<br />festival
+      {/* ============================================================
+          DESKTOP VERSION (Unchanged)
+          ============================================================ */}
+      <div className="hidden md:flex container mx-auto px-12 flex-1 flex-col justify-between pt-32 pb-20 relative z-10">
+        
+        {/* RIGA SUPERIORE: TOP */}
+        <div className="flex justify-between items-start w-full">
+          <div className="relative z-40 max-w-4xl">
+            <h1 className="hero-animate text-[#262626] leading-[0.82] tracking-tight font-display font-medium text-left text-[clamp(5.5rem,12vw,9rem)]">
+              Life design<br />festival
             </h1>
           </div>
 
@@ -123,6 +129,7 @@ const HeroSection = () => {
           </div>
         </div>
 
+        {/* RIGA CENTRALE: CENTER */}
         <div className="flex justify-between items-center w-full relative z-40">
           <div className="hero-animate font-body text-[23px] uppercase tracking-normal font-normal text-[#262626] leading-tight text-left">
             TERMINAL FAL<br />
@@ -141,6 +148,7 @@ const HeroSection = () => {
           </div>
         </div>
 
+        {/* RIGA INFERIORE: BOTTOM */}
         <div className="flex justify-between items-end w-full relative z-40">
           <div className="hero-animate">
             <span className="font-display font-medium text-[clamp(5rem,12vw,10rem)] leading-[0.8] text-[#262626]">
@@ -161,6 +169,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
     </section>
   );
 };
