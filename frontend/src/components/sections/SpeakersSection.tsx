@@ -40,15 +40,32 @@ const SpeakersSection: React.FC = () => {
 
   const toggleExpand = () => {
     if (isExpanded) {
-      // Use scrollIntoView for more reliable scrolling to the top of the section
       sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      
-      // Delay collapsing until the scroll is mostly complete to avoid jumping
       setTimeout(() => setIsExpanded(false), 600);
     } else {
       setIsExpanded(true);
     }
   };
+
+  const openSpeaker = (speaker: Speaker) => {
+    setSelectedSpeaker(speaker);
+    setIsDialogOpen(true);
+  };
+
+  const renderSpeakerGrid = (speakers: Speaker[], startIndex: number) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-24">
+      {speakers.map((speaker, index) => (
+        <SpeakerItem 
+          key={speaker.id}
+          speaker={speaker}
+          index={startIndex + index}
+          hoveredId={hoveredId}
+          setHoveredId={setHoveredId}
+          onClick={() => openSpeaker(speaker)}
+        />
+      ))}
+    </div>
+  );
 
   return (
     <section 
@@ -76,10 +93,7 @@ const SpeakersSection: React.FC = () => {
               isHost={true}
               hoveredId={hoveredId}
               setHoveredId={setHoveredId}
-              onClick={() => {
-                setSelectedSpeaker(host);
-                setIsDialogOpen(true);
-              }}
+              onClick={() => openSpeaker(host)}
             />
             {initialOthers.map((speaker, index) => (
               <SpeakerItem 
@@ -88,10 +102,7 @@ const SpeakersSection: React.FC = () => {
                 index={index + 1}
                 hoveredId={hoveredId}
                 setHoveredId={setHoveredId}
-                onClick={() => {
-                  setSelectedSpeaker(speaker);
-                  setIsDialogOpen(true);
-                }}
+                onClick={() => openSpeaker(speaker)}
               />
             ))}
           </div>
@@ -117,21 +128,7 @@ const SpeakersSection: React.FC = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-24">
-                {remainingSpeakers.map((speaker, index) => (
-                  <SpeakerItem 
-                    key={speaker.id}
-                    speaker={speaker}
-                    index={index + 5}
-                    hoveredId={hoveredId}
-                    setHoveredId={setHoveredId}
-                    onClick={() => {
-                      setSelectedSpeaker(speaker);
-                      setIsDialogOpen(true);
-                    }}
-                  />
-                ))}
-              </div>
+              {renderSpeakerGrid(remainingSpeakers, 5)}
             </motion.div>
           )}
         </AnimatePresence>
